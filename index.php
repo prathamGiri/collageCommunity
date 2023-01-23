@@ -14,6 +14,11 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
     $_SESSION['login_status'] = "logged_in";
     $_SESSION['user_id'] = $_COOKIE["user_id"];
 }
+$user_id = $_SESSION['user_id'];
+$sql3 = "SELECT * 
+            FROM variablecustomerinfo 
+            WHERE user_id = '$user_id'";
+$res3 = mysqli_query($conn, $sql3);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +34,6 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
 
     <link rel="stylesheet" href="css/profile_sty.css">
     <link rel="stylesheet" href="css/navbar.css">
-
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 
@@ -37,25 +41,21 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 
-
-
 </head>
 
 <body>
-    <!-- Header Starts Here -->
     <div class="header">
         <div class="logo">
-            <img src="./images/logo.png" alt="" height="45px" width="45px">
+            <img src= "images/logo.png" alt="" height="45px" width="45px">
             <h1>Pepcircles</h1>
         </div>
         <div class="navbar">
             <nav>
                 <ul>
                     <li><a class="current" href="index.php"><i class="ri-home-3-fill"></i><span>Home</span></a></li>
-                    <li><a href="index.php"><i class="ri-group-fill"></i><span>Circles</span></a></li>
+                    <li><a href="pages/circles.php"><i class="ri-group-fill"></i><span>Circles</span></a></li>
                     <li><a href="pages/chat.php"><i class="ri-chat-2-fill"></i><span>Chat</span></a></li>
                     <li><a href="pages/about.php"><i class="ri-dashboard-fill"></i></i><span>About Us</span></a></li>
-
                 </ul>
             </nav>
         </div>
@@ -75,7 +75,6 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
         </div>
     </div>
 
-    <!-- header ends here -->
     <?php
     if (isset($_SESSION['fresh_register'])) {
     ?>
@@ -91,6 +90,13 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
         </div>
     <?php
         unset($_SESSION['fresh_login']);
+    }elseif (isset($_SESSION['logged_out'])) {
+    ?>
+        <div class="msg">
+            <p>Logged Out Successfully!</p>
+        </div>
+    <?php
+        unset($_SESSION['logged_out']);
     }
     ?>
 
@@ -105,7 +111,7 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
                         while ($row = mysqli_fetch_assoc($res)) {
                     ?>
                             <li>
-                                <a href="#">
+                                <a href="pages/community_page.php?commid=<?php echo $row['community_id'] ?>">
                                     <h3><?php echo $row['community_name']; ?></h3>
                                     <p>Members : <?php echo $row['members']; ?></p>
                                 </a>
@@ -122,13 +128,20 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
                 </ul>
 
                 <div class="show_more">
-                    <h3 class="head"><span>Show more</span><i class="ri-arrow-drop-down-line"></i></h3>
-                    <ul>
-                        <?php
+                    <h3 class="head"><a href="pages/circles.php">Show more</a></h3>
+                </div>
+            </div>
+
+            <?php
+                        
                         if (mysqli_num_rows($res) > 0) {
+            ?>
+            <div class="sub_comm_bar">
+                <ul>
+                    <?php
                             $i = 0;
-                            while ($row = mysqli_fetch_assoc($res)) {
-                        ?>
+                            while ($row = mysqli_fetch_assoc($res3)) {
+                    ?>
                                 <li>
                                     <a href="#">
                                         <h3><?php echo $row['community_name']; ?></h3>
@@ -136,20 +149,16 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
                                     </a>
                                 </li>
 
-                        <?php
+                    <?php
                                 $i++;
                                 if ($i == 4) {
                                     break;
                                 }
                             }
-                        }
-                        ?>
-                    </ul>
-                    <!-- <a href="pages/create_comm.php" id="comm">
-                    <div><i class="ri-add-line"></i>Create a community</div>
-                </a> -->
-                </div>
+                    ?>
+                </ul>
             </div>
+            <?php } ?>
             <div class="create">
                 <a href="pages/create_comm.php" id="comm">
                     <div><i class="ri-add-line"></i>

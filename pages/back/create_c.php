@@ -12,8 +12,11 @@ if (isset($_POST['submit'])) {
     mysqli_query($conn, "INSERT INTO `community_info` (`community_name`, `discription`, `status`,`img`, `owner`) 
                             VALUES ('$community_name', '$discription', '$status', '$img', '$owner')");
 
-    move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/vnit_community/images/profile_img/'.$img);
+    move_uploaded_file($_FILES['img']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/collageCommunity/images/profile_img/'.$img);
     
-    redirect('../../index.php');
+    $sql = "SELECT * FROM community_info WHERE community_name = '$community_name'";
+    $res = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($res);
+    redirect('../community_page.php?commid='.$row['community_id']);
 }
 ?>

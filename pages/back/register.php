@@ -32,7 +32,7 @@ if (isset($_POST['register-btn'])) {
     $userid = $row2['user_id'];
 
     $insertsql2 = "INSERT INTO `variablecustomerinfo` (`user_id`) 
-                    VALUES ('$userid', 0, 0)";
+                    VALUES ('$userid')";
     mysqli_query($conn, $insertsql2);
 
     $expireTime = strtotime('+1 years');
@@ -41,6 +41,6 @@ if (isset($_POST['register-btn'])) {
     setcookie("password", $password, $expireTime, "/");
     $_SESSION['fresh_register'] = 'yes';
 
-    redirect('../index.php');
+    redirect('../../index.php');
 };
 ?>
