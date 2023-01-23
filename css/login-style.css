@@ -1,15 +1,14 @@
-*,
-*:before,
-*:after {
+*{
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: 'poppins';
 }
-
-html {
-  overflow-y: scroll;
-}
-
 body {
-  font-family: "Titillium Web", sans-serif;
+  /* font-family: "Titillium Web", sans-serif; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -36,17 +35,19 @@ a:hover {
 
 .form {
   padding: 40px;
-  max-width: 600px;
-  margin: 40px auto;
+  max-width: 30rem;
+  margin: 4rem 5rem;
   border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  background: #ffffff;
 }
 
 .tab-group {
   list-style: none;
   padding: 0;
-  margin: 0 0 40px 0;
+  margin: 0 0 20px 0;
 }
+
 .tab-group:after {
   content: "";
   display: table;
@@ -58,12 +59,13 @@ a:hover {
   padding: 15px;
   background: rgba(160, 179, 176, 0.25);
   color: #a0b3b0;
-  font-size: 20px;
+  font-size: 1rem;
   float: left;
   width: 50%;
   text-align: center;
   cursor: pointer;
   transition: 0.5s ease;
+
 }
 .tab-group li a:hover {
   background: #179b77;
@@ -82,7 +84,8 @@ h1 {
   text-align: center;
   color: black;
   font-weight: 300;
-  margin: 0 0 40px;
+  margin: 1rem;
+  font-size: 1.2rem;
 }
 #password{
   display: flex;
@@ -110,7 +113,7 @@ h1 {
 
 input,
 textarea {
-  font-size: 22px;
+  font-size: 17.5px;
   display: block;
   width: 100%;
   height: 100%;
@@ -157,14 +160,15 @@ textarea {
   outline: none;
   border-radius: 0;
   padding: 15px 0;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 600;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 0.1em;
   background: #1ab188;
   color: #ffffff;
   transition: all 0.5s ease;
   -webkit-appearance: none;
+  cursor: pointer;
 }
 .button:hover, .button:focus {
   background: #179b77;
@@ -173,6 +177,8 @@ textarea {
 .button-block {
   display: block;
   width: 100%;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .forgot {

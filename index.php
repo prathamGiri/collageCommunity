@@ -13,8 +13,9 @@ $res2 = mysqli_query($conn, $sql2);
 if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKIE["user_id"])) {
     $_SESSION['login_status'] = "logged_in";
     $_SESSION['user_id'] = $_COOKIE["user_id"];
+    $user_id = $_SESSION['user_id'];
 }
-$user_id = $_SESSION['user_id'];
+
 $sql3 = "SELECT * 
             FROM variablecustomerinfo 
             WHERE user_id = '$user_id'";
@@ -32,7 +33,7 @@ $res3 = mysqli_query($conn, $sql3);
 
     <!-- <link rel="shortcut icon" href="/images/logo.png" /> -->
 
-    <link rel="stylesheet" href="css/profile_sty.css">
+    <link rel="stylesheet" href="css/profile_style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -169,6 +170,33 @@ $res3 = mysqli_query($conn, $sql3);
 
         </div>
         <div class="feed">
+            <!-- crate-post             -->
+            <div class="createpost" id="createpost">
+                <img src="./images/profile_img/508247.jpg" alt="">
+                <button>Create a Post</button>
+            </div>
+
+            <div class="postblock" id="postblock">
+                <div class="posthead">
+                    <h1>Create a Post</h1>
+                    <a id="closepostblock"><i class="ri-close-line"></i></a>
+                </div>
+                <hr>
+                <div class="postprofile">
+                    <img src="./images/profile_img/508247.jpg" alt="">
+                    <span>Pratham Giri</span>
+                </div>
+
+                <!-- <input type="text" placeholder="What do you want to post"> -->
+                <textarea id="freeform" name="freeform">Enter text here...</textarea>
+
+                <hr>
+                <div class="medianpost">
+                    <i class="ri-image-line"></i>
+                    <i class="ri-video-line"></i>
+                    <button>Post</button>
+                </div>
+            </div>
             <div class="tags">
                 <a href="#">Latest</a>
                 <a href="#">Official Notices</a>
@@ -259,7 +287,7 @@ $res3 = mysqli_query($conn, $sql3);
     </footer> -->
 
     <!-- ......................FOOTER ENDS HERE.......................... -->
-
+    <script src="./javascript/createpost.js"></script>
 </body>
 
 </html>
