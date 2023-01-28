@@ -129,7 +129,7 @@
 }
 
 .createpost button {
-    width: 50rem;
+    width: 90%;
     height: 2.5rem;
     padding: 0.7rem;
     cursor: pointer;
@@ -150,7 +150,7 @@
     background-color: white;
     border-radius: 5px;
     margin-bottom: 10px;
-    /* display: none; */
+    display: none;
 }
 
 .postblock hr{
@@ -160,8 +160,8 @@
 
 .posthead{
     display: flex;
-    align-items: center;
-    /* justify-content: space-around; */
+    justify-content: space-between;
+    width: 100%;
 }
 
 .posthead h1{
@@ -172,11 +172,8 @@
 
 .posthead i{
     font-size: 2rem;
-    margin-top: -1rem;
-    position: absolute;
-    transform: translateX(1870%);
-    /* margin-left: 38rem; */
     cursor: pointer;
+    margin-right: 2rem;
 }
 
 .postprofile{
@@ -199,7 +196,7 @@
 
 .postblock textarea{
     width: 80%;
-    /* position: absolute; */
+    resize: none;
     margin-inline: 5rem;
     padding-inline-start: 1rem;
     height: 5rem;
@@ -211,13 +208,28 @@
 
 .postblock textarea:focus{
     outline: none;
+}
 
+.file-preview-wrapper{
+    display: none;
+}
+
+.file-preview{
+    display: flex;
+    justify-content: center;
+}
+.file-preview img{
+    width: 60%;
 }
 
 .medianpost{
     display: flex;
+    justify-content: space-between;
     margin: 1rem;
     align-items: center;
+}
+.medianpost input{
+    display: none;
 }
 
 .medianpost i{
@@ -234,20 +246,12 @@
     font-family: 'Poppins';
     border: none;
     border-radius: 5px;
-    margin-left: 42rem;
 }
 
 .medianpost button:hover{
     background-color: #188a68;
     transition: .25s ease-in-out;
-
 }
-
-
-
-
-
-
 
 .tags {
     display: flex;

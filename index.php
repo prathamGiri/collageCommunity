@@ -8,18 +8,13 @@ $sql2 = "SELECT *
             FROM posts";
 $res = mysqli_query($conn, $sql);
 $res2 = mysqli_query($conn, $sql2);
-
-
+$user_id;
 if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKIE["user_id"])) {
     $_SESSION['login_status'] = "logged_in";
     $_SESSION['user_id'] = $_COOKIE["user_id"];
     $user_id = $_SESSION['user_id'];
 }
 
-$sql3 = "SELECT * 
-            FROM variablecustomerinfo 
-            WHERE user_id = '$user_id'";
-$res3 = mysqli_query($conn, $sql3);
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +28,7 @@ $res3 = mysqli_query($conn, $sql3);
 
     <!-- <link rel="shortcut icon" href="/images/logo.png" /> -->
 
-    <link rel="stylesheet" href="css/profile_style.css">
+    <link rel="stylesheet" href="css/index_style.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -45,38 +40,8 @@ $res3 = mysqli_query($conn, $sql3);
 </head>
 
 <body>
-    <div class="header">
-        <div class="logo">
-            <img src= "images/logo.png" alt="" height="45px" width="45px">
-            <h1>Pepcircles</h1>
-        </div>
-        <div class="navbar">
-            <nav>
-                <ul>
-                    <li><a class="current" href="index.php"><i class="ri-home-3-fill"></i><span>Home</span></a></li>
-                    <li><a href="pages/circles.php"><i class="ri-group-fill"></i><span>Circles</span></a></li>
-                    <li><a href="pages/chat.php"><i class="ri-chat-2-fill"></i><span>Chat</span></a></li>
-                    <li><a href="pages/about.php"><i class="ri-dashboard-fill"></i></i><span>About Us</span></a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="login">
-            <?php
-            if (isset($_SESSION['login_status'])) {
-            ?>
-                <a href="pages/back/logout.php">Logout</a>
-            <?php
-            } else {
-            ?>
-                <a href="pages/login-form.php">Login/Register</a>
-            <?php
-            }
-            ?>
-
-        </div>
-    </div>
-
     <?php
+    include "pages/navbar.php";
     if (isset($_SESSION['fresh_register'])) {
     ?>
         <div class="msg">
@@ -100,8 +65,9 @@ $res3 = mysqli_query($conn, $sql3);
         unset($_SESSION['logged_out']);
     }
     ?>
-
+    
     <div class="main">
+        <!-- Left Side  -->
         <div class="comm_bar">
             <div class="sub_comm_bar">
                 <h3 class="head">Communities:</h3>
@@ -134,8 +100,9 @@ $res3 = mysqli_query($conn, $sql3);
             </div>
 
             <?php
+                    if(isset($res3)){
                         
-                        if (mysqli_num_rows($res) > 0) {
+                        if (mysqli_num_rows($res3) > 0) {
             ?>
             <div class="sub_comm_bar">
                 <ul>
@@ -159,7 +126,8 @@ $res3 = mysqli_query($conn, $sql3);
                     ?>
                 </ul>
             </div>
-            <?php } ?>
+            <?php } } ?>
+
             <div class="create">
                 <a href="pages/create_comm.php" id="comm">
                     <div><i class="ri-add-line"></i>
@@ -169,10 +137,21 @@ $res3 = mysqli_query($conn, $sql3);
             </div>
 
         </div>
+        <!-- Middle Part -->
         <div class="feed">
             <!-- crate-post             -->
+            <?php
+                if (isset($_SESSION['login_status'])) {
+                    $sql3 = "SELECT * FROM staticcustomerinfo
+                                WHERE user_id = '$user_id'";
+                    $res3 = mysqli_query($conn, $sql3);
+            ?>
             <div class="createpost" id="createpost">
-                <img src="./images/profile_img/508247.jpg" alt="">
+                <?php if (mysqli_num_rows($res3) > 0) { 
+                    $row3 = mysqli_fetch_assoc($res3);
+                ?>
+                <img src="<?php echo 'images/profile_img/'.$row3['profile_img']?>" alt="profile image">
+                
                 <button>Create a Post</button>
             </div>
 
@@ -183,20 +162,38 @@ $res3 = mysqli_query($conn, $sql3);
                 </div>
                 <hr>
                 <div class="postprofile">
-                    <img src="./images/profile_img/508247.jpg" alt="">
-                    <span>Pratham Giri</span>
+                    <img src="<?php echo 'images/profile_img/'.$row3['profile_img']?>" alt="profile image">
+                    <span><?php echo base64_decode($row3['user_name']) ?></span> 
                 </div>
-
+                <?php } ?>
                 <!-- <input type="text" placeholder="What do you want to post"> -->
-                <textarea id="freeform" name="freeform">Enter text here...</textarea>
+                <form action="pages/back/save_post.php" method="post" enctype="multipart/form-data">
 
-                <hr>
-                <div class="medianpost">
-                    <i class="ri-image-line"></i>
-                    <i class="ri-video-line"></i>
-                    <button>Post</button>
-                </div>
+                    <textarea id="freeform" name="freeform" placeholder = "Enter Text Here..."></textarea>
+                    <div class = "file-preview-wrapper">
+                        <div class = "file-preview" id="filepreview">
+                            <img id = "image-preview" src="images/logo.png" alt="imagePreview">
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <div class="medianpost">
+                        <div>
+                            <label>
+                                <i class="ri-image-line"><input type="file" id="image_file" name="image_file"></i>
+                            </label>
+                            <label>
+                                <i class="ri-video-line"><input type="file" name="video_file"></i>
+                            </label>
+                            
+                        </div>
+                        <button type="submit" name="post_submit">Post</button>
+                    </div>
+                </form>
+                
             </div>
+            <?php } ?>
+
             <div class="tags">
                 <a href="#">Latest</a>
                 <a href="#">Official Notices</a>
@@ -225,21 +222,33 @@ $res3 = mysqli_query($conn, $sql3);
         </div>
 
         <div class="right_side">
-            <div class="profile">
-                <div class="img">
-                    <img src="images/profile_img/673537.jpg">
-                </div>
+                <?php 
+                    if (isset($_SESSION['login_status'])) {
+                        $sql4 = "SELECT *
+                                FROM staticcustomerinfo 
+                                WHERE user_id = '$user_id'";
+                        $res4 = mysqli_query($conn, $sql4);
+                        if (mysqli_num_rows($res4) > 0) {
+                            $row4 = mysqli_fetch_assoc($res4);
 
-                <div class="info">
-                    <p>Pratham Giri</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolor dicta qui cum accusamus reprehenderit molestiae soluta exercitationem voluptatibus alias.</p>
-                </div>
+                ?>
+            <a href="pages/profile_page.php">
+                <div class="profile" id="profile">
+                    <div class="img">
+                        <img src="<?php echo "images/profile_img/".$row4['profile_img']; ?>">
+                    </div>
+                    <div class="info">
+                        <p><?php echo base64_decode($row4['user_name']); ?></p>
+                        <p><?php echo base64_decode($row4['about']); ?></p>
+                    </div>
 
-                <div class="pro_cir">
-                    <p>Your circles : 5</p>
-                    <p>Members : 500</p>
+                    <div class="pro_cir">
+                        <p>Your circles : 5</p>
+                        <p>Members : 500</p>
+                    </div>
                 </div>
-            </div>
+            </a>
+            
             <div class="sub_comm_bar" id="recent">
                 <h3 class="head">Recent Posts:</h3>
                 <ul>
@@ -263,6 +272,13 @@ $res3 = mysqli_query($conn, $sql3);
                     </li>
                 </ul>
             </div>
+            <?php } } else{ ?>
+                <div class="profile">
+                    <div class = "info">
+                        <p>PepCircle is a platform for collage Communities to opperate in a fast and the most effecient way.</p>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 
@@ -287,7 +303,8 @@ $res3 = mysqli_query($conn, $sql3);
     </footer> -->
 
     <!-- ......................FOOTER ENDS HERE.......................... -->
-    <script src="./javascript/createpost.js"></script>
+    <!-- <script src="javascript/createpost.js"></script> -->
+    <script src="javascript/index.js"></script>
 </body>
 
 </html>

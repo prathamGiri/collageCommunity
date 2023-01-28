@@ -18,7 +18,7 @@ if (isset($_POST['register-btn'])) {
     if (mysqli_num_rows($res) > 0) {
         while ($row = mysqli_fetch_assoc($res)) { 
             if ($row['email'] == $email) {
-                redirect('login-form.php?type=emailalreadyexist');
+                redirect('../login-form.php?type=emailalreadyexist');
             }     
     } }
     
