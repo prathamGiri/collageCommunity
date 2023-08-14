@@ -1,0 +1,148 @@
+.about {
+    border: 1px #ccc solid;
+    padding: 10px 30px 10px 30px;
+    background-color: white;
+    border-radius: 5px;
+    margin: 3rem 8rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pepabout {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+.name {
+    font-size: 2rem;
+    font-family: 'Poppins';
+    padding-left: 1.5rem;
+}
+
+.des {
+    font-size: 1.075rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-inline: 6.75rem;
+}
+
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 30%;
+    padding: 16px;
+    text-align: center;
+    position: relative;
+}
+
+.card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* .card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+
+.card-content h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.card-content p {
+    margin: 8px 0;
+}
+
+/* FOOTER STARTS HERE */
+.footer {
+    border-radius: 10px 10px 0 0 ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #c2c2c2;
+    /* color: white; */
+    padding: 1rem;
+    margin-top: 5rem;
+}
+
+.address {
+    font-family: 'Poppins';
+    align-items: center;
+    font-size: 1.5rem;
+    color: #000000;  
+}
+
+.navbar-footer p {
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.navbar-footer a {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.copyright {
+    background-color: #04AA6D;
+    color: white;
+    text-align: center;
+}
+
+.navbar ul {
+    display: inline-flex;
+}
+.navbar ul li {
+   padding-inline: 1rem;
+}
+
+.navbar ul li a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar ul li i {
+    font-size: 1.25rem;
+}
+.navbar ul li span {
+    font-size: 0.9rem;
+    font-family: 'Poppins';
+}
+.navbar ul li :hover{
+    color: #018859;
+    transition: .25s ease-in-out;
+}
+
+.navbar a {
+    margin: 0 10px 0 10px;
+    padding: 5px;
+    font-size: 18px;
+    color: black;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.navbar .current {
+    color: #018859;
+}
+
+
+/* ............FOOTER ENDS HERE............ */
