@@ -172,7 +172,7 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
                     <textarea id="freeform" name="freeform" placeholder = "Enter Text Here..."></textarea>
                     <div class = "file-preview-wrapper">
                         <div class = "file-preview" id="filepreview">
-                            <img id = "image-preview" src="images/logo.png" alt="imagePreview">
+                            <img id = "image-preview" alt="imagePreview">
                         </div>
                     </div>
                     
@@ -180,7 +180,8 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
                     <div class="medianpost">
                         <div>
                             <label>
-                                <i class="ri-image-line"><input type="file" id="image_file" name="image_file"></i>
+                                <i class="ri-image-line"></i>
+                                <input type="file" id="image_file" name="image_file" accept="image/*" onchange="updatePreview(this, 'image-preview');">
                             </label>
                             <label>
                                 <i class="ri-video-line"><input type="file" name="video_file"></i>
@@ -215,6 +216,26 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
                             <hr>
                             <h3><?php echo $row2['title']; ?></h3>
                             <p><?php echo $row2['content']; ?></p>
+                            <?php
+                                $post_id = $row2['post_id'];
+                                $sql5 ="SELECT ir.post_id,
+                                                ir.image_Id,
+                                                i.imageName
+                                        FROM image_rel AS ir
+                                        JOIN images AS i
+                                        ON ir.image_Id = i.imageId
+                                        WHERE ir.post_id =  '$post_id'";
+                                $res5 = mysqli_query($conn, $sql5);
+                                if (mysqli_num_rows($res5) > 0) {
+                                    while ($row5 = mysqli_fetch_assoc($res5)) {
+                            ?>
+                                        <div class = "post-image">
+                                            <img src="images/post_images/<?php echo $row5['imageName']; ?>" alt="image">
+                                        </div>
+                            <?php
+                                    }
+                                }
+                            ?>
                         </div>
                 <?php }
                 } ?>
@@ -304,7 +325,8 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
 
     <!-- ......................FOOTER ENDS HERE.......................... -->
     <!-- <script src="javascript/createpost.js"></script> -->
-    <script src="javascript/index.js"></script>
+    <script src="javascript/index_fun.js"></script>
+    <!-- <script src="javascript/image.js"></script> -->
 </body>
 
 </html>
