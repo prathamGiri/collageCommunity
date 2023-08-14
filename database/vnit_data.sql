@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2023 at 06:01 PM
+-- Generation Time: Aug 14, 2023 at 06:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -49,6 +49,57 @@ INSERT INTO `community_info` (`community_id`, `community_name`, `discription`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `imageId` int(11) NOT NULL,
+  `imageName` varchar(256) NOT NULL,
+  `time` time(6) NOT NULL,
+  `date` date NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`imageId`, `imageName`, `time`, `date`, `user_id`) VALUES
+(1, 'IMG_8943.JPG', '11:42:28.000000', '2023-02-08', 9),
+(2, 'IMG_8943.JPG', '11:43:07.000000', '2023-02-08', 9),
+(3, 'IMG_8943.JPG', '11:46:17.000000', '2023-02-08', 9),
+(4, 'IMG_8943.JPG', '11:46:55.000000', '2023-02-08', 9),
+(5, 'IMG_8943.JPG', '13:52:57.000000', '2023-02-08', 9),
+(6, 'discord.png', '13:59:20.000000', '2023-02-08', 9),
+(7, 'stay-positive-quotes-10.jpg', '20:26:26.000000', '2023-03-24', 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `image_rel`
+--
+
+CREATE TABLE `image_rel` (
+  `post_id` int(11) NOT NULL,
+  `image_Id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `image_rel`
+--
+
+INSERT INTO `image_rel` (`post_id`, `image_Id`) VALUES
+(0, 0),
+(0, 0),
+(28, 3),
+(29, 4),
+(30, 5),
+(31, 6),
+(32, 7);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
@@ -73,7 +124,16 @@ INSERT INTO `posts` (`post_id`, `time`, `date`, `user_id`, `title`, `content`) V
 (21, '19:41:11.000000', '2023-01-27', '9', 'tentative title', 'My name ins anthony gonsalvis me duniya me aakalye hu'),
 (22, '10:33:13.000000', '2023-01-28', '9', 'tentative title', ''),
 (23, '10:33:45.000000', '2023-01-28', '9', 'tentative title', 'jgh'),
-(24, '17:16:45.000000', '2023-01-28', '9', 'tentative title', 'my name is pratham gitpjos kaehrgibk rgnaiwngk');
+(24, '17:16:45.000000', '2023-01-28', '9', 'tentative title', 'my name is pratham gitpjos kaehrgibk rgnaiwngk'),
+(25, '11:35:28.000000', '2023-01-30', '9', 'tentative title', 'SDASFA'),
+(26, '11:42:28.000000', '2023-02-08', '9', 'tentative title', 'aerfvefa'),
+(27, '11:43:07.000000', '2023-02-08', '9', 'tentative title', 'ewf sef fesg'),
+(28, '11:46:17.000000', '2023-02-08', '9', 'tentative title', 'ewf sef fesg'),
+(29, '11:46:55.000000', '2023-02-08', '9', 'tentative title', 'fthnfh ttdnhnx'),
+(30, '13:52:57.000000', '2023-02-08', '9', 'tentative title', 'ascafef ewsf awg'),
+(31, '13:59:20.000000', '2023-02-08', '9', 'tentative title', 'i recenwrngonono mpkbrppjphskdvl lrhgl njd;jlpratuykjjaskj. samypsjy giri rexcenyler attenmfrd dh 20203,nsflvh hlg'),
+(32, '20:26:26.000000', '2023-03-24', '9', 'tentative title', 'xfbxfbxf  vvnnvn'),
+(33, '16:14:09.000000', '2023-08-14', '9', 'tentative title', 'jhrg iihs iodgb osfcjg klknfcbn kdfhfe');
 
 -- --------------------------------------------------------
 
@@ -133,6 +193,12 @@ ALTER TABLE `community_info`
   ADD PRIMARY KEY (`community_id`);
 
 --
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`imageId`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
@@ -155,10 +221,16 @@ ALTER TABLE `community_info`
   MODIFY `community_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `staticcustomerinfo`
