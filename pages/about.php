@@ -1,6 +1,7 @@
 <?php 
     include "back/connection.php";
     include "back/functions.php";
+    $page = "aboutus";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,21 +39,21 @@
 
     <div class="card-container">
         <div class="card">
-            <img src="<?php echo "images/profile_img/".$row4['profile_img']; ?>">
+            <img src="/collageCommunity/images/profile_img/User_icon.png">
             <div class="card-content">
                 <h2>Pratham Giri</h2>
                 <p>Co-Founder, CEO</p>
             </div>
         </div>
         <div class="card">
-            <img src="<?php echo "images/profile_img/".$row4['profile_img']; ?>">
+            <img src="/collageCommunity/images/profile_img/User_icon.png">
             <div class="card-content">
                 <h2>Deep Swarup</h2>
                 <p>Co-Founder, CTO</p>
             </div>
         </div>
         <div class="card">
-            <img src="<?php echo "images/profile_img/".$row4['profile_img']; ?>">
+            <img src="/collageCommunity/images/profile_img/User_icon.png">
             <div class="card-content">
                 <h2>Dhruv Gupta</h2>
                 <p>Co-Founder, COO</p>

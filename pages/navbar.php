@@ -1,16 +1,22 @@
 <!-- HEADER STARTS HERE -->
+<head>
+    <link rel="stylesheet" href="/collageCommunity/css/navbar.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
 <div class="header">
         <div class="logo">
-            <img src= "images/logo.png" alt="" height="45px" width="45px">
+            <img src= "/collageCommunity/images/logo.png" alt="" height="45px" width="45px">
             <h1>Pepcircles</h1>
         </div>
         <div class="navbar">
             <nav>
                 <ul>
-                    <li><a class="current" href="index.php"><i class="ri-home-3-fill"></i><span>Home</span></a></li>
-                    <li><a href="pages/circles.php"><i class="ri-group-fill"></i><span>Circles</span></a></li>
-                    <li><a href="pages/chat.php"><i class="ri-chat-2-fill"></i><span>Chat</span></a></li>
-                    <li><a href="pages/about.php"><i class="ri-dashboard-fill"></i></i><span>About Us</span></a></li>
+                    
+                    <li><a id="home" href="/collageCommunity/index.php"><i class="ri-home-3-fill"></i><span>Home</span></a></li>
+                    <li><a id="circles" href="/collageCommunity/pages/circles.php"><i class="ri-group-fill"></i><span>Circles</span></a></li>
+                    <li><a id="notification" href="/collageCommunity/pages/notifications.php"><i class="ri-notification-2-fill"></i><span>Notifications</span></a></li>
+                    <li><a id="aboutus" href="/collageCommunity/pages/about.php"><i class="ri-dashboard-fill"></i></i><span>About Us</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -18,15 +24,25 @@
             <?php
             if (isset($_SESSION['login_status'])) {
             ?>
-                <a href="pages/back/logout.php">Logout</a>
+                <a href="/collageCommunity/pages/back/logout.php">Logout</a>
             <?php
             } else {
             ?>
-                <a href="pages/login-form.php">Login/Register</a>
+                <a href="/collageCommunity/pages/login-form.php">Login/Register</a>
             <?php
             }
             ?>
 
         </div>
     </div>
+    <?php 
+        if (isset($page)) {
+            ?>
+            <script>
+                let active = document.getElementById('<?php echo $page; ?>');
+                active.classList.add('current');
+            </script>
+    <?php
+        }
+    ?>
             <!-- Header ends here -->

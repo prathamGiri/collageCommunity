@@ -30,9 +30,9 @@
     ?>
             <div class="container">
                 <div class="card">
-                    <form action="back/create_c.php" method="post" enctype="multipart/form-data">
+                    <form action="back\create_c.php" method="post" enctype="multipart/form-data">
                         <div class="profile_container" id="profile" onclick="click_but()">
-                            <img id="image" src="../images/User_icon.png">
+                            <img id="image" src="/collageCommunity/images/profile_img/User_icon.png">
                         </div>
                         <input type="file" id="filec" name="img" onchange="load_img()" required>
                         <input type="text" id="coname" placeholder="Community Name" name="community_name" required>

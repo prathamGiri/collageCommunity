@@ -1,22 +1,7 @@
 <?php
-include "pages/back/connection.php";
-include "pages/back/functions.php";
-
-$sql = "SELECT *
-            FROM community_info";
-$sql2 = "SELECT *
-            FROM posts";
-$res = mysqli_query($conn, $sql);
-$res2 = mysqli_query($conn, $sql2);
-$user_id;
-if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKIE["user_id"])) {
-    $_SESSION['login_status'] = "logged_in";
-    $_SESSION['user_id'] = $_COOKIE["user_id"];
-    $user_id = $_SESSION['user_id'];
-}
-
+include "pages/back/database_connection.php";
+$page = "home";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,10 +13,7 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
 
     <!-- <link rel="shortcut icon" href="/images/logo.png" /> -->
 
-    <link rel="stylesheet" href="css/index_style.css">
-    <link rel="stylesheet" href="css/navbar.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="css/indexStyle.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,9 +60,9 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
                         while ($row = mysqli_fetch_assoc($res)) {
                     ?>
                             <li>
-                                <a href="pages/community_page.php?commid=<?php echo $row['community_id'] ?>">
-                                    <h3><?php echo $row['community_name']; ?></h3>
-                                    <p>Members : <?php echo $row['members']; ?></p>
+                                <a href="pages/community_page.php?commid=<?php echo $row['circleId'] ?>">
+                                    <h3><?php echo $row['circleName']; ?></h3>
+                                    <p>Members : 100</p>
                                 </a>
                             </li>
 
@@ -99,35 +81,6 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
                 </div>
             </div>
 
-            <?php
-                    if(isset($res3)){
-                        
-                        if (mysqli_num_rows($res3) > 0) {
-            ?>
-            <div class="sub_comm_bar">
-                <ul>
-                    <?php
-                            $i = 0;
-                            while ($row = mysqli_fetch_assoc($res3)) {
-                    ?>
-                                <li>
-                                    <a href="#">
-                                        <h3><?php echo $row['community_name']; ?></h3>
-                                        <p>Members : <?php echo $row['members']; ?></p>
-                                    </a>
-                                </li>
-
-                    <?php
-                                $i++;
-                                if ($i == 4) {
-                                    break;
-                                }
-                            }
-                    ?>
-                </ul>
-            </div>
-            <?php } } ?>
-
             <div class="create">
                 <a href="pages/create_comm.php" id="comm">
                     <div><i class="ri-add-line"></i>
@@ -139,68 +92,13 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
         </div>
         <!-- Middle Part -->
         <div class="feed">
-            <!-- crate-post             -->
-            <?php
-                if (isset($_SESSION['login_status'])) {
-                    $sql3 = "SELECT * FROM staticcustomerinfo
-                                WHERE user_id = '$user_id'";
-                    $res3 = mysqli_query($conn, $sql3);
-            ?>
-            <div class="createpost" id="createpost">
-                <?php if (mysqli_num_rows($res3) > 0) { 
-                    $row3 = mysqli_fetch_assoc($res3);
-                ?>
-                <img src="<?php echo 'images/profile_img/'.$row3['profile_img']?>" alt="profile image">
-                
-                <button>Create a Post</button>
-            </div>
-
-            <div class="postblock" id="postblock">
-                <div class="posthead">
-                    <h1>Create a Post</h1>
-                    <a id="closepostblock"><i class="ri-close-line"></i></a>
-                </div>
-                <hr>
-                <div class="postprofile">
-                    <img src="<?php echo 'images/profile_img/'.$row3['profile_img']?>" alt="profile image">
-                    <span><?php echo base64_decode($row3['user_name']) ?></span> 
-                </div>
-                <?php } ?>
-                <!-- <input type="text" placeholder="What do you want to post"> -->
-                <form action="pages/back/save_post.php" method="post" enctype="multipart/form-data">
-
-                    <textarea id="freeform" name="freeform" placeholder = "Enter Text Here..."></textarea>
-                    <div class = "file-preview-wrapper">
-                        <div class = "file-preview" id="filepreview">
-                            <img id = "image-preview" alt="imagePreview">
-                        </div>
-                    </div>
-                    
-                    <hr>
-                    <div class="medianpost">
-                        <div>
-                            <label>
-                                <i class="ri-image-line"></i>
-                                <input type="file" id="image_file" name="image_file" accept="image/*" onchange="updatePreview(this, 'image-preview');">
-                            </label>
-                            <label>
-                                <i class="ri-video-line"><input type="file" name="video_file"></i>
-                            </label>
-                            
-                        </div>
-                        <button type="submit" name="post_submit">Post</button>
-                    </div>
-                </form>
-                
-            </div>
-            <?php } ?>
 
             <div class="tags">
                 <a href="#">Latest</a>
                 <a href="#">Official Notices</a>
                 <a href="#">Achievements</a>
                 <form class="search-box">
-                <i class="ri-search-line"></i><input type="search">
+                    <i class="ri-search-line"></i><input type="search">
                 </form>
             </div>
             <div class="posts">
@@ -325,8 +223,8 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
 
     <!-- ......................FOOTER ENDS HERE.......................... -->
     <!-- <script src="javascript/createpost.js"></script> -->
-    <script src="javascript/index_fun.js"></script>
-    <!-- <script src="javascript/image.js"></script> -->
+    <!-- <script src="javascript/index_fun.js"></script> -->
+    <!-- <script src="javascript/image_preview.js"></script> -->
 </body>
 
 </html>

@@ -5,8 +5,8 @@ include "back/functions.php";
 if(isset($_GET['commid'])){
     $id = test_input($_GET['commid']);
     $sql = "SELECT *
-                FROM community_info as ci
-                WHERE ci.community_id = '$id'";
+                FROM staticcircleinfo as ci
+                WHERE ci.circleId = '$id'";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($res);
 }
@@ -21,6 +21,6 @@ if(isset($_GET['commid'])){
     <title>Document</title>
 </head>
 <body>
-    <p><?php echo $row['community_name'] ?></p>
+    <p><?php echo $row['circleName'] ?></p>
 </body>
 </html>
