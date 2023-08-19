@@ -1,0 +1,114 @@
+.main-body{
+    display: flex;
+}
+
+.sidebar{
+    display: flex;
+    background-color: white;
+    height: 100vh;
+    width: 20%;
+    flex: 0 0 auto;
+    position: fixed;
+    left: 0;
+   
+}
+
+.threads{
+    flex: 1; /* Allow the scrollable section to take remaining space */
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  /* Customize scrollbar appearance */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #a7edd8 #f0f0f0; /* For Firefox */
+
+  &::-webkit-scrollbar {
+    width: 2px; /* Width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Track color */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #a7edd8; /* Thumb color */
+    border-radius: 5px; /* Rounded corners on the thumb */
+  }
+  
+}
+
+.threads span{
+    display: block;
+    font-family: "poppins";
+    font-size: 1rem;
+    cursor: pointer;
+    color: rgb(116, 116, 116);
+    margin: 1rem 0;
+}
+
+.threads span :hover{
+    color: #000000;
+}
+
+.pro_images{
+   width: 5rem;
+    background-color: #a7edd8;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.pro_images a img{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background-color: antiquewhite;
+    margin: 0.3rem 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -1px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.pro_images i{
+    font-size: 2.6rem;
+    color:  #018859;
+}
+
+.pro_images a :hover{
+   color: white;
+   transition: .25s ease-in-out;
+}
+
+
+.profile-section{
+    flex: 1;
+    margin: 2.5rem;
+    margin-left: 23% ;
+}
+
+.profile{
+    display: flex;
+    background-color: #a7edd8;
+    padding: 3rem;
+    border: 2px solid   #018859;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.profile img{
+    width: 8rem ;
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.content{
+    margin: 0 1rem;
+}
+
+.profile h1{
+    margin: 1rem 0;
+    font-family: 'Poppins';
+}
+
+.profile p{
+    margin: 1rem 0;
+    font-family: 'Poppins';
+    font-size: 1rem;
+}
+

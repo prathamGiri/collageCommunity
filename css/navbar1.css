@@ -4,6 +4,7 @@
     padding: 0px;
     text-decoration: none;
     box-sizing: border-box;
+  
 }
 
 body {
@@ -15,12 +16,18 @@ a {
 }
 
 .header {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     padding: 3px 10px 3px 0px;
     align-items: center;
     border-bottom: #04AA6D 1px solid;
+    position: sticky;
+    top: 0;
+    /* overflow: hidden; */
+    width: 100%;
+    z-index: 10;
+    
 }
 
 .logo {

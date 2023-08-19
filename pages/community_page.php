@@ -9,51 +9,61 @@ include "back/database_connection.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/comm_page.css">
+    <link rel="stylesheet" href="../css/circlesprofile.css">
 </head>
 <body>
     <?php include 'navbar.php' ?>
-    <div>
-    <div class="comm_bar">
-            <div class="sub_comm_bar">
-                <ul>
-                    <?php
-                    if (mysqli_num_rows($res) > 0) {
-                        $i = 0;
-                        while ($row = mysqli_fetch_assoc($res)) {
-                    ?>
-                            <li>
-                                <a href="pages/community_page.php?commid=<?php echo $row['circleId'] ?>">
-                                    <h3><?php echo $row['circleName']; ?></h3>
-                                    <p>Members : 100</p>
-                                </a>
-                            </li>
+    
+    <div class="main-body">
+        <div class="sidebar">
+            <div class="pro_images">
+            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
+            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
+            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
+            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
+            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
 
-                    <?php
-                            $i++;
-                            if ($i == 4) {
-                                break;
-                            }
-                        }
-                    }
-                    ?>
-                </ul>
 
-                <div class="show_more">
-                    <h3 class="head"><a href="pages/circles.php">Show more</a></h3>
-                </div>
+            <a href="#"><i class="ri-compass-3-fill"></i></a>
             </div>
 
-            <div class="create">
-                <a href="pages/create_comm.php" id="comm">
-                    <div><i class="ri-add-line"></i>
-                        <p>Create a New Circle</p>
-                    </div>
-                </a>
+            <div class="threads">
+                <span class="thread-option">
+                    About
+                </span>
+
+                <span class="thread-option">
+                    Announcement
+                </span>
+
+                
+                <span class="thread-option">
+                    Achivement
+                </span>
             </div>
-        <div>
+
+
+
 
         </div>
+
+        <div class="profile-section">
+
+        <div class="profile">
+            <img src="../images/profile_img/User_icon.png" alt="">
+            <div class="content">
+
+            <h1>Circle Name</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci iusto impedit officia voluptatem quo! Ab blanditiis reiciendis nemo inventore distinctio iste a aperiam? Consequatur nesciunt amet architecto porro enim aperiam?</p>
+            </div>
+
+        </div>
+        
+        </div>
+    
+        
     </div>
+
+    
 </body>
 </html>
