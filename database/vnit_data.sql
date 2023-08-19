@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2023 at 06:34 PM
+-- Generation Time: Aug 19, 2023 at 04:53 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -20,31 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `vnit_data`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `community_info`
---
-
-CREATE TABLE `community_info` (
-  `community_id` int(11) NOT NULL,
-  `community_name` varchar(256) NOT NULL,
-  `discription` longtext NOT NULL,
-  `status` int(11) NOT NULL,
-  `img` varchar(256) NOT NULL,
-  `members` int(11) NOT NULL DEFAULT 0,
-  `owner` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `community_info`
---
-
-INSERT INTO `community_info` (`community_id`, `community_name`, `discription`, `status`, `img`, `members`, `owner`) VALUES
-(2, 'One Piece', 'bjdkdhvdhhhhhhhhhhhhh djjjjjjjjjjjj vjjjjjjjjjj', 1, '516664.jpg', 10, '1'),
-(3, 'Naruto', 'wert\r\ngrdsggggggggggggggggggggggggggggggggg', 0, '578022.png', 20, '1'),
-(4, 'Don Quixote Fans', 'qwertyuioplkjhcx', 0, 'donQuixote.jpg', 0, '4');
 
 -- --------------------------------------------------------
 
@@ -71,7 +46,8 @@ INSERT INTO `images` (`imageId`, `imageName`, `time`, `date`, `user_id`) VALUES
 (4, 'IMG_8943.JPG', '11:46:55.000000', '2023-02-08', 9),
 (5, 'IMG_8943.JPG', '13:52:57.000000', '2023-02-08', 9),
 (6, 'discord.png', '13:59:20.000000', '2023-02-08', 9),
-(7, 'stay-positive-quotes-10.jpg', '20:26:26.000000', '2023-03-24', 9);
+(7, 'stay-positive-quotes-10.jpg', '20:26:26.000000', '2023-03-24', 9),
+(8, 'WhatsApp Image 2023-02-15 at 18.50.17.jpg', '19:39:01.000000', '2023-08-14', 10);
 
 -- --------------------------------------------------------
 
@@ -95,7 +71,8 @@ INSERT INTO `image_rel` (`post_id`, `image_Id`) VALUES
 (29, 4),
 (30, 5),
 (31, 6),
-(32, 7);
+(32, 7),
+(34, 8);
 
 -- --------------------------------------------------------
 
@@ -133,7 +110,39 @@ INSERT INTO `posts` (`post_id`, `time`, `date`, `user_id`, `title`, `content`) V
 (30, '13:52:57.000000', '2023-02-08', '9', 'tentative title', 'ascafef ewsf awg'),
 (31, '13:59:20.000000', '2023-02-08', '9', 'tentative title', 'i recenwrngonono mpkbrppjphskdvl lrhgl njd;jlpratuykjjaskj. samypsjy giri rexcenyler attenmfrd dh 20203,nsflvh hlg'),
 (32, '20:26:26.000000', '2023-03-24', '9', 'tentative title', 'xfbxfbxf  vvnnvn'),
-(33, '16:14:09.000000', '2023-08-14', '9', 'tentative title', 'jhrg iihs iodgb osfcjg klknfcbn kdfhfe');
+(33, '16:14:09.000000', '2023-08-14', '9', 'tentative title', 'jhrg iihs iodgb osfcjg klknfcbn kdfhfe'),
+(34, '19:39:01.000000', '2023-08-14', '10', 'tentative title', 'a memory of mine');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staticcircleinfo`
+--
+
+CREATE TABLE `staticcircleinfo` (
+  `circleId` int(11) NOT NULL,
+  `circleName` char(250) NOT NULL,
+  `circleLogo` varchar(3000) NOT NULL,
+  `circleDiscription` varchar(5000) NOT NULL,
+  `circleBanner` varchar(3000) NOT NULL,
+  `circleInstitute` varchar(3000) NOT NULL,
+  `city` char(250) NOT NULL,
+  `state` char(250) NOT NULL,
+  `country` char(250) NOT NULL,
+  `circleStatus` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `staticcircleinfo`
+--
+
+INSERT INTO `staticcircleinfo` (`circleId`, `circleName`, `circleLogo`, `circleDiscription`, `circleBanner`, `circleInstitute`, `city`, `state`, `country`, `circleStatus`) VALUES
+(1, 'Naruto', '1680615824550.jpg', 'wryetufkg', '', '', '', '', '', 0),
+(2, 'Attack On Titan', 'IMG_8943.JPG', 'wesrdtfyg', '', '', '', '', '', 1),
+(3, 'agnipankh', 'agnipankh.jpg', 'defgrthyjuhkh,jhmvcn h,jhgcnfbx', '', '', '', '', '', 0),
+(4, 'Don Quixote', 'don-quixote.jpg', 'defgrthyjuhkh,jhmvcn h,jhgcnfbx', '', '', '', '', '', 0),
+(5, 'Elon Musk', 'elon-musk.jpg', 'defgrthyjuhkh,jhmvcn h,jhgcnfbx', '', '', '', '', '', 0),
+(6, 'Ramanujan', 'the-man-who-knew-infinity.jpeg', 'defgrthyjuhkh,jhmvcn h,jhgcnfbx', '', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -148,15 +157,34 @@ CREATE TABLE `staticcustomerinfo` (
   `email` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `profile_img` varchar(256) NOT NULL DEFAULT 'User_id.php',
-  `about` longtext NOT NULL DEFAULT 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg=='
+  `about` longtext NOT NULL DEFAULT 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==',
+  `institute` varchar(3000) NOT NULL,
+  `city` varchar(3000) NOT NULL,
+  `state` varchar(3000) NOT NULL,
+  `country` varchar(3000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `staticcustomerinfo`
 --
 
-INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `password`, `profile_img`, `about`) VALUES
-(9, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbS5naXJpMDJAZ21haWwuY29t', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==');
+INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `password`, `profile_img`, `about`, `institute`, `city`, `state`, `country`) VALUES
+(9, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbS5naXJpMDJAZ21haWwuY29t', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 'vnit', 'nagpur', 'maharashtra', 'india'),
+(10, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbUBnbWFpbC5jb20=', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `variablecircleinfo`
+--
+
+CREATE TABLE `variablecircleinfo` (
+  `circleId` int(11) NOT NULL,
+  `cMemberId` int(255) NOT NULL,
+  `cMemberCount` int(255) NOT NULL,
+  `cFollowerId` int(255) NOT NULL,
+  `cFollowerCount` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -180,17 +208,12 @@ INSERT INTO `variablecustomerinfo` (`user_id`, `community_id`, `post_id`) VALUES
 (6, 0, 0),
 (7, 0, 0),
 (8, 0, 0),
-(9, 0, 0);
+(9, 0, 0),
+(10, 0, 0);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `community_info`
---
-ALTER TABLE `community_info`
-  ADD PRIMARY KEY (`community_id`);
 
 --
 -- Indexes for table `images`
@@ -205,6 +228,12 @@ ALTER TABLE `posts`
   ADD PRIMARY KEY (`post_id`);
 
 --
+-- Indexes for table `staticcircleinfo`
+--
+ALTER TABLE `staticcircleinfo`
+  ADD PRIMARY KEY (`circleId`);
+
+--
 -- Indexes for table `staticcustomerinfo`
 --
 ALTER TABLE `staticcustomerinfo`
@@ -215,28 +244,28 @@ ALTER TABLE `staticcustomerinfo`
 --
 
 --
--- AUTO_INCREMENT for table `community_info`
---
-ALTER TABLE `community_info`
-  MODIFY `community_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `staticcircleinfo`
+--
+ALTER TABLE `staticcircleinfo`
+  MODIFY `circleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `staticcustomerinfo`
 --
 ALTER TABLE `staticcustomerinfo`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
