@@ -1,4 +1,6 @@
+
 window.onload = function() {
+    console.log("123");
     let createpost = document.getElementById("createpost");
     let postbox = document.getElementById("postblock");
     let closepostblock = document.getElementById("closepostblock");

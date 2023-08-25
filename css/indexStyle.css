@@ -281,31 +281,6 @@
     /* margin: 6rem; */
 }
 
-.search-box i {
-    position: absolute;
-    transform: translateX(660%);
-    margin-top: 0.4rem;
-    font-size: 1.2rem;
-}
-
-
-
-.search-box input {
-    width: 22rem;
-    height: 2rem;
-    margin-left: 7.7rem;
-    border: none;
-    background-color: #dbfff4;
-    padding: 0.8rem;
-    padding-inline: 1.5rem;
-    border-radius: 2px;
-}
-
-.search-box input:focus {
-    outline: none;
-    background-color: #e4f7f1;
-}
-
 .ind_post {
     margin: 10px 0 10px 0;
     /* padding: 10px; */

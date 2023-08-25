@@ -92,9 +92,6 @@ $page = "home";
                 <a href="#">Latest</a>
                 <a href="#">Official Notices</a>
                 <a href="#">Achievements</a>
-                <form class="search-box">
-                    <i class="ri-search-line"></i><input type="search">
-                </form>
             </div>
             <div class="posts">
                 <?php
