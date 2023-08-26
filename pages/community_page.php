@@ -39,6 +39,8 @@ include "back/database_connection.php";
                 
                 <span class="thread-option">
                     Achivement
+
+                    lorem100
                 </span>
             </div>
 
