@@ -13,7 +13,7 @@ $page = "home";
 
     <!-- <link rel="shortcut icon" href="/images/logo.png" /> -->
 
-    <link rel="stylesheet" href="css/indexStyle.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>

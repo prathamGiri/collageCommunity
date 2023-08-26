@@ -81,7 +81,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: white;
-    width: 18%;
+    width: 22%;
     padding: 16px;
     text-align: center;
     position: relative;
@@ -103,12 +103,16 @@
 } */
 
 .card-content h2 {
-    margin: 0;
+    margin: 1rem;
     font-size: 1.5rem;
 }
 
 .card-content p {
     margin: 8px 0;
+}
+
+.follow{
+    margin-block: 1rem ;
 }
 
 .card-content a {
@@ -121,6 +125,7 @@
     border: 1px #ccc solid;
     border-radius: 5px;
     font-family: 'Poppins';
+    
 }
 
 .card-content a :hover{

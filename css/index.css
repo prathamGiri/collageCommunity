@@ -14,12 +14,16 @@
 
 .main {
     display: flex;
+    height: 100vh; /* Set the container height to fill the viewport */
+    
 }
 
 .comm_bar {
     margin: 10px 10px 0 10px;
     width: 20%;
-
+   
+    /* position: sticky;
+    left: 0; */
 }
 
 .sub_comm_bar {
@@ -28,16 +32,20 @@
     border: 1px #ccc solid;
     border-radius: 5px;
     padding: 1rem;
+    flex: 1;
 }
 
 .show_more {
     margin-top: 0.5rem;
     border-radius: 2px;
-    background-color: #a7edd8;
+    /* background-color: #a7edd8; */
+    border:2px solid #a7edd8;
 }
 
 .show_more:hover {
-    background-color: #c7dfd8;
+    /* background-color: #c7dfd8; */
+    border: 2px solid #04AA6D;
+    background: none;
 }
 
 .show_more h3 {
@@ -49,11 +57,12 @@
 .sub_comm_bar .head {
     /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
     font-family: 'Poppins';
+    /* margin-top: 1rem; */
     padding: 5px 5px 5px 5px;
 }
 
 .sub_comm_bar ul li {
-    padding: 5px 5px 5px 5px;
+    padding: 12px 12px 12px 12px;
     /* font-family: 'Poppins'; */
 }
 
@@ -63,7 +72,8 @@
 }
 
 .sub_comm_bar ul li:hover {
-    background-color: #a7edd8;
+    /* background-color: #a7edd8; */
+    border: 2px solid #04AA6D;
     border-radius: 2px;
 
 }
@@ -106,8 +116,27 @@
 
 .feed {
     width: 60%;
-    margin: 20px 0 0 0;
+    /* margin: 0 0 0 0; */
+    padding-block-start: 1.36rem;
+    flex-grow: 1; /* Allow this section to grow and take available space */
+    overflow-y: auto;
 
+    /* Customize scrollbar appearance */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #a7edd8 #f0f0f0; /* For Firefox */
+
+  &::-webkit-scrollbar {
+    width: 0px; /* Width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Track color */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #a7edd8; /* Thumb color */
+    border-radius: 5px; /* Rounded corners on the thumb */
+  }
 }
 
 .createpost {
@@ -260,6 +289,8 @@
     padding: 5px 5px 5px 5px;
     background-color: white;
     border-radius: 5px;
+    /* position: sticky;
+    top: 0; */
 }
 
 .tags a {
@@ -281,6 +312,39 @@
     /* margin: 6rem; */
 }
 
+<<<<<<< Updated upstream:css/indexStyle.css
+=======
+.search-box{
+    display: flex;
+    margin-left: 5.5rem;
+}
+
+.search-box i {
+    margin-top: 0.4rem;
+    font-size: 1.2rem;
+}
+
+
+
+.search-box input {
+    width: 22rem;
+    height: 2rem;
+    margin-left: 1rem;
+    /* border: 1px solid  #04AA6D; */
+    border: 1px solid #a7edd8;
+    /* background-color: #dbfff4; */
+    padding: 0.8rem;
+    padding-inline: 2rem;
+    border-radius: 2px;
+}
+
+.search-box input:focus {
+    outline: none;
+    background-color: #ffffff;
+    border: 1px solid #188a68;
+}
+
+>>>>>>> Stashed changes:css/index.css
 .ind_post {
     margin: 10px 0 10px 0;
     /* padding: 10px; */

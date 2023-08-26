@@ -9,7 +9,19 @@ $page = "circles";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circles</title>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="/collageCommunity/css/circleStyle.css">
+=======
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/circle.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+>>>>>>> Stashed changes
     <script src="../javascript/fun.js"></script>
 </head>
 <body>
@@ -38,7 +50,7 @@ $page = "circles";
                 <img src="<?php echo "/collageCommunity/images/profile_img/".$row['circleLogo']; ?>">
                 <div class="card-content">
                     <h2><?php echo $row['circleName']; ?></h2>
-                    <a href="#">Follow</a>
+                    <div class="follow"><a href="#">Follow</a></div>
                 </div>
             </div>
 

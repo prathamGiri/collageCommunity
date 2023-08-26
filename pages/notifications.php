@@ -13,7 +13,7 @@ $page = "notification";
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/indexStyle.css">
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/notify.css">
 </head>
 <body>
