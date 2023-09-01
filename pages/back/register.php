@@ -19,7 +19,7 @@ if (isset($_POST['register-btn'])) {
         while ($row = mysqli_fetch_assoc($res)) { 
             if ($row['email'] == $email) {
                 redirect('../login-form.php?type=emailalreadyexist');
-            }     
+            }   
     } }
     
     $insertsql = "INSERT INTO `staticcustomerinfo` (`user_name`, `mobile`, `email`, `password`) 

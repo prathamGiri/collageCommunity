@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins';
+  }
+  body {
+    align-items: center;
+  }
+
+  .logo{
+    text-align: center;
+    color: #04AA6D;
+    font-family: poppins;
+    font-size: xx-large;
+}

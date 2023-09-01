@@ -1,4 +1,5 @@
 <?php
+$page = "community_page";
 include "back/database_connection.php";
 ?>
 
