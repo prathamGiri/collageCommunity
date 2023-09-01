@@ -29,20 +29,13 @@ include "back/database_connection.php";
             </div>
 
             <div class="threads">
-                <span class="thread-option">
-                    About
-                </span>
+                <ul>
+                    <li> About</li>
+                    <li> About</li>
+                    <li> About</li>
+                    <li> About</li>
 
-                <span class="thread-option">
-                    Announcement
-                </span>
-
-                
-                <span class="thread-option">
-                    Achivement
-
-                    lorem100
-                </span>
+                </ul>
             </div>
 
 
