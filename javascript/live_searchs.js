@@ -10,7 +10,22 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                     $('#search_result').html(data);
-                    $('#search_result').css('display', 'block');
+                    // $('#search_result').css('display', 'block');
+                    // $('#search_result').css('background-color', 'white');
+                    $('#search_result').css({
+                        'position':'absolute',
+                        'width':'30rem',
+                        'background-color': 'white',
+                        'display': 'block',
+                        'margin':'0.1rem',
+                        'translate(X)':'10%',
+                        'z-index':'2',
+                        'margin':'0.1rem',
+                        'font-family':'poppins',
+                        'font-size':'0.8rem'
+                        
+                      });
+                      
                     $("#live_search").focusout(function () {
                         $('#search_result').css('display', 'none');
                     });

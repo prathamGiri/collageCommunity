@@ -1,8 +1,9 @@
 .search-c{
-    position: relative;
+    /* position: relative; */
+    margin: 1rem auto;
     width: 60%;
     left: 50%;
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); */
     text-align: center;
 }
 .search-c li{
@@ -15,12 +16,16 @@
 }
 
 .search-c input {
+   
     width: 30rem;
     height: 3rem;
     border: none;
-    background-color: #dbfff4;
+    background-color: #ffffff;
     padding-inline: 1.5rem;
-    border-radius: 2px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    
 }
 
 /* .search-c button{
@@ -30,19 +35,24 @@
 } */
 .search-c input:focus {
     outline: none;
-    background-color: #e4f7f1;
+    background-color: #ffffff;
 }
 
 /* Formatting result items */
+
+#search_result{
+    
+}
+
 .search_result p{
-    margin: 0;
+    margin-inline-end: 0 ;
     padding: 7px 10px;
     border: 1px solid #CCCCCC;
     border-top: none;
     cursor: pointer;
 }
 .search_result p:hover{
-    background: #f2f2f2;
+    background: #bbbbbb;
 }
 
 
@@ -65,14 +75,18 @@
     height: 2px;
     background-color: #04AA6D;
     margin-left: 0.5rem;
+    
 }
 
 .card-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    transition: transform 0.3s ease-in-out;
+    /* flex-wrap: wrap; */
+    /* justify-content: space-around; */
     padding-inline: 6.75rem;
     margin-top: 1rem;
+    justify-content: center;
+    align-items: baseline;
 }
 
 
@@ -85,7 +99,46 @@
     padding: 16px;
     text-align: center;
     position: relative;
+    margin-inline: 1rem;
+    transition: opacity 0.3s ease-in-out;
+
 }
+
+.prev-btn,
+.next-btn {
+    background-color: #ffffff;
+    color: #04AA6D;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    /* position: absolute;
+    top: 50%;
+    transform: translateY(-50%); */
+    z-index: 1;
+    height:3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+
+
+}
+
+.prev-btn:hover,
+.next-btn:hover{
+    background-color: #e1e1e1;
+
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+
 
 .card img {
     width: 80px;
@@ -93,6 +146,8 @@
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 /* .card-content {

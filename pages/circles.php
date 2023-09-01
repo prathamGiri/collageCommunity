@@ -38,11 +38,13 @@ $page = "circles";
             <div></div>
         </div>
         <div class="card-container">
+        <button class="prev-btn" onclick="prevSlide()">&#10094;</button>
             <?php
                 if (mysqli_num_rows($res) > 0) {
                     $i = 0;
                     while ($row = mysqli_fetch_assoc($res)) {
             ?>
+            
             <div class="card">
                 <img src="<?php echo "/collageCommunity/images/profile_img/".$row['circleLogo']; ?>">
                 <div class="card-content">
@@ -50,12 +52,15 @@ $page = "circles";
                     <div class="follow"><a href="#">Follow</a></div>
                 </div>
             </div>
+            
 
             <?php } }?>
+            <button class="next-btn" onclick="nextSlide()">&#10095;</button>
+            
         </div>
 
     </div>
-    <div class="circle">
+    <!-- <div class="circle">
         <div class="circle-group">
             <p>VNIT, Nagpur</p>
             <div></div>
@@ -98,6 +103,8 @@ $page = "circles";
                     <p>Co-Founder, COO</p>
                 </div>
             </div>
+
+
         </div>
     </div>
     <div class="circle">
@@ -144,9 +151,10 @@ $page = "circles";
                 </div>
             </div>
     </div>
-   
+    -->
+    <script src="/collageCommunity/javascript/circle.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/collageCommunity/javascript/live_search.js"></script>
+    <script src="/collageCommunity/javascript/live_searchs.js"></script>
     
 </body>
 </html>
