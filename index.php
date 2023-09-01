@@ -1,6 +1,6 @@
 <?php
-include "pages/back/database_connection.php";
 $page = "home";
+include "pages/back/database_connection.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,22 +135,17 @@ $page = "home";
         <div class="right_side">
                 <?php 
                     if (isset($_SESSION['login_status'])) {
-                        $sql4 = "SELECT *
-                                FROM staticcustomerinfo 
-                                WHERE user_id = '$user_id'";
-                        $res4 = mysqli_query($conn, $sql4);
-                        if (mysqli_num_rows($res4) > 0) {
-                            $row4 = mysqli_fetch_assoc($res4);
-
+                        if (mysqli_num_rows($res3) > 0) {
+                            $row3 = mysqli_fetch_assoc($res3);
                 ?>
             <a href="pages/profile_page.php">
                 <div class="profile" id="profile">
                     <div class="img">
-                        <img src="<?php echo "images/profile_img/".$row4['profile_img']; ?>">
+                        <img src="<?php echo "images/profile_img/".$row3['profile_img']; ?>">
                     </div>
                     <div class="info">
-                        <p><?php echo base64_decode($row4['user_name']); ?></p>
-                        <p><?php echo base64_decode($row4['about']); ?></p>
+                        <p><?php echo base64_decode($row3['user_name']); ?></p>
+                        <p><?php echo base64_decode($row3['about']); ?></p>
                     </div>
 
                     <div class="pro_cir">

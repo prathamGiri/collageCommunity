@@ -1,6 +1,7 @@
 <?php
-include "back/database_connection.php";
 $page = "circles";
+include "back/database_connection.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

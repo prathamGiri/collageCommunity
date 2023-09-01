@@ -1,6 +1,6 @@
 <?php
-include "back/database_connection.php";
 $page = "profile";
+include "back/database_connection.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,31 +18,34 @@ $page = "profile";
 <body>
     <?php
         include "navbar.php";
+        if (mysqli_num_rows($res3) > 0) {
+            $row3 = mysqli_fetch_assoc($res3);
     ?>
     <div class="main-container">
         <div class="left-container">
             <div class="banner">
-                <img src="/collageCommunity/images/profile_img/516664.jpg" alt="img">
+                <img src="<?php echo "/collageCommunity/images/profile_img/".$row3['banner']; ?>" alt="img">
             </div>
             <div class="info-panal">
                 <div id="profile-pic">
-                    <img src="/collageCommunity/images/logo.png" alt="img">
+                    <img src="<?php echo "/collageCommunity/images/profile_img/".$row3['profile_img']; ?>" alt="img">
                 </div>
                 <div id="name">
-                    <h1>Pratham Giri</h1>
+                    <h1><?php echo base64_decode($row3['user_name']); ?></h1>
                 </div>
             </div>
             <div>
                 <ul>
-                    <li>Institute</li>
-                    <li>City</li>
-                    <li>State</li>
-                    <li>Country</li>
-                    <li>Graduating Year</li>
-                    <li>Gender</li>
+                    <li><?php echo $row3['institute']; ?></li>
+                    <li><?php echo $row3['city']; ?></li>
+                    <li><?php echo $row3['state']; ?></li>
+                    <li><?php echo $row3['country']; ?></li>
+                    <li><?php echo $row3['graduating_year']; ?></li>
+                    <li><?php echo $row3['gender']; ?></li>
                 </ul>
             </div>
         </div>
+        <?php } ?>
         <div class="right-container">
             <div class="options">
                 <a href="#">change Password</a>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2023 at 04:53 PM
+-- Generation Time: Sep 01, 2023 at 05:08 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -157,20 +157,23 @@ CREATE TABLE `staticcustomerinfo` (
   `email` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `profile_img` varchar(256) NOT NULL DEFAULT 'User_id.php',
+  `banner` varchar(256) NOT NULL,
   `about` longtext NOT NULL DEFAULT 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==',
   `institute` varchar(3000) NOT NULL,
   `city` varchar(3000) NOT NULL,
   `state` varchar(3000) NOT NULL,
-  `country` varchar(3000) NOT NULL
+  `country` varchar(3000) NOT NULL,
+  `graduating_year` int(4) NOT NULL,
+  `gender` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `staticcustomerinfo`
 --
 
-INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `password`, `profile_img`, `about`, `institute`, `city`, `state`, `country`) VALUES
-(9, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbS5naXJpMDJAZ21haWwuY29t', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 'vnit', 'nagpur', 'maharashtra', 'india'),
-(10, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbUBnbWFpbC5jb20=', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', '', '', '', '');
+INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `password`, `profile_img`, `banner`, `about`, `institute`, `city`, `state`, `country`, `graduating_year`, `gender`) VALUES
+(9, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbS5naXJpMDJAZ21haWwuY29t', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', '516664.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 'vnit', 'nagpur', 'maharashtra', 'india', 2024, 'Male'),
+(10, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbUBnbWFpbC5jb20=', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', '516664.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 'VNIT', 'Nagpur', 'Maharashtra', 'India', 2024, 'Male');
 
 -- --------------------------------------------------------
 

@@ -1,7 +1,8 @@
 <?php 
+    $page = "aboutus";
     include "back/connection.php";
     include "back/functions.php";
-    $page = "aboutus";
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
