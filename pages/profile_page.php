@@ -30,11 +30,24 @@ include "back/database_connection.php";
                 <div id="profile-pic">
                     <img src="<?php echo "/collageCommunity/images/profile_img/".$row3['profile_img']; ?>" alt="img">
                 </div>
+                
                 <div id="name">
                     <h1><?php echo base64_decode($row3['user_name']); ?></h1>
+
+                    <ul>
+                    <li><?php echo $row3['institute']; ?></li>
+                    <li><?php echo $row3['city']; ?></li>
+                    <li><?php echo $row3['state']; ?></li>
+                    <li><?php echo $row3['country']; ?></li>
+                    <li><?php echo $row3['graduating_year']; ?></li>
+                    <li><?php echo $row3['gender']; ?></li>
+                    </ul>
+                
                 </div>
+                
+                
             </div>
-            <div>
+            <!-- <div>
                 <ul>
                     <li><?php echo $row3['institute']; ?></li>
                     <li><?php echo $row3['city']; ?></li>
@@ -43,7 +56,7 @@ include "back/database_connection.php";
                     <li><?php echo $row3['graduating_year']; ?></li>
                     <li><?php echo $row3['gender']; ?></li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <?php } ?>
         <div class="right-container">
