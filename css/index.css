@@ -29,7 +29,7 @@
 .sub_comm_bar {
     margin: 10px 0 10px 0;
     background-color: white;
-    border: 1px #ccc solid;
+    border: 2px #ffffff solid;
     border-radius: 5px;
     padding: 1rem;
     flex: 1;
@@ -45,7 +45,7 @@
 .show_more:hover {
     /* background-color: #c7dfd8; */
     border: 2px solid #04AA6D;
-    background: none;
+    
 }
 
 .show_more h3 {
@@ -63,12 +63,15 @@
 
 .sub_comm_bar ul li {
     padding: 12px 12px 12px 12px;
+    border: 2px solid #ffffff;
+
     /* font-family: 'Poppins'; */
 }
 
 .sub_comm_bar ul li h3 {
     font-size: 1rem;
     font-family: 'Poppins';
+
 }
 
 .sub_comm_bar ul li:hover {
@@ -286,30 +289,28 @@
     display: flex;
     align-items: center;
     border: 1px #ccc solid;
-    padding: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 10px;
     background-color: white;
     border-radius: 5px;
-    /* position: sticky;
-    top: 0; */
 }
 
 .tags a {
-    border-radius: 2px;
-    margin: 6rem;
+    border: 2px solid  #ffffff;
+   
 }
 
 .tags a:hover {
-    background-color: #a7edd8;
-    transition: .25s ease-in-out;
+    /* background-color: #a7edd8; */
+   border-bottom: 2px solid  #04AA6D;
 }
 
 .tags a {
-    margin: 0px 15px 0px 0;
+    margin: 2px 15px 2px 0px;
     font-family: 'Poppins';
     font-size: 18px;
-    padding: 5px;
+    padding: 2px;
     border-radius: 2px;
-    /* margin: 6rem; */
+   
 }
 
 .search-box{
