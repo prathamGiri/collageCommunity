@@ -51,7 +51,7 @@
 
 .pro_images{
    width: 5rem;
-    /* background-color: #a7edd8; */
+    background-color: #04AA6D;
     padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
@@ -67,11 +67,11 @@
 
 .pro_images i{
     font-size: 2.6rem;
-    color:  #018859;
+    color:  #ffffff;
 }
 
 .pro_images a :hover{
-   color: white;
+   color:#DAE0E6;
    transition: .25s ease-in-out;
 }
 
@@ -80,6 +80,7 @@
     flex: 1;
     margin: 2.5rem;
     margin-left: 23% ;
+    display: none;
 }
 
 .profile{
@@ -90,6 +91,9 @@
     /* border: 2px solid   #4c4c4c; */
     border-radius: 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    margin-bottom: 2.5rem;
+   
 }
 
 .profile img{
@@ -113,3 +117,93 @@
     font-size: 1rem;
 }
 
+/* events */
+.events{
+    display: flex;
+    margin-left: 23%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    display: none;
+}
+/* events */
+.month-events{
+    display: flex;
+    margin-left: 23%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    display: none; 
+}
+
+/* want to contribute */
+.register-contri{
+    /* margin-left: 23%; */
+  
+    margin-left: 40%
+}
+
+form{
+    /* width: 40%; */
+    padding: 50px;
+    font-family: 'poppins';
+    /* max-width: 30rem; */
+    margin: 0rem 1rem;
+    border-radius: 4px;
+    /* box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); */
+    /* background: #ffffff;  */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+  }
+  
+  label{
+    color: dimgray;
+  }
+  
+  input, select, textarea{
+    width: 100%;
+    padding: 2px 2PX; /* Adjust top and bottom padding */
+    border: none;
+    border-bottom: 1px solid #1ab188;
+    outline: none;
+    transition: border-width 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    position: relative;
+    background: none;
+  }
+  
+  /* Style the input when it is focused */
+  input:focus, select:focus, textarea:focus {
+    border-width: 2px;
+    transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+  }
+  
+  form div{
+    margin-block-start: 20px;
+  }
+  
+  
+  form button {
+    border: 0;
+      outline: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+      margin-inline: auto;
+      padding: 0.7rem;
+      padding-inline: 1rem;
+      font-size: 0.8rem;
+      /* font-weight: 600; */
+      /* text-transform: uppercase; */
+      letter-spacing: 0.1em;
+      background: #1ab188;
+      color: #ffffff;
+      transition: all 0.5s ease;
+      /* -webkit-appearance: none; */
+      cursor: pointer;
+      margin-bottom: 1rem;
+      /* margin-left: 27rem; */
+  
+  }
+  form button:hover, form button:focus {
+    background: #179b77;
+  }

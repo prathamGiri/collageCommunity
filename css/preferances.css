@@ -1,43 +1,96 @@
-  *{
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'poppins';
   }
+
   body {
     background-color: #DAE0E6;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 4rem;
 
   }
 
-  .logo{
+  .logo {
     text-align: center;
     color: #04AA6D;
     font-family: 'poppins';
     font-size: xx-large;
   }
 
-  form{
+  form {
     width: 40%;
-    padding: 50px;
+    padding: 1rem;
     font-family: 'poppins';
     /* max-width: 30rem; */
-    margin: 4rem 5rem;
+    margin-left: 5rem;
     border-radius: 4px;
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
-    background: #ffffff; 
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  form h3{
-    font-size: 2rem;
+  form h3 {
+    font-size: 1.5rem;
     /* text-align: center; */
     padding: 1rem 1rem;
   }
 
-  form div{
-    font-size: 1.2rem;
+  .card-container {
+    width: 30rem;
+    height: 28rem;
+    overflow: auto; /* Make the container scrollable */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.3rem;
+    justify-content: center;
+
+    /* Customize scrollbar appearance */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #a7edd8 #f0f0f0; /* For Firefox */
+
+  &::-webkit-scrollbar {
+    width: 2px; /* Width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Track color */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #a7edd8; /* Thumb color */
+    border-radius: 5px; /* Rounded corners on the thumb */
+  }
+  }
+
+  /* Add your card styling here */
+  .card {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-size: 0.8rem;
+    border-radius: 50%;
+  }
+
+  .card.selected {
+    border: 2px solid #04AA6D;
+    transform: scale(1.1);
+  }
+
+  form div {
+    font-size: 1rem;
     padding: 0.5rem 1rem;
   }
 
@@ -45,10 +98,11 @@
     border: 0;
     outline: none;
     border-radius: 5px;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-inline: auto;
-    padding: 10px;
-    font-size: 1.2rem;
+    padding: 0.7rem;
+    padding-inline: 1rem;
+    font-size: 0.8rem;
     /* font-weight: 600; */
     /* text-transform: uppercase; */
     letter-spacing: 0.1em;
@@ -58,12 +112,11 @@
     /* -webkit-appearance: none; */
     cursor: pointer;
     margin-bottom: 1rem;
-    margin-left: 25rem;
-   
+    /* margin-left: 27rem; */
+
   }
-  form button:hover, form button:focus {
+
+  form button:hover,
+  form button:focus {
     background: #179b77;
   }
-
-
-
