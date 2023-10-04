@@ -1,4 +1,5 @@
 <?php 
+    $page = "create_comm";
     include "back/connection.php";
     include "back/functions.php";
 ?>
@@ -9,8 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create a community</title>
-    <link rel="stylesheet" href="../css/create_comm_style.css">
-    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="/collageCommunity/css/create_comm_style.css">
 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -35,8 +35,16 @@
                             <img id="image" src="/collageCommunity/images/profile_img/User_icon.png">
                         </div>
                         <input type="file" id="filec" name="img" onchange="load_img()" required>
-                        <input type="text" id="coname" placeholder="Community Name" name="community_name" required>
+                        <input type="text" class="coname" placeholder="Community Name" name="community_name" required>
                         <textarea name="discription" id="codisc" placeholder="Discription" required></textarea>
+                        <div>
+                            <input type="text" class="coname" page="<?php echo $page ?>" id="live_search" placeholder="institute" name="institute" required>
+                            <div id="search_result"></div>
+                        </div>
+
+                        <input type="text" class="coname" placeholder="city" name="city" required>
+                        <input type="text" class="coname" placeholder="state" name="state"  required>
+                        <input type="text" class="coname" placeholder="country" name="country"  required>
                         <div class="radio_btn">
                             <input type="radio" id="anyone" name="status" value="0">
                             <label for="anyone">Anyone Can Join</label><br>
@@ -54,5 +62,7 @@
     <?php
      }
     ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/collageCommunity/javascript/live_searchs.js"></script>
 </body>
 </html>

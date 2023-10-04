@@ -30,7 +30,7 @@
     
     <div class="about">
         <div class="pepabout">
-            <img src= "images/logo.png" alt="" height="45px" width="45px">
+            <img src= "/collageCommunity/images/logo.png" alt="" height="45px" width="45px">
             <div class="name">Pepcircles</div>
         </div>
         <div class="des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita natus odit, pariatur consectetur autem enim non 

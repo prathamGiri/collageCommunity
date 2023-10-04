@@ -1,3 +1,8 @@
+<?php
+ $page = "preferences";
+ include "back/database_connection.php";
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,56 +23,43 @@
         <h3>Select Your Interests</h3>
 
         <div class="card-container">
-        <div class="card" data-card-id="1">AI/ML</div>
-        <div class="card" data-card-id="2">MUSIC</div>
-        <div class="card" data-card-id="3">DANCE</div>
-        <div class="card" data-card-id="4">ANALOG</div>
-        <div class="card" data-card-id="5">COSULTANCY</div>
-        <div class="card" data-card-id="6">PROGRAMMING</div>
-        <div class="card" data-card-id="7">ROBOTICS</div>
-        <div class="card" data-card-id="8">DRAMA</div>
-        <div class="card" data-card-id="9">CRYPTO</div>
-        <div class="card" data-card-id="1">AI/ML</div>
-        <div class="card" data-card-id="2">MUSIC</div>
-        <div class="card" data-card-id="3">DANCE</div>
-        <div class="card" data-card-id="4">ANALOG</div>
-        <div class="card" data-card-id="5">COSULTANCY</div>
-        <div class="card" data-card-id="6">PROGRAMMING</div>
-        <div class="card" data-card-id="7">ROBOTICS</div>
-        <div class="card" data-card-id="8">DRAMA</div>
-        <div class="card" data-card-id="9">CRYPTO</div>
+            <?php   if (mysqli_num_rows($pre_result) > 0) {
+                        while ($pre_row = mysqli_fetch_assoc($pre_result)) {        
+            ?>
+            <label class="checkbox-container">
+                <input type="checkbox" class="chk-bx" id="checkbox1" name="pre[]" value="<?php echo $pre_row['preferenceId']; ?>">
+                <div class="card" data-card-id="1"><?php echo $pre_row['preferenceTitle']; ?></div>
+            </label>
+            <?php } }?>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" name="submit">Submit</button>
     </form>
 
     <script>
         // JavaScript code to handle card selection
         const cards = document.querySelectorAll('.card');
-        const selectedCards = [];
+        // const selectedCards = [];
 
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 card.classList.toggle('selected');
-                const cardId = card.getAttribute('data-card-id');
-                if (card.classList.contains('selected')) {
-                    selectedCards.push(cardId);
-                } else {
-                    const index = selectedCards.indexOf(cardId);
-                    if (index !== -1) {
-                        selectedCards.splice(index, 1);
-                    }
-                }
+                // const cardId = card.getAttribute('data-card-id');
+                // if (card.classList.contains('selected')) {
+                //     selectedCards.push(cardId);
+                // } else {
+                //     const index = selectedCards.indexOf(cardId);
+                //     if (index !== -1) {
+                //         selectedCards.splice(index, 1);
+                //     }
+                // }
             });
         });
-
         // Handle the submit button click
-        const submitButton = document.getElementById('submit-button');
-        submitButton.addEventListener('click', () => {
-            // Here, you can do something with the selected cards, such as sending them to a server.
-            console.log('Selected Cards:', selectedCards);
-            // You can replace the console.log with your own logic to submit the selected cards.
-        });
+        // const submitButton = document.getElementById('submit-button');
+        // submitButton.addEventListener('click', () => {
+        //     console.log('Selected Cards:', selectedCards);
+        //     });
     </script>
 </body>
 </html>

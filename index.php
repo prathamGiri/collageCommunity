@@ -145,7 +145,7 @@ include "pages/back/database_connection.php";
                     </div>
                     <div class="info">
                         <p><?php echo base64_decode($row3['user_name']); ?></p>
-                        <p><?php echo base64_decode($row3['about']); ?></p>
+                        <p><?php $row3['about']; ?></p>
                     </div>
 
                     <div class="pro_cir">

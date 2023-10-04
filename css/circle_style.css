@@ -1,61 +1,19 @@
 .search-c{
-    /* position: relative; */
-    margin: 1rem auto;
-    width: 60%;
-    left: 50%;
-    /* transform: translateX(-50%); */
+    margin: 1rem 0;
+    width: 100%;
     text-align: center;
-}
-.search-c li{
-    font-size: 1.2rem;
-    padding: 5px 0;
-}
-.search-c i {
-    margin-top: 0.4rem;
-    font-size: 1.2rem;
 }
 
 .search-c input {
-   
-    width: 30rem;
+    
+    width: 60%;
     height: 3rem;
     border: none;
     background-color: #ffffff;
     padding-inline: 1.5rem;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-    
 }
-
-/* .search-c button{
-    border: none;
-    width: 5rem;
-    height: 3rem;
-} */
-.search-c input:focus {
-    outline: none;
-    background-color: #ffffff;
-}
-
-/* Formatting result items */
-
-#search_result{
-    
-}
-
-.search_result p{
-    margin-inline-end: 0 ;
-    padding: 7px 10px;
-    border: 1px solid #CCCCCC;
-    border-top: none;
-    cursor: pointer;
-}
-.search_result p:hover{
-    background: #bbbbbb;
-}
-
-
 
 .circle{
     margin: 2rem 2rem;
@@ -69,7 +27,9 @@
     font-family: 'Poppins';
     margin: 2rem 2rem
 }
-
+.head-text{
+    font-size: 1rem;
+}
 .circle-group div{
     width: 80%;
     height: 2px;
@@ -104,8 +64,7 @@
 
 }
 
-.prev-btn,
-.next-btn {
+.prev-btn, .next-btn {
     background-color: #ffffff;
     color: #04AA6D;
     border: none;

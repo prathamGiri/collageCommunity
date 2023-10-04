@@ -28,7 +28,7 @@ include "back/database_connection.php";
                 ?>
                         <div class="ind_post">
                             <div class="head_post">
-                                <img src="./images/logo.png" alt="">
+                                <img src="/collageCommunity/images/logo.png" alt="">
                                 <span>Titel of the circle</span>
                             </div>
                             <hr>

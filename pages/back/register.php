@@ -41,6 +41,6 @@ if (isset($_POST['register-btn'])) {
     setcookie("password", $password, $expireTime, "/");
     $_SESSION['fresh_register'] = 'yes';
 
-    redirect('../../index.php');
+    redirect('../user_info_form.php');
 };
 ?>

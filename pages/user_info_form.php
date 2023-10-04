@@ -1,3 +1,9 @@
+<?php 
+    $page = "user_info_form";
+    include "back/connection.php";
+    include "back/functions.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +21,11 @@
     </div>
     <div>
         <form action="back/user_info.php" method="post">
-
-            
             <div class="clg">
-            <label for="College">College</label>
-            <input type="text" id="clg" name="college" required>
+                <label for="College">College</label>
+                <input type="text" class="coname" page="<?php echo $page ?>" id="live_search" name="institute" autocomplete="off" required>
+                <div id="search_result"></div>
+            <!-- <input type="text" id="clg" name="college" required> -->
             </div>
 
             <div class="sem">
@@ -29,13 +35,13 @@
                 </div>
                 <div class="graduation year">
                 <label for="graduation year">Graduating Year</label>
-                <input type="number" id="gradyr" name="graduation year" min="2015" max="2030" step="1" required>
+                <input type="number" id="gradyr" name="graduation_year" min="2015" max="2030" step="1" required>
             </div>
 
             <div class="pr">
                 <div class="age">
                 <label for="age">Age</label>
-                <input type="number_format" id="age" name="age" required>
+                <input type="number" id="age" name="age" required>
                 </div>
                 <div class="gender">
                 <label for="gender">Gender</label>
@@ -44,7 +50,7 @@
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="other">Other</option>
-                    <option valuue="don't prefer to say">don't prefer to say</option>
+                    <option value="don't prefer to say">don't prefer to say</option>
                 </select>
             </div>
 
@@ -109,8 +115,10 @@
                     <option value="other">GMC</option>
                 </select>
             </div> -->
-            <button type="submit" name="sub-btn">Submit</button>
+            <button type="submit" name="submit">Submit</button>
         </form>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/collageCommunity/javascript/live_searchs.js"></script>
 </body>
 </html>

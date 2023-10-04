@@ -56,7 +56,8 @@
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.pro_images a img{
+.pro_images div img{
+    cursor: pointer;
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
@@ -139,7 +140,7 @@
 /* want to contribute */
 .register-contri{
     /* margin-left: 23%; */
-  
+    display: none; 
     margin-left: 40%
 }
 

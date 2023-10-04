@@ -8,7 +8,7 @@
     transform: translateX(-50%);
 }
 
-#coname{
+.coname{
     display: block;
     width: 100%;
     height: 50px;
@@ -16,7 +16,7 @@
     border: #04AA6D 3px solid;
     border-radius: 5px;
     font-size: large;
-    margin-bottom: 20px;
+    margin-top: 20px;
     padding-left: 20px;
 }
 
@@ -28,7 +28,7 @@
     background-color: white;
     resize: none;
     font-size: larger;
-    margin-bottom: 20px;
+    margin-top: 20px;
     padding-left: 20px;
     padding-top: 10px;
 }
@@ -51,7 +51,7 @@
 }
 
 .radio_btn{
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .registerbtn{
@@ -61,3 +61,4 @@
     padding: 10px 10px;
     color: white;
 }
+

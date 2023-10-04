@@ -41,12 +41,13 @@
     </div>
     <?php 
         if (isset($page)) {
+            if ($page == 'home' || $page == 'notification' || $page == 'circles' || $page == 'aboutus') {
             ?>
             <script>
                 let active = document.getElementById('<?php echo $page; ?>');
                 active.classList.add('current');
             </script>
     <?php
-        }
+        } }
     ?>
             <!-- Header ends here -->

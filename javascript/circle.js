@@ -1,11 +1,16 @@
-let slideIndex = 0;
-const slides = document.querySelectorAll(".card");
-const prevBtn = document.querySelector(".prev-btn");
-const nextBtn = document.querySelector(".next-btn");
+let slideIndex = [[0,0],[1,0],[2,0],[3,0]];
 
-function showSlides() {
-    slides.forEach((slide, index) => {
-        if (index >= slideIndex && index < slideIndex + 4) {
+const slides0 = document.querySelectorAll("[card-index='"+0+"']");
+const slides1 = document.querySelectorAll("[card-index='"+1+"']");
+const slides2 = document.querySelectorAll("[card-index='"+2+"']");
+const slides3 = document.querySelectorAll("[card-index='"+3+"']");
+const slidesList = [slides0, slides1, slides2, slides3];
+const prevBtn = document.querySelectorAll(".prev-btn");
+const nextBtn = document.querySelectorAll(".next-btn");
+
+function showSlides(ind) {
+    slidesList[ind].forEach((slide, index) => {
+        if (index >= slideIndex[ind][1] && index < slideIndex[ind][1] + 4) {
             slide.style.display = "block";
         } else {
             slide.style.display = "none";
@@ -13,23 +18,38 @@ function showSlides() {
     });
 }
 
-function nextSlide() {
-    slideIndex += 4;
-    if (slideIndex >= slides.length) {
-        slideIndex = slideIndex % slides.length;
+function nextSlide(ind) {
+    if (slideIndex[ind][1]+4 >= slidesList[ind].length) {
+        return;
     }
-    showSlides();
+    slideIndex[ind][1] += 1;
+    showSlides(ind);
 }
 
-function prevSlide() {
-    slideIndex -= 4;
-    if (slideIndex < 0) {
-        slideIndex = slides.length - (slides.length % 4);
+function prevSlide(ind) {
+    if (slideIndex[ind][1]-1 < 0) {
+        return;
     }
-    showSlides();
+    slideIndex[ind][1] -= 1;
+    showSlides(ind);
 }
 
-prevBtn.addEventListener("click", prevSlide);
-nextBtn.addEventListener("click", nextSlide);
 
-showSlides();
+
+prevBtn.forEach((prevbtn) => {
+    prevbtn.addEventListener("click", (e) => {
+        let ind = e.target.getAttribute('index');
+        prevSlide(ind);
+    });
+})
+nextBtn.forEach((nextbtn) => {
+    nextbtn.addEventListener("click", (e) => {
+        let ind = e.target.getAttribute('index');
+        nextSlide(ind);
+    });
+})
+
+showSlides(0);
+showSlides(1);
+showSlides(2);
+showSlides(3);

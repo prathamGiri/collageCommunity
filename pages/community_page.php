@@ -12,6 +12,8 @@ include "back/database_connection.php";
     <title>Document</title>
     <link rel="stylesheet" href="../css/circlesprofile.css">
     <link rel="stylesheet" href="../css/about.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/collageCommunity/javascript/community_page_js.js"></script>
 </head>
 <body>
     <?php include 'navbar.php' ?>
@@ -19,14 +21,12 @@ include "back/database_connection.php";
     <div class="main-body">
         <div class="sidebar">
             <div class="pro_images">
-            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
-            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
-            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
-            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
-            <a href="#"><img src="../images/profile_img/User_icon.png" alt=""></a>
-
-
-            <a href="#"><i class="ri-compass-3-fill"></i></a>
+                <?php if (mysqli_num_rows($cp_result) > 0) {
+                        while ($cp_row = mysqli_fetch_assoc($cp_result)) {
+                ?>
+                <div class="p_img" id="<?php echo $cp_row['circleId'] ?>"><img src="<?php echo '/collageCommunity/images/profile_img/'.$cp_row['circleLogo'] ?>"></div>
+                <?php } } ?>
+                <div><a href="/collageCommunity/pages/circles.php"><i class="ri-compass-3-fill"></i></a></div>
             </div>
 
             <div class="threads">
@@ -35,8 +35,17 @@ include "back/database_connection.php";
                     <li> Events</li>
                     <li> This Month Events</li>
                     <li> Want to contribute</li>
-
                 </ul>
+                <div>Threads:</div>
+                <div id="options">
+                    <?php if (isset($_GET['commid'])) {
+                        $circleId = $_GET['commid'];
+                    ?>
+                    <script>
+                        callAjax(<?php echo $circleId; ?>)
+                    </script>
+                    <?php } ?>
+                </div>
             </div>
 
 
@@ -53,8 +62,6 @@ include "back/database_connection.php";
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci iusto impedit officia voluptatem quo! Ab blanditiis reiciendis nemo inventore distinctio iste a aperiam? Consequatur nesciunt amet architecto porro enim aperiam?</p>
                 </div>
             </div>
-
-            
             <div class="card-container">
             <div class="card">
             <img src="/collageCommunity/images/profile_img/User_icon.png">
