@@ -1,5 +1,8 @@
 .main-body{
     display: flex;
+    height: 100vh;
+    overflow: hidden;
+    /* position: relative; */
 }
 
 .sidebar{
@@ -8,8 +11,10 @@
     height: 100vh;
     width: 20%;
     flex: 0 0 auto;
-    position: fixed;
-    left: 0;
+    /* position: sticky;
+    left: 0; */
+    /* position: fixed; */
+    /* left: 0; */
    
 }
 
@@ -79,27 +84,42 @@
 
 .profile-section{
     flex: 1;
-    margin: 2.5rem;
-    margin-left: 23% ;
-    display: none;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+.profile-main{
+  border-radius: 10px;
+  background-color: white;
+  
+}
+.banner{
+  
+  width: 100%;
+}
+
+.banner img{
+  width: 100%;
+  height: 12rem;
+  overflow: hidden;
 }
 
 .profile{
     display: flex;
-    background-color: white;
+    
     /* background-color: #a7edd8; */
-    padding: 3rem;
+    padding: 20px;
     /* border: 2px solid   #4c4c4c; */
-    border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
 
     margin-bottom: 2.5rem;
    
 }
 
 .profile img{
-    width: 8rem ;
-    height: 8rem;
+    width: 9rem ;
+    height: 9rem;
+    overflow: hidden;
     border-radius: 50%;
 }
 
@@ -121,12 +141,74 @@
 /* events */
 .events{
     display: flex;
-    margin-left: 23%;
+    /* margin-left: 23%; */
     flex-direction: column;
     align-items: center;
-    margin-top: 3rem;
-    display: none;
+    /* margin-top: 3rem; */
+    /* display: none; */
 }
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.merch-card{
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 40%;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+  margin: 2rem 5px 0 5px;
+}
+
+.merch-card img{
+  width: 100%;
+  /* height: 80px; */
+  /* border-radius: 50%; */
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 20%;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+  margin: 2rem 5px 0 5px;
+}
+
+.card img {
+  width: 100%;
+  /* height: 80px; */
+  /* border-radius: 50%; */
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* .card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
+
+.card-content h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.card-content p {
+  margin: 8px 0;
+}
+
 /* events */
 .month-events{
     display: flex;
@@ -208,3 +290,99 @@ form{
   form button:hover, form button:focus {
     background: #179b77;
   }
+
+  .feed {
+    margin-left: 20px;
+    width: 60%;
+    /* margin: 0 0 0 0; */
+    padding-block-start: 1.36rem;
+    /* flex-grow: 1; Allow this section to grow and take available space */
+    overflow-y: auto;
+    /* position: absolute;
+    left: 20%; */
+    /* display: none; */
+
+    /* Customize scrollbar appearance */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #a7edd8 #f0f0f0; /* For Firefox */
+
+  &::-webkit-scrollbar {
+    width: 0px; /* Width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Track color */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #a7edd8; /* Thumb color */
+    border-radius: 5px; /* Rounded corners on the thumb */
+  }
+  
+}
+
+.tags {
+  display: flex;
+  align-items: center;
+  border: 1px #ccc solid;
+  padding: 5px 5px 5px 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.tags a {
+  border: 2px solid  #ffffff;
+ 
+}
+
+.tags a:hover {
+  /* background-color: #a7edd8; */
+ border-bottom: 2px solid  #04AA6D;
+}
+
+.tags a {
+  margin: 2px 15px 2px 0px;
+  font-family: 'Poppins';
+  font-size: 18px;
+  padding: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ind_post {
+  margin: 10px 0 10px 0;
+  /* padding: 10px; */
+  border: 1px #ccc solid;
+  background-color: white;
+  border-radius: 5px;
+  padding: 1rem;
+  
+}
+
+.ind_post hr {
+  margin-block: 0.5rem;
+  height: 1px;
+  background-color: #04AA6D;
+}
+
+.head_post {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.head_post span {
+  margin-left: 0.8rem;
+  font-family: 'Poppins';
+
+}
+
+.head_post img {
+  width: 40px;
+  height: 40px;
+}
+
+.post-image img{
+  width: 100%;
+}

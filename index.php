@@ -14,6 +14,7 @@ include "pages/back/database_connection.php";
     <!-- <link rel="shortcut icon" href="/images/logo.png" /> -->
 
     <link rel="stylesheet" href="css/index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -93,7 +94,7 @@ include "pages/back/database_connection.php";
                 <a href="#">Official Notices</a>
                 <a href="#">Achievements</a>
             </div>
-            <div class="posts">
+            <div class="posts" id="posts">
                 <?php
                 if (mysqli_num_rows($res2) > 0) {
                     while ($row2 = mysqli_fetch_assoc($res2)) {
@@ -120,7 +121,7 @@ include "pages/back/database_connection.php";
                                     while ($row5 = mysqli_fetch_assoc($res5)) {
                             ?>
                                         <div class = "post-image">
-                                            <img src="images/post_images/<?php echo $row5['imageName']; ?>" alt="image">
+                                            <img src="/collageCommunity/images/post_images/<?php echo $row5['imageName']; ?>" alt="image">
                                         </div>
                             <?php
                                     }
@@ -129,6 +130,9 @@ include "pages/back/database_connection.php";
                         </div>
                 <?php }
                 } ?>
+            </div>
+            <div id="loader" style="display: none;">
+                Loading...
             </div>
         </div>
 

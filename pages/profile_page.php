@@ -23,40 +23,30 @@ include "back/database_connection.php";
     ?>
     <div class="main-container">
         <div class="left-container">
-            <div class="banner">
-                <img src="<?php echo "/collageCommunity/images/profile_img/".$row3['banner']; ?>" alt="img">
-            </div>
-            <div class="info-panal">
+            <div class="top-info">
+                <div class="banner">
+                    <img src="<?php echo "/collageCommunity/images/".$row3['banner']; ?>" alt="img">
+                </div>
                 <div id="profile-pic">
                     <img src="<?php echo "/collageCommunity/images/profile_img/".$row3['profile_img']; ?>" alt="img">
                 </div>
-                
-                <div id="name">
-                    <h1><?php echo base64_decode($row3['user_name']); ?></h1>
-
-                    <ul>
-                    <li><?php echo $row3['institute']; ?></li>
-                    <li><?php echo $row3['city']; ?></li>
-                    <li><?php echo $row3['state']; ?></li>
-                    <li><?php echo $row3['country']; ?></li>
-                    <li><?php echo $row3['graduating_year']; ?></li>
-                    <li><?php echo $row3['gender']; ?></li>
-                    </ul>
-                
+                <div class="info-panal">
+                    <div id="name">
+                        <h1><?php echo base64_decode($row3['user_name']); ?></h1>
+                    </div>
                 </div>
-                
-                
             </div>
-            <!-- <div>
+            
+            <div>
                 <ul>
-                    <li><?php echo $row3['institute']; ?></li>
+                    <li><?php echo $row3['collegeName']; ?></li>
                     <li><?php echo $row3['city']; ?></li>
                     <li><?php echo $row3['state']; ?></li>
                     <li><?php echo $row3['country']; ?></li>
                     <li><?php echo $row3['graduating_year']; ?></li>
                     <li><?php echo $row3['gender']; ?></li>
                 </ul>
-            </div> -->
+            </div>
         </div>
         <?php } ?>
         <div class="right-container">

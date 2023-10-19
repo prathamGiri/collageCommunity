@@ -11,7 +11,6 @@ include "back/database_connection.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/circlesprofile.css">
-    <link rel="stylesheet" href="../css/about.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/collageCommunity/javascript/community_page_js.js"></script>
 </head>
@@ -19,6 +18,7 @@ include "back/database_connection.php";
     <?php include 'navbar.php' ?>
     
     <div class="main-body">
+
         <div class="sidebar">
             <div class="pro_images">
                 <?php if (mysqli_num_rows($cp_result) > 0) {
@@ -31,140 +31,50 @@ include "back/database_connection.php";
 
             <div class="threads">
                 <ul>
-                    <li> About</li>
-                    <li> Events</li>
-                    <li> This Month Events</li>
-                    <li> Want to contribute</li>
+                    <li id="about"> About</li>
+                    <li id="announcement"> Announcement</li>
+                    <li id="up_events"> Upcoming Events</li>
+                    <li id="general"> General</li>
                 </ul>
                 <div>Threads:</div>
                 <div id="options">
                     <?php if (isset($_GET['commid'])) {
-                        $circleId = $_GET['commid'];
+                        $_SESSION['commid'] = $_GET['commid'];
+                        $_SESSION['postType'] = 0;
+                        $circleId = $_SESSION['commid'];
                     ?>
                     <script>
-                        callAjax(<?php echo $circleId; ?>)
+                        callAjax(<?php echo $circleId; ?>, 'threads', '#options');
+                        callAjax(<?php echo $circleId; ?>, 'about', '.posts');
                     </script>
                     <?php } ?>
                 </div>
             </div>
-
-
-
-
         </div>
 
-        <div class="profile-section">
-
-            <div class="profile">
-             <img src="../images/profile_img/User_icon.png" alt="">
-                <div class="content">
-                    <h1>Circle Name</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci iusto impedit officia voluptatem quo! Ab blanditiis reiciendis nemo inventore distinctio iste a aperiam? Consequatur nesciunt amet architecto porro enim aperiam?</p>
+        <div class="feed">
+            <div class="feed_top">
+                <div class="tags">
+                    <a id="posts-btn">Posts</a>
+                    <a id="achievements-btn">Achievements</a>
+                    <a id="merch-btn">Merch</a>
+                    <a id="about-us-btn">About Us</a>
                 </div>
+                <div class="create_post"></div>
             </div>
-            <div class="card-container">
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Pratham Giri</h2>
-                <p>Co-Founder, CEO</p>
-            </div>
-            </div>
-                <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Deep Swarup</h2>
-                <p>Co-Founder, CTO</p>
-            </div>
-            </div>
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Dhruv Gupta</h2>
-                <p>Co-Founder, COO</p>
-            </div>
-            </div>
+            
+            <!-- <div id="msg"></div> -->
+            
+            <div class="posts">
 
+            </div>
+        </div>
 
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Pratham Giri</h2>
-                <p>Co-Founder, CEO</p>
-            </div>
-            </div>
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Deep Swarup</h2>
-                <p>Co-Founder, CTO</p>
-            </div>
-            </div>
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Dhruv Gupta</h2>
-                <p>Co-Founder, COO</p>
-            </div>
-            </div>
-             </div>
+        <div class="thread-feed">
+
+        </div>
         
-        </div>
-
-        <div class="events">
-            <h1>
-                Events
-            </h1>
-
-            <div class="card-container">
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Pratham Giri</h2>
-                <p>Co-Founder, CEO</p>
-            </div>
-            </div>
-                <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Deep Swarup</h2>
-                <p>Co-Founder, CTO</p>
-            </div>
-            </div>
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Dhruv Gupta</h2>
-                <p>Co-Founder, COO</p>
-            </div>
-            </div>
-
-
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Pratham Giri</h2>
-                <p>Co-Founder, CEO</p>
-            </div>
-            </div>
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Deep Swarup</h2>
-                <p>Co-Founder, CTO</p>
-            </div>
-            </div>
-            <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Dhruv Gupta</h2>
-                <p>Co-Founder, COO</p>
-            </div>
-            </div>
-             </div>
-        </div>
-    
-        <div class="month-events">
+        <!-- <div class="month-events">
             <h1>
                 This Months Events
             </h1>
@@ -271,7 +181,7 @@ include "back/database_connection.php";
             </div>
 
             <button type="submit" name="sub-btn">Submit</button>
-        </div>
+        </div> -->
     
     </div>
 
