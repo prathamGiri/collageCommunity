@@ -23,6 +23,10 @@ if (isset($_POST['submit'])) {
     $sql = "SELECT circleId FROM staticcircleinfo WHERE circleName = '$community_name'";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($res);
+    $circleId = $row['circleId'];
+    $sql1 = "INSERT INTO circle_following (`userId`, `circleId`)
+            VALUES ('$owner', '$circleId')";
+    mysqli_query($conn, $sql1);
     redirect('../community_page.php?commid='.$row['circleId']);
 }
 ?>

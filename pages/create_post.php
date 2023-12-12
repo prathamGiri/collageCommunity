@@ -2,9 +2,9 @@
 
 <head>
     <link rel="stylesheet" href="/collageCommunity/css/create_post.css">
-    <script src="/collageCommunity/javascript/create_post.js">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</script>
+    <script src="/collageCommunity/javascript/create_post.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
     

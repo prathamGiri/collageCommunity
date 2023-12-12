@@ -32,7 +32,7 @@ include "back/database_connection.php";
     </div>
     
     <?php 
-        for ($i=0; $i <= 3; $i++) {
+        for ($i=0; $i <= 2; $i++) {
             $spc_head;
             switch ($i) {
                 case 0:
@@ -41,21 +41,16 @@ include "back/database_connection.php";
                     break;
                 case 1:
                     $spc_res = $res5;
-                    $spc_head = $city;
+                    $spc_head = $institute1;
                     break;
                 case 2:
                     $spc_res = $res6;
-                    $spc_head = $state;
-                    break;
-                case 3:
-                    $spc_res = $res7;
-                    $spc_head = $country;
+                    $spc_head = $institute2;
                     break;
             }
     ?>
     <div class="circle">
         <div class="circle-group">
-            <p class="head-text">Clubs From:</p>
             <p><?php echo $spc_head; ?></p>
             <div></div>
         </div>
@@ -67,11 +62,33 @@ include "back/database_connection.php";
                     while ($spc_row = mysqli_fetch_assoc($spc_res)) {
             ?>
             
-            <div class="card"  card-index="<?php echo $i; ?>">
+            <div class="card" id="<?php echo $spc_row['circleId']; ?>" card-index="<?php echo $i; ?>">
                 <img src="<?php echo "/collageCommunity/images/profile_img/".$spc_row['circleLogo']; ?>">
                 <div class="card-content">
                     <h2><?php echo $spc_row['circleName']; ?></h2>
-                    <div class="follow"><a href="#">Follow</a></div>
+                    <?php
+                    if (isset($_SESSION['user_id'])) {
+                        $user_id = $_SESSION['user_id'];
+                        $circleId = $spc_row['circleId'];
+                        $follow_btn_sql = "SELECT *
+                                            FROM circle_following
+                                            WHERE userId = $user_id AND circleId = $circleId";
+                        $follow_btn_res = mysqli_query($conn, $follow_btn_sql);
+                        if (mysqli_num_rows($follow_btn_res) > 0) {
+                    ?>
+                    <div class="unfollow" id="<?php echo $spc_row['circleId']; ?>">Unfollow</div>
+                    <?php    
+                        }else{
+                    ?>
+                        <div class="follow" id="<?php echo $spc_row['circleId']; ?>">Follow</div>
+                    <?php }
+                    }else{
+                    ?>
+                        <div class="register_first">Follow</div>
+                    <?php 
+                    }
+                    ?>
+                    
                 </div>
             </div>
             <?php } } ?>
@@ -82,9 +99,11 @@ include "back/database_connection.php";
     </div>
     <?php } ?>
     
-    <script src="/collageCommunity/javascript/circle.js"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/collageCommunity/javascript/live_searchs.js"></script>
+    <script src="/collageCommunity/javascript/circle.js"></script>
+    <script src="/collageCommunity/javascript/follow.js"></script>
     
 </body>
 </html>

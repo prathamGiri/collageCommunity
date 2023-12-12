@@ -34,8 +34,6 @@ function prevSlide(ind) {
     showSlides(ind);
 }
 
-
-
 prevBtn.forEach((prevbtn) => {
     prevbtn.addEventListener("click", (e) => {
         let ind = e.target.getAttribute('index');

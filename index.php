@@ -1,6 +1,7 @@
 <?php
 $page = "home";
 include "pages/back/database_connection.php";
+$_SESSION['page'] = $page;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +15,7 @@ include "pages/back/database_connection.php";
     <!-- <link rel="shortcut icon" href="/images/logo.png" /> -->
 
     <link rel="stylesheet" href="css/index.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -97,41 +99,10 @@ include "pages/back/database_connection.php";
             <div class="posts" id="posts">
                 <?php
                 if (mysqli_num_rows($res2) > 0) {
-                    while ($row2 = mysqli_fetch_assoc($res2)) {
-                ?>
-                        <div class="ind_post">
-                            <div class="head_post">
-                                <img src="./images/logo.png" alt="">
-                                <span>Titel of the circle</span>
-                            </div>
-                            <hr>
-                            <h3><?php echo $row2['title']; ?></h3>
-                            <p><?php echo $row2['content']; ?></p>
-                            <?php
-                                $post_id = $row2['post_id'];
-                                $sql5 ="SELECT ir.post_id,
-                                                ir.image_Id,
-                                                i.imageName
-                                        FROM image_rel AS ir
-                                        JOIN images AS i
-                                        ON ir.image_Id = i.imageId
-                                        WHERE ir.post_id =  '$post_id'";
-                                $res5 = mysqli_query($conn, $sql5);
-                                if (mysqli_num_rows($res5) > 0) {
-                                    while ($row5 = mysqli_fetch_assoc($res5)) {
-                            ?>
-                                        <div class = "post-image">
-                                            <img src="/collageCommunity/images/post_images/<?php echo $row5['imageName']; ?>" alt="image">
-                                        </div>
-                            <?php
-                                    }
-                                }
-                            ?>
-                        </div>
-                <?php }
+                    include "pages/post_templet.php";
                 } ?>
             </div>
-            <div id="loader" style="display: none;">
+            <div class="ajax-load" id="loader" style="display: none;">
                 Loading...
             </div>
         </div>
@@ -214,7 +185,7 @@ include "pages/back/database_connection.php";
 
     <!-- ......................FOOTER ENDS HERE.......................... -->
     <!-- <script src="javascript/createpost.js"></script> -->
-    <!-- <script src="javascript/index_fun.js"></script> -->
+    <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
     <!-- <script src="javascript/image_preview.js"></script> -->
 </body>
 

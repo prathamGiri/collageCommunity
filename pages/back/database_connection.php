@@ -5,7 +5,9 @@ include "functions.php";
 $sql = "SELECT *
             FROM staticcircleinfo";
 $sql2 = "SELECT *
-            FROM posts";
+            FROM posts 
+            ORDER BY post_id DESC 
+            LIMIT 8";
 
 $res = mysqli_query($conn, $sql);
 $res2 = mysqli_query($conn, $sql2);
@@ -15,6 +17,9 @@ $institute;
 $city;
 $state;
 $country;
+$institute2 = "Indian Institute Of Technology, Bombay";
+$institute1 = "Indian Institute Of Management, Ahmedabad";
+
 
 if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKIE["user_id"])) {
     $_SESSION['login_status'] = "logged_in";
@@ -66,26 +71,36 @@ if (isset($user_id) && isset($page)) {
             WHERE collegeId = '$collegeId'";
             $res4 = mysqli_query($conn, $sql4); 
 
-            $sql5 = "SELECT sci.circleId, sci.circleName, sci.circleLogo, co.city
-            FROM staticcircleinfo AS sci
-            JOIN colleges AS co
-            ON sci.collegeId = co.collegeId
-            WHERE co.city = '$city'";
-            $res5 = mysqli_query($conn, $sql5);
+            $sql5 = "SELECT circleId, circleName, circleLogo
+            FROM staticcircleinfo
+            WHERE collegeId = 29";
+            $res5 = mysqli_query($conn, $sql5); 
 
-            $sql6 = "SELECT sci.circleId, sci.circleName, sci.circleLogo, co.state
-            FROM staticcircleinfo AS sci
-            JOIN colleges AS co
-            ON sci.collegeId = co.collegeId
-            WHERE co.state = '$state'";
-            $res6 = mysqli_query($conn, $sql6);
+            $sql6 = "SELECT circleId, circleName, circleLogo
+            FROM staticcircleinfo
+            WHERE collegeId = 30";
+            $res6 = mysqli_query($conn, $sql6); 
 
-            $sql7 = "SELECT sci.circleId, sci.circleName, sci.circleLogo, co.country
-            FROM staticcircleinfo AS sci
-            JOIN colleges AS co
-            ON sci.collegeId = co.collegeId 
-            WHERE co.country = '$country'";
-            $res7 = mysqli_query($conn, $sql7);
+            // $sql5 = "SELECT sci.circleId, sci.circleName, sci.circleLogo, co.city
+            // FROM staticcircleinfo AS sci
+            // JOIN colleges AS co
+            // ON sci.collegeId = co.collegeId
+            // WHERE co.city = '$city'";
+            // $res5 = mysqli_query($conn, $sql5);
+
+            // $sql6 = "SELECT sci.circleId, sci.circleName, sci.circleLogo, co.state
+            // FROM staticcircleinfo AS sci
+            // JOIN colleges AS co
+            // ON sci.collegeId = co.collegeId
+            // WHERE co.state = '$state'";
+            // $res6 = mysqli_query($conn, $sql6);
+
+            // $sql7 = "SELECT sci.circleId, sci.circleName, sci.circleLogo, co.country
+            // FROM staticcircleinfo AS sci
+            // JOIN colleges AS co
+            // ON sci.collegeId = co.collegeId 
+            // WHERE co.country = '$country'";
+            // $res7 = mysqli_query($conn, $sql7);
         }
         }
         

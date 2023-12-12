@@ -1,6 +1,7 @@
 <?php
 $page = "community_page";
 include "back/database_connection.php";
+$_SESSION['page'] = $page;
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +12,7 @@ include "back/database_connection.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/circlesprofile.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/collageCommunity/javascript/community_page_js.js"></script>
+    
 </head>
 <body>
     <?php include 'navbar.php' ?>
@@ -38,41 +38,41 @@ include "back/database_connection.php";
                 </ul>
                 <div>Threads:</div>
                 <div id="options">
-                    <?php if (isset($_GET['commid'])) {
-                        $_SESSION['commid'] = $_GET['commid'];
-                        $_SESSION['postType'] = 0;
-                        $circleId = $_SESSION['commid'];
+                    <?php 
+                        if (isset($_GET['commid'])) {
+                            $_SESSION['commid'] = $_GET['commid'];
+                            $_SESSION['postType'] = 0;
+                            $circleId = $_SESSION['commid'];
+                            } 
                     ?>
-                    <script>
-                        callAjax(<?php echo $circleId; ?>, 'threads', '#options');
-                        callAjax(<?php echo $circleId; ?>, 'about', '.posts');
-                    </script>
-                    <?php } ?>
+                </div>
+                <div id="new_thread">
+                    <p><i class="ri-add-circle-line"></i>Create New Thread</p>
                 </div>
             </div>
         </div>
 
         <div class="feed">
-            <div class="feed_top">
                 <div class="tags">
                     <a id="posts-btn">Posts</a>
                     <a id="achievements-btn">Achievements</a>
                     <a id="merch-btn">Merch</a>
                     <a id="about-us-btn">About Us</a>
                 </div>
-                <div class="create_post"></div>
-            </div>
             
             <!-- <div id="msg"></div> -->
             
             <div class="posts">
 
             </div>
+            <div class="ajax-load" id="loader" style="display: none;">
+                Loading...
+            </div>
         </div>
 
-        <div class="thread-feed">
-
-        </div>
+        <!-- <div class="test">
+            
+        </div> -->
         
         <!-- <div class="month-events">
             <h1>
@@ -184,7 +184,15 @@ include "back/database_connection.php";
         </div> -->
     
     </div>
-
-    
+    <div class="floaters">
+        
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/collageCommunity/javascript/community_page_js.js"></script>
+    <script>
+        callAjax(<?php echo $circleId; ?>, 'threads', '#options');
+        callAjax(<?php echo $circleId; ?>, 'about', '.posts');
+    </script>
+    <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
 </body>
 </html>

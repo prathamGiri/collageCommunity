@@ -12,19 +12,30 @@
 
 /* body starts here */
 
+/* .main {
+    display: flex;
+    height: 100vh; 
+    
+} */
+
 .main {
     display: flex;
-    height: 100vh; /* Set the container height to fill the viewport */
-    
+    height: 100%;
 }
-
 .comm_bar {
     margin: 10px 10px 0 10px;
     width: 20%;
-   
-    /* position: sticky;
-    left: 0; */
+    height: 100%;
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 60px; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
 }
+/* .comm_bar {
+    margin: 10px 10px 0 10px;
+    width: 20%;
+} */
 
 .sub_comm_bar {
     margin: 10px 0 10px 0;
@@ -116,10 +127,33 @@
     font-family: 'Poppins';
     color: white;
 }
-
-.feed {
+.feed{
     width: 60%;
-    /* margin: 0 0 0 0; */
+    margin-left: 21.5%;
+    margin-right: 21.5%;
+    padding-block-start: 1.36rem;
+    flex-grow: 1; /* Allow this section to grow and take available space */
+    overflow-y: auto;
+
+    /* Customize scrollbar appearance */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #a7edd8 #f0f0f0; /* For Firefox */
+
+  &::-webkit-scrollbar {
+    width: 0px; /* Width of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Track color */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #a7edd8; /* Thumb color */
+    border-radius: 5px; /* Rounded corners on the thumb */
+  }
+}
+.eed {
+    width: 60%;
     padding-block-start: 1.36rem;
     flex-grow: 1; /* Allow this section to grow and take available space */
     overflow-y: auto;
@@ -240,6 +274,12 @@
 .right_side {
     margin: 10px 10px 0 10px;
     width: 20%;
+    height: 100%;
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 60px; /* Stay at the top */
+    right: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
 }
 
 .profile {

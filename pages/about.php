@@ -40,24 +40,10 @@
 
     <div class="card-container">
         <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
+            <img src="/collageCommunity/images/profile_img/1662798865989.jpeg">
             <div class="card-content">
                 <h2>Pratham Giri</h2>
                 <p>Co-Founder, CEO</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Deep Swarup</h2>
-                <p>Co-Founder, CTO</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="/collageCommunity/images/profile_img/User_icon.png">
-            <div class="card-content">
-                <h2>Dhruv Gupta</h2>
-                <p>Co-Founder, COO</p>
             </div>
         </div>
     </div>

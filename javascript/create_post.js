@@ -57,7 +57,12 @@ $(document).ready(function (){
             type: 'POST',
             data: formData,
             success: function (data) {
-                $('#posts_wrapper').prepend(data);
+                console.log(data)
+                if ($('#main-post-wrapper').length != 0) {
+                    $('#main-post-wrapper').append(data);
+                }else if ($('#posts_wrapper').length != 0) {
+                    $('#posts_wrapper').prepend(data);
+                }
 
                 $('#freeform').val("");
                 $('#image_file').val("");

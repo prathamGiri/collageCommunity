@@ -50,6 +50,111 @@ var callThreadsAjax = function (circle_id, threadId, dest) {
             $('.tags').css({
                 'display' : 'none'
             })
+            $('.posts').css({
+                'margin-bottom' : '80px'
+            })
+            $('.createpost').css({
+                'position': 'fixed',
+                'bottom': 0,
+                'width': '60%'
+            })
+            $('.postblock').css({
+                'position': 'fixed',
+                'bottom': 0,
+                'width': '60%'
+            })
+            $('.outer').css({
+                'margin-bottom' : '5px'
+            })
+            $('.ind-post').css({
+                'border-left':'2px solid red',
+                'background-color': 'white',
+                'padding': '1rem',
+            })
+            $('.inside').css({
+                'border-radius' : '5px',
+                'background-color': '#e4f2e8',
+                'padding': '5px'
+            })
+
+            $('.post-info').css({
+                'display': 'flex'
+            })
+
+            $('.info-img').css({
+                'width': '3%',
+                'margin-right': '2%'
+            })
+
+            $('.info-img img').css({
+                'width': '100%',
+                'border-radius': '50%'
+            })
+
+            $('.info-text').css({
+                'font-size': '20px',
+                'margin-top': 'auto',
+                'margin-bottom': 'auto'
+            })
+
+            $('.media-block').css({
+                'width': '100%',
+                'padding': '5px',
+                'display': 'flex',
+                'justify-content': 'center'
+            })
+
+            $('.media-block img').css({
+                'width': '60%'
+            })
+
+            $('.text-block').css({
+                'padding': '5px'
+            })
+
+            $('.post-options').css({
+                'display': 'flex',
+                'justify-content': 'left',
+                'font-size' : '20px'
+            })
+
+            $('.opt').css({
+                'display': 'flex',
+                'margin-left' : '10px'
+            })
+        }
+    })
+}
+
+var createThreadsAjax = function (circle_id, dest) {
+    $.ajax({
+        url: '/collageCommunity/pages/back/create_new_thread.php',
+        method: 'POST',
+        data: {
+            circle_id : circle_id
+        },
+        success: function (data) {
+            $(dest).html(data);
+            $('.floaters').css({
+                "display" : "block",
+                "background-color": "white",
+                "position": "fixed",
+                "left": "50%",
+                "top": "50%",
+                "transform": "translate(-50%, -50%)",
+                "border" : "1px black solid"
+            })
+
+            $('.rb').css({
+                "width":"auto",
+                "vertical-align": "middle"
+            })
+
+            $('#closeblock').css({
+                "font-size": "2rem",
+                "cursor": "pointer",
+                "margin-left": "92%"
+            })
         }
     })
 }
@@ -99,14 +204,47 @@ $(document).ready(function () {
             callAjax(circleId, 'about_page', '.posts')
         }
     })
+
     
 })
 
 $(document).on('click', '.threadopt', function () {
-    console.log("clicked");
     threadId = $(this).attr("id");
     if (circleId != "") {
-        console.log("clicked");
         callThreadsAjax(circleId, threadId, '.posts');
     }
 });
+
+$(document).on('click', '#new_thread', function () {
+    if (circleId != "") {
+        createThreadsAjax(circleId, '.floaters');
+    }
+});
+
+$(document).on('submit', '#thread_form', function (e) {
+    e.preventDefault();    
+    var formData = new FormData(this);
+
+    $.ajax({
+        url: '/collageCommunity/pages/back/new_thread_back.php',
+        type: 'POST',
+        data: formData,
+        success: function (data) {
+            $('.thread-list').append(data);
+            $('#thread_name').val("");
+            $('.floaters').css({
+                "display" : "none"
+            })
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+    });
+});
+
+$(document).on('click', '#closeblock', function () {
+    $('#thread_name').val("");
+    $('.floaters').css({
+        "display" : "none"
+    })
+})

@@ -15,7 +15,7 @@ if (isset($_POST['circle_id']) && isset($_POST['topic']) && isset($_SESSION['use
                     WHERE tm.userId = $user_id AND t.circleId = $circleId";
         $t_result = mysqli_query($conn, $t_query);
         if (mysqli_num_rows($t_result) > 0) {
-            echo '<ul>';
+            echo '<ul class="thread-list">';
             while ($row = mysqli_fetch_assoc($t_result)) {
                 echo '<li><div class="threadopt" id="'.$row['threadId'].'">'.$row['threadName'].'</div></li>';
             }
@@ -39,46 +39,51 @@ if (isset($_POST['circle_id']) && isset($_POST['topic']) && isset($_SESSION['use
         $postSql = "SELECT * 
                     FROM posts
                     WHERE postType = $post_type AND circleId = $circleId
-                    ORDER BY date DESC, time DESC";
-        $postRes = mysqli_query($conn, $postSql);
-                if (mysqli_num_rows($postRes) > 0) {
+                    ORDER BY date DESC, time DESC LIMIT 8";
+        $res2 = mysqli_query($conn, $postSql);
+                if (mysqli_num_rows($res2) > 0) {
                     echo '<div id="posts_wrapper">';
-                    while ($postRow = mysqli_fetch_assoc($postRes)) {
-                        echo '<div class="ind_post">
-                            <div class="head_post">
-                                <img src="/collageCommunity/images/logo.png" alt="">
-                                <span>Titel of the circle</span>
-                            </div>
-                            <hr>
-                            <h3>' ;
-                        echo $postRow['title']; 
-                        echo '</h3>';
-                        echo '<p>';
-                        echo $postRow['content'];
-                        echo '</p>';
-                        $post_id = $postRow['post_id'];
-                        $sql5 ="SELECT ir.post_id,
-                                        ir.image_Id,
-                                        i.imageName
-                                FROM image_rel AS ir
-                                JOIN images AS i
-                                ON ir.image_Id = i.imageId
-                                WHERE ir.post_id =  '$post_id'";
-                        $res5 = mysqli_query($conn, $sql5);
-                        if (mysqli_num_rows($res5) > 0) {
-                            while ($row5 = mysqli_fetch_assoc($res5)) {
-                                echo '<div class = "post-image">
-                                                <img src="/collageCommunity/images/post_images/'; 
-                                echo $row5['imageName'];
-                                echo '" alt="image">
-                                        </div>';
-                                }
-                            }
-                        echo '</div>';
-                    }
+                    include "../post_templet.php";
+                    // while ($postRow = mysqli_fetch_assoc($res)) {
+                    //     echo '<div class="ind_post">
+                    //         <div class="head_post">
+                    //             <img src="/collageCommunity/images/logo.png" alt="">
+                    //             <span>Titel of the circle</span>
+                    //         </div>
+                    //         <hr>
+                    //         <h3>' ;
+                    //     echo $postRow['title']; 
+                    //     echo '</h3>';
+                    //     echo '<p>';
+                    //     echo $postRow['content'];
+                    //     echo '</p>';
+                    //     $post_id = $postRow['post_id'];
+                    //     $sql5 ="SELECT ir.post_id,
+                    //                     ir.image_Id,
+                    //                     i.imageName
+                    //             FROM image_rel AS ir
+                    //             JOIN images AS i
+                    //             ON ir.image_Id = i.imageId
+                    //             WHERE ir.post_id =  '$post_id'";
+                    //     $res5 = mysqli_query($conn, $sql5);
+                    //     if (mysqli_num_rows($res5) > 0) {
+                    //         while ($row5 = mysqli_fetch_assoc($res5)) {
+                    //             echo '<div class = "post-image">
+                    //                             <img src="/collageCommunity/images/post_images/'; 
+                    //             echo $row5['imageName'];
+                    //             echo '" alt="image">
+                    //                     </div>';
+                    //             }
+                    //         }
+                    //     echo '</div>';
+                    // }
                     echo '</div>';
                 }
     }else if ($topic == 'merch') {
+        if (isset($_SESSION['postType'])) {
+            unset($_SESSION['postType']);
+        }
+        $_SESSION['topic'] = 'merch';
         $merchSql ="SELECT *
                     FROM merch
                     WHERE circleId = $circleId";

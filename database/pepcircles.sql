@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2023 at 08:40 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Dec 12, 2023 at 11:42 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `vnit_data`
+-- Database: `pepcircles`
 --
 
 -- --------------------------------------------------------
@@ -39,8 +39,11 @@ CREATE TABLE `circle_following` (
 INSERT INTO `circle_following` (`userId`, `circleId`) VALUES
 (19, 1),
 (19, 2),
-(18, 1),
-(18, 2);
+(19, 3),
+(19, 10),
+(19, 13),
+(19, 18),
+(19, 20);
 
 -- --------------------------------------------------------
 
@@ -112,7 +115,9 @@ INSERT INTO `colleges` (`collegeId`, `collegeName`, `city`, `state`, `country`) 
 (25, 'Visvesvaraya National Institute of Technology, Nagpur', 'Nagpur', 'Maharashtra', 'India'),
 (26, 'VMV Commerce JMT Arts JJP Science College, Wardhaman Nagar', 'Nagpur', 'Maharashtra', 'India'),
 (27, 'VSPM\'s Dental College & research Centre', 'Nagpur', 'Maharashtra', 'India'),
-(28, 'Yeshwantrao Chavan College of Engineering', 'Nagpur', 'Maharashtra', 'India');
+(28, 'Yeshwantrao Chavan College of Engineering', 'Nagpur', 'Maharashtra', 'India'),
+(29, 'Indian Institute Of Management, Ahmedabad', 'Ahmedabad', 'Gujarat', 'India'),
+(30, 'Indian Institute Of Technology, Bombay', 'Mumbai', 'Maharashtra', 'India');
 
 -- --------------------------------------------------------
 
@@ -190,7 +195,27 @@ INSERT INTO `images` (`imageId`, `imageName`, `time`, `date`, `user_id`) VALUES
 (55, 'task_completed.png', '16:27:35.000000', '2023-10-18', 19),
 (56, '1680615824550.jpg', '16:32:44.000000', '2023-10-18', 19),
 (57, 'android_logo.png', '17:39:02.000000', '2023-10-18', 19),
-(58, 'androidparty.png', '20:36:39.000000', '2023-10-19', 19);
+(58, 'androidparty.png', '20:36:39.000000', '2023-10-19', 19),
+(59, 'enrg.png', '10:09:59.000000', '2023-12-11', 19),
+(60, 'pexels-cesar-perez-733745.jpg', '10:13:26.000000', '2023-12-11', 19),
+(61, 'ercclub.jpg', '10:13:37.000000', '2023-12-11', 19),
+(62, 'chem.png', '10:13:48.000000', '2023-12-11', 19),
+(63, 'aerologo.png', '10:13:58.000000', '2023-12-11', 19),
+(64, 'images.jpeg', '10:14:11.000000', '2023-12-11', 19),
+(65, 'newlogo.png', '10:14:26.000000', '2023-12-11', 19),
+(66, 'Logo_Eloquence - Eloquence- The Soft Skills Club of IIMA.png', '10:14:55.000000', '2023-12-11', 19),
+(67, 'image - Aishwarya A Pai.png', '10:15:13.000000', '2023-12-11', 19),
+(68, 'image - Aishwarya A Pai.png', '10:15:27.000000', '2023-12-11', 19),
+(69, 'CLUB 3.0 LOGO - Balaji R.png', '10:15:45.000000', '2023-12-11', 19),
+(70, 'Beta logo - Binaykiya Rishabh Rajkumar.jpeg', '10:15:59.000000', '2023-12-11', 19),
+(71, 'Acads Council - Logo - Ajit Agrawal.png', '10:16:12.000000', '2023-12-11', 19),
+(72, 'logo_dark - Gudipati Madan Kumar.png', '10:16:27.000000', '2023-12-11', 19),
+(73, 'main_ccc_7Logo1657371182.png', '10:16:56.000000', '2023-12-11', 19),
+(74, 'shell.png', '10:17:10.000000', '2023-12-11', 19),
+(75, 'hallabol.png', '10:17:27.000000', '2023-12-11', 19),
+(76, 'thinkindia.png', '10:17:41.000000', '2023-12-11', 19),
+(77, 'tesla.png', '10:17:59.000000', '2023-12-11', 19),
+(78, 'ivlabs.png', '12:38:03.000000', '2023-12-11', 19);
 
 -- --------------------------------------------------------
 
@@ -433,15 +458,28 @@ CREATE TABLE `staticcircleinfo` (
 --
 
 INSERT INTO `staticcircleinfo` (`circleId`, `circleName`, `circleLogo`, `circleDiscription`, `circleBanner`, `circleStatus`, `collegeId`) VALUES
-(1, 'Naruto', '1680615824550.jpg', 'wryetufkg', 'low_poly_banner_design_1711.jpg', 0, 25),
-(2, 'Attack On Titan', 'IMG_8943.JPG', 'wesrdtfyg', '', 1, 25),
-(3, 'agnipankh', 'agnipankh.jpg', 'defgrthyjuhkh,jhmvcn h,jhgcnfbx', '', 0, 25),
-(4, 'Don Quixote', 'don-quixote.jpg', 'defgrthyjuhkh,jhmvcn h,jhgcnfbx', '', 0, 25),
-(5, 'Elon Musk', 'elon-musk.jpg', 'defgrthyjuhkh,jhmvcn h,jhgcnfbx', '', 0, 25),
-(6, 'Ramanujan', 'the-man-who-knew-infinity.jpeg', 'defgrthyjuhkh,jhmvcn h,jhgcnfbx', '', 0, 25),
-(7, 'iitb', 'tt.jpg', 'sdfhf  dfh dfh', '', 0, 24),
-(8, 'Pirate King', 'AM0017_1_1800x1800.webp', 'dsgfdgh, ggsfdgfhgj fhdgfhgj,h', '', 1, 24),
-(9, 'ppp', 'AM0017_1_1800x1800.webp', 'odfcgvhbjknml', '', 0, 0);
+(10, 'S.H.E.L.L.', 'shell.png', 'S.H.E.L.L. is the Hacker Community of VNIT. This is a club where like-minded hacking enthusiasts can come together and share knowledge and mentor those looking to break into the field.If you&#039;re interested, let&#039;s get together and expand on our knowledge by cooperating in lectures, hands-on labs and group discussions about all things related to cybersecurity!', 'low_poly_banner_design_1711.jpg', 0, 25),
+(11, 'Halla Bol', 'hallabol.png', 'Wouldn&#039;t life be bland without drama? Halla Bol, the dramatics society of VNIT brings in your life, just the right amount of drama to spice up your life. The club has always aimed for the stars and has many conquests in its name. The club owes its success to the four pillars, namely Street, Stage, Mime and Film Making. Street brings with it the loudest voice of the society and the club as it tackles touchy and pressing issues with such fiery conviction, it leaves one pondering about the matter on hand. Stage; an act of finesse, brings forward the wide range of emotions, heart wrenching dilaogues and mesmerising set ups to the audience. And, where words fall short, actions speak out, through Mime, an art which screams talent and wonderment with each movement, be it a hand wave or a full blown somersault. When all the parameters mentioned above are recorded with camera to produce a motion picture, Film Making plays it&#039;s part. Film Making is nothing but giving an eye-friendly screen appearance to a story. Halla Bol tries the very best to give you a wholesome experience, and hopes to keep on doing so.', 'low_poly_banner_design_1711.jpg', 0, 25),
+(12, 'Think India', 'thinkindia.png', 'We at Think India have felt the need to bind the students with an Indian nationalistic string to harness this part of national treasure in furthering our aim of national reconstruction.Students from IISc, IIMB, NIMHANS and NLSIU joined together to create a joint forum for the students from premier institutes of India in 2006. A formal forum took placed at the Art of Living Ashram , Bengaluru in 2007.', 'low_poly_banner_design_1711.jpg', 0, 25),
+(13, 'TESLA', 'tesla.png', 'Tesla Club of Innovation is a club of Visvesvaraya National Institute of Technology. We are a team of aspiring engineers. We make the best of what we have. Our club is inclined towards working on innovative and new projects.', 'low_poly_banner_design_1711.jpg', 0, 25),
+(14, 'IvLabs', 'ivlabs.png', 'We are a group of students, pursuing our engineering dreams. IvLabs serves as a platform for students from different engineering backgrounds to collaborate and work together with utmost team spirit and avidity to bring innovative ideas into reality. Being in such an environment, young minds approach real life problems and come up with astonishing ideas, which highlights the objectives of our lab.', 'low_poly_banner_design_1711.jpg', 0, 25),
+(15, 'Ashlesha Astronomy Club', 'astro.png', 'We are the official Astronomy Club of VNIT Nagpur where we try to explore the horizons with the aid of our Engineering and Managing skills. From overnight stargazing to the screening of nerdy SciFis, we have hailed in every aspect to develop the interest of engineers in space and astronomy. From Studying About Astronomy , Cosmology and Astrophysics to working on Projects , It&#039;s You who will decide the limits of club. Wanna hone you amateur skills in Astronomy? Look no further you have reached your destination! Welcome to Astro Club VNIT', 'low_poly_banner_design_1711.jpg', 0, 25),
+(16, 'Prayas', 'prayaas.png', 'Prayaas is the social club of VNIT. We started with the motto of “ONE CAN’T HELP EVERYONE BUT EVERYONE CAN HELP SOMEONE”. We began with 10 in number in September 2006 and grew to hundreds who have come under one roof to serve the needy. Each and Every activity we do inculcates a sense of responsibility in contributing for a better society along with self development. We are engaged in activities like teaching, blood donation camps, Joy of Giving Week, NGO visits, Science Exhibition for the school students of Nagpur and many more which act as a driving force for our next move. If you think you need a platform to reach out to people and create impact, you fit in here.', 'low_poly_banner_design_1711.jpg', 0, 25),
+(17, 'IEEE VNIT', 'ieee.png', '​IEEE is the world’s largest technical professional organization dedicated to advancing technology for the benefit of humanity.IEEE and its members inspire a global community to innovate for a better tomorrow.We, the VNIT branch of IEEE conduct workshops ,guest lectures to encourage and inspire students towards technology .', 'low_poly_banner_design_1711.jpg', 0, 25),
+(18, 'ECELL VNIT', 'ecell.png', 'The Entrepreneurship Cell of VNIT is run by the students of VNIT, Nagpur inculcates entrepreneurship values and business outlook amongst its members. It aims at a holistic development of all its members through round the year events such as ‘Startup Weekend’ powered by Google for Entrepreneurs, Mozilla Web Design workshop, and ‘Jugaad!’. E-Cell also supports and incubates many startups.', 'low_poly_banner_design_1711.jpg', 0, 25),
+(19, 'MAG', 'mag.png', 'We’re the official Magazine Committee (or since most of you recognize us by our swanky title: mag.com, we’d prefer to use that in substitution) of VNIT. Our job includes everything from designing, editing and writing the official college magazine: Insight, to hosting and executing the literary events and to making the newsletters for the college. Work at mag.com is all about learning and having fun.(Our USP is that everyone is treated an equal at mag be it a first or final year; we don&#039;t believe in &#039;Sirs&#039; and &#039;Ma&#039;ams&#039;!)', 'low_poly_banner_design_1711.jpg', 0, 25),
+(21, 'Agile', 'main_ccc_7Logo1657371182.png', 'Agile- Computer &amp; Connectivity Club (CCC) takes pride in connecting and empowering people at IIMA through technology. The student-run club manages IT infrastructure on campus, builds applications &amp; websites, and debriefs innovations in the tech space. The club also undertakes activities - organizing elections, getting the best laptop deals, managing printers and systems, along with hosting fun events like gaming nights.', 'low_poly_banner_design_1711.jpg', 0, 29),
+(22, 'Abacus', 'logo_dark - Gudipati Madan Kumar.png', 'Analytics and AI-Foster a culture of Data-Driven problem solving through puzzles and competitions pan India &amp; promote Industry Interactions', 'low_poly_banner_design_1711.jpg', 0, 29),
+(23, 'ACADS COUNCIL', 'Acads Council - Logo - Ajit Agrawal.png', 'The Academic Council assists students at IIMA navigate their rigourous academic journey and acts as a liaison between students, administration, and faculty', 'low_poly_banner_design_1711.jpg', 0, 29),
+(24, 'Club 3.0', 'CLUB 3.0 LOGO - Balaji R.png', 'We are a group of passionate Web 3.0 enthusiasts assimilating knowledge of the next internet for IIMAWe are a group of passionate Web 3.0 enthusiasts assimilating knowledge of the next internet for IIMA', 'low_poly_banner_design_1711.jpg', 0, 29),
+(25, 'DECIBEL, THE MUSIC CLUB OF IIMA', 'image - Aishwarya A Pai.png', 'Everything music at IIM Ahmedabad', 'low_poly_banner_design_1711.jpg', 0, 29),
+(26, 'Eloquence', 'Logo_Eloquence - Eloquence- The Soft Skills Club of IIMA.png', 'We are the soft skills club of IIMA. We strive to make budding leaders great communicators, not just good speakers!', 'low_poly_banner_design_1711.jpg', 0, 29),
+(27, 'Web and Coding Club', '0852c825-36c.jpg', 'Web and Coding Club is one of the biggest clubs of IIT Bombay. As a part of the Institute Technical Council, we aim to provide a gateway for the people in our institute to join the coding Community. We create a platform which allows students to gain assistance and mentorship to enhance their coding ability. Our aim is to propagate the enthusiasm for coding in the institute and especially amongst freshmen. We believe that every student here at IITB should have an opportunity to learn how to code and develop a passion for it. The secret of getting ahead is getting started and we aim to provide every student with the right start.', 'low_poly_banner_design_1711.jpg', 0, 30),
+(28, 'Electronics and Robotics Club', '2cd8bf5c-eafb-409b-8a04-f62f94ccd58d-20604612_1755124687848245_1629621352894722960_9ULd6Hv.jpg', 'We are a club that satiates the techie you all possess! The Electronics and Robotics Club was born from the two of its parent clubs, 2017 being the year of christening.\r\n\r\nAs a club, we organize events like Hackathons, Competitions, Workshops, Group Discussions, etc. throughout the year. We also have tutorials and blogs and we are ALWAYS open for contributions.', 'low_poly_banner_design_1711.jpg', 0, 30),
+(29, 'Finance Club', '2cd8bf5c-eafb-409b-8a04-f62f94ccd58d-b2d616e8-fce.jpg.jpg', 'Finance Club IIT Bombay provides the students a platform to explore everything old and new in finance. We organise events and competitions related to stocks, investments, crypto-currencies, fintech etc - you name it! Whether you&#039;re looking to further improve on your finance knowledge and skills or learn from scratch, we&#039;re here for you. We&#039;ve held workshops with companies like BlackStone, Goldman Sachs, WorldQuant and gone on field trips to Bombay Stock Exchange. A few of our recent initiatives include the Equity Research Competition, Finsearch, Investimania, Cryptonite, etc.', 'low_poly_banner_design_1711.jpg', 0, 30),
+(30, 'Krittika', '06711b8c-711.png', 'Every one of us is amazed by the spectacle of the night sky and feels curious about its mysteries that lay hidden in plain sight. But very few follow it up as they grow up. At Krittika, we provide you an opportunity to do just that. Krittika is IIT Bombay’s focal point for amateur astronomers and casual stargazers alike.', 'low_poly_banner_design_1711.jpg', 0, 30),
+(31, 'Analytics club', 'c2e5e7fc-d81.jpg', 'Welcome to Analytics club, IIT Bombay! Analytics Club aims to keep the students well-aware of the possible career options related to Analytics and help them make wise decisions about their future. Analytics Club will provide students the opportunity to explore analytics through its various sessions, online activities, and workshops.', 'low_poly_banner_design_1711.jpg', 0, 30),
+(32, 'Aeromodelling Club', 'cededa86-63ce-4e5b-81e5-0cfcf1748631-PicsArt_05-06-06.58.58.jpg.jpg', 'Ever wondered what makes stuff airborne? Ever harboured a dream to sail to the tune of the winds?\r\n\r\nAeromodelling is a science for some, a sport for many...but for us, it is a hobby. We, at Aeromodelling Club, IIT Bombay are a group of aeromodelling and aviation enthusiasts sharing a unique passion for flying and an innate desire to push the bounds of airspace like they have never been before.\r\n\r\nCome be a part of us, to celebrate Aviation!', 'low_poly_banner_design_1711.jpg', 0, 30);
 
 -- --------------------------------------------------------
 
@@ -490,22 +528,32 @@ INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `pa
 CREATE TABLE `threads` (
   `threadId` int(11) NOT NULL,
   `circleId` int(11) NOT NULL,
-  `threadName` varchar(256) NOT NULL
+  `threadName` varchar(256) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `threads`
 --
 
-INSERT INTO `threads` (`threadId`, `circleId`, `threadName`) VALUES
-(1, 1, 'Pain Arc'),
-(2, 1, 'Final Arc'),
-(3, 1, 'Chunin Exam Arc'),
-(4, 1, 'Nine Tails Arc'),
-(5, 2, 'Titan'),
-(6, 2, 'Zeke and Eren'),
-(7, 2, 'Mikasa'),
-(8, 2, 'Armin');
+INSERT INTO `threads` (`threadId`, `circleId`, `threadName`, `status`) VALUES
+(1, 1, 'Pain Arc', 0),
+(2, 1, 'Final Arc', 0),
+(3, 1, 'Chunin Exam Arc', 0),
+(4, 1, 'Nine Tails Arc', 0),
+(5, 2, 'Titan', 0),
+(6, 2, 'Zeke and Eren', 0),
+(7, 2, 'Mikasa', 0),
+(8, 2, 'Armin', 0),
+(10, 1, 'shipunden', 0),
+(11, 1, 'shipunden', 0),
+(12, 1, 'shipunden', 0),
+(13, 1, 'poiuyt', 0),
+(14, 1, 'blablblab', 1),
+(15, 1, 'chunin exam', 1),
+(16, 2, 'eren', 1),
+(17, 10, 'Hackit', 0),
+(18, 13, 'E-Car', 0);
 
 -- --------------------------------------------------------
 
@@ -526,7 +574,27 @@ INSERT INTO `threads_img_rel` (`post_id`, `image_Id`) VALUES
 (1, 12),
 (2, 11),
 (3, 10),
-(4, 9);
+(4, 9),
+(5, 59),
+(6, 60),
+(7, 61),
+(8, 62),
+(9, 63),
+(10, 64),
+(11, 65),
+(13, 66),
+(14, 67),
+(15, 68),
+(16, 69),
+(17, 70),
+(18, 71),
+(19, 72),
+(20, 73),
+(21, 74),
+(22, 75),
+(23, 76),
+(24, 77),
+(25, 78);
 
 -- --------------------------------------------------------
 
@@ -552,7 +620,12 @@ INSERT INTO `threads_membership` (`userId`, `threadId`) VALUES
 (18, 4),
 (18, 5),
 (18, 6),
-(19, 1);
+(19, 1),
+(19, 14),
+(19, 15),
+(19, 16),
+(19, 17),
+(19, 18);
 
 -- --------------------------------------------------------
 
@@ -567,18 +640,63 @@ CREATE TABLE `threads_posts` (
   `time` time NOT NULL,
   `user_id` int(11) NOT NULL,
   `title` varchar(3000) NOT NULL,
-  `content` varchar(3000) NOT NULL
+  `content` varchar(3000) NOT NULL,
+  `type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `threads_posts`
 --
 
-INSERT INTO `threads_posts` (`post_id`, `threadId`, `date`, `time`, `user_id`, `title`, `content`) VALUES
-(1, 1, '2023-10-10', '20:39:24', 20, 'Stephan hawkins', 'Stephen William Hawking (8 January 1942 – 14 March 2018) was an English theoretical physicist, cosmologist, and author who, at the time of his death, was director of research at the Centre for Theoretical Cosmology at the University of Cambridge.[6][17][18] Between 1979 and 2009, he was the Lucasian Professor of Mathematics at Cambridge, widely viewed as one of the most prestigious academic posts in the world.'),
-(2, 2, '2023-10-10', '20:39:24', 20, 'fred hoyle', 'Sir Fred Hoyle FRS (24 June 1915 – 20 August 2001)[1] was an English astronomer who formulated the theory of stellar nucleosynthesis and was one of the authors of the influential B2FH paper. He also held controversial stances on other scientific matters—in particular his rejection of the \"Big Bang\" theory (a term coined by him on BBC Radio) in favor of the \"steady-state model\", and his promotion of panspermia as the origin of life on Earth.[3][4][5] He spent most of his working life at the Institute of Astronomy at Cambridge and served as its director for six years.'),
-(3, 7, '2023-10-10', '20:39:24', 20, 'J. Robert Oppenheimer', 'J. Robert Oppenheimer (born Julius Robert Oppenheimer; /ˈɒpənhaɪmər/ OP-ən-hy-mər; April 22, 1904 – February 18, 1967) was an American theoretical physicist and director of the Manhattan Project\'s Los Alamos Laboratory during World War II. He is often called the \"father of the atomic bomb\".\r\n\r\nBorn in New York City, Oppenheimer earned a bachelor of arts degree in chemistry from Harvard University in 1925 and a doctorate in physics from the University of Göttingen in Germany in 1927, where he studied under Max Born. After research at other institutions, he joined the physics department at the University of California, Berkeley, where he became a full professor in 1936. '),
-(4, 8, '2023-10-10', '20:45:11', 20, 'Einstein family', 'The Einstein family is the family of physicist Albert Einstein (1879–1955). Einstein\'s great-great-great-great-grandfather, Jakob Weil, was his oldest recorded relative, born in the late 17th century, and the family continues to this day. Albert Einstein\'s great-great-grandfather, Löb Moses Sontheimer (1745–1831), was also the grandfather of the tenor Heinrich Sontheim (1820–1912) of Stuttgart.[1]\r\n\r\nAlbert\'s three children were from his relationship with his first wife, Mileva Marić, his daughter Lieserl being born a year before they married. Albert Einstein\'s second wife was Elsa Einstein, whose mother Fanny Koch was the sister of Albert\'s mother, and whose father, Rudolf Einstein, was the son of Raphael Einstein, a brother of Albert\'s paternal grandfather. Albert and Elsa were thus first cousins through their mothers and second cousins through their fathers.[2]');
+INSERT INTO `threads_posts` (`post_id`, `threadId`, `date`, `time`, `user_id`, `title`, `content`, `type`) VALUES
+(1, 1, '2023-10-10', '20:39:24', 20, 'Stephan hawkins', 'Stephen William Hawking (8 January 1942 – 14 March 2018) was an English theoretical physicist, cosmologist, and author who, at the time of his death, was director of research at the Centre for Theoretical Cosmology at the University of Cambridge.[6][17][18] Between 1979 and 2009, he was the Lucasian Professor of Mathematics at Cambridge, widely viewed as one of the most prestigious academic posts in the world.', 0),
+(2, 2, '2023-10-10', '20:39:24', 20, 'fred hoyle', 'Sir Fred Hoyle FRS (24 June 1915 – 20 August 2001)[1] was an English astronomer who formulated the theory of stellar nucleosynthesis and was one of the authors of the influential B2FH paper. He also held controversial stances on other scientific matters—in particular his rejection of the \"Big Bang\" theory (a term coined by him on BBC Radio) in favor of the \"steady-state model\", and his promotion of panspermia as the origin of life on Earth.[3][4][5] He spent most of his working life at the Institute of Astronomy at Cambridge and served as its director for six years.', 0),
+(3, 7, '2023-10-10', '20:39:24', 20, 'J. Robert Oppenheimer', 'J. Robert Oppenheimer (born Julius Robert Oppenheimer; /ˈɒpənhaɪmər/ OP-ən-hy-mər; April 22, 1904 – February 18, 1967) was an American theoretical physicist and director of the Manhattan Project\'s Los Alamos Laboratory during World War II. He is often called the \"father of the atomic bomb\".\r\n\r\nBorn in New York City, Oppenheimer earned a bachelor of arts degree in chemistry from Harvard University in 1925 and a doctorate in physics from the University of Göttingen in Germany in 1927, where he studied under Max Born. After research at other institutions, he joined the physics department at the University of California, Berkeley, where he became a full professor in 1936. ', 0),
+(4, 8, '2023-10-10', '20:45:11', 20, 'Einstein family', 'The Einstein family is the family of physicist Albert Einstein (1879–1955). Einstein\'s great-great-great-great-grandfather, Jakob Weil, was his oldest recorded relative, born in the late 17th century, and the family continues to this day. Albert Einstein\'s great-great-grandfather, Löb Moses Sontheimer (1745–1831), was also the grandfather of the tenor Heinrich Sontheim (1820–1912) of Stuttgart.[1]\r\n\r\nAlbert\'s three children were from his relationship with his first wife, Mileva Marić, his daughter Lieserl being born a year before they married. Albert Einstein\'s second wife was Elsa Einstein, whose mother Fanny Koch was the sister of Albert\'s mother, and whose father, Rudolf Einstein, was the son of Raphael Einstein, a brother of Albert\'s paternal grandfather. Albert and Elsa were thus first cousins through their mothers and second cousins through their fathers.[2]', 0),
+(5, 1, '2023-12-11', '10:09:59', 19, 'tentative title', 'blablabla', 0),
+(6, 2, '2023-12-11', '10:13:26', 19, 'tentative title', 'p1', 1),
+(7, 2, '2023-12-11', '10:13:37', 19, 'tentative title', 'p2', 1),
+(8, 2, '2023-12-11', '10:13:48', 19, 'tentative title', 'p3', 1),
+(9, 2, '2023-12-11', '10:13:58', 19, 'tentative title', 'p4', 1),
+(10, 2, '2023-12-11', '10:14:11', 19, 'tentative title', 'p5', 0),
+(11, 2, '2023-12-11', '10:14:26', 19, 'tentative title', 'p6', 1),
+(12, 2, '2023-12-11', '10:14:38', 19, 'tentative title', '', 0),
+(13, 2, '2023-12-11', '10:14:55', 19, 'tentative title', 'p5', 0),
+(14, 2, '2023-12-11', '10:15:13', 19, 'tentative title', 'p6', 1),
+(15, 2, '2023-12-11', '10:15:27', 19, 'tentative title', 'p7', 0),
+(16, 2, '2023-12-11', '10:15:45', 19, 'tentative title', 'p8', 0),
+(17, 2, '2023-12-11', '10:15:59', 19, 'tentative title', 'p9', 0),
+(18, 2, '2023-12-11', '10:16:12', 19, 'tentative title', 'p10', 0),
+(19, 2, '2023-12-11', '10:16:27', 19, 'tentative title', 'p11', 0),
+(20, 2, '2023-12-11', '10:16:56', 19, 'tentative title', 'p12', 0),
+(21, 2, '2023-12-11', '10:17:10', 19, 'tentative title', 'p13', 0),
+(22, 2, '2023-12-11', '10:17:27', 19, 'tentative title', 'p14', 0),
+(23, 2, '2023-12-11', '10:17:41', 19, 'tentative title', 'p16', 0),
+(24, 2, '2023-12-11', '10:17:59', 19, 'tentative title', 'p17', 0),
+(25, 2, '2023-12-11', '12:38:03', 19, 'tentative title', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `threads_rel`
+--
+
+CREATE TABLE `threads_rel` (
+  `parentPost` int(11) NOT NULL,
+  `childPost` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `threads_rel`
+--
+
+INSERT INTO `threads_rel` (`parentPost`, `childPost`) VALUES
+(2, 6),
+(6, 8),
+(2, 7),
+(7, 9),
+(10, 11),
+(10, 14);
 
 -- --------------------------------------------------------
 
@@ -725,13 +843,13 @@ ALTER TABLE `threads_posts`
 -- AUTO_INCREMENT for table `colleges`
 --
 ALTER TABLE `colleges`
-  MODIFY `collegeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `collegeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `merch`
@@ -755,7 +873,7 @@ ALTER TABLE `preferences`
 -- AUTO_INCREMENT for table `staticcircleinfo`
 --
 ALTER TABLE `staticcircleinfo`
-  MODIFY `circleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `circleId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `staticcustomerinfo`
@@ -767,13 +885,13 @@ ALTER TABLE `staticcustomerinfo`
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `threadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `threadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `threads_posts`
 --
 ALTER TABLE `threads_posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

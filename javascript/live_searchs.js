@@ -21,9 +21,9 @@ $(document).ready(function () {
                         'margin':'2px 0',
                         'width':'100%'
                       });
-                      $('#search_result ul').css({
-                        'width':$("#live_search").css("width")
-                      })
+                    //   $('#search_result ul').css({
+                    //     'width':$("#live_search").css("width")
+                    //   })
                     $('#search_result li').css({
                         'cursor': 'pointer',
                         'border-bottom': '1px solid black',

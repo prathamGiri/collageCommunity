@@ -3,7 +3,7 @@
 $servername = 'localhost';
 $username = 'root';
 $password = '';
-$database = 'vnit_data';
+$database = 'pepcircles';
 
 //create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
