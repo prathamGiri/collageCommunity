@@ -7,10 +7,6 @@ if (isset($_POST['submit'])) {
     $discription = test_input($_POST['discription']);
     $collegeId = $_SESSION['collegeId'];
     unset($_SESSION['collegeId']);
-    // $institute = test_input($_POST['institute']);
-    // $city = test_input($_POST['city']);
-    // $state = test_input($_POST['state']);
-    // $country = test_input($_POST['country']);
     $status = test_input($_POST['status']); 
     $img = test_input($_FILES['img']['name']);
     $owner = $_COOKIE['user_id'];
@@ -27,6 +23,9 @@ if (isset($_POST['submit'])) {
     $sql1 = "INSERT INTO circle_following (`userId`, `circleId`)
             VALUES ('$owner', '$circleId')";
     mysqli_query($conn, $sql1);
+    $sql2 = "INSERT INTO circle_membership (`userId`, `circleId`)
+            VALUES ('$owner', '$circleId')";
+    mysqli_query($conn, $sql2);
     redirect('../community_page.php?commid='.$row['circleId']);
 }
 ?>

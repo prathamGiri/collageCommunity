@@ -29,25 +29,6 @@ $(document).ready(function (){
         })
     })
 
-    // $('#post_submit').on('click', function (e) {
-    //     e.preventDefault();
-    //     $.ajax({
-    //         url: 'back/save_post.php',
-    //         type: 'POST',
-    //         data: formData,
-    //         processData: false,
-    //         contentType: false,
-    //         success: function (data) {
-    //             $("#msg").html(data);
-    //             $('#postblock').css({
-    //                 'display' : 'none'
-    //             })
-    //             $('#createpost').css({
-    //                 'display': 'flex'
-    //             })
-    //         }
-    //     })
-    // })
     $("#post_form").submit(function(e) {
         e.preventDefault();    
         var formData = new FormData(this);
@@ -57,7 +38,6 @@ $(document).ready(function (){
             type: 'POST',
             data: formData,
             success: function (data) {
-                console.log(data)
                 if ($('#main-post-wrapper').length != 0) {
                     $('#main-post-wrapper').append(data);
                 }else if ($('#posts_wrapper').length != 0) {

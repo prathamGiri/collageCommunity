@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2023 at 11:42 AM
+-- Generation Time: Dec 12, 2023 at 08:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,7 +43,8 @@ INSERT INTO `circle_following` (`userId`, `circleId`) VALUES
 (19, 10),
 (19, 13),
 (19, 18),
-(19, 20);
+(19, 20),
+(23, 10);
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,9 @@ INSERT INTO `circle_membership` (`circleId`, `userId`, `position`) VALUES
 (1, 18, 'Member'),
 (1, 16, 'Member'),
 (1, 14, 'Member'),
-(1, 12, 'Member');
+(1, 12, 'Member'),
+(20, 19, 'Member'),
+(10, 19, 'Member');
 
 -- --------------------------------------------------------
 
@@ -517,7 +520,9 @@ INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `pa
 (18, 'dXRrYXJzaCBnYWlrd2Fk', 0, 'dXRrYXJzaEBnbWFpbC5jb20=', '53a2b5b7021853cdc6cbd684e3baf0e7', 'User_icon.png', '', 'i do comady', 27, 'ECE', 2024, 'male', 21),
 (19, 'RGhydXYgR3VwdGE=', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21),
 (20, 'QXl1c2ggVGFubmE=', 0, 'dGFubmFAZ21haWwuY29t', '385ad81edd3cb6023360cfef4b46a523', 'User_icon.png', '', 'qaesrdtfygu', 25, 'Computer Science', 2024, 'male', 21),
-(21, 'QXRoYXJ2IEJhbGtpc2g=', 0, 'YXRoYXJ2YUBnbWFpbC5jb20=', '0d02ba1bdc3bde610c8fcd27ae752467', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i am a virgin', 25, 'Chemical Engineering', 2027, 'don&#039;t ', 21);
+(21, 'QXRoYXJ2IEJhbGtpc2g=', 0, 'YXRoYXJ2YUBnbWFpbC5jb20=', '0d02ba1bdc3bde610c8fcd27ae752467', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i am a virgin', 25, 'Chemical Engineering', 2027, 'don&#039;t ', 21),
+(22, 'cHJhdGhhbSBnaXJp', 0, 'cHJhdGhhbTAyQGdtYWlsLmNvbQ==', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'hehe', 27, 'Electrical Engineering', 2025, 'male', 21),
+(23, 'cHJhdGhhbSBnaXJ1', 0, 'cG9pdXl0ckBnbWFpbC5jb20=', '494101ceff0dd419c38522699e5cf724', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'oiuf', 25, 'Electrical Engineering', 2025, 'male', 21);
 
 -- --------------------------------------------------------
 
@@ -625,7 +630,8 @@ INSERT INTO `threads_membership` (`userId`, `threadId`) VALUES
 (19, 15),
 (19, 16),
 (19, 17),
-(19, 18);
+(19, 18),
+(23, 17);
 
 -- --------------------------------------------------------
 
@@ -641,14 +647,14 @@ CREATE TABLE `threads_posts` (
   `user_id` int(11) NOT NULL,
   `title` varchar(3000) NOT NULL,
   `content` varchar(3000) NOT NULL,
-  `type` int(11) NOT NULL
+  `replyTo` int(11) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `threads_posts`
 --
 
-INSERT INTO `threads_posts` (`post_id`, `threadId`, `date`, `time`, `user_id`, `title`, `content`, `type`) VALUES
+INSERT INTO `threads_posts` (`post_id`, `threadId`, `date`, `time`, `user_id`, `title`, `content`, `replyTo`) VALUES
 (1, 1, '2023-10-10', '20:39:24', 20, 'Stephan hawkins', 'Stephen William Hawking (8 January 1942 – 14 March 2018) was an English theoretical physicist, cosmologist, and author who, at the time of his death, was director of research at the Centre for Theoretical Cosmology at the University of Cambridge.[6][17][18] Between 1979 and 2009, he was the Lucasian Professor of Mathematics at Cambridge, widely viewed as one of the most prestigious academic posts in the world.', 0),
 (2, 2, '2023-10-10', '20:39:24', 20, 'fred hoyle', 'Sir Fred Hoyle FRS (24 June 1915 – 20 August 2001)[1] was an English astronomer who formulated the theory of stellar nucleosynthesis and was one of the authors of the influential B2FH paper. He also held controversial stances on other scientific matters—in particular his rejection of the \"Big Bang\" theory (a term coined by him on BBC Radio) in favor of the \"steady-state model\", and his promotion of panspermia as the origin of life on Earth.[3][4][5] He spent most of his working life at the Institute of Astronomy at Cambridge and served as its director for six years.', 0),
 (3, 7, '2023-10-10', '20:39:24', 20, 'J. Robert Oppenheimer', 'J. Robert Oppenheimer (born Julius Robert Oppenheimer; /ˈɒpənhaɪmər/ OP-ən-hy-mər; April 22, 1904 – February 18, 1967) was an American theoretical physicist and director of the Manhattan Project\'s Los Alamos Laboratory during World War II. He is often called the \"father of the atomic bomb\".\r\n\r\nBorn in New York City, Oppenheimer earned a bachelor of arts degree in chemistry from Harvard University in 1925 and a doctorate in physics from the University of Göttingen in Germany in 1927, where he studied under Max Born. After research at other institutions, he joined the physics department at the University of California, Berkeley, where he became a full professor in 1936. ', 0),
@@ -673,30 +679,12 @@ INSERT INTO `threads_posts` (`post_id`, `threadId`, `date`, `time`, `user_id`, `
 (22, 2, '2023-12-11', '10:17:27', 19, 'tentative title', 'p14', 0),
 (23, 2, '2023-12-11', '10:17:41', 19, 'tentative title', 'p16', 0),
 (24, 2, '2023-12-11', '10:17:59', 19, 'tentative title', 'p17', 0),
-(25, 2, '2023-12-11', '12:38:03', 19, 'tentative title', '', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `threads_rel`
---
-
-CREATE TABLE `threads_rel` (
-  `parentPost` int(11) NOT NULL,
-  `childPost` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `threads_rel`
---
-
-INSERT INTO `threads_rel` (`parentPost`, `childPost`) VALUES
-(2, 6),
-(6, 8),
-(2, 7),
-(7, 9),
-(10, 11),
-(10, 14);
+(25, 2, '2023-12-11', '12:38:03', 19, 'tentative title', '', 0),
+(26, 17, '2023-12-12', '18:25:55', 23, 'tentative title', 'hey there how you doing', -1),
+(27, 17, '2023-12-12', '18:26:32', 19, 'tentative title', 'nothing much whats on your mind', 26),
+(28, 17, '2023-12-12', '18:27:13', 23, 'tentative title', 'want to play chess', -1),
+(29, 17, '2023-12-12', '18:27:40', 19, 'tentative title', 'yeah why not send me an invite', 28),
+(30, 17, '2023-12-12', '18:44:12', 23, 'tentative title', 'sending it right away', 29);
 
 -- --------------------------------------------------------
 
@@ -730,7 +718,13 @@ INSERT INTO `userpreferences` (`userId`, `preferenceId`) VALUES
 (20, 6),
 (21, 2),
 (21, 3),
-(21, 8);
+(21, 8),
+(22, 4),
+(22, 5),
+(22, 6),
+(23, 4),
+(23, 5),
+(23, 6);
 
 -- --------------------------------------------------------
 
@@ -775,7 +769,9 @@ INSERT INTO `variablecustomerinfo` (`user_id`, `community_id`, `post_id`) VALUES
 (18, 0, 0),
 (19, 0, 0),
 (20, 0, 0),
-(21, 0, 0);
+(21, 0, 0),
+(22, 0, 0),
+(23, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -879,7 +875,7 @@ ALTER TABLE `staticcircleinfo`
 -- AUTO_INCREMENT for table `staticcustomerinfo`
 --
 ALTER TABLE `staticcustomerinfo`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `threads`
@@ -891,7 +887,7 @@ ALTER TABLE `threads`
 -- AUTO_INCREMENT for table `threads_posts`
 --
 ALTER TABLE `threads_posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

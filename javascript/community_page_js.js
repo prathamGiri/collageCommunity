@@ -63,26 +63,23 @@ var callThreadsAjax = function (circle_id, threadId, dest) {
                 'bottom': 0,
                 'width': '60%'
             })
-            $('.outer').css({
-                'margin-bottom' : '5px'
-            })
+
+
             $('.ind-post').css({
-                'border-left':'2px solid red',
-                'background-color': 'white',
-                'padding': '1rem',
+                'background-color': 'white'
             })
             $('.inside').css({
-                'border-radius' : '5px',
                 'background-color': '#e4f2e8',
                 'padding': '5px'
             })
 
-            $('.post-info').css({
+            
+            $('.info-wrapper').css({
                 'display': 'flex'
             })
 
             $('.info-img').css({
-                'width': '3%',
+                'width': '5%',
                 'margin-right': '2%'
             })
 
@@ -92,9 +89,14 @@ var callThreadsAjax = function (circle_id, threadId, dest) {
             })
 
             $('.info-text').css({
-                'font-size': '20px',
+                'font-size': '18px',
                 'margin-top': 'auto',
                 'margin-bottom': 'auto'
+            })
+
+            $('.rep-mes-text').css({
+                'background-color': 'white',
+                'padding' :'3px'
             })
 
             $('.media-block').css({

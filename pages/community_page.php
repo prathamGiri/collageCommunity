@@ -34,7 +34,6 @@ $_SESSION['page'] = $page;
                     <li id="about"> About</li>
                     <li id="announcement"> Announcement</li>
                     <li id="up_events"> Upcoming Events</li>
-                    <li id="general"> General</li>
                 </ul>
                 <div>Threads:</div>
                 <div id="options">
