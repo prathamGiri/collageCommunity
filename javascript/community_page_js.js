@@ -1,5 +1,30 @@
 var circleId;
 var threadId;
+// var setupWebSocket = function() {
+//     var socket = new WebSocket('ws://localhost:8080');
+
+//     socket.onopen = function (e) {
+//         console.log("Connection established!");
+//     };
+
+//     socket.onmessage = function (e) {
+//         console.log(e.data);
+//     };
+
+    // Optional: Handle other WebSocket events like onclose, onerror, etc.
+    // conn.onclose = function (e) {
+    //     console.log("Connection closed.");
+    // };
+
+    // conn.onerror = function (e) {
+    //     console.error("WebSocket error:", e);
+    // };
+
+    // return conn;
+// }
+
+
+
 var callAjax = function (circle_id, topic, dest) {
     circleId = circle_id;
     var postType;
@@ -65,65 +90,67 @@ var callThreadsAjax = function (circle_id, threadId, dest) {
             })
 
 
-            $('.ind-post').css({
-                'background-color': 'white'
-            })
-            $('.inside').css({
-                'background-color': '#e4f2e8',
-                'padding': '5px'
-            })
+            // $('.ind-post').css({
+            //     'background-color': 'white'
+            // })
+            // $('.inside').css({
+            //     'background-color': '#e4f2e8',
+            //     'padding': '5px'
+            // })
 
             
-            $('.info-wrapper').css({
-                'display': 'flex'
-            })
+            // $('.info-wrapper').css({
+            //     'display': 'flex'
+            // })
 
-            $('.info-img').css({
-                'width': '5%',
-                'margin-right': '2%'
-            })
+            // $('.info-img').css({
+            //     'width': '5%',
+            //     'margin-right': '2%'
+            // })
 
-            $('.info-img img').css({
-                'width': '100%',
-                'border-radius': '50%'
-            })
+            // $('.info-img img').css({
+            //     'width': '100%',
+            //     'border-radius': '50%'
+            // })
 
-            $('.info-text').css({
-                'font-size': '18px',
-                'margin-top': 'auto',
-                'margin-bottom': 'auto'
-            })
+            // $('.info-text').css({
+            //     'font-size': '18px',
+            //     'margin-top': 'auto',
+            //     'margin-bottom': 'auto'
+            // })
 
-            $('.rep-mes-text').css({
-                'background-color': 'white',
-                'padding' :'3px'
-            })
+            // $('.rep-mes-text').css({
+            //     'background-color': 'white',
+            //     'padding' :'3px'
+            // })
 
-            $('.media-block').css({
-                'width': '100%',
-                'padding': '5px',
-                'display': 'flex',
-                'justify-content': 'center'
-            })
+            // $('.media-block').css({
+            //     'width': '100%',
+            //     'padding': '5px',
+            //     'display': 'flex',
+            //     'justify-content': 'center'
+            // })
 
-            $('.media-block img').css({
-                'width': '60%'
-            })
+            // $('.media-block img').css({
+            //     'width': '60%'
+            // })
 
-            $('.text-block').css({
-                'padding': '5px'
-            })
+            // $('.text-block').css({
+            //     'padding': '5px'
+            // })
 
-            $('.post-options').css({
-                'display': 'flex',
-                'justify-content': 'left',
-                'font-size' : '20px'
-            })
+            // $('.post-options').css({
+            //     'display': 'flex',
+            //     'justify-content': 'left',
+            //     'font-size' : '20px'
+            // })
 
-            $('.opt').css({
-                'display': 'flex',
-                'margin-left' : '10px'
-            })
+            // $('.opt').css({
+            //     'display': 'flex',
+            //     'margin-left' : '10px'
+            // })
+            
+            // setupWebSocket();
         }
     })
 }
@@ -136,6 +163,7 @@ var createThreadsAjax = function (circle_id, dest) {
             circle_id : circle_id
         },
         success: function (data) {
+
             $(dest).html(data);
             $('.floaters').css({
                 "display" : "block",
@@ -162,6 +190,9 @@ var createThreadsAjax = function (circle_id, dest) {
 }
 
 $(document).ready(function () {
+    
+    // $.getScript("thread_server_join.js")
+
     $('.p_img').on('click', function () {
         circleId = $(this).attr("id");
         console.log(circleId);

@@ -17,7 +17,7 @@ $(document).ready(function () {
                     $('#search_result').css({
                         'display': 'block',
                         'text-align' : 'center',
-                        'position':'absolute',
+                        // 'position':'absolute',
                         'margin':'2px 0',
                         'width':'100%'
                       });

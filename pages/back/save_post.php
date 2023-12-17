@@ -20,6 +20,11 @@ include "database_connection.php";
         $imgtable = 'image_rel';
         mysqli_query($conn, "INSERT INTO $postTable (`time`, `date`, `user_id`, `title`, `content`, `circleId`, `postType`)
                                 VALUES ('$time', '$date', $user_id, 'tentative title', '$post', $circleId, $postType)");
+        $msg_res = mysqli_query($conn, "SELECT * FROM $postTable WHERE user_id = '$user_id' and `time` = '$time' and `date` = '$date'");
+        if (mysqli_num_rows($msg_res) > 0) {
+            $msg_row = mysqli_fetch_assoc($msg_res);
+            $post_id = $msg_row['post_id'];
+        }
     }elseif (isset($_SESSION['threadId'])) {
         $responseType = 1;
         $threadId = $_SESSION['threadId'];
@@ -27,8 +32,22 @@ include "database_connection.php";
         $imgtable = 'threads_img_rel';
         mysqli_query($conn, "INSERT INTO $postTable (`time`, `date`, `user_id`, `title`, `content`, `threadId`)
                                 VALUES ('$time', '$date', $user_id, 'tentative title', '$post', $threadId)");
+        $msg_res = mysqli_query($conn, "SELECT * FROM $postTable WHERE user_id = '$user_id' and `time` = '$time' and `date` = '$date'");
+        if (mysqli_num_rows($msg_res) > 0) {
+            $msg_row = mysqli_fetch_assoc($msg_res);
+            $post_id = $msg_row['post_id'];
+            $check_res = mysqli_query($conn, "SELECT userId FROM threads_membership WHERE threadId = $threadId");
+            if (mysqli_num_rows($check_res) > 0) {
+                while ($crow = mysqli_fetch_assoc($check_res)) {
+                    $c_userId = $crow['userId'];
+                    mysqli_query($conn, "INSERT INTO msg_track (`user_id`, `threadId`, `post_id`)
+                                VALUES ($c_userId, $threadId, $post_id)");
+                }
+            }
+            
+        }
     }
-    if (isset($_FILES['image_file'])) {
+    if (isset($_FILES['image_file']) && $_FILES['image_file']['size'] > 0) {
         $fileName = test_input($_FILES['image_file']['name']);
         $fileNameData = explode('.', $fileName);
         $fileExt = strtolower(end($fileNameData));
@@ -56,11 +75,10 @@ include "database_connection.php";
         } 
     }
     if($responseType == 0){
-        $postSql = "SELECT * 
-                    FROM posts
-                    WHERE post_id = $post_id";
+        $postSql = "SELECT * FROM posts WHERE post_id = $post_id";
             $postRes = mysqli_query($conn, $postSql);
                     if (mysqli_num_rows($postRes) > 0) {
+                        
                         while ($postRow = mysqli_fetch_assoc($postRes)) {
                             echo '<div class="ind_post">
                                 <div class="head_post">

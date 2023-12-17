@@ -11,7 +11,10 @@ $_SESSION['page'] = $page;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/circlesprofile.css">
+    <link rel="stylesheet" href="/collageCommunity/css/circlesprofile.css">
+    <link rel="stylesheet" href="/collageCommunity/css/threads_style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/collageCommunity/javascript/thread_server_join.js"></script>
     
 </head>
 <body>
@@ -186,7 +189,7 @@ $_SESSION['page'] = $page;
     <div class="floaters">
         
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <script src="/collageCommunity/javascript/community_page_js.js"></script>
     <script>
         callAjax(<?php echo $circleId; ?>, 'threads', '#options');
