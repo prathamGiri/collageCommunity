@@ -9,7 +9,7 @@ function PreviewImage() {
         document.getElementById("uploadPreview").src = oFREvent.target.result;
     };
 };
-
+ 
 function sendPostIdToWebSocket(postId) {
     // Assuming 'webSocket' is your established WebSocket connection
     if (socket.readyState === WebSocket.OPEN) {
@@ -27,6 +27,10 @@ $(document).ready(function (){
         $('#postblock').css({
             'display': 'block'
         })
+        $("#freeform").focus()
+        $('.reply-box').html('')
+        $(".reply-box").removeAttr("id");
+
     })
 
     $('#closepostblock').on('click',function () {
@@ -41,12 +45,15 @@ $(document).ready(function (){
     $("#post_form").submit(function(e) {
         e.preventDefault();    
         var formData = new FormData(this);
-    
+        if ($(".reply-box").attr("id")) {
+            var replyPostId = $('.reply-box').attr('id');
+            formData.append('replyPostId', replyPostId);
+        }
+        
         $.ajax({
             url: 'back/thread_msg_save.php',
             type: 'POST',
             data: formData,
-            dataType: "json",
             success: function (data) {
                 var htmlContent = data.html;
                 var postId = data.post_id;
@@ -67,67 +74,6 @@ $(document).ready(function (){
                 $('#createpost').css({
                     'display': 'flex'
                 })
-
-
-                // $('.ind-post').css({
-                //     'background-color': 'white'
-                // })
-                // $('.inside').css({
-                //     'background-color': '#e4f2e8',
-                //     'padding': '5px'
-                // })
-    
-                
-                // $('.info-wrapper').css({
-                //     'display': 'flex'
-                // })
-    
-                // $('.info-img').css({
-                //     'width': '5%',
-                //     'margin-right': '2%'
-                // })
-    
-                // $('.info-img img').css({
-                //     'width': '100%',
-                //     'border-radius': '50%'
-                // })
-    
-                // $('.info-text').css({
-                //     'font-size': '18px',
-                //     'margin-top': 'auto',
-                //     'margin-bottom': 'auto'
-                // })
-    
-                // $('.rep-mes-text').css({
-                //     'background-color': 'white',
-                //     'padding' :'3px'
-                // })
-    
-                // $('.media-block').css({
-                //     'width': '100%',
-                //     'padding': '5px',
-                //     'display': 'flex',
-                //     'justify-content': 'center'
-                // })
-    
-                // $('.media-block img').css({
-                //     'width': '60%'
-                // })
-    
-                // $('.text-block').css({
-                //     'padding': '5px'
-                // })
-    
-                // $('.post-options').css({
-                //     'display': 'flex',
-                //     'justify-content': 'left',
-                //     'font-size' : '20px'
-                // })
-    
-                // $('.opt').css({
-                //     'display': 'flex',
-                //     'margin-left' : '10px'
-                // })
                 sendPostIdToWebSocket(postId);
 
             },
@@ -138,3 +84,4 @@ $(document).ready(function (){
     });
     
 })
+

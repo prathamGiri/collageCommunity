@@ -25,7 +25,8 @@ if (isset($_POST['circle_id']) & isset($_POST['threadId'])) {
                 $htmlContent = $htmlContent.'<div class="memb-status" style="background-color:green;"></div></li>';
             }
         }
-        $htmlContent = $htmlContent.'</ul></div></div>';
+
+        $htmlContent = $htmlContent.'</ul><div id="new-member">Add New Member</div></div></div>';
     }
 }
 

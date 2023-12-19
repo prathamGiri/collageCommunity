@@ -2,9 +2,8 @@
 
 <head>
     <link rel="stylesheet" href="/collageCommunity/css/create_post.css">
-    <script src="/collageCommunity/javascript/thread_msg.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="/collageCommunity/javascript/thread_msg.js"></script>
 </head>
 <body>
     
@@ -30,8 +29,16 @@
                 </div>
                 <hr>
                 <div class="postprofile">
-                    <img src="<?php echo '/collageCommunity/images/profile_img/'.$row3['profile_img']?>" alt="profile image">
-                    <span><?php echo base64_decode($row3['user_name']) ?></span> 
+                    <div>
+                        <img src="<?php echo '/collageCommunity/images/profile_img/'.$row3['profile_img']?>" alt="profile image">
+                    </div>
+                    <div>
+                        <div><span><?php echo base64_decode($row3['user_name']) ?></span> </div>
+                        <div class="reply-box">
+                            
+                        </div>
+                    </div>
+                    
                 </div>
                 <?php } ?>
                 <!-- <input type="text" placeholder="What do you want to post"> -->

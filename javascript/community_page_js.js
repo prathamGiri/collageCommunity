@@ -57,6 +57,7 @@ var callAjax = function (circle_id, topic, dest) {
                     'display' : 'flex'
                 })
             }
+            $('.member-bar').html('')
             
         }
     })
@@ -106,69 +107,6 @@ var callThreadsAjax = function (circle_id, threadId, dest) {
             $('.unread-count').css({
                 'display' : 'none'
             })
-
-
-            // $('.ind-post').css({
-            //     'background-color': 'white'
-            // })
-            // $('.inside').css({
-            //     'background-color': '#e4f2e8',
-            //     'padding': '5px'
-            // })
-
-            
-            // $('.info-wrapper').css({
-            //     'display': 'flex'
-            // })
-
-            // $('.info-img').css({
-            //     'width': '5%',
-            //     'margin-right': '2%'
-            // })
-
-            // $('.info-img img').css({
-            //     'width': '100%',
-            //     'border-radius': '50%'
-            // })
-
-            // $('.info-text').css({
-            //     'font-size': '18px',
-            //     'margin-top': 'auto',
-            //     'margin-bottom': 'auto'
-            // })
-
-            // $('.rep-mes-text').css({
-            //     'background-color': 'white',
-            //     'padding' :'3px'
-            // })
-
-            // $('.media-block').css({
-            //     'width': '100%',
-            //     'padding': '5px',
-            //     'display': 'flex',
-            //     'justify-content': 'center'
-            // })
-
-            // $('.media-block img').css({
-            //     'width': '60%'
-            // })
-
-            // $('.text-block').css({
-            //     'padding': '5px'
-            // })
-
-            // $('.post-options').css({
-            //     'display': 'flex',
-            //     'justify-content': 'left',
-            //     'font-size' : '20px'
-            // })
-
-            // $('.opt').css({
-            //     'display': 'flex',
-            //     'margin-left' : '10px'
-            // })
-            
-            // setupWebSocket();
         }
     })
 }
@@ -324,3 +262,77 @@ $(document).on({
     }
 }, '.ind-post');
 
+$(document).on('click', '#reply', function () {
+    var postId = $(this).closest('.ind-post').attr('id');
+    $.ajax({
+        url: '/collageCommunity/pages/back/get_reply_info.php',
+        method: 'POST',
+        data: {
+            postId:postId
+        },
+        success: function (data) {
+            $('#createpost').css({
+                'display' : 'none'
+            })
+            $('#postblock').css({
+                'display': 'block'
+            })
+            $('.reply-to').css({
+                'display': 'block'
+            })
+            $('.reply-box').attr("id", postId);
+            $('.reply-box').html(data)
+            $("#freeform").focus()
+        }
+    })
+    
+})
+
+$(document).on('click', '#new-member', function () {
+    console.log(circleId)
+    $.ajax({
+        url: '/collageCommunity/pages/back/add_new_member.php',
+        method: 'POST',
+        data: {
+            circle_id : circleId
+        },
+        success: function (data) {
+            $('.floaters').html(data)
+            $('.floaters').css({
+                "display" : "block",
+                "background-color": "white",
+                "position": "fixed",
+                "left": "50%",
+                "top": "50%",
+                "transform": "translate(-50%, -50%)",
+                "border" : "1px black solid"
+            })
+            $('.main-blk').css({
+                'margin' : "40px 20px"
+            })
+            $('#closeblock').css({
+                "font-size": "2rem",
+                "cursor": "pointer",
+                "position":"absolute",
+                "right" : '0px'
+            })
+            $('.mem-input').css({
+                'border' : '1px solid black',
+                'margin-bottom' : '10px'
+            })
+            $('.new-mem-info').css({
+                'display' : 'flex',
+                'position' : 'relative'
+            })
+            $('.user-img img').css({
+                'width':'40px',
+                'border-radius' : '50%'
+            })
+            $('.add-btn').css({
+                'position' : 'absolute',
+                'right' : '5px'
+            })
+        }
+    })
+    
+})

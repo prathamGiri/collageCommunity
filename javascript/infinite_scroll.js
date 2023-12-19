@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     $(window).scroll(function() {
-        if($(window).scrollTop() + $(window).height() + $('.header').height() >= $(document).height()) {
+        if($(window).scrollTop() + $(window).height() >= $(document).height()-1) {
             var last_id = $(".post-id:last").attr("id");
             loadMoreData(last_id);
         }

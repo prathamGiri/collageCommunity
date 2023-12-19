@@ -11,6 +11,7 @@ include "database_connection.php";
     $threadId;
     $post_id;
     $postTable;
+    
     $imgtable;
     $responseType;
     if (isset($_SESSION['threadId'])) {
@@ -18,8 +19,15 @@ include "database_connection.php";
         $threadId = $_SESSION['threadId'];
         $postTable = 'threads_posts';
         $imgtable = 'threads_img_rel';
-        mysqli_query($conn, "INSERT INTO $postTable (`time`, `date`, `user_id`, `title`, `content`, `threadId`)
-                                VALUES ('$time', '$date', $user_id, 'tentative title', '$post', $threadId)");
+
+        if (isset($_POST['replyPostId'])) {
+            $replyPostId = $_POST['replyPostId'];
+        }else{
+            $replyPostId = -1;
+        }
+        
+        mysqli_query($conn, "INSERT INTO $postTable (`time`, `date`, `user_id`, `title`, `content`, `threadId`, `replyTo`)
+                                VALUES ('$time', '$date', $user_id, 'tentative title', '$post', $threadId, $replyPostId)");
         $msg_res = mysqli_query($conn, "SELECT * FROM $postTable WHERE user_id = '$user_id' and `time` = '$time' and `date` = '$date'");
         if (mysqli_num_rows($msg_res) > 0) {
             $msg_row = mysqli_fetch_assoc($msg_res);
@@ -70,7 +78,7 @@ include "database_connection.php";
     if ($responseType == 1) {
         $postSql = "SELECT * 
                     FROM threads_posts
-                    WHERE threadId = $threadId AND post_id = $post_id";
+                    WHERE post_id = $post_id";
                     
         $postRes = mysqli_query($conn, $postSql);
                 if (mysqli_num_rows($postRes) > 0) {
@@ -91,8 +99,13 @@ include "database_connection.php";
                             WHERE tir.post_id =  $post_id";
                         $res5 = mysqli_query($conn, $sql5);
 
-                        
-                        $htmlContent = '<div class="ind-post" id="'. $post_id. '">
+                        $htmlContent = '';
+                        $htmlContent = $htmlContent.'<div class="ind-post" id="'. $post_id. '">
+                                <div class="msg-options">
+                                    <div id="reply"><i class="ri-reply-fill"></i></div>
+                                    <div id="react"><i class="ri-user-smile-fill"></i></div>
+                                    <div id="delete"><i class="ri-delete-bin-5-fill"></i></div>
+                                </div>
                                 <div class="inside">
                                     <div class="info-img">
                                         <img src="/collageCommunity/images/profile_img/'. $user_info_Row['profile_img']. '">

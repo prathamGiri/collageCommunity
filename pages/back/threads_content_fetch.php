@@ -56,8 +56,8 @@ if (isset($_POST['circle_id']) && isset($_POST['threadId']) && isset($_SESSION['
     WHERE tp.threadId = $threadId AND mt.user_id = $user_id
     ORDER BY tp.date ASC, tp.time ASC";
     $postRes = mysqli_query($conn, $postSql);
+    echo "<div class='wrapper'>";
     if (mysqli_num_rows($postRes) > 0) {
-        echo "<div class='wrapper'>";
         while ($postRow = mysqli_fetch_assoc($postRes)) {
             $post_id = $postRow['post_id'];
             $is_read = $postRow['is_read'];
@@ -110,7 +110,7 @@ if (isset($_POST['circle_id']) && isset($_POST['threadId']) && isset($_SESSION['
                                             WHERE user_id = $rep_post_userId";
                                 $user_info_Res2 = mysqli_query($conn, $user_info_sql2);
                                 $user_info_Row2 = mysqli_fetch_assoc($user_info_Res2);
-                                $htmlContent = $htmlContent . '<div class="reply-to">
+                                $htmlContent = $htmlContent.'<div class="reply-to">
                                     <div class="reply-text">
                                         <p>replied to</p>
                                     </div>
@@ -142,8 +142,9 @@ if (isset($_POST['circle_id']) && isset($_POST['threadId']) && isset($_SESSION['
                         echo $htmlContent;
             
         }
-        echo "</div>";
+        
     }
+    echo "</div>";
     include "../thread_msg_bar.php";
     mysqli_query($conn, "UPDATE msg_track SET is_read = 1 WHERE user_id = $user_id AND threadId = $threadId");
 }

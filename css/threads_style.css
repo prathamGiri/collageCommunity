@@ -51,6 +51,7 @@
     display: flex;
     margin-left : 10px
 }
+
 .msg-options{
     width: 15%;
     font-size: 18px;
@@ -78,10 +79,6 @@
     padding: 10px 5px 10px 10px;
 }
 
-#memb-head{
-
-}
-
 .memb-list li{
     color: rgb(120, 120, 120);
     font-family: "poppins";
@@ -89,6 +86,7 @@
     display: flex;
     position: relative;
 }
+
 .memb-status{
     border-radius: 50%;
     width: 10px;
@@ -97,4 +95,16 @@
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+#new-member{
+    background-color: #04AA6D;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    margin-top: 20px;
+    font-family: Poppins;
+    cursor: pointer;
 }
