@@ -62,6 +62,20 @@ var callAjax = function (circle_id, topic, dest) {
     })
 }
 
+var callMemberList = function (circle_id, threadId, dest){
+    $.ajax({
+        url: 'back/member_list.php',
+        method: 'POST',
+        data: {
+            circle_id : circle_id,
+            threadId : threadId
+        },
+        success: function (data) {
+            $(dest).html(data);
+        }
+    })
+}
+
 var callThreadsAjax = function (circle_id, threadId, dest) {
     $.ajax({
         url: 'back/threads_content_fetch.php',
@@ -87,6 +101,10 @@ var callThreadsAjax = function (circle_id, threadId, dest) {
                 'position': 'fixed',
                 'bottom': 0,
                 'width': '60%'
+            })
+
+            $('.unread-count').css({
+                'display' : 'none'
             })
 
 
@@ -245,6 +263,7 @@ $(document).on('click', '.threadopt', function () {
     threadId = $(this).attr("id");
     if (circleId != "") {
         callThreadsAjax(circleId, threadId, '.posts');
+        callMemberList(circleId, threadId, '.member-bar');
     }
 });
 
@@ -281,3 +300,27 @@ $(document).on('click', '#closeblock', function () {
         "display" : "none"
     })
 })
+
+$(document).on({
+    mouseenter: function () {
+        var backBlock = $(this).find('.inside');
+        $(backBlock).css({
+            "background-color" : "#97c7a5"
+        });
+        var msgDiv = $(this).find('.msg-options');
+        $(msgDiv).css({
+            "display":"flex"
+        });
+    },
+    mouseleave: function () {
+        var backBlock = $(this).find('.inside');
+        $(backBlock).css({
+            "background-color" : "#e4f2e8"
+        });
+        var msgDiv = $(this).find('.msg-options');
+        $(msgDiv).css({
+            "display":"none"
+        });
+    }
+}, '.ind-post');
+

@@ -23,7 +23,10 @@ if ($_SESSION['page'] == "home") {
 }
 
 $res2 = mysqli_query($conn, $sql);
-$json = include('../post_templet.php');
-echo json_encode($json);
+if (mysqli_num_rows($res2) > 0) {
+   $json = include '../post_templet.php';
+   echo $json;
+}
+
    
 ?>

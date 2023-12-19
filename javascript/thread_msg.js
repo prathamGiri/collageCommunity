@@ -48,12 +48,10 @@ $(document).ready(function (){
             data: formData,
             dataType: "json",
             success: function (data) {
-                
                 var htmlContent = data.html;
                 var postId = data.post_id;
+                console.log(data);
                 $('.wrapper').append(htmlContent);
-                sendPostIdToWebSocket(postId);
-                
 
                 $('#freeform').val("");
                 $('#image_file').val("");
@@ -130,6 +128,7 @@ $(document).ready(function (){
                 //     'display': 'flex',
                 //     'margin-left' : '10px'
                 // })
+                sendPostIdToWebSocket(postId);
 
             },
             cache: false,

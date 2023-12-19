@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2023 at 08:12 PM
+-- Generation Time: Dec 19, 2023 at 02:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,8 @@ INSERT INTO `circle_following` (`userId`, `circleId`) VALUES
 (19, 13),
 (19, 18),
 (19, 20),
-(23, 10);
+(23, 10),
+(24, 10);
 
 -- --------------------------------------------------------
 
@@ -218,7 +219,49 @@ INSERT INTO `images` (`imageId`, `imageName`, `time`, `date`, `user_id`) VALUES
 (75, 'hallabol.png', '10:17:27.000000', '2023-12-11', 19),
 (76, 'thinkindia.png', '10:17:41.000000', '2023-12-11', 19),
 (77, 'tesla.png', '10:17:59.000000', '2023-12-11', 19),
-(78, 'ivlabs.png', '12:38:03.000000', '2023-12-11', 19);
+(78, 'ivlabs.png', '12:38:03.000000', '2023-12-11', 19),
+(79, 'pexels-cesar-perez-733745.jpg', '11:10:25.000000', '2023-12-16', 19),
+(80, '1662798865989.jpeg', '11:11:37.000000', '2023-12-16', 19),
+(81, 'shell.png', '19:09:34.000000', '2023-12-18', 19),
+(82, 'shell.png', '19:09:37.000000', '2023-12-18', 19),
+(83, 'shell.png', '19:09:37.000000', '2023-12-18', 19),
+(84, 'shell.png', '19:09:37.000000', '2023-12-18', 19),
+(85, 'shell.png', '19:09:38.000000', '2023-12-18', 19),
+(86, 'shell.png', '19:09:38.000000', '2023-12-18', 19),
+(87, 'shell.png', '19:09:38.000000', '2023-12-18', 19),
+(88, 'shell.png', '19:09:38.000000', '2023-12-18', 19),
+(89, 'shell.png', '19:09:38.000000', '2023-12-18', 19),
+(90, 'shell.png', '19:09:38.000000', '2023-12-18', 19),
+(91, 'shell.png', '19:09:40.000000', '2023-12-18', 19),
+(92, 'shell.png', '19:09:40.000000', '2023-12-18', 19),
+(93, 'shell.png', '19:09:40.000000', '2023-12-18', 19),
+(94, 'shell.png', '19:09:44.000000', '2023-12-18', 19),
+(95, 'shell.png', '19:09:44.000000', '2023-12-18', 19),
+(96, 'shell.png', '19:09:45.000000', '2023-12-18', 19),
+(97, 'shell.png', '19:09:45.000000', '2023-12-18', 19),
+(98, 'shell.png', '19:09:45.000000', '2023-12-18', 19),
+(99, 'shell.png', '19:09:45.000000', '2023-12-18', 19),
+(100, 'shell.png', '19:09:45.000000', '2023-12-18', 19),
+(101, 'shell.png', '19:09:45.000000', '2023-12-18', 19),
+(102, 'shell.png', '19:09:45.000000', '2023-12-18', 19),
+(103, 'shell.png', '19:09:46.000000', '2023-12-18', 19),
+(104, 'shell.png', '19:09:46.000000', '2023-12-18', 19),
+(105, 'shell.png', '19:09:46.000000', '2023-12-18', 19),
+(106, 'shell.png', '19:09:46.000000', '2023-12-18', 19),
+(107, 'shell.png', '19:09:46.000000', '2023-12-18', 19),
+(108, 'shell.png', '19:09:46.000000', '2023-12-18', 19),
+(109, 'shell.png', '19:09:47.000000', '2023-12-18', 19),
+(110, 'shell.png', '19:09:47.000000', '2023-12-18', 19),
+(111, 'shell.png', '19:09:47.000000', '2023-12-18', 19),
+(112, 'shell.png', '19:09:47.000000', '2023-12-18', 19),
+(113, 'shell.png', '19:09:47.000000', '2023-12-18', 19),
+(114, 'shell.png', '19:09:48.000000', '2023-12-18', 19),
+(115, 'pexels-cesar-perez-733745.jpg', '19:09:55.000000', '2023-12-18', 19),
+(116, 'pexels-cesar-perez-733745.jpg', '19:09:56.000000', '2023-12-18', 19),
+(117, 'Logo_Eloquence - Eloquence- The Soft Skills Club of IIMA.png', '19:11:44.000000', '2023-12-18', 19),
+(118, '0852c825-36c.jpg', '19:13:52.000000', '2023-12-18', 19),
+(119, 'aerologo.png', '19:16:14.000000', '2023-12-18', 19),
+(120, '1662798865989.jpeg', '19:17:33.000000', '2023-12-18', 19);
 
 -- --------------------------------------------------------
 
@@ -289,7 +332,9 @@ INSERT INTO `image_rel` (`post_id`, `image_Id`) VALUES
 (81, 55),
 (82, 56),
 (83, 57),
-(84, 58);
+(84, 58),
+(85, 79),
+(86, 80);
 
 -- --------------------------------------------------------
 
@@ -323,6 +368,278 @@ INSERT INTO `merch` (`merchId`, `merchName`, `merchPrise`, `circleId`, `merchImg
 (10, 'Spider-Man:2029', 599, 2, '1694178388_9063738.jpg', 0),
 (11, 'Society', 599, 2, '1694178186_3507628.jpg', 0),
 (12, 'Miles Moralys:Logo', 599, 2, '1694178110_9192329.jpg', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `msg_track`
+--
+
+CREATE TABLE `msg_track` (
+  `post_id` int(11) NOT NULL,
+  `threadId` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `is_read` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `msg_track`
+--
+
+INSERT INTO `msg_track` (`post_id`, `threadId`, `user_id`, `is_read`) VALUES
+(31, 17, 19, 1),
+(32, 17, 19, 1),
+(32, 17, 23, 0),
+(32, 17, 24, 1),
+(33, 17, 19, 1),
+(33, 17, 23, 0),
+(33, 17, 24, 1),
+(34, 17, 19, 1),
+(34, 17, 23, 0),
+(34, 17, 24, 1),
+(35, 17, 19, 1),
+(35, 17, 23, 0),
+(35, 17, 24, 1),
+(36, 17, 19, 1),
+(36, 17, 23, 0),
+(36, 17, 24, 1),
+(37, 17, 19, 1),
+(37, 17, 23, 0),
+(37, 17, 24, 1),
+(38, 17, 19, 1),
+(38, 17, 23, 0),
+(38, 17, 24, 1),
+(39, 17, 19, 1),
+(39, 17, 23, 0),
+(39, 17, 24, 1),
+(40, 17, 19, 1),
+(40, 17, 23, 0),
+(40, 17, 24, 1),
+(41, 17, 19, 1),
+(41, 17, 23, 0),
+(41, 17, 24, 1),
+(42, 17, 19, 1),
+(42, 17, 23, 0),
+(42, 17, 24, 1),
+(43, 17, 19, 1),
+(43, 17, 23, 0),
+(43, 17, 24, 1),
+(44, 17, 19, 1),
+(44, 17, 23, 0),
+(44, 17, 24, 1),
+(45, 17, 19, 1),
+(45, 17, 23, 0),
+(45, 17, 24, 1),
+(46, 17, 19, 1),
+(46, 17, 23, 0),
+(46, 17, 24, 1),
+(47, 17, 19, 1),
+(47, 17, 23, 0),
+(47, 17, 24, 1),
+(48, 17, 19, 1),
+(48, 17, 23, 0),
+(48, 17, 24, 1),
+(49, 17, 19, 1),
+(49, 17, 23, 0),
+(49, 17, 24, 1),
+(50, 17, 19, 1),
+(50, 17, 23, 0),
+(50, 17, 24, 1),
+(51, 17, 19, 1),
+(51, 17, 23, 0),
+(51, 17, 24, 1),
+(52, 17, 19, 1),
+(52, 17, 23, 0),
+(52, 17, 24, 1),
+(53, 17, 19, 1),
+(53, 17, 23, 0),
+(53, 17, 24, 1),
+(54, 17, 19, 1),
+(54, 17, 23, 0),
+(54, 17, 24, 1),
+(55, 17, 19, 1),
+(55, 17, 23, 0),
+(55, 17, 24, 1),
+(56, 17, 19, 1),
+(56, 17, 23, 0),
+(56, 17, 24, 1),
+(57, 17, 19, 1),
+(57, 17, 23, 0),
+(57, 17, 24, 1),
+(58, 17, 19, 1),
+(58, 17, 23, 0),
+(58, 17, 24, 1),
+(59, 17, 19, 1),
+(59, 17, 23, 0),
+(59, 17, 24, 1),
+(60, 17, 19, 1),
+(60, 17, 23, 0),
+(60, 17, 24, 1),
+(61, 17, 19, 1),
+(61, 17, 23, 0),
+(61, 17, 24, 1),
+(62, 17, 19, 1),
+(62, 17, 23, 0),
+(62, 17, 24, 1),
+(63, 17, 19, 1),
+(63, 17, 23, 0),
+(63, 17, 24, 1),
+(64, 17, 19, 1),
+(64, 17, 23, 0),
+(64, 17, 24, 1),
+(65, 17, 19, 1),
+(65, 17, 23, 0),
+(65, 17, 24, 1),
+(66, 17, 19, 1),
+(66, 17, 23, 0),
+(66, 17, 24, 1),
+(67, 17, 19, 1),
+(67, 17, 23, 0),
+(67, 17, 24, 1),
+(68, 17, 19, 1),
+(68, 17, 23, 0),
+(68, 17, 24, 1),
+(69, 17, 19, 1),
+(69, 17, 23, 0),
+(69, 17, 24, 1),
+(70, 17, 19, 1),
+(70, 17, 23, 0),
+(70, 17, 24, 1),
+(71, 17, 19, 1),
+(71, 17, 23, 0),
+(71, 17, 24, 1),
+(72, 17, 19, 1),
+(72, 17, 23, 0),
+(72, 17, 24, 1),
+(73, 17, 19, 1),
+(73, 17, 23, 0),
+(73, 17, 24, 1),
+(74, 17, 19, 1),
+(74, 17, 23, 0),
+(74, 17, 24, 1),
+(75, 17, 19, 1),
+(75, 17, 23, 0),
+(75, 17, 24, 1),
+(76, 17, 19, 1),
+(76, 17, 23, 0),
+(76, 17, 24, 1),
+(76, 17, 19, 1),
+(76, 17, 23, 0),
+(76, 17, 24, 1),
+(76, 17, 19, 1),
+(76, 17, 23, 0),
+(76, 17, 24, 1),
+(79, 17, 19, 1),
+(79, 17, 23, 0),
+(79, 17, 24, 1),
+(79, 17, 19, 1),
+(79, 17, 23, 0),
+(79, 17, 24, 1),
+(79, 17, 19, 1),
+(79, 17, 23, 0),
+(79, 17, 24, 1),
+(79, 17, 19, 1),
+(79, 17, 23, 0),
+(79, 17, 24, 1),
+(79, 17, 19, 1),
+(79, 17, 23, 0),
+(79, 17, 24, 1),
+(79, 17, 19, 1),
+(79, 17, 23, 0),
+(79, 17, 24, 1),
+(85, 17, 19, 1),
+(85, 17, 23, 0),
+(85, 17, 24, 1),
+(85, 17, 19, 1),
+(85, 17, 23, 0),
+(85, 17, 24, 1),
+(85, 17, 19, 1),
+(85, 17, 23, 0),
+(85, 17, 24, 1),
+(88, 17, 19, 1),
+(88, 17, 23, 0),
+(88, 17, 24, 1),
+(88, 17, 19, 1),
+(88, 17, 23, 0),
+(88, 17, 24, 1),
+(90, 17, 19, 1),
+(90, 17, 23, 0),
+(90, 17, 24, 1),
+(90, 17, 19, 1),
+(90, 17, 23, 0),
+(90, 17, 24, 1),
+(90, 17, 19, 1),
+(90, 17, 23, 0),
+(90, 17, 24, 1),
+(90, 17, 19, 1),
+(90, 17, 23, 0),
+(90, 17, 24, 1),
+(90, 17, 19, 1),
+(90, 17, 23, 0),
+(90, 17, 24, 1),
+(90, 17, 19, 1),
+(90, 17, 23, 0),
+(90, 17, 24, 1),
+(90, 17, 19, 1),
+(90, 17, 23, 0),
+(90, 17, 24, 1),
+(97, 17, 19, 1),
+(97, 17, 23, 0),
+(97, 17, 24, 1),
+(97, 17, 19, 1),
+(97, 17, 23, 0),
+(97, 17, 24, 1),
+(97, 17, 19, 1),
+(97, 17, 23, 0),
+(97, 17, 24, 1),
+(97, 17, 19, 1),
+(97, 17, 23, 0),
+(97, 17, 24, 1),
+(97, 17, 19, 1),
+(97, 17, 23, 0),
+(97, 17, 24, 1),
+(97, 17, 19, 1),
+(97, 17, 23, 0),
+(97, 17, 24, 1),
+(103, 17, 19, 1),
+(103, 17, 23, 0),
+(103, 17, 24, 1),
+(103, 17, 19, 1),
+(103, 17, 23, 0),
+(103, 17, 24, 1),
+(103, 17, 19, 1),
+(103, 17, 23, 0),
+(103, 17, 24, 1),
+(103, 17, 19, 1),
+(103, 17, 23, 0),
+(103, 17, 24, 1),
+(103, 17, 19, 1),
+(103, 17, 23, 0),
+(103, 17, 24, 1),
+(108, 17, 19, 1),
+(108, 17, 23, 0),
+(108, 17, 24, 1),
+(109, 17, 19, 1),
+(109, 17, 23, 0),
+(109, 17, 24, 1),
+(110, 17, 19, 1),
+(110, 17, 23, 0),
+(110, 17, 24, 1),
+(111, 17, 19, 1),
+(111, 17, 23, 0),
+(111, 17, 24, 1),
+(112, 17, 19, 1),
+(112, 17, 23, 0),
+(112, 17, 24, 1),
+(113, 17, 19, 1),
+(113, 17, 23, 0),
+(113, 17, 24, 1),
+(114, 17, 19, 1),
+(114, 17, 23, 0),
+(114, 17, 24, 1),
+(115, 17, 19, 1),
+(115, 17, 23, 0),
+(115, 17, 24, 1);
 
 -- --------------------------------------------------------
 
@@ -413,7 +730,18 @@ INSERT INTO `posts` (`post_id`, `time`, `date`, `user_id`, `circleId`, `title`, 
 (81, '16:27:35.000000', '2023-10-18', '19', 1, 'tentative title', 'qwqwqw', 0),
 (82, '16:32:44.000000', '2023-10-18', '19', 1, 'tentative title', 'waetrutiyou', 0),
 (83, '17:39:02.000000', '2023-10-18', '19', 1, 'tentative title', 'Deep Swaroop is a land', 0),
-(84, '20:36:39.000000', '2023-10-19', '19', 1, 'tentative title', 'new acchievement', 2);
+(84, '20:36:39.000000', '2023-10-19', '19', 1, 'tentative title', 'new acchievement', 2),
+(85, '11:10:25.000000', '2023-12-16', '19', 10, 'tentative title', 'hello ststst', 0),
+(86, '11:11:37.000000', '2023-12-16', '19', 10, 'tentative title', 'blabla bla', 0),
+(87, '12:18:09.000000', '2023-12-17', '19', 10, 'tentative title', 'ogyudrzsxfghnjm', 0),
+(88, '12:24:01.000000', '2023-12-17', '19', 10, 'tentative title', 'rtyuio', 0),
+(89, '12:27:15.000000', '2023-12-17', '19', 10, 'tentative title', 'ertyu', 0),
+(90, '12:30:18.000000', '2023-12-17', '19', 10, 'tentative title', 'blblblbl', 0),
+(91, '12:31:06.000000', '2023-12-17', '19', 10, 'tentative title', 'wredtrgyuhb njk', 0),
+(92, '12:31:19.000000', '2023-12-17', '19', 10, 'tentative title', 'qwertyu', 0),
+(93, '12:34:34.000000', '2023-12-17', '19', 10, 'tentative title', 'nknknkn', 0),
+(94, '12:35:08.000000', '2023-12-17', '19', 10, 'tentative title', 'zhihahahah', 0),
+(95, '12:47:48.000000', '2023-12-17', '19', 10, 'tentative title', 'qwert', 0);
 
 -- --------------------------------------------------------
 
@@ -503,26 +831,27 @@ CREATE TABLE `staticcustomerinfo` (
   `course` varchar(256) NOT NULL,
   `graduating_year` int(4) NOT NULL,
   `gender` varchar(11) NOT NULL,
-  `age` int(11) NOT NULL
+  `age` int(11) NOT NULL,
+  `last_activity_timestamp` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `staticcustomerinfo`
 --
 
-INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `password`, `profile_img`, `banner`, `about`, `collegeId`, `course`, `graduating_year`, `gender`, `age`) VALUES
-(9, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbS5naXJpMDJAZ21haWwuY29t', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', '516664.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 2024, 'Male', 0),
-(10, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbUBnbWFpbC5jb20=', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', '516664.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 25, '', 2024, 'Male', 0),
-(11, 'ZGVlcCBzd3Jvb3A=', 0, 'ZGVlcEBnbWFpbC5jb20=', '4c50249a3cfaa7b639f8693d0cc15021', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0),
-(12, 'QXl1c2ggVGFubmE=', 0, 'YXl1c2hAZ21haWwuY29t', '872d791d2175eaa4aada4f876933df73', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0),
-(14, 'VGVqYXMgaGFubQ==', 0, 'dGVqYXNAZ21haWwuY29t', 'dc9ac98f0f841f379c0c3c1ecc85e56a', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0),
-(16, 'YWRpdHlhIGdhbHBoYWRl', 0, 'YWRpdHlhQGdtYWlsLmNvbQ==', 'e51b2620f7b65bed95919b66168f7573', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0),
-(18, 'dXRrYXJzaCBnYWlrd2Fk', 0, 'dXRrYXJzaEBnbWFpbC5jb20=', '53a2b5b7021853cdc6cbd684e3baf0e7', 'User_icon.png', '', 'i do comady', 27, 'ECE', 2024, 'male', 21),
-(19, 'RGhydXYgR3VwdGE=', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21),
-(20, 'QXl1c2ggVGFubmE=', 0, 'dGFubmFAZ21haWwuY29t', '385ad81edd3cb6023360cfef4b46a523', 'User_icon.png', '', 'qaesrdtfygu', 25, 'Computer Science', 2024, 'male', 21),
-(21, 'QXRoYXJ2IEJhbGtpc2g=', 0, 'YXRoYXJ2YUBnbWFpbC5jb20=', '0d02ba1bdc3bde610c8fcd27ae752467', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i am a virgin', 25, 'Chemical Engineering', 2027, 'don&#039;t ', 21),
-(22, 'cHJhdGhhbSBnaXJp', 0, 'cHJhdGhhbTAyQGdtYWlsLmNvbQ==', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'hehe', 27, 'Electrical Engineering', 2025, 'male', 21),
-(23, 'cHJhdGhhbSBnaXJ1', 0, 'cG9pdXl0ckBnbWFpbC5jb20=', '494101ceff0dd419c38522699e5cf724', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'oiuf', 25, 'Electrical Engineering', 2025, 'male', 21);
+INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `password`, `profile_img`, `banner`, `about`, `collegeId`, `course`, `graduating_year`, `gender`, `age`, `last_activity_timestamp`) VALUES
+(9, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbS5naXJpMDJAZ21haWwuY29t', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', '516664.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 2024, 'Male', 0, '0000-00-00 00:00:00.000000'),
+(10, 'UHJhdGhhbSBHaXJp', 0, 'cHJhdGhhbUBnbWFpbC5jb20=', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', '516664.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 25, '', 2024, 'Male', 0, '0000-00-00 00:00:00.000000'),
+(11, 'ZGVlcCBzd3Jvb3A=', 0, 'ZGVlcEBnbWFpbC5jb20=', '4c50249a3cfaa7b639f8693d0cc15021', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
+(12, 'QXl1c2ggVGFubmE=', 0, 'YXl1c2hAZ21haWwuY29t', '872d791d2175eaa4aada4f876933df73', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
+(14, 'VGVqYXMgaGFubQ==', 0, 'dGVqYXNAZ21haWwuY29t', 'dc9ac98f0f841f379c0c3c1ecc85e56a', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
+(16, 'YWRpdHlhIGdhbHBoYWRl', 0, 'YWRpdHlhQGdtYWlsLmNvbQ==', 'e51b2620f7b65bed95919b66168f7573', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
+(18, 'dXRrYXJzaCBnYWlrd2Fk', 0, 'dXRrYXJzaEBnbWFpbC5jb20=', '53a2b5b7021853cdc6cbd684e3baf0e7', 'User_icon.png', '', 'i do comady', 27, 'ECE', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
+(19, 'RGhydXYgR3VwdGE=', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21, '2023-12-19 18:40:47.000000'),
+(20, 'QXl1c2ggVGFubmE=', 0, 'dGFubmFAZ21haWwuY29t', '385ad81edd3cb6023360cfef4b46a523', 'User_icon.png', '', 'qaesrdtfygu', 25, 'Computer Science', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
+(21, 'QXRoYXJ2IEJhbGtpc2g=', 0, 'YXRoYXJ2YUBnbWFpbC5jb20=', '0d02ba1bdc3bde610c8fcd27ae752467', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i am a virgin', 25, 'Chemical Engineering', 2027, 'don&#039;t ', 21, '0000-00-00 00:00:00.000000'),
+(22, 'cHJhdGhhbSBnaXJp', 0, 'cHJhdGhhbTAyQGdtYWlsLmNvbQ==', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'hehe', 27, 'Electrical Engineering', 2025, 'male', 21, '0000-00-00 00:00:00.000000'),
+(24, 'cHJhdGhhbSBnaXJ1', 0, 'Z2lydUBnbWFpbC5jb20=', '2c4584fd665342be149c7fdc8a3f0b6f', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '2023-12-19 18:36:25.000000');
 
 -- --------------------------------------------------------
 
@@ -599,7 +928,47 @@ INSERT INTO `threads_img_rel` (`post_id`, `image_Id`) VALUES
 (22, 75),
 (23, 76),
 (24, 77),
-(25, 78);
+(25, 78),
+(75, 81),
+(76, 82),
+(76, 82),
+(76, 82),
+(79, 85),
+(79, 85),
+(79, 85),
+(79, 85),
+(79, 85),
+(79, 85),
+(85, 91),
+(85, 91),
+(85, 91),
+(88, 94),
+(88, 94),
+(90, 96),
+(90, 96),
+(90, 96),
+(90, 96),
+(90, 96),
+(90, 96),
+(90, 96),
+(97, 103),
+(97, 103),
+(97, 103),
+(97, 103),
+(97, 103),
+(97, 103),
+(103, 109),
+(103, 109),
+(103, 109),
+(103, 109),
+(103, 109),
+(108, 114),
+(109, 115),
+(110, 116),
+(111, 117),
+(112, 118),
+(114, 119),
+(115, 120);
 
 -- --------------------------------------------------------
 
@@ -631,7 +1000,8 @@ INSERT INTO `threads_membership` (`userId`, `threadId`) VALUES
 (19, 16),
 (19, 17),
 (19, 18),
-(23, 17);
+(23, 17),
+(24, 17);
 
 -- --------------------------------------------------------
 
@@ -684,7 +1054,92 @@ INSERT INTO `threads_posts` (`post_id`, `threadId`, `date`, `time`, `user_id`, `
 (27, 17, '2023-12-12', '18:26:32', 19, 'tentative title', 'nothing much whats on your mind', 26),
 (28, 17, '2023-12-12', '18:27:13', 23, 'tentative title', 'want to play chess', -1),
 (29, 17, '2023-12-12', '18:27:40', 19, 'tentative title', 'yeah why not send me an invite', 28),
-(30, 17, '2023-12-12', '18:44:12', 23, 'tentative title', 'sending it right away', 29);
+(30, 17, '2023-12-12', '18:44:12', 23, 'tentative title', 'sending it right away', 29),
+(31, 17, '2023-12-15', '15:16:03', 19, 'tentative title', 'are you online', -1),
+(32, 17, '2023-12-15', '21:01:32', 19, 'tentative title', 'prprprpr', -1),
+(33, 17, '2023-12-16', '11:11:53', 19, 'tentative title', 'hello heool', -1),
+(34, 17, '2023-12-17', '10:59:29', 19, 'tentative title', 'bloablbalblb', -1),
+(35, 17, '2023-12-17', '11:01:46', 19, 'tentative title', 'hohohohoh', -1),
+(36, 17, '2023-12-17', '11:02:09', 19, 'tentative title', 'shirrorororororo', -1),
+(37, 17, '2023-12-17', '11:05:26', 19, 'tentative title', 'zihahahaha', -1),
+(38, 17, '2023-12-17', '11:07:36', 19, 'tentative title', 'peka peka pekaroror', -1),
+(39, 17, '2023-12-17', '11:15:11', 19, 'tentative title', 'tapoo tapoo', -1),
+(40, 17, '2023-12-17', '12:10:58', 19, 'tentative title', '[poiuytcgvhbjknbb', -1),
+(41, 17, '2023-12-17', '12:17:42', 19, 'tentative title', 'shit that s the wrong number', -1),
+(42, 17, '2023-12-17', '12:36:27', 19, 'tentative title', 'hello i am under the water', -1),
+(43, 17, '2023-12-17', '12:38:03', 19, 'tentative title', 'peri peri chicken', -1),
+(44, 17, '2023-12-17', '12:38:44', 19, 'tentative title', 'buri buri', -1),
+(45, 17, '2023-12-17', '12:39:46', 19, 'tentative title', 'eruaruwe', -1),
+(46, 17, '2023-12-17', '12:41:16', 19, 'tentative title', 'qwretrtyjkj,mh', -1),
+(47, 17, '2023-12-17', '12:46:25', 19, 'tentative title', 'ertyhgc', -1),
+(48, 17, '2023-12-17', '12:54:16', 19, 'tentative title', 'nynyny', -1),
+(49, 17, '2023-12-17', '12:55:07', 19, 'tentative title', 'popolili', -1),
+(50, 17, '2023-12-17', '12:55:56', 19, 'tentative title', 'bilibili', -1),
+(51, 17, '2023-12-17', '12:58:43', 19, 'tentative title', 'poopoopoopo', -1),
+(52, 17, '2023-12-17', '13:17:42', 19, 'tentative title', 'rdrdrdrdrdx', -1),
+(53, 17, '2023-12-17', '13:19:46', 19, 'tentative title', 'uwuwuwuw', -1),
+(54, 17, '2023-12-17', '13:20:34', 19, 'tentative title', 'yuyuyuyuy', -1),
+(55, 17, '2023-12-17', '13:30:34', 19, 'tentative title', 'vivivivivi', -1),
+(56, 17, '2023-12-17', '15:43:13', 19, 'tentative title', 'bilibilioiugfv', -1),
+(57, 17, '2023-12-17', '15:43:27', 19, 'tentative title', 'pfiojfobkfnlf', -1),
+(58, 17, '2023-12-17', '15:48:13', 19, 'tentative title', 'jijijiji', -1),
+(59, 17, '2023-12-17', '15:49:20', 19, 'tentative title', 'sisisisis', -1),
+(60, 17, '2023-12-17', '15:50:22', 19, 'tentative title', 'udududuud', -1),
+(61, 17, '2023-12-17', '16:11:44', 19, 'tentative title', 'wewewewewewe', -1),
+(62, 17, '2023-12-17', '16:12:52', 19, 'tentative title', 'erererererer', -1),
+(63, 17, '2023-12-17', '19:40:23', 19, 'tentative title', 'post id send kiya', -1),
+(64, 17, '2023-12-17', '19:45:25', 19, 'tentative title', 'yo dude whats up', -1),
+(65, 17, '2023-12-17', '19:48:33', 24, 'tentative title', 'nothing just chilling', -1),
+(66, 17, '2023-12-17', '19:53:44', 19, 'tentative title', 'want to play chess', -1),
+(67, 17, '2023-12-17', '19:55:30', 19, 'tentative title', 'yeah why not', -1),
+(68, 17, '2023-12-17', '20:09:38', 19, 'tentative title', 'send me the llink', -1),
+(69, 17, '2023-12-17', '21:57:46', 24, 'tentative title', 'yo dude', -1),
+(70, 17, '2023-12-17', '21:59:37', 19, 'tentative title', 'yere yere', -1),
+(71, 17, '2023-12-17', '22:01:26', 24, 'tentative title', 'are are', -1),
+(72, 17, '2023-12-17', '22:03:53', 24, 'tentative title', 'buk gandu', -1),
+(73, 17, '2023-12-17', '22:07:49', 19, 'tentative title', 'chal na', -1),
+(74, 17, '2023-12-17', '22:08:27', 24, 'tentative title', 'tri to', -1),
+(75, 17, '2023-12-18', '19:09:34', 19, 'tentative title', 'perespero', -1),
+(76, 17, '2023-12-18', '19:09:37', 19, 'tentative title', 'perespero', -1),
+(77, 17, '2023-12-18', '19:09:37', 19, 'tentative title', 'perespero', -1),
+(78, 17, '2023-12-18', '19:09:37', 19, 'tentative title', 'perespero', -1),
+(79, 17, '2023-12-18', '19:09:38', 19, 'tentative title', 'perespero', -1),
+(80, 17, '2023-12-18', '19:09:38', 19, 'tentative title', 'perespero', -1),
+(81, 17, '2023-12-18', '19:09:38', 19, 'tentative title', 'perespero', -1),
+(82, 17, '2023-12-18', '19:09:38', 19, 'tentative title', 'perespero', -1),
+(83, 17, '2023-12-18', '19:09:38', 19, 'tentative title', 'perespero', -1),
+(84, 17, '2023-12-18', '19:09:38', 19, 'tentative title', 'perespero', -1),
+(85, 17, '2023-12-18', '19:09:40', 19, 'tentative title', 'perespero', -1),
+(86, 17, '2023-12-18', '19:09:40', 19, 'tentative title', 'perespero', -1),
+(87, 17, '2023-12-18', '19:09:40', 19, 'tentative title', 'perespero', -1),
+(88, 17, '2023-12-18', '19:09:44', 19, 'tentative title', 'perespero', -1),
+(89, 17, '2023-12-18', '19:09:44', 19, 'tentative title', 'perespero', -1),
+(90, 17, '2023-12-18', '19:09:45', 19, 'tentative title', 'perespero', -1),
+(91, 17, '2023-12-18', '19:09:45', 19, 'tentative title', 'perespero', -1),
+(92, 17, '2023-12-18', '19:09:45', 19, 'tentative title', 'perespero', -1),
+(93, 17, '2023-12-18', '19:09:45', 19, 'tentative title', 'perespero', -1),
+(94, 17, '2023-12-18', '19:09:45', 19, 'tentative title', 'perespero', -1),
+(95, 17, '2023-12-18', '19:09:45', 19, 'tentative title', 'perespero', -1),
+(96, 17, '2023-12-18', '19:09:45', 19, 'tentative title', 'perespero', -1),
+(97, 17, '2023-12-18', '19:09:46', 19, 'tentative title', 'perespero', -1),
+(98, 17, '2023-12-18', '19:09:46', 19, 'tentative title', 'perespero', -1),
+(99, 17, '2023-12-18', '19:09:46', 19, 'tentative title', 'perespero', -1),
+(100, 17, '2023-12-18', '19:09:46', 19, 'tentative title', 'perespero', -1),
+(101, 17, '2023-12-18', '19:09:46', 19, 'tentative title', 'perespero', -1),
+(102, 17, '2023-12-18', '19:09:46', 19, 'tentative title', 'perespero', -1),
+(103, 17, '2023-12-18', '19:09:47', 19, 'tentative title', 'perespero', -1),
+(104, 17, '2023-12-18', '19:09:47', 19, 'tentative title', 'perespero', -1),
+(105, 17, '2023-12-18', '19:09:47', 19, 'tentative title', 'perespero', -1),
+(106, 17, '2023-12-18', '19:09:47', 19, 'tentative title', 'perespero', -1),
+(107, 17, '2023-12-18', '19:09:47', 19, 'tentative title', 'perespero', -1),
+(108, 17, '2023-12-18', '19:09:48', 19, 'tentative title', 'perespero', -1),
+(109, 17, '2023-12-18', '19:09:55', 19, 'tentative title', 'perespero', -1),
+(110, 17, '2023-12-18', '19:09:56', 19, 'tentative title', 'perespero', -1),
+(111, 17, '2023-12-18', '19:11:44', 19, 'tentative title', 'roronoa zoro', -1),
+(112, 17, '2023-12-18', '19:13:52', 19, 'tentative title', 'nami', -1),
+(113, 17, '2023-12-18', '19:16:01', 19, 'tentative title', 'tyftf', -1),
+(114, 17, '2023-12-18', '19:16:14', 19, 'tentative title', 'ytfyuvgj', -1),
+(115, 17, '2023-12-18', '19:17:33', 19, 'tentative title', 'shirorororo', -1);
 
 -- --------------------------------------------------------
 
@@ -771,7 +1226,8 @@ INSERT INTO `variablecustomerinfo` (`user_id`, `community_id`, `post_id`) VALUES
 (20, 0, 0),
 (21, 0, 0),
 (22, 0, 0),
-(23, 0, 0);
+(23, 0, 0),
+(24, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -845,7 +1301,7 @@ ALTER TABLE `colleges`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `merch`
@@ -857,7 +1313,7 @@ ALTER TABLE `merch`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `preferences`
@@ -875,7 +1331,7 @@ ALTER TABLE `staticcircleinfo`
 -- AUTO_INCREMENT for table `staticcustomerinfo`
 --
 ALTER TABLE `staticcustomerinfo`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `threads`
@@ -887,7 +1343,7 @@ ALTER TABLE `threads`
 -- AUTO_INCREMENT for table `threads_posts`
 --
 ALTER TABLE `threads_posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

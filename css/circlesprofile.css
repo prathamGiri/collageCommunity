@@ -40,12 +40,18 @@
 }
 
 .threads ul li{
-    display: block;
+    display: flex;
+    justify-content: space-between;
     font-family: "poppins";
     font-size: 1rem;
     cursor: pointer;
     color: rgb(120, 120, 120);
     margin: 1rem 0;
+}
+.unread-count{
+  background-color: red;
+  color: white;;
+  border-radius: 50%;
 }
 
 .threads ul li:hover{

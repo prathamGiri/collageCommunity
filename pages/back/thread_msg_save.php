@@ -1,6 +1,8 @@
 <?php
 include "database_connection.php";
+
     $user_id = $_COOKIE['user_id'];
+    mysqli_query($conn, "UPDATE `staticcustomerinfo` SET last_activity_timestamp = NOW() WHERE user_id = $user_id");
     $post = mysqli_real_escape_string($conn, test_input( $_POST['freeform']));
     $time = date("H:i:sa");
     $date = date("Y-m-d");
@@ -26,8 +28,14 @@ include "database_connection.php";
             if (mysqli_num_rows($check_res) > 0) {
                 while ($crow = mysqli_fetch_assoc($check_res)) {
                     $c_userId = $crow['userId'];
-                    mysqli_query($conn, "INSERT INTO msg_track (`user_id`, `threadId`, `post_id`)
+                    if ($user_id == $c_userId) {
+                        mysqli_query($conn, "INSERT INTO msg_track (`user_id`, `threadId`, `post_id`, `is_read`)
+                                VALUES ($c_userId, $threadId, $post_id, 1)");
+                    }else {
+                        mysqli_query($conn, "INSERT INTO msg_track (`user_id`, `threadId`, `post_id`)
                                 VALUES ($c_userId, $threadId, $post_id)");
+                    }
+                    
                 }
             }
         }
@@ -86,10 +94,11 @@ include "database_connection.php";
                         
                         $htmlContent = '<div class="ind-post" id="'. $post_id. '">
                                 <div class="inside">
+                                    <div class="info-img">
+                                        <img src="/collageCommunity/images/profile_img/'. $user_info_Row['profile_img']. '">
+                                    </div>
                                     <div class="info-wrapper">
-                                        <div class="info-img">
-                                            <img src="/collageCommunity/images/profile_img/'. $user_info_Row['profile_img']. '">
-                                        </div>
+                                        
                                         <div class="post-info">
                                             <div class="info-text">
                                                 <p>'. base64_decode($user_info_Row['user_name']). '</p>
@@ -116,14 +125,14 @@ include "database_connection.php";
                                                 </div>
                                             </div>';
                                         }
-                                        $htmlContent = $htmlContent.'</div>
-                                    </div>';
+                                        $htmlContent = $htmlContent.'</div>';
+                                    
                                     
                                     if (mysqli_num_rows($res5) > 0) {
                                         while ($row5 = mysqli_fetch_assoc($res5)) {
                                         
                                             $htmlContent = $htmlContent.'<div class="media-block">
-                                            <img src="/collageCommunity/images/post_images/'; echo $row5['imageName']; echo '">
+                                            <img src="/collageCommunity/images/post_images/'. $row5['imageName'].'">
                                         </div>';
                                     
                                     } }
@@ -131,6 +140,7 @@ include "database_connection.php";
                                     
                                     $htmlContent = $htmlContent.'<div class="text-block">
                                         <p>'.$postRow['content'].'</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>';

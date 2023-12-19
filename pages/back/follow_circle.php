@@ -15,7 +15,7 @@ if (isset($_POST['circle_id']) && isset($_POST['type']) && isset($_SESSION['user
         AND circleId = $circleId";
         mysqli_query($conn, $sql);
     }
-
+    mysqli_query($conn, "UPDATE `staticcustomerinfo` SET last_activity_timestamp = NOW() WHERE user_id = $user_id");
     
 }
 ?>

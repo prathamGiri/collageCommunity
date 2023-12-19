@@ -2,6 +2,7 @@
   require_once "connection.php";
   session_start();
   if (isset($_POST['page']) && isset($_POST['query'])) {
+    
     if ($_POST['page'] == 'circles') {
         $query = "SELECT * FROM staticcircleinfo WHERE circleName LIKE '{$_POST['query']}%' LIMIT 100";
         $result = mysqli_query($conn, $query);

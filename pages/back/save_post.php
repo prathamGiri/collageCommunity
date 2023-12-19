@@ -3,6 +3,7 @@ include "database_connection.php";
 
 
     $user_id = $_COOKIE['user_id'];
+    mysqli_query($conn, "UPDATE `staticcustomerinfo` SET last_activity_timestamp = NOW() WHERE user_id = $user_id");
     $post = mysqli_real_escape_string($conn, test_input( $_POST['freeform']));
     $time = date("H:i:sa");
     $date = date("Y-m-d");

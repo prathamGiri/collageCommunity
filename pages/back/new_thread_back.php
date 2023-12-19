@@ -7,6 +7,7 @@ include "functions.php";
     $thread_name = $_POST['thread_name'];
     $status = $_POST['status'];
     $user_id = $_SESSION['user_id'];
+    mysqli_query($conn, "UPDATE `staticcustomerinfo` SET last_activity_timestamp = NOW() WHERE user_id = $user_id");
 
     $insertsql = "INSERT INTO `threads` (`circleId`, `threadName`, `status`) 
                     VALUES ('$circleId', '$thread_name', '$status')";

@@ -25,6 +25,7 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
     $_SESSION['login_status'] = "logged_in";
     $_SESSION['user_id'] = $_COOKIE["user_id"];
     $user_id = $_SESSION['user_id'];
+    mysqli_query($conn, "UPDATE `staticcustomerinfo` SET last_activity_timestamp = NOW() WHERE user_id = $user_id");
 }
 if (isset($user_id) && isset($page)) {
     if ($page == "home" || $page == "circles") {

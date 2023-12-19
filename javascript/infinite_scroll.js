@@ -1,10 +1,14 @@
 
-$(window).scroll(function() {
-    if($(window).scrollTop() + $(window).height() >= $(document).height()-1) {
-        var last_id = $(".post-id:last").attr("id");
-        loadMoreData(last_id);
-    }
-});
+
+$(document).ready(function() {
+    $(window).scroll(function() {
+        if($(window).scrollTop() + $(window).height() + $('.header').height() >= $(document).height()) {
+            var last_id = $(".post-id:last").attr("id");
+            loadMoreData(last_id);
+        }
+    });
+})
+
 
 
 function loadMoreData(last_id){
@@ -25,7 +29,6 @@ function loadMoreData(last_id){
                 $('.ajax-load').hide();
                 $("#posts").append(data);
             }
-            
         })
         .fail(function(jqXHR, ajaxOptions, thrownError)
         {

@@ -3,6 +3,7 @@ include "connection.php";
 include "functions.php";
 
 if (isset($_POST['postId'])) {
+    
     $post_id = $_POST['postId'];
     $postSql = "SELECT * 
     FROM threads_posts

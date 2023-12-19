@@ -2,22 +2,39 @@
 require_once "database_connection.php";
 
 if (isset($_POST['circle_id']) && isset($_POST['topic']) && isset($_SESSION['user_id'])) {
+    
     $circleId = $_POST['circle_id'];
     $_SESSION['commid'] = $circleId;
     $topic = $_POST['topic'];
     $user_id = $_SESSION['user_id'];
-
+    mysqli_query($conn, "UPDATE `staticcustomerinfo` SET last_activity_timestamp = NOW() WHERE user_id = $user_id");
     if ($topic == 'threads') {
+        $unread_count;
         $t_query = "SELECT t.threadId, t.threadName
                     FROM threads_membership AS tm
                     JOIN threads AS t
                     ON tm.threadId = t.threadId
                     WHERE tm.userId = $user_id AND t.circleId = $circleId";
         $t_result = mysqli_query($conn, $t_query);
+        
+        
         if (mysqli_num_rows($t_result) > 0) {
             echo '<ul class="thread-list">';
             while ($row = mysqli_fetch_assoc($t_result)) {
-                echo '<li><div class="threadopt" id="'.$row['threadId'].'">'.$row['threadName'].'</div></li>';
+                $threadId = $row['threadId'];
+                $count_query = "SELECT COUNT(post_id) AS post_count
+                        FROM msg_track
+                        WHERE threadId = $threadId AND user_id = $user_id AND is_read = 0";
+                $count_res = mysqli_query($conn, $count_query);
+                if (mysqli_num_rows($count_res) > 0) {
+                    $count_row = mysqli_fetch_assoc($count_res);
+                    $unread_count = $count_row['post_count'];
+                }
+                echo '<li class="threadopt" id="'.$row['threadId'].'"><div>'.$row['threadName'].'</div>';
+                if ($unread_count > 0) {
+                    echo '<div class="unread-count">'.$unread_count.'</div>';
+                }
+                echo '</li>';
             }
             echo '</ul>';
         }
@@ -42,7 +59,7 @@ if (isset($_POST['circle_id']) && isset($_POST['topic']) && isset($_SESSION['use
                     ORDER BY date DESC, time DESC LIMIT 8";
         $res2 = mysqli_query($conn, $postSql);
                 if (mysqli_num_rows($res2) > 0) {
-                    echo '<div id="posts_wrapper">';
+                    echo '<div id="posts">';
                     include "../post_templet.php";
                     // while ($postRow = mysqli_fetch_assoc($res)) {
                     //     echo '<div class="ind_post">

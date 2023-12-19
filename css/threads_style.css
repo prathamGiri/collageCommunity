@@ -1,16 +1,12 @@
 
 .ind-post{
     background-color: white;
+    position: relative;
 }
 .inside{
     background-color: #e4f2e8;
-    padding : 5px;
-}
-
-
-.info-wrapper{
-    
     display: flex;
+    padding : 5px;
 }
 
 .info-img{
@@ -44,7 +40,7 @@
     width: 60%
 }
 .text-block{
-    padding: 5px
+    padding: 5px 0 5px 0;
 }
 .post-options{
     display: flex;
@@ -54,4 +50,51 @@
 .opt{
     display: flex;
     margin-left : 10px
+}
+.msg-options{
+    width: 15%;
+    font-size: 18px;
+    display: none;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+}
+
+
+.member-bar{
+    width: 17%;
+    height: 100%;
+    padding-top: 20px;
+    position: fixed;
+    right: 0;
+}
+
+.main-member-wrapper{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    padding: 10px 5px 10px 10px;
+}
+
+#memb-head{
+
+}
+
+.memb-list li{
+    color: rgb(120, 120, 120);
+    font-family: "poppins";
+    font-size: 1rem;
+    display: flex;
+    position: relative;
+}
+.memb-status{
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }

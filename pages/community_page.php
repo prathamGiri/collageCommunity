@@ -72,6 +72,10 @@ $_SESSION['page'] = $page;
             </div>
         </div>
 
+        <div class="member-bar">
+
+        </div>
+
         <!-- <div class="test">
             
         </div> -->
@@ -194,6 +198,7 @@ $_SESSION['page'] = $page;
     <script>
         callAjax(<?php echo $circleId; ?>, 'threads', '#options');
         callAjax(<?php echo $circleId; ?>, 'about', '.posts');
+        
     </script>
     <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
 </body>
