@@ -1,29 +1,5 @@
 var circleId;
 var threadId;
-// var setupWebSocket = function() {
-//     var socket = new WebSocket('ws://localhost:8080');
-
-//     socket.onopen = function (e) {
-//         console.log("Connection established!");
-//     };
-
-//     socket.onmessage = function (e) {
-//         console.log(e.data);
-//     };
-
-    // Optional: Handle other WebSocket events like onclose, onerror, etc.
-    // conn.onclose = function (e) {
-    //     console.log("Connection closed.");
-    // };
-
-    // conn.onerror = function (e) {
-    //     console.error("WebSocket error:", e);
-    // };
-
-    // return conn;
-// }
-
-
 
 var callAjax = function (circle_id, topic, dest) {
     circleId = circle_id;
@@ -57,8 +33,6 @@ var callAjax = function (circle_id, topic, dest) {
                     'display' : 'flex'
                 })
             }
-            $('.member-bar').html('')
-            
         }
     })
 }
@@ -73,6 +47,27 @@ var callMemberList = function (circle_id, threadId, dest){
         },
         success: function (data) {
             $(dest).html(data);
+        }
+    })
+}
+
+var callAddBtn = function (dest){
+    $.ajax({
+        url: '/collageCommunity/pages/merch_btn.php',
+        method: 'POST',
+        success: function (data) {
+            console.log(data);
+            $(dest).html(data);
+            $('#new-merch-btn').css({
+                'width' : '100%',
+                'text-align' : 'center',
+                'padding' : '9px 0px',
+                'font-family': 'Poppins',
+                'background-color' : '#04AA6D',
+                'color' : 'white',
+                'border-radius' : '5px',
+                'cursor': 'pointer'
+            })
         }
     })
 }
@@ -155,42 +150,59 @@ $(document).ready(function () {
         if (circleId != "") {
             callAjax(circleId, 'threads', '#options')
             callAjax(circleId, 'about', '.posts')
+            $('.member-bar').html('')
         }
     })
 
     $('#about').on('click', function () {
         if (circleId != "") {
             callAjax(circleId, 'about', '.posts')
+            $('.active').removeClass('active')
+            $('#posts-btn').addClass('active')
+            $('.member-bar').html('')
         }
     })
 
     $('#posts-btn').on('click', function () {
         if (circleId != "") {
             callAjax(circleId, 'generalPosts', '.posts')
+            $('.active').removeClass('active')
+            $('#posts-btn').addClass('active')
+            $('.member-bar').html('')
         }
     })
 
     $('#achievements-btn').on('click', function () {
         if (circleId != "") {
             callAjax(circleId, 'achievementPosts', '.posts')
+            $('.active').removeClass('active')
+            $('#achievements-btn').addClass('active')
+            $('.member-bar').html('')
         }
     })
 
     $('#announcement').on('click', function () {
         if (circleId != "") {
             callAjax(circleId, 'announcementPosts', '.posts')
+            $('.member-bar').html('')
         }
     })
 
     $('#merch-btn').on('click', function () {
         if (circleId != "") {
             callAjax(circleId, 'merch', '.posts')
+            $('.active').removeClass('active')
+            $('#merch-btn').addClass('active')
+            callAddBtn('.member-bar')
         }
     })
 
     $('#about-us-btn').on('click', function () {
         if (circleId != "") {
             callAjax(circleId, 'about_page', '.posts')
+            $('.active').removeClass('active')
+            $('#about-us-btn').addClass('active')
+            $('.member-bar').html('')
         }
     })
 
@@ -289,11 +301,11 @@ $(document).on('click', '#reply', function () {
 })
 
 $(document).on('click', '#new-member', function () {
-    console.log(circleId)
     $.ajax({
         url: '/collageCommunity/pages/back/add_new_member.php',
         method: 'POST',
         data: {
+            threadId : threadId,
             circle_id : circleId
         },
         success: function (data) {
@@ -318,7 +330,8 @@ $(document).on('click', '#new-member', function () {
             })
             $('.mem-input').css({
                 'border' : '1px solid black',
-                'margin-bottom' : '10px'
+                'margin-bottom' : '10px',
+                'width': '250px'
             })
             $('.new-mem-info').css({
                 'display' : 'flex',
@@ -330,9 +343,98 @@ $(document).on('click', '#new-member', function () {
             })
             $('.add-btn').css({
                 'position' : 'absolute',
-                'right' : '5px'
+                'right' : '10px',
+                'top': '50%',
+                'transform': 'translateY(-50%)',
+                'cursor': 'pointer',
+                'padding': '5px'
+            })
+            $('#live_search').css({
+                'padding': '10px',
+                'font-family': 'Poppins'
+            })
+            $('.user-name').css({
+                'height': 'fit-content',
+                'padding': '8px',
+                'font-family': 'Poppins',
+                'font-size': '18px',
+            })
+            $('.add-btn i').css({
+                'font-size': '20px'
             })
         }
     })
     
+})
+
+$(document).on({
+    mouseenter: function () {
+        $(this).css({
+            "background-color" : "#e4f2e8"
+        });
+    },
+    mouseleave: function () {
+        $(this).css({
+            "background-color" : "white"
+        });
+    }
+}, '.new-mem-info');
+
+$(document).on('click', '.add-btn', function () {
+    var self = $(this)
+    var newUserId = self.closest('.new-mem-info').attr('id');
+    var icon = self.find('i').attr('class');
+    console.log(icon)
+    var memReqType;
+    if (icon == 'ri-user-add-fill') {
+        memReqType = 0;
+    }else if (icon == 'ri-close-circle-fill') {
+        memReqType = 1;
+    }
+    $.ajax({
+        url: '/collageCommunity/pages/back/add_new_member.php',
+        method: 'POST',
+        data: {
+            threadId : threadId,
+            newUserId : newUserId,
+            memReqType : memReqType
+        },
+        success: function (data) {
+            // console.log("...")
+            if (data.status == 'success') {
+                console.log("success")
+                if (memReqType == 0) {
+                    console.log("success2")
+                    self.find('i').attr('class', 'ri-close-circle-fill')
+                    self.css({'color' : 'black'})
+                    callMemberList(circleId, threadId, '.member-bar');
+                } else {
+                    console.log("success3")
+                    self.find('i').attr('class', 'ri-user-add-fill')
+                    self.css({'color' : '#04AA6D'})
+                    callMemberList(circleId, threadId, '.member-bar');
+                }
+            }else if(data.status == 'error'){
+                console.log("error")
+            }else if(data.status == 'already_member'){
+                console.log("already_member")
+            }else{
+                console.log("blblblbl")
+            }
+        }
+    })
+})
+
+$(document).on('click', '#new-merch-btn', function () {
+    $.ajax({
+        url: '/collageCommunity/pages/back/add_new_member.php',
+        method: 'POST',
+        data: {
+            threadId : threadId,
+            circle_id : circleId
+        },
+        success: function (data) {
+
+        }
+    })
 })

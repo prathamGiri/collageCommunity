@@ -18,7 +18,15 @@
     font-family: poppins;
     font-size: xx-large;
 }
-
+.clg{
+    margin: 1rem 0;
+    width: 100%;
+}
+.search_cover {
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
 form{
   /* width: 40%; */
   padding: 50px;
@@ -44,19 +52,15 @@ input, select, textarea{
   border-bottom: 1px solid #1ab188;
   outline: none;
   transition: border-width 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-  position: relative;
 }
-
+.sem input{
+  margin-bottom: 10px;
+}
 /* Style the input when it is focused */
 input:focus, select:focus, textarea:focus {
   border-width: 2px;
   transition: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
-
-form div{
-  margin-block-start: 20px;
-}
-
 
 form button {
   border: 0;

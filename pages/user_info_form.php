@@ -23,8 +23,13 @@
         <form action="back/user_info.php" method="post">
             <div class="clg">
                 <label for="College">College</label>
-                <input type="text" class="coname" page="<?php echo $page ?>" id="live_search" name="institute" autocomplete="off" required>
-                <div id="search_result"></div>
+                <div class="search_cover">
+                    <div>
+                        <input type="text" class="coname" page="<?php echo $page ?>" id="live_search" name="institute" autocomplete="off" required>
+                    </div>
+                    <div id="search_result"></div>
+                </div>
+                
             <!-- <input type="text" id="clg" name="college" required> -->
             </div>
 
@@ -58,63 +63,6 @@
                 <label for="bio">Bio</label><br>
                 <textarea id="bio" name="bio" rows="3" cols="50"></textarea>
             </div>
-
-            <!-- <div class="input-field">
-                <div>Gender</div>
-                <select name="gender" id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            <div class="input-field">
-            <div>Gender</div>
-                <select name="dob" id="dob">
-                    <option value="male">12</option>
-                    <option value="female">MIT</option>
-                    <option value="other">GMC</option>
-                </select>
-            </div>
-            <div class="input-field">
-            <div>Gender</div>
-                <select name="institute" id="institute">
-                    <option value="male">VNIT</option>
-                    <option value="female">MIT</option>
-                    <option value="other">GMC</option>
-                </select>
-            </div>
-            <div class="input-field">
-            <div>Gender</div>
-                <select name="city" id="city">
-                    <option value="male">Nagpur</option>
-                    <option value="female">Mumbai</option>
-                    <option value="other">Bhilwada</option>
-                </select>
-            </div>
-            <div class="input-field">
-            <div>Gender</div>
-                <select name="state" id="state">
-                    <option value="male">Maharashtra</option>
-                    <option value="female">MIT</option>
-                    <option value="other">GMC</option>
-                </select>
-            </div>
-            <div class="input-field">
-            <div>Gender</div>
-                <select name="country" id="country">
-                    <option value="male">India</option>
-                    <option value="female">MIT</option>
-                    <option value="other">GMC</option>
-                </select>
-            </div>
-            <div class="input-field">
-            <div>Gender</div>
-                <select name="graduation-year" id="institute">
-                    <option value="male">2024</option>
-                    <option value="female">MIT</option>
-                    <option value="other">GMC</option>
-                </select>
-            </div> -->
             <button type="submit" name="submit">Submit</button>
         </form>
     </div>

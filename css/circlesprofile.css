@@ -363,15 +363,13 @@ form{
   background-color: white;
   border-radius: 5px;
 }
-
-.tags a {
-  border: 2px solid  #ffffff;
- 
+.active{
+  border-bottom: 2px solid  #04AA6D;
 }
 
 .tags a:hover {
-  /* background-color: #a7edd8; */
- border-bottom: 2px solid  #04AA6D;
+  background-color: #a7edd8;
+ /* border-bottom: 2px solid  #04AA6D; */
 }
 
 .tags a {

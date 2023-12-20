@@ -56,7 +56,7 @@ $_SESSION['page'] = $page;
 
         <div class="feed">
                 <div class="tags">
-                    <a id="posts-btn">Posts</a>
+                    <a id="posts-btn" class="active">Posts</a>
                     <a id="achievements-btn">Achievements</a>
                     <a id="merch-btn">Merch</a>
                     <a id="about-us-btn">About Us</a>

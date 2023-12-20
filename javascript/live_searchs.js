@@ -17,32 +17,31 @@ $(document).ready(function () {
                     $('#search_result').css({
                         'display': 'block',
                         'text-align' : 'center',
-                        // 'position':'absolute',
                         'margin':'2px 0',
-                        'width':'100%'
-                      });
-                    //   $('#search_result ul').css({
-                    //     'width':$("#live_search").css("width")
-                    //   })
+                        'width':'100%',
+                        'position': 'absolute'
+                    });
+                    $('#search_result ul').css({
+                        'list-style-type':'none',
+                        'border':'1px solid black'
+                    })
                     $('#search_result li').css({
                         'cursor': 'pointer',
                         'border-bottom': '1px solid black',
                         'font-family':'poppins',
                         'background-color': 'white',
-                        'width':$("#live_search").css("width"),
+                        'width':'100%',
                         'padding-bottom': '2px',
                         'padding-top': '2px',
                         'font-size': '18px',
-                        'margin':'auto',
-                        'position':'relative',
-                        'z-index' : '2'
+                    
                     })
 
-                    $("#live_search").focusout(function () {
-                        setTimeout(function () {
-                            $('#search_result').css('display', 'none');
-                        }, 200);
-                    });
+                    // $("#live_search").focusout(function () {
+                    //     setTimeout(function () {
+                    //         $('#search_result').css('display', 'none');
+                    //     }, 100);
+                    // });
 
                     $('#search_result li').click(function () {
                         var institute = $(this).attr("institute");
@@ -65,4 +64,6 @@ $(document).ready(function () {
             $('#search_result').css('display', 'none');
         }
     });
+
+
 });

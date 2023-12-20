@@ -26,9 +26,14 @@ include "back/database_connection.php";
     ?>
 
     <div class="search-c mt-5">
-            <input type="text" page="<?php echo $page ?>" class="form-control" name="live_search" id="live_search" autocomplete="off"
+        <div class="search_cover">
+            <div>
+                <input type="text" page="<?php echo $page ?>" class="form-control" name="live_search" id="live_search" autocomplete="off"
             placeholder="Search Your Club...">
+            </div>
             <div id="search_result"></div>
+        </div>
+            
     </div>
     
     <?php 

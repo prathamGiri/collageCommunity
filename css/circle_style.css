@@ -3,10 +3,13 @@
     width: 100%;
     text-align: center;
 }
-
-.search-c input {
-    
+.search_cover {
     width: 60%;
+    position: relative;
+    margin: auto;
+}
+.search-c input {
+    width: 100%;
     height: 3rem;
     border: none;
     background-color: #ffffff;

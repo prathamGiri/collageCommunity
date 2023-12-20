@@ -125,6 +125,8 @@ if (isset($_POST['circle_id']) && isset($_POST['topic']) && isset($_SESSION['use
             } 
             echo '</div>
             </div>';
+        }else {
+            echo '<h1>NO Merch Available</h1>';
         }
     }else if ($topic == "about_page") {
         echo 
