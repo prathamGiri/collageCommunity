@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2023 at 09:07 PM
+-- Generation Time: Dec 21, 2023 at 09:29 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -366,7 +366,10 @@ INSERT INTO `merch` (`merchId`, `merchName`, `merchPrise`, `circleId`, `merchImg
 (9, 'Conclusions', 599, 2, '1695358627_1908515.jpg', 0),
 (10, 'Spider-Man:2029', 599, 2, '1694178388_9063738.jpg', 0),
 (11, 'Society', 599, 2, '1694178186_3507628.jpg', 0),
-(12, 'Miles Moralys:Logo', 599, 2, '1694178110_9192329.jpg', 0);
+(12, 'Miles Moralys:Logo', 599, 2, '1694178110_9192329.jpg', 0),
+(13, 'Thinking Tom', 599, 10, '1687842433_3385347.jpg', 0),
+(14, 'Looney Tunes', 599, 10, '1694838120_6538684.jpg', 0),
+(15, 'Gryffindor', 599, 10, '1687421667_3304257.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -798,7 +801,7 @@ INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `pa
 (14, 'VGVqYXMgaGFubQ==', 0, 'dGVqYXNAZ21haWwuY29t', 'dc9ac98f0f841f379c0c3c1ecc85e56a', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
 (16, 'YWRpdHlhIGdhbHBoYWRl', 0, 'YWRpdHlhQGdtYWlsLmNvbQ==', 'e51b2620f7b65bed95919b66168f7573', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
 (18, 'dXRrYXJzaCBnYWlrd2Fk', 0, 'dXRrYXJzaEBnbWFpbC5jb20=', '53a2b5b7021853cdc6cbd684e3baf0e7', 'User_icon.png', '', 'i do comady', 27, 'ECE', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
-(19, 'RGhydXYgR3VwdGE=', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21, '2023-12-21 01:36:44.000000'),
+(19, 'RGhydXYgR3VwdGE=', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21, '2023-12-22 01:58:57.000000'),
 (20, 'QXl1c2ggVGFubmE=', 0, 'dGFubmFAZ21haWwuY29t', '385ad81edd3cb6023360cfef4b46a523', 'User_icon.png', '', 'qaesrdtfygu', 25, 'Computer Science', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
 (21, 'QXRoYXJ2IEJhbGtpc2g=', 0, 'YXRoYXJ2YUBnbWFpbC5jb20=', '0d02ba1bdc3bde610c8fcd27ae752467', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i am a virgin', 25, 'Chemical Engineering', 2027, 'don&#039;t ', 21, '0000-00-00 00:00:00.000000'),
 (22, 'cHJhdGhhbSBnaXJp', 0, 'cHJhdGhhbTAyQGdtYWlsLmNvbQ==', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'hehe', 27, 'Electrical Engineering', 2025, 'male', 21, '0000-00-00 00:00:00.000000'),
@@ -1152,7 +1155,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT for table `merch`
 --
 ALTER TABLE `merch`
-  MODIFY `merchId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `merchId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `posts`

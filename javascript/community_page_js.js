@@ -51,27 +51,6 @@ var callMemberList = function (circle_id, threadId, dest){
     })
 }
 
-var callAddBtn = function (dest){
-    $.ajax({
-        url: '/collageCommunity/pages/merch_btn.php',
-        method: 'POST',
-        success: function (data) {
-            console.log(data);
-            $(dest).html(data);
-            $('#new-merch-btn').css({
-                'width' : '100%',
-                'text-align' : 'center',
-                'padding' : '9px 0px',
-                'font-family': 'Poppins',
-                'background-color' : '#04AA6D',
-                'color' : 'white',
-                'border-radius' : '5px',
-                'cursor': 'pointer'
-            })
-        }
-    })
-}
-
 var callThreadsAjax = function (circle_id, threadId, dest) {
     $.ajax({
         url: 'back/threads_content_fetch.php',
@@ -187,13 +166,24 @@ $(document).ready(function () {
             $('.member-bar').html('')
         }
     })
+    
 
     $('#merch-btn').on('click', function () {
         if (circleId != "") {
             callAjax(circleId, 'merch', '.posts')
             $('.active').removeClass('active')
             $('#merch-btn').addClass('active')
-            callAddBtn('.member-bar')
+            $('.member-bar').html('<div id="new-merch-btn">Add Merch</div>')
+            $('#new-merch-btn').css({
+                'width' : '100%',
+                'text-align' : 'center',
+                'padding' : '11px 0px',
+                'font-family': 'Poppins',
+                'background-color' : '#04AA6D',
+                'color' : 'white',
+                'border-radius' : '5px',
+                'cursor': 'pointer'
+            })
         }
     })
 
@@ -427,14 +417,191 @@ $(document).on('click', '.add-btn', function () {
 
 $(document).on('click', '#new-merch-btn', function () {
     $.ajax({
-        url: '/collageCommunity/pages/back/add_new_member.php',
+        url: '/collageCommunity/pages/new_merch.php',
         method: 'POST',
         data: {
-            threadId : threadId,
             circle_id : circleId
         },
         success: function (data) {
+            $('.floaters').html(data)
+            $('.floaters').css({
+                "width" : "40%",
+                "height" : "80%",
+                "display" : "block",
+                "background-color": "white",
+                "position": "fixed",
+                "left": "50%",
+                "top": "70%",
+                "transform": "translate(-50%, -70%)",
+                "border" : "1px black solid"
+            })
+            $('.main-wrapper').css({
+                "height" : "100%",
+                "width" : "100%",
+                'margin-bottom' : '10px',
+                'overflow-y': 'auto'
+            })
+            $('#closeblock').css({
+                "font-size": "2rem",
+                "cursor": "pointer",
+                "position":"absolute",
+                "right" : '0px'
+            })
+            $('.img-preview-wrapper').css({
+                "width" : "100%",
+                'margin' : '10px 0',
+            })
+            $('.img-preview').css({
+                'display': 'flex',
+                'justify-content': 'center'
+            })
+            $('.img-preview img').css({
+                "width" : "60%",
+                'cursor' : 'pointer',
+                'border-radius': '5px'
+            })
+            $('#filec').css({
+                "display" : "none"
+            })
+            $('.inputs').css({
+                'width' : "60%",
+                'margin' : "auto"
+            })
+            $('.inputs input').css({
+                'font-size' : '20px',
+                'margin-bottom' : '5px'
+            })
+            $('.merch-submit').css({
+                'width' : 'fit-content',
+                'margin' : 'auto',
+            })
+            $('#er-msg').css({
+                'width' : '60%',
+                'margin' : 'auto',
+                'padding' : '10px',
+                'text-align' : 'center',
+                'background-color' : '#f7c3c3',
+                'color' : '#e60909',
+                'border-radius' : '5px',
+                'border' : '1px solid #e60909',
+                'display' : 'none'
 
+            })
+            $('.img-preview img').on('click', function () {
+                
+                $('#filec').click()
+            })
+            $('#filec').on('change', function () {
+                var fileInput = $('#filec')[0];
+                if (fileInput.files.length > 0) {
+                    $('#image').attr('src', URL.createObjectURL(fileInput.files[0]));
+                }
+            })
+        }
+    })
+})
+
+$(document).on('submit', '#merch-form', function (e) {
+    if ($('#filec').val() == "") {
+        $('#er-msg').html('No Image Selected')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else if ($('#merch-name').val() == "") {
+        $('#er-msg').html('Merch Name is Empty')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else if ($('#merch-price').val() == "") {
+        $('#er-msg').html('Merch Price is Empty')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else if (isNaN($('#merch-price').val())) {
+        $('#er-msg').html('Merch Price must be a Number')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else{
+        e.preventDefault();    
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: '/collageCommunity/pages/back/new_merch_back.php',
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                console.log(data);
+                callAjax(circleId, 'merch', '.posts')
+                $('.floaters').html("");
+                $('.floaters').css({
+                    "display" : 'none'
+                });
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+    
+});
+
+$(document).on('click', '.merch-box', function () {
+    var self = $(this);
+    $.ajax({
+        url: '/collageCommunity/pages/fetch_merch_info.php',
+        method: 'POST',
+        success: function (data) {
+            var closestAns = self.closest('.merch-card')
+            closestAns.find('.more-info').html(data);
+            $(closestAns).css({
+                'width' : '80%',
+                'display' : 'flex',
+                'justify-content' : 'space-around'
+            })
+            $(self).css({
+                'width': '50%'
+            })
+            $('.ind-bar').css({
+                'position': 'relative',
+                'display': 'inline-block'
+            })
+            $('.ind-bar label').css({
+                'cursor': 'pointer',
+                'color': '#04AA6D',
+                'user-select': 'none',
+                'border': '1px solid #e6e6e6',
+                'padding': '0.75em 0.5em',
+                'height': '3em',
+                'width': '3em',
+                'overflow': 'hidden',
+                'display': 'block',
+                'text-align': 'center',
+                'border-radius': '4px',
+            })
+            $('.ind-bar input[type="radio"]').on('change', function() {
+                $('label').css({
+                    'color' : '#04AA6D',
+                    'background-color' : 'white',
+                });
+                if ($(this).is(':checked')) {
+                    $(this).next('label').css({
+                        'color' : 'white',
+                        'background-color' : '#04AA6D',
+                    });
+                }
+            })
+            $('.ind-bar input').css({
+                'display': 'none'
+            })
+            $('.merch-qty').css({
+                'width' : '50px',
+                'margin' : 'auto'
+            })
         }
     })
 })

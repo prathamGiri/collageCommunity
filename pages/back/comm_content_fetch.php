@@ -103,24 +103,32 @@ if (isset($_POST['circle_id']) && isset($_POST['topic']) && isset($_SESSION['use
         $_SESSION['topic'] = 'merch';
         $merchSql ="SELECT *
                     FROM merch
-                    WHERE circleId = $circleId";
+                    WHERE circleId = $circleId
+                    ORDER BY merchId DESC";
         $merchResult = mysqli_query($conn, $merchSql);
         if (mysqli_num_rows($merchResult) > 0) {
             echo '<div class="events">
                         <div class="card-container">';
             while ($merchRow = mysqli_fetch_assoc($merchResult)) {
                             echo '<div class="merch-card">
-                                <img src="/collageCommunity/images/merch_img/';
-                                echo $merchRow['merchImg'];
-                                echo '">
-                                <div class="card-content">
-                                    <h2>';
-                                echo $merchRow['merchName'];
-                                echo '</h2>
-                                    <p>Rs. ';
-                                echo $merchRow['merchPrise'];
-                                echo '</p>
+                                    <div class="merch-box" id="';
+                                    echo $merchRow['merchId'];
+                                    echo '">
+                                    <img src="/collageCommunity/images/merch_img/';
+                                    echo $merchRow['merchImg'];
+                                    echo '">
+                                    <div class="card-content">
+                                        <h2>';
+                                    echo $merchRow['merchName'];
+                                    echo '</h2>
+                                        <p>Rs. ';
+                                    echo $merchRow['merchPrise'];
+                                    echo '</p>
+                                    </div>
                                 </div>
+                                <div class="more-info" id="';
+                                echo $merchRow['merchId'];
+                                echo '"></div>
                             </div>';
             } 
             echo '</div>

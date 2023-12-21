@@ -197,6 +197,7 @@
   text-align: center;
   position: relative;
   margin: 2rem 5px 0 5px;
+  cursor: pointer;
 }
 
 .merch-card img{
