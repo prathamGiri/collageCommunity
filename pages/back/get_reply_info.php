@@ -17,7 +17,7 @@ if (isset($_POST['postId'])) {
                         </div>
                         <div class="rep-mes-text">
                             
-                        </div><p>'.base64_decode($row['user_name']).' : '.$row['content'].'</p>';
+                        </div><p>'.$row['user_name'].' : '.$row['content'].'</p>';
         echo $htmlContent;
     }
 }

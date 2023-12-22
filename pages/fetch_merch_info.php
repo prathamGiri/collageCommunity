@@ -1,28 +1,32 @@
 <?php
-echo '<div class="more-info">
+echo '
+    <div id="closediv">
+        <a class="merch-closeblock"><i class="ri-close-line"></i></a>
+    </div>
+    <div id="o-msg"></div>
     <div class="merch-size">
         <div class="size-head">
             Size
         </div>
         <div class="size-bar">
             <div class="ind-bar" id="s-size">
-                <input type="radio" id="type1" name="type" value="s">
+                <input type="radio" id="type1" name="size" value="s">
                 <label data-icon="S" for="type1">S</label>
             </div>
             <div class="ind-bar" id="m-size">
-                <input type="radio" id="type2" name="type" value="m">
+                <input type="radio" id="type2" name="size" value="m">
                 <label data-icon="M" for="type2">M</label>
             </div>
             <div class="ind-bar" id="l-size">
-                <input type="radio" id="type3" name="type" value="l">
+                <input type="radio" id="type3" name="size" value="l">
                 <label data-icon="L" for="type3">L</label>
             </div>
             <div class="ind-bar" id="xl-size">
-                <input type="radio" id="type4" name="type" value="xl">
+                <input type="radio" id="type4" name="size" value="xl">
                 <label data-icon="XL" for="type4">XL</label>
             </div>
             <div class="ind-bar" id="xxl-size">
-                <input type="radio" id="type5" name="type" value="xxl">
+                <input type="radio" id="type5" name="size" value="xxl">
                 <label data-icon="XXL" for="type5">XXL</label>
             </div>
         </div>
@@ -42,5 +46,6 @@ echo '<div class="more-info">
             <option value="10">10</option>
         </select>
     </div>
-</div>';
+    <div class="place-order-btn" id="place">Place Order</div>
+';
 ?>

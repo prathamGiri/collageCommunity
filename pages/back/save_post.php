@@ -144,7 +144,7 @@ include "database_connection.php";
                                         echo '">
                                     </div>
                                     <div class="info-text">
-                                        <p>'.base64_decode($user_info_Row['user_name']); 
+                                        <p>'.$user_info_Row['user_name']; 
                                         echo '</p>
                                     </div>
                                 </div>';

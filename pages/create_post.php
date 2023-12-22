@@ -31,7 +31,7 @@
                 <hr>
                 <div class="postprofile">
                     <img src="<?php echo '/collageCommunity/images/profile_img/'.$row3['profile_img']?>" alt="profile image">
-                    <span><?php echo base64_decode($row3['user_name']) ?></span> 
+                    <span><?php echo $row3['user_name'] ?></span> 
                 </div>
                 <?php } ?>
                 <!-- <input type="text" placeholder="What do you want to post"> -->

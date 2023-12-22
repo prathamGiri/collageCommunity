@@ -33,7 +33,7 @@
                         <img src="<?php echo '/collageCommunity/images/profile_img/'.$row3['profile_img']?>" alt="profile image">
                     </div>
                     <div>
-                        <div><span><?php echo base64_decode($row3['user_name']) ?></span> </div>
+                        <div><span><?php echo $row3['user_name'] ?></span> </div>
                         <div class="reply-box">
                             
                         </div>

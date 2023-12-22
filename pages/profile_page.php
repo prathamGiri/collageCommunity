@@ -32,7 +32,7 @@ include "back/database_connection.php";
                 </div>
                 <div class="info-panal">
                     <div id="name">
-                        <h1><?php echo base64_decode($row3['user_name']); ?></h1>
+                        <h1><?php echo $row3['user_name']; ?></h1>
                     </div>
                 </div>
             </div>

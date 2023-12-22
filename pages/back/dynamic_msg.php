@@ -34,7 +34,7 @@ if (isset($_POST['postId'])) {
                             </div>
                             <div class="post-info">
                                 <div class="info-text">
-                                    <p>' . base64_decode($user_info_Row['user_name']) . '</p>
+                                    <p>' . $user_info_Row['user_name'] . '</p>
                                 </div>';
                             if ($postRow['replyTo'] != -1) {
                                 $reply_to_postid = $postRow['replyTo'];
@@ -54,7 +54,7 @@ if (isset($_POST['postId'])) {
                                         <p>replied to</p>
                                     </div>
                                     <div class="rep-mes-text">
-                                        <p>' . base64_decode($user_info_Row2['user_name']) . ':' . $rep_row['content'] . '</p>
+                                        <p>' . $user_info_Row2['user_name'] . ':' . $rep_row['content'] . '</p>
                                     </div>
                                 </div>';
                             }

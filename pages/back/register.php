@@ -9,7 +9,7 @@ $res = mysqli_query($conn, $sql);
 if (isset($_POST['register-btn'])) {
     $fname =mysqli_real_escape_string($conn, test_input( $_POST['fname']));
     $lname = mysqli_real_escape_string($conn, test_input($_POST['lname']));
-    $name = base64_encode($fname.' '.$lname);
+    $name = $fname.' '.$lname;
     $email = base64_encode(mysqli_real_escape_string($conn, test_input($_POST['email'])));
     $mobile = base64_encode(mysqli_real_escape_string($conn, test_input($_POST['mobile'])));
     $pass = mysqli_real_escape_string($conn, test_input($_POST['pass_reg']));

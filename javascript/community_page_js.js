@@ -1,5 +1,6 @@
 var circleId;
 var threadId;
+var tag;
 
 var callAjax = function (circle_id, topic, dest) {
     circleId = circle_id;
@@ -47,6 +48,9 @@ var callMemberList = function (circle_id, threadId, dest){
         },
         success: function (data) {
             $(dest).html(data);
+            $('.new-member').on('click', function () {
+                newMemberFloater(circleId, threadId, tag)    
+            })
         }
     })
 }
@@ -96,6 +100,8 @@ var createThreadsAjax = function (circle_id, dest) {
 
             $(dest).html(data);
             $('.floaters').css({
+                "width" : "fit-content",
+                "height" : "fit-content",
                 "display" : "block",
                 "background-color": "white",
                 "position": "fixed",
@@ -119,10 +125,228 @@ var createThreadsAjax = function (circle_id, dest) {
     })
 }
 
-$(document).ready(function () {
-    
-    // $.getScript("thread_server_join.js")
+var placeMerchOrder = function(selectedValue, qty, merchId) {
+    $.ajax({
+        url: '/collageCommunity/pages/back/place_merch_order.php',
+        method: 'POST',
+        data: {
+            selectedValue : selectedValue,
+            qty : qty,
+            merchId : merchId
+        },
+        success: function (data) {
+            if (data.status == 'success') {
+                $('.place-order-btn').html('Check Status')
+                $('.place-order-btn').attr('id', 'cancel')
+                $('.place-order-btn').css({
+                    'background-color' : '#fcba03',
+                })
+                $('#o-msg').html('Order Placed')
+                $('#o-msg').css({
+                    'display' : 'block',
+                    'border' : '1px solid #04AA6D',
+                    'color' : '#04AA6D',
+                    'background-color' : '#dbfff4'
+                })
+            }else if(data.status == 'error'){
+                console.log('error in uploading')
+            }
+        }
+    })
 
+}
+
+var memAddBtnFunction = function(circleId, threadId, tag) {
+    $('.add-btn').on('click', function() {
+    console.log(circleId)
+        var self = $(this)
+        console.log(self)
+        var newUserId = self.closest('.new-mem-info').attr('id');
+        console.log(newUserId)
+        var icon = self.find('i').attr('class');
+        var memReqType;
+        if (icon == 'ri-user-add-fill') {
+            memReqType = 0;
+        }else if (icon == 'ri-close-circle-fill') {
+            memReqType = 1;
+        }
+        $.ajax({
+            url: '/collageCommunity/pages/back/add_new_member.php',
+            method: 'POST',
+            data: {
+                circle_id : circleId,
+                threadId : threadId,
+                newUserId : newUserId,
+                memReqType : memReqType,
+                tag : tag
+            },
+            success: function (data) {
+                if (data.status == 'success') {
+                    console.log("success")
+                    if (memReqType == 0) {
+                        console.log("success2")
+                        self.find('i').attr('class', 'ri-close-circle-fill')
+                        self.css({'color' : 'black'})
+                        if (tag == "thread") {
+                            callMemberList(circleId, threadId, '.member-bar');
+                        }else if (tag == "about") {
+                            callAjax(circleId, 'about_page', '.posts')
+                        }
+                        
+                    } else {
+                        console.log("success3")
+                        self.find('i').attr('class', 'ri-user-add-fill')
+                        self.css({'color' : '#04AA6D'})
+                        if (tag == "thread") {
+                            callMemberList(circleId, threadId, '.member-bar');
+                        }else if (tag == "about") {
+                            callAjax(circleId, 'about_page', '.posts')
+                        }
+                    }
+                }else if(data.status == 'error'){
+                    console.log("error")
+                }else if(data.status == 'already_member'){
+                    console.log("already_member")
+                }else{
+                    console.log("blblblbl")
+                }
+            }
+        })
+    })
+}
+
+var newMemberFloater = function(circleId, threadId, tag) {
+    $.ajax({
+        url: '/collageCommunity/pages/back/add_new_member.php',
+        method: 'POST',
+        data: {
+            circle_id : circleId,
+            threadId : threadId,
+            tag : tag
+        },
+        success: function (data) {
+            $('.floaters').html(data)
+            $('.floaters').css({
+                "width" : "fit-content",
+                "height" : "fit-content",
+                "display" : "block",
+                "background-color": "white",
+                "position": "fixed",
+                "left": "50%",
+                "top": "50%",
+                "transform": "translate(-50%, -50%)",
+                "border" : "1px black solid"
+            })
+            $('.main-blk').css({
+                'margin' : "40px 20px"
+            })
+            $('#closeblock').css({
+                "font-size": "2rem",
+                "cursor": "pointer",
+                "position":"absolute",
+                "right" : '0px'
+            })
+            $('.mem-input').css({
+                'border' : '1px solid black',
+                'margin-bottom' : '10px',
+                'width': '250px'
+            })
+            $('.mem-list').css({
+                'height': '200px',
+                'overflow-y': 'auto'
+            })
+            $('.new-mem-info').css({
+                'display' : 'flex',
+                'position' : 'relative'
+            })
+            $('.user-img img').css({
+                'width':'40px',
+                'border-radius' : '50%'
+            })
+            $('.add-btn').css({
+                'position' : 'absolute',
+                'right' : '10px',
+                'top': '50%',
+                'transform': 'translateY(-50%)',
+                'cursor': 'pointer',
+                'padding': '5px'
+            })
+            $('#live_search').css({
+                'padding': '10px',
+                'font-family': 'Poppins'
+            })
+            $('.user-name').css({
+                'height': 'fit-content',
+                'padding': '8px',
+                'font-family': 'Poppins',
+                'font-size': '18px',
+            })
+            $('.add-btn i').css({
+                'font-size': '20px'
+            })
+            memAddBtnFunction(circleId, threadId, tag)
+            $("#live_search").keyup(function () {
+                var query = $(this).val();
+                console.log(query)
+                var page = $("#live_search").attr("page")
+                console.log(page)
+                if (query != "") {
+                    $.ajax({
+                        url: 'back/live_search.php',
+                        method: 'POST',
+                        data: {
+                            page: page,
+                            query: query,
+                            circleId : circleId,
+                            tag : tag,
+                            threadId : threadId
+                        },
+                        success: function (data) {
+                            console.log(data)
+                            $('.all').css({
+                                'display' : 'none'
+                            })
+                            $('.mem-list').prepend(data)
+                            $('.new-mem-info').css({
+                                'display' : 'flex',
+                                'position' : 'relative'
+                            })
+                            $('.user-img img').css({
+                                'width':'40px',
+                                'border-radius' : '50%'
+                            })
+                            $('.add-btn').css({
+                                'position' : 'absolute',
+                                'right' : '10px',
+                                'top': '50%',
+                                'transform': 'translateY(-50%)',
+                                'cursor': 'pointer',
+                                'padding': '5px'
+                            })
+                            $('.user-name').css({
+                                'height': 'fit-content',
+                                'padding': '8px',
+                                'font-family': 'Poppins',
+                                'font-size': '18px',
+                            })
+                            $('.add-btn i').css({
+                                'font-size': '20px'
+                            })
+                            memAddBtnFunction(circleId, threadId, tag)
+                        }
+                    })
+                }else{
+                    $('.searched').remove()
+                    $('.all').css({
+                        'display' : 'block'
+                    })
+                }
+            })
+        }
+    })
+}
+
+$(document).ready(function () {
     $('.p_img').on('click', function () {
         circleId = $(this).attr("id");
         console.log(circleId);
@@ -130,6 +354,7 @@ $(document).ready(function () {
             callAjax(circleId, 'threads', '#options')
             callAjax(circleId, 'about', '.posts')
             $('.member-bar').html('')
+            tag = 'general'
         }
     })
 
@@ -139,6 +364,7 @@ $(document).ready(function () {
             $('.active').removeClass('active')
             $('#posts-btn').addClass('active')
             $('.member-bar').html('')
+            tag = 'general'
         }
     })
 
@@ -148,6 +374,7 @@ $(document).ready(function () {
             $('.active').removeClass('active')
             $('#posts-btn').addClass('active')
             $('.member-bar').html('')
+            tag = 'general'
         }
     })
 
@@ -157,6 +384,7 @@ $(document).ready(function () {
             $('.active').removeClass('active')
             $('#achievements-btn').addClass('active')
             $('.member-bar').html('')
+            tag = 'achievements'
         }
     })
 
@@ -164,12 +392,13 @@ $(document).ready(function () {
         if (circleId != "") {
             callAjax(circleId, 'announcementPosts', '.posts')
             $('.member-bar').html('')
+            tag = 'announcement'
         }
     })
     
-
     $('#merch-btn').on('click', function () {
         if (circleId != "") {
+            tag = 'merch'
             callAjax(circleId, 'merch', '.posts')
             $('.active').removeClass('active')
             $('#merch-btn').addClass('active')
@@ -183,20 +412,32 @@ $(document).ready(function () {
                 'color' : 'white',
                 'border-radius' : '5px',
                 'cursor': 'pointer'
-            })
+            }) 
         }
     })
 
     $('#about-us-btn').on('click', function () {
         if (circleId != "") {
+            tag = 'about'
             callAjax(circleId, 'about_page', '.posts')
             $('.active').removeClass('active')
             $('#about-us-btn').addClass('active')
-            $('.member-bar').html('')
+            $('.member-bar').html('<div id="new-mem-btn">Add Members</div>')
+            $('#new-mem-btn').css({
+                'width' : '100%',
+                'text-align' : 'center',
+                'padding' : '11px 0px',
+                'font-family': 'Poppins',
+                'background-color' : '#04AA6D',
+                'color' : 'white',
+                'border-radius' : '5px',
+                'cursor': 'pointer'
+            })
+            $('#new-mem-btn').on('click', function() {
+                newMemberFloater(circleId, -1, tag);
+            })
         }
-    })
-
-    
+    }) 
 })
 
 $(document).on('click', '.threadopt', function () {
@@ -204,6 +445,7 @@ $(document).on('click', '.threadopt', function () {
     if (circleId != "") {
         callThreadsAjax(circleId, threadId, '.posts');
         callMemberList(circleId, threadId, '.member-bar');
+        tag = 'thread';
     }
 });
 
@@ -290,73 +532,6 @@ $(document).on('click', '#reply', function () {
     
 })
 
-$(document).on('click', '#new-member', function () {
-    $.ajax({
-        url: '/collageCommunity/pages/back/add_new_member.php',
-        method: 'POST',
-        data: {
-            threadId : threadId,
-            circle_id : circleId
-        },
-        success: function (data) {
-            $('.floaters').html(data)
-            $('.floaters').css({
-                "display" : "block",
-                "background-color": "white",
-                "position": "fixed",
-                "left": "50%",
-                "top": "50%",
-                "transform": "translate(-50%, -50%)",
-                "border" : "1px black solid"
-            })
-            $('.main-blk').css({
-                'margin' : "40px 20px"
-            })
-            $('#closeblock').css({
-                "font-size": "2rem",
-                "cursor": "pointer",
-                "position":"absolute",
-                "right" : '0px'
-            })
-            $('.mem-input').css({
-                'border' : '1px solid black',
-                'margin-bottom' : '10px',
-                'width': '250px'
-            })
-            $('.new-mem-info').css({
-                'display' : 'flex',
-                'position' : 'relative'
-            })
-            $('.user-img img').css({
-                'width':'40px',
-                'border-radius' : '50%'
-            })
-            $('.add-btn').css({
-                'position' : 'absolute',
-                'right' : '10px',
-                'top': '50%',
-                'transform': 'translateY(-50%)',
-                'cursor': 'pointer',
-                'padding': '5px'
-            })
-            $('#live_search').css({
-                'padding': '10px',
-                'font-family': 'Poppins'
-            })
-            $('.user-name').css({
-                'height': 'fit-content',
-                'padding': '8px',
-                'font-family': 'Poppins',
-                'font-size': '18px',
-            })
-            $('.add-btn i').css({
-                'font-size': '20px'
-            })
-        }
-    })
-    
-})
-
 $(document).on({
     mouseenter: function () {
         $(this).css({
@@ -369,51 +544,6 @@ $(document).on({
         });
     }
 }, '.new-mem-info');
-
-$(document).on('click', '.add-btn', function () {
-    var self = $(this)
-    var newUserId = self.closest('.new-mem-info').attr('id');
-    var icon = self.find('i').attr('class');
-    console.log(icon)
-    var memReqType;
-    if (icon == 'ri-user-add-fill') {
-        memReqType = 0;
-    }else if (icon == 'ri-close-circle-fill') {
-        memReqType = 1;
-    }
-    $.ajax({
-        url: '/collageCommunity/pages/back/add_new_member.php',
-        method: 'POST',
-        data: {
-            threadId : threadId,
-            newUserId : newUserId,
-            memReqType : memReqType
-        },
-        success: function (data) {
-            // console.log("...")
-            if (data.status == 'success') {
-                console.log("success")
-                if (memReqType == 0) {
-                    console.log("success2")
-                    self.find('i').attr('class', 'ri-close-circle-fill')
-                    self.css({'color' : 'black'})
-                    callMemberList(circleId, threadId, '.member-bar');
-                } else {
-                    console.log("success3")
-                    self.find('i').attr('class', 'ri-user-add-fill')
-                    self.css({'color' : '#04AA6D'})
-                    callMemberList(circleId, threadId, '.member-bar');
-                }
-            }else if(data.status == 'error'){
-                console.log("error")
-            }else if(data.status == 'already_member'){
-                console.log("already_member")
-            }else{
-                console.log("blblblbl")
-            }
-        }
-    })
-})
 
 $(document).on('click', '#new-merch-btn', function () {
     $.ajax({
@@ -488,7 +618,6 @@ $(document).on('click', '#new-merch-btn', function () {
 
             })
             $('.img-preview img').on('click', function () {
-                
                 $('#filec').click()
             })
             $('#filec').on('change', function () {
@@ -556,8 +685,17 @@ $(document).on('click', '.merch-box', function () {
         url: '/collageCommunity/pages/fetch_merch_info.php',
         method: 'POST',
         success: function (data) {
+            $('.more-info').html('')
+            $('.merch-card').css({
+                'width' : '40%',
+                'display' : 'block'
+            })
+            $('.merch-box').css({
+                'width': '100%'
+            })
             var closestAns = self.closest('.merch-card')
-            closestAns.find('.more-info').html(data);
+            var moreInfoBox = closestAns.find('.more-info');
+            moreInfoBox.html(data);
             $(closestAns).css({
                 'width' : '80%',
                 'display' : 'flex',
@@ -565,6 +703,9 @@ $(document).on('click', '.merch-box', function () {
             })
             $(self).css({
                 'width': '50%'
+            })
+            $(moreInfoBox).css({
+                'margin-top': '20px',
             })
             $('.ind-bar').css({
                 'position': 'relative',
@@ -594,6 +735,9 @@ $(document).on('click', '.merch-box', function () {
                         'background-color' : '#04AA6D',
                     });
                 }
+                $('#o-msg').css({
+                    'display' : 'none',
+                })
             })
             $('.ind-bar input').css({
                 'display': 'none'
@@ -602,6 +746,69 @@ $(document).on('click', '.merch-box', function () {
                 'width' : '50px',
                 'margin' : 'auto'
             })
+            $('.merch-closeblock').css({
+                "font-size": "2rem",
+                "cursor": "pointer",
+                "position":"absolute",
+                "right" : '0px',
+                'top' : '0px'
+            })
+            $('.place-order-btn').css({
+                'width' : 'fit-content',
+                'padding' : '10px',
+                'margin' : 'auto',
+                'background-color' : '#04AA6D',
+                'color' : 'white',
+                'font-family' : 'poppins',
+                'border-radius' : '5px',
+                'margin-top' : '20px',
+                'cursor' : 'pointer'
+            })
+            $('.merch-closeblock').on('click', function() {
+                closestAns.find('.more-info').html('')
+                $(closestAns).css({
+                    'width' : '40%',
+                    'display' : 'block'
+                })
+                $(self).css({
+                    'width': '100%'
+                })
+            })
+            $('#o-msg').css({
+                'background-color' : '#dbfff4',
+                'padding' : '10px',
+                'font-family' : 'Poppins',
+                'border' : '1px solid #04AA6D',
+                'color' : '#04AA6D',
+                'border-radius' : '5px',
+                'display' : 'none'
+            })
+            $('.place-order-btn').on('click', function() {
+                if ($(this).attr('id') == 'place') {
+                    if ($('input[name="size"]:checked').length > 0) {
+                        var selectedValue = $('input[name="size"]:checked').val();
+                        var qty = $('#qty').val();
+                        var merchId = self.attr('id');
+                        placeMerchOrder(selectedValue, qty, merchId);
+                    }else{
+                        $o_msg = "Size Not Selected";
+                        $('#o-msg').html($o_msg)
+                        $('#o-msg').css({
+                            'background-color' : '#f7c3c3',
+                            'border' : '1px solid #e60909',
+                            'color' : '#e60909',
+                            'display' : 'block'
+                        })
+                    }
+                }else if ($(this).attr('id') == 'cancel') {
+                    window.location.href = "/collageCommunity/pages/profile_page.php";
+                }
+            })
+            var divid = closestAns.find('.merch-box').attr('id');
+            $("html, body").animate({
+                scrollTop: $('#' + divid).offset().top - 100
+              }, 500);
+    
         }
     })
 })

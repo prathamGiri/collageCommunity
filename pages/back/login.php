@@ -19,9 +19,6 @@ if (isset($_POST['login'])) {
         setcookie("user_id", $id, $expireTime, "/");
         setcookie("password", $login_password, $expireTime, "/");
         $_SESSION['fresh_login'] = 'yes';
-        
-        
-        
         redirect('../../index.php');
         
     }else{

@@ -119,7 +119,7 @@ $_SESSION['page'] = $page;
                         <img src="<?php echo "images/profile_img/".$row3['profile_img']; ?>">
                     </div>
                     <div class="info">
-                        <p><?php echo base64_decode($row3['user_name']); ?></p>
+                        <p><?php echo $row3['user_name']; ?></p>
                         <p><?php $row3['about']; ?></p>
                     </div>
 

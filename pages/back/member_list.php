@@ -18,7 +18,7 @@ if (isset($_POST['circle_id']) & isset($_POST['threadId'])) {
             <div id="memb-head">Members:</div>
             <div class="memb-list"><ul>';
         while ($row = mysqli_fetch_assoc($res)) {
-            $htmlContent = $htmlContent.'<li><div class="memb-name">'.base64_decode($row['user_name']).'</div>';
+            $htmlContent = $htmlContent.'<li><div class="memb-name">'.$row['user_name'].'</div>';
             if ($row['is_inactive'] == 1) {
                 $htmlContent = $htmlContent.'<div class="memb-status" style="background-color:white; border:1px black solid;"></div></li>';
             }else{
@@ -26,7 +26,7 @@ if (isset($_POST['circle_id']) & isset($_POST['threadId'])) {
             }
         }
 
-        $htmlContent = $htmlContent.'</ul><div id="new-member">Add New Member</div></div></div>';
+        $htmlContent = $htmlContent.'</ul><div class="new-member">Add New Member</div></div></div>';
     }
 }
 

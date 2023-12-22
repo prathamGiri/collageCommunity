@@ -184,7 +184,7 @@ if (isset($_POST['circle_id']) && isset($_POST['topic']) && isset($_SESSION['use
                 echo '">
                     <div class="card-content">
                         <h2>';
-                echo base64_decode($circle_mem_row['user_name']);
+                echo $circle_mem_row['user_name'];
                 echo '</h2>
                         <p>';
                 echo $circle_mem_row['position'];
