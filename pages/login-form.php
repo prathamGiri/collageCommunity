@@ -3,6 +3,9 @@ include 'back/connection.php';
 include 'back/functions.php';
 
 loggedoutonly('../index.php');
+if (isset($_SESSION['indexType'])) {
+  unset($_SESSION['indexType']);
+}
 ?>
 
 <!DOCTYPE html>

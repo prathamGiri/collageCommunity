@@ -38,6 +38,18 @@ var callAjax = function (circle_id, topic, dest) {
     })
 }
 
+var callEventsAjax = function (circle_id, dest) {
+    $.ajax({
+        url: 'events_page.php',
+        method: 'POST',
+        data: {
+            circle_id : circle_id,
+        },
+        success: function (data) {
+            $(dest).html(data);
+        }
+    })
+}
 var callMemberList = function (circle_id, threadId, dest){
     $.ajax({
         url: 'back/member_list.php',
@@ -347,16 +359,54 @@ var newMemberFloater = function(circleId, threadId, tag) {
 }
 
 $(document).ready(function () {
+
     $('.p_img').on('click', function () {
         circleId = $(this).attr("id");
-        console.log(circleId);
         if (circleId != "") {
             callAjax(circleId, 'threads', '#options')
             callAjax(circleId, 'about', '.posts')
             $('.member-bar').html('')
+            $('.p_img').removeClass("active_circle");
+            $(this).addClass("active_circle");
             tag = 'general'
         }
     })
+
+    $('.p_img img').on({
+        
+        mouseenter: function() {
+            parent = $(this).closest('.p_img');
+            textBlock = parent.find('.p_text');
+            $(this).css({
+                'border-radius': '30%',
+                'border': '3px solid #04AA6D'
+            });
+            $(parent).css({
+                'position' : 'relative',
+            });
+            $(textBlock).css({
+                'display' : 'block',
+                'position' : 'absolute',
+                'background-color' : 'black',
+                'color' : 'white',
+                'font-size' : '20px',
+                'top' : '50%',
+                'transform' : 'translateY(-50%)',
+                'left' : '4rem',
+                'padding' : '8px',
+            });
+        },
+        mouseleave: function() {
+            textBlock = $(this).closest('.p_img').find('.p_text');
+            $(this).css({
+                'border-radius': '50%', // Reset to default value or remove this line if not needed
+                'border': 'none' // Reset to default value or remove this line if not needed
+            });
+            $(textBlock).css({
+                'display' : 'none'
+            });
+        }
+    });
 
     $('#about').on('click', function () {
         if (circleId != "") {
@@ -365,6 +415,14 @@ $(document).ready(function () {
             $('#posts-btn').addClass('active')
             $('.member-bar').html('')
             tag = 'general'
+        }
+    })
+
+    $('#up_events').on('click', function () {
+        if (circleId != "") {
+            callEventsAjax(circleId, '.posts')
+            $('.member-bar').html('')
+            tag = 'events'
         }
     })
 
@@ -811,4 +869,8 @@ $(document).on('click', '.merch-box', function () {
     
         }
     })
+})
+
+$(document).on('click', '.edit', function() {
+    window.location.href = "edit_circle.php?comm_id="+circleId;
 })

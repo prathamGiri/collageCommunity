@@ -1,7 +1,9 @@
 <?php
 $page = "circles";
 include "back/database_connection.php";
-
+if (isset($_SESSION['indexType'])) {
+    unset($_SESSION['indexType']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

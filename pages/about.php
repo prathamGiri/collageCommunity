@@ -2,7 +2,9 @@
     $page = "aboutus";
     include "back/connection.php";
     include "back/functions.php";
-    
+    if (isset($_SESSION['indexType'])) {
+        unset($_SESSION['indexType']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

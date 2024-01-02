@@ -1,9 +1,8 @@
 <?php
 include "connection.php";
 include "functions.php";
-echo "1111";
+
 if (isset($_POST['merch-name']) && isset($_POST['merch-price'])) {
-    echo "2222";
     $circleId = $_SESSION['commid'];
     $merch_name = test_input($_POST['merch-name']);
     $merch_price = test_input($_POST['merch-price']);

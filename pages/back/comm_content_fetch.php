@@ -148,7 +148,7 @@ if (isset($_POST['circle_id']) && isset($_POST['topic']) && isset($_SESSION['use
                         $circle_row = mysqli_fetch_assoc($circle_res);
 
                         echo '<div class="banner">
-                            <img src="../images/';
+                            <img src="../images/banners/';
                         echo $circle_row['circleBanner'];
                         echo '">';
                         echo '</div>
@@ -159,9 +159,16 @@ if (isset($_POST['circle_id']) && isset($_POST['topic']) && isset($_SESSION['use
                         echo '" alt="">';
                         echo '</div>
                             <div class="content">
+                                <div class="circle-name-wrapper">
+                                    <div class="circle-name">
                                 <h1>';
                         echo $circle_row['circleName'];
                         echo '</h1>
+                                </div>
+                                <div class="edit">
+                                    <i class="ri-edit-2-line"></i>
+                                </div>
+                                </div>
                                 <p>';
                         echo $circle_row['circleDiscription'];
                         echo '</p>

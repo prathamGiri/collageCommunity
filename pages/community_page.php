@@ -2,6 +2,9 @@
 $page = "community_page";
 include "back/database_connection.php";
 $_SESSION['page'] = $page;
+if (isset($_SESSION['indexType'])) {
+    unset($_SESSION['indexType']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +22,14 @@ $_SESSION['page'] = $page;
 </head>
 <body>
     <?php include 'navbar.php' ?>
-    
+    <?php 
+    $circleId;
+                        if (isset($_GET['commid'])) {
+                            $_SESSION['commid'] = $_GET['commid'];
+                            $_SESSION['postType'] = 0;
+                            $circleId = $_SESSION['commid'];
+                        } 
+                    ?>
     <div class="main-body">
 
         <div class="sidebar">
@@ -27,9 +37,13 @@ $_SESSION['page'] = $page;
                 <?php if (mysqli_num_rows($cp_result) > 0) {
                         while ($cp_row = mysqli_fetch_assoc($cp_result)) {
                 ?>
-                <div class="p_img" id="<?php echo $cp_row['circleId'] ?>"><img src="<?php echo '/collageCommunity/images/profile_img/'.$cp_row['circleLogo'] ?>"></div>
+                <div class="p_img <?php if ($circleId == $cp_row['circleId']) {
+                    echo 'active_circle';
+                } ?>" id="<?php echo $cp_row['circleId'] ?>">
+                <div class="p_text"><?php echo $cp_row['circleName'] ?></div>
+                <img src="<?php echo '/collageCommunity/images/profile_img/'.$cp_row['circleLogo'] ?>"></div>
                 <?php } } ?>
-                <div><a href="/collageCommunity/pages/circles.php"><i class="ri-compass-3-fill"></i></a></div>
+                <div class="p_img"><a href="/collageCommunity/pages/circles.php"><i class="ri-compass-3-fill"></i></a></div>
             </div>
 
             <div class="threads">
@@ -40,13 +54,7 @@ $_SESSION['page'] = $page;
                 </ul>
                 <div>Threads:</div>
                 <div id="options">
-                    <?php 
-                        if (isset($_GET['commid'])) {
-                            $_SESSION['commid'] = $_GET['commid'];
-                            $_SESSION['postType'] = 0;
-                            $circleId = $_SESSION['commid'];
-                            } 
-                    ?>
+                    
                 </div>
                 <div id="new_thread">
                     <p><i class="ri-add-circle-line"></i>Create New Thread</p>
@@ -198,7 +206,6 @@ $_SESSION['page'] = $page;
     <script>
         callAjax(<?php echo $circleId; ?>, 'threads', '#options');
         callAjax(<?php echo $circleId; ?>, 'about', '.posts');
-        
     </script>
     <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
 </body>

@@ -13,7 +13,7 @@
           }
           echo "</ul>";
         }
-    }else if ($_POST['page'] == 'create_comm' || $_POST['page'] == 'user_info_form') {
+    }else if ($_POST['page'] == 'create_comm' || $_POST['page'] == 'user_info_form' || $_POST['page'] == 'edit_circle') {
       $query = "SELECT * FROM colleges WHERE collegeName LIKE '{$_POST['query']}%' LIMIT 100";
         $result = mysqli_query($conn, $query);
         if (mysqli_num_rows($result) > 0) {
@@ -25,7 +25,7 @@
             $_SESSION['collegeId'] = $collegeId;
             $state = $res['state'];
             $country = $res['country'];
-              echo "<li collegeid='$collegeId' institute='$institute' city='$city' state='$state' country='$country'>".$institute. "</li>" ;
+              echo "<li class='ind-list' collegeid='$collegeId' institute='$institute'>".$institute. "</li>" ;
           }
           echo "</ul>";
         }

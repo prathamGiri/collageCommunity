@@ -2,6 +2,9 @@
     $page = "create_comm";
     include "back/connection.php";
     include "back/functions.php";
+    if (isset($_SESSION['indexType'])) {
+        unset($_SESSION['indexType']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +41,7 @@
                         <input type="text" class="coname" placeholder="Community Name" name="community_name" required>
                         <textarea name="discription" id="codisc" placeholder="Discription" required></textarea>
                         <div>
-                            <input type="text" class="coname" page="<?php echo $page ?>" id="live_search" placeholder="institute" name="institute" required>
+                            <input type="text" class="coname" page="<?php echo $page ?>" id="live_search" placeholder="institute" name="institute" autocomplete="off" required>
                             <div id="search_result"></div>
                         </div>
 

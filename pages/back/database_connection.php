@@ -1,15 +1,10 @@
 <?php
 include "connection.php";
 include "functions.php";
-
-$sql = "SELECT *
-            FROM staticcircleinfo";
 $sql2 = "SELECT *
             FROM posts 
             ORDER BY post_id DESC 
             LIMIT 8";
-
-$res = mysqli_query($conn, $sql);
 $res2 = mysqli_query($conn, $sql2);
 
 $user_id;
@@ -28,13 +23,24 @@ if (isset($_COOKIE["user_info"]) && isset($_COOKIE["password"]) && isset($_COOKI
     mysqli_query($conn, "UPDATE `staticcustomerinfo` SET last_activity_timestamp = NOW() WHERE user_id = $user_id");
 }
 if (isset($user_id) && isset($page)) {
-    if ($page == "home" || $page == "circles") {
+    if ($page == "home") {
+        $sql = "SELECT cf.userId, cf.circleId, sci.circleName, sci.followerCount
+            FROM circle_following AS cf
+            JOIN staticcircleinfo AS sci 
+            ON cf.circleId = sci.circleId
+            WHERE cf.userId = '$user_id'";
+        $res = mysqli_query($conn, $sql);
         $sql3 = "SELECT *
             FROM staticcustomerinfo
             WHERE user_id = '$user_id'";
         $res3 = mysqli_query($conn, $sql3);
     }
-
+    if ($page == "circles") {
+        $sql3 = "SELECT *
+            FROM staticcustomerinfo
+            WHERE user_id = '$user_id'";
+        $res3 = mysqli_query($conn, $sql3);
+    }
     if ($page == "profile") {
         $sql3 = "SELECT sci.user_id, sci.user_name, sci.profile_img, sci.banner, sci.graduating_year, sci.gender, sci.collegeId, c.collegeName, c.city, c.state, c.country
             FROM staticcustomerinfo AS sci

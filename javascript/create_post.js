@@ -39,7 +39,7 @@ $(document).ready(function (){
             data: formData,
             success: function (data) {
                 
-                $('#posts_wrapper').prepend(data);
+                $('#posts').prepend(data);
 
                 $('#freeform').val("");
                 $('#image_file').val("");

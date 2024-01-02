@@ -14,7 +14,7 @@ $_SESSION['page'] = $page;
 
     <!-- <link rel="shortcut icon" href="/images/logo.png" /> -->
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/collageCommunity/css/index.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -49,24 +49,58 @@ $_SESSION['page'] = $page;
     <div class="main">
         <!-- Left Side  -->
         <div class="comm_bar">
+            <div class="create">
+                <a href="pages/create_comm.php" id="comm">
+                    <div><i class="ri-add-line"></i>
+                        <p>Create a New Circle</p>
+                    </div>
+                </a>
+            </div>
+            <?php
+            if (isset($_SESSION['login_status']) && $_SESSION['login_status'] == 'logged_in') {
+            ?>
             <div class="sub_comm_bar">
                 <h3 class="head">Communities:</h3>
                 <ul>
                     <?php
                     if (mysqli_num_rows($res) > 0) {
-                        $i = 0;
                         while ($row = mysqli_fetch_assoc($res)) {
                     ?>
                             <li>
                                 <a href="pages/community_page.php?commid=<?php echo $row['circleId'] ?>">
                                     <h3><?php echo $row['circleName']; ?></h3>
-                                    <p>Members : 100</p>
+                                    <p>Members : <?php echo $row['followerCount']; ?></p>
                                 </a>
                             </li>
-
                     <?php
-                            $i++;
-                            if ($i == 4) {
+                        }
+                    }
+                    ?>
+                </ul>
+
+                <div class="show_more">
+                    <h3 class="head"><a href="pages/circles.php">Show more</a></h3>
+                </div>
+            </div>
+            <?php }else{
+            ?>
+            <div class="sub_comm_bar">
+                <h3 class="head">Communities:</h3>
+                <ul>
+                    <?php
+                    if (mysqli_num_rows($res) > 0) {
+                        while ($row = mysqli_fetch_assoc($res)) {
+                            $i = 0;
+                    ?>
+                            <li>
+                                <a href="pages/community_page.php?commid=<?php echo $row['circleId'] ?>">
+                                    <h3><?php echo $row['circleName']; ?></h3>
+                                    <p>Members : <?php echo $row['followerCount']; ?></p>
+                                </a>
+                            </li>
+                    <?php
+                        $i = $i + 1;
+                            if ($i > 4) {
                                 break;
                             }
                         }
@@ -78,29 +112,19 @@ $_SESSION['page'] = $page;
                     <h3 class="head"><a href="pages/circles.php">Show more</a></h3>
                 </div>
             </div>
-
-            <div class="create">
-                <a href="pages/create_comm.php" id="comm">
-                    <div><i class="ri-add-line"></i>
-                        <p>Create a New Circle</p>
-                    </div>
-                </a>
-            </div>
-
+            <?php
+            } ?>
         </div>
         <!-- Middle Part -->
         <div class="feed">
 
             <div class="tags">
-                <a href="#">Latest</a>
-                <a href="#">Official Notices</a>
-                <a href="#">Achievements</a>
+                <a class="ind-tag current" id="latest-posts">Latest</a>
+                <a class="ind-tag" id="announcements">Announcements</a>
+                <a class="ind-tag" id="achievements">Achievements</a>
+                <a class="ind-tag" id="events">Events</a>
             </div>
             <div class="posts" id="posts">
-                <?php
-                if (mysqli_num_rows($res2) > 0) {
-                    include "pages/post_templet.php";
-                } ?>
             </div>
             <div class="ajax-load" id="loader" style="display: none;">
                 Loading...
@@ -123,14 +147,14 @@ $_SESSION['page'] = $page;
                         <p><?php $row3['about']; ?></p>
                     </div>
 
-                    <div class="pro_cir">
+                    <!-- <div class="pro_cir">
                         <p>Your circles : 5</p>
                         <p>Members : 500</p>
-                    </div>
+                    </div> -->
                 </div>
             </a>
             
-            <div class="sub_comm_bar" id="recent">
+            <!-- <div class="sub_comm_bar" id="recent">
                 <h3 class="head">Recent Posts:</h3>
                 <ul>
                     <li>
@@ -152,7 +176,7 @@ $_SESSION['page'] = $page;
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <?php } } else{ ?>
                 <div class="profile">
                     <div class = "info">
@@ -186,7 +210,8 @@ $_SESSION['page'] = $page;
     <!-- ......................FOOTER ENDS HERE.......................... -->
     <!-- <script src="javascript/createpost.js"></script> -->
     <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
-    <!-- <script src="javascript/image_preview.js"></script> -->
+    <script src="javascript/index_js.js"></script>
+    <script>indexAjax('latest')</script>
 </body>
 
 </html>

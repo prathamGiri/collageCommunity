@@ -23,7 +23,7 @@
     height: 100%;
 }
 .comm_bar {
-    margin: 10px 10px 0 10px;
+    margin: 1.36rem 10px 0 10px;
     width: 20%;
     height: 100%;
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
@@ -186,12 +186,13 @@
 }
 
 .tags a {
-    border: 2px solid  #ffffff;
-   
+    /* border: 2px solid  #ffffff; */
+    cursor: pointer;
 }
 
 .tags a:hover {
     /* background-color: #a7edd8; */
+    padding-bottom: 0px;
    border-bottom: 2px solid  #04AA6D;
 }
 
@@ -199,9 +200,13 @@
     margin: 2px 15px 2px 0px;
     font-family: 'Poppins';
     font-size: 18px;
-    padding: 2px;
+    padding: 2px 2px 2px 2px;
     border-radius: 2px;
-   
+}
+
+.current {
+    padding-bottom: 0px;
+    border-bottom: 2px solid #04AA6D;
 }
 
 .search-box{

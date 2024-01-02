@@ -1,6 +1,9 @@
 <?php
 $page = "profile";
 include "back/database_connection.php";
+if (isset($_SESSION['indexType'])) {
+    unset($_SESSION['indexType']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,38 +28,46 @@ include "back/database_connection.php";
         <div class="left-container">
             <div class="top-info">
                 <div class="banner">
-                    <img src="<?php echo "/collageCommunity/images/".$row3['banner']; ?>" alt="img">
+                    <img src="<?php echo "/collageCommunity/images/banners/".$row3['banner']; ?>" alt="img">
                 </div>
-                <div id="profile-pic">
-                    <img src="<?php echo "/collageCommunity/images/profile_img/".$row3['profile_img']; ?>" alt="img">
-                </div>
+                
                 <div class="info-panal">
-                    <div id="name">
-                        <h1><?php echo $row3['user_name']; ?></h1>
+                    <div id="profile-pic">
+                        <img src="<?php echo "/collageCommunity/images/profile_img/".$row3['profile_img']; ?>" alt="img">
                     </div>
+                    <div id="name">
+                        <div id="in-name">
+                            <h1><?php echo $row3['user_name']; ?></h1>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="extra-info">
+                    <ul>
+                        <li>Institute: <?php echo $row3['collegeName']; ?></li>
+                        <li>City: <?php echo $row3['city']; ?></li>
+                        <li>State: <?php echo $row3['state']; ?></li>
+                        <li>Country: <?php echo $row3['country']; ?></li>
+                        <li>Graduating Year: <?php echo $row3['graduating_year']; ?></li>
+                        <li>Gender: <?php echo $row3['gender']; ?></li>
+                    </ul>
                 </div>
             </div>
             
-            <div>
-                <ul>
-                    <li><?php echo $row3['collegeName']; ?></li>
-                    <li><?php echo $row3['city']; ?></li>
-                    <li><?php echo $row3['state']; ?></li>
-                    <li><?php echo $row3['country']; ?></li>
-                    <li><?php echo $row3['graduating_year']; ?></li>
-                    <li><?php echo $row3['gender']; ?></li>
-                </ul>
-            </div>
+            
         </div>
         <?php } ?>
         <div class="right-container">
             <div class="options">
-                <a href="#">change Password</a>
+                <div class="ind-opt" id="c-pass">
+                    Change Password
+                </div>
+                <div class="ind-opt" id="e-pro">
+                    Edit Profile
+                </div>
+                
             </div>
-            <div class="options">
-                <a href="#">change Name</a>
-            </div>
-            <div class="sub_comm_bar" id="recent">
+            <!-- <div class="sub_comm_bar" id="recent">
                 <h3 class="head">Recent Posts:</h3>
                 <ul>
                     <li>
@@ -78,7 +89,9 @@ include "back/database_connection.php";
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="/collageCommunity/javascript/profile_fun.js"></script>
 </body>
