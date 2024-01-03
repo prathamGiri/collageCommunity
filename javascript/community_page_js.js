@@ -47,9 +47,133 @@ var callEventsAjax = function (circle_id, dest) {
         },
         success: function (data) {
             $(dest).html(data);
+            $('.head').css({
+                'width' : '100%',
+                'background-color' : 'white',
+                'border-radius' : '5px',
+                'padding' : '8px',
+                'font-size' : '20px',
+                'font-family' : 'poppins',
+                'margin-bottom' : '10px'
+            })
+            $('.event-main').css({
+                'width' : '100%',
+                'background-color' : 'white',
+                'border-radius' : '5px',
+                'margin-bottom' : '10px'
+            })
+            $('.event-in').css({
+                'padding' : '5px',
+                'width' : '100%',
+                'display' : 'flex',
+                'justify-content' : 'flex-start'
+            })
+            $('.event-img img').css({
+                'width' : '100%',
+                'border-radius' : '5px',
+            })
+            $('.event-img').css({
+                'width' : '40%',
+            })
+            $('.event-info').css({
+                'width' : '60%',
+            })
+            $('.ind-list').css({
+                'padding' : '3px',
+                'font-family' : 'poppins',
+                'font-size' : '18px',
+                'width' : '100%',
+                'user-select' : 'none'
+            })
+            $('.reg-btn-wrapper').css({
+                'width' : '100%',
+            })
+            
+                $('.reg-btn').css({
+                    'width' : 'fit-content',
+                    'margin' : 'auto',
+                    'padding' : '4px',
+                    'border-radius' : '5px',
+                    'color' : 'white',
+                    'font-family' : 'poppins',
+                    'cursor' : 'pointer'
+                })
+            
+            $('.reg-btn').on('click', function(){
+                var type = $('.reg-btn').attr('data');
+                var self = $(this)
+                var eventId = self.attr('id');
+                if (type == 'register') {
+                    console.log(eventId);
+                    var ajaxType = 'register';
+                    $.ajax({
+                        url: 'back/event_register.php',
+                        method: 'POST',
+                        data: {
+                            eventId : eventId,
+                            ajaxType : ajaxType
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if (data.status == 'success') {
+                                console.log('success');
+                                self.attr('data', 'cancel')
+                                self.html("Cancel Registration")
+                                self.css({
+                                    'width' : 'fit-content',
+                                    'margin' : 'auto',
+                                    'padding' : '4px',
+                                    'border-radius' : '5px',
+                                    'background-color' : 'rgb(252, 186, 3)',
+                                    'color' : 'white',
+                                    'font-family' : 'poppins',
+                                    'cursor' : 'pointer'
+                                })
+                            }else if(data.status == 'error'){
+                                console.log('error in uploading')
+                            }
+                        }
+                    })
+                }else if (type == 'cancel') {
+                    var eventId = self.attr('id');
+                    console.log(eventId);
+                    var ajaxType = 'cancel';
+                    $.ajax({
+                        url: 'back/event_register.php',
+                        method: 'POST',
+                        data: {
+                            eventId : eventId,
+                            ajaxType : ajaxType
+                        },
+                        success: function (data) {
+                            console.log(data);
+                            if (data.status == 'success') {
+                                console.log('success');
+                                self.attr('data', 'register')
+                                self.html("Register")
+                                self.css({
+                                    'width' : 'fit-content',
+                                    'margin' : 'auto',
+                                    'padding' : '4px',
+                                    'border-radius' : '5px',
+                                    'background-color' : '#04AA6D',
+                                    'color' : 'white',
+                                    'font-family' : 'poppins',
+                                    'cursor' : 'pointer'
+                                })
+                            }else if(data.status == 'error'){
+                                console.log('error in uploading')
+                            }
+                        }
+                    })
+                }
+                
+            })
+            
         }
     })
 }
+
 var callMemberList = function (circle_id, threadId, dest){
     $.ajax({
         url: 'back/member_list.php',
@@ -420,8 +544,21 @@ $(document).ready(function () {
 
     $('#up_events').on('click', function () {
         if (circleId != "") {
+            $('.tags').css({
+                'display' : 'none'
+            })
             callEventsAjax(circleId, '.posts')
-            $('.member-bar').html('')
+            $('.member-bar').html('<div id="new-event-btn">New Event</div>')
+            $('#new-event-btn').css({
+                'width' : '100%',
+                'text-align' : 'center',
+                'padding' : '11px 0px',
+                'font-family': 'Poppins',
+                'background-color' : '#04AA6D',
+                'color' : 'white',
+                'border-radius' : '5px',
+                'cursor': 'pointer'
+            }) 
             tag = 'events'
         }
     })
@@ -673,7 +810,6 @@ $(document).on('click', '#new-merch-btn', function () {
                 'border-radius' : '5px',
                 'border' : '1px solid #e60909',
                 'display' : 'none'
-
             })
             $('.img-preview img').on('click', function () {
                 $('#filec').click()
@@ -874,3 +1010,153 @@ $(document).on('click', '.merch-box', function () {
 $(document).on('click', '.edit', function() {
     window.location.href = "edit_circle.php?comm_id="+circleId;
 })
+
+$(document).on('click', '#new-event-btn', function() {
+    $.ajax({
+        url: '/collageCommunity/pages/new_event.php',
+        method: 'POST',
+        data: {
+            circle_id : circleId
+        },
+        success: function (data) {
+            $('.floaters').html(data)
+            $('.floaters').css({
+                "width" : "35%",
+                "height" : "80%",
+                "display" : "block",
+                "background-color": "white",
+                "position": "fixed",
+                "left": "50%",
+                "top": "70%",
+                "transform": "translate(-50%, -70%)",
+                "border" : "1px black solid"
+            })
+            $('.main-wrapper').css({
+                "height" : "100%",
+                "width" : "100%",
+                'margin-bottom' : '10px',
+                'overflow-y': 'auto'
+            })
+            $('#closeblock').css({
+                "font-size": "2rem",
+                "cursor": "pointer",
+                "position":"absolute",
+                "right" : '0px'
+            })
+            $('.ind-wrapper').css({
+                'width' : "70%",
+                'margin' : "auto"
+            })
+            $('.ind-wrapper input').css({
+                'font-size' : '20px',
+                'margin-bottom' : '5px',
+                'background-color' : '#dbfff4'
+            })
+            $('.event-submit').css({
+                'width' : 'fit-content',
+                'margin' : 'auto',
+            })
+            $('#er-msg').css({
+                'width' : '60%',
+                'margin' : 'auto',
+                'padding' : '10px',
+                'text-align' : 'center',
+                'background-color' : '#f7c3c3',
+                'color' : '#e60909',
+                'border-radius' : '5px',
+                'border' : '1px solid #e60909',
+                'display' : 'none'
+            })
+            
+        }
+    })
+})
+
+$(document).on('change', '#event-mode', function () {
+    var selectedValue = $(this).val();
+    console.log(selectedValue)
+    switch (selectedValue) {
+        case 'Offline':
+          $('#event-venue-wrapper').css({
+            'display' : 'block'
+          });
+          $('#event-gmeet-wrapper').css({
+            'display' : 'none'
+          });
+          break;
+        case 'Online':
+            $('#event-venue-wrapper').css({
+                'display' : 'none'
+              });
+              $('#event-gmeet-wrapper').css({
+                'display' : 'block'
+              });
+          break;
+      }
+})
+
+$(document).on('submit', '#event-form', function (e) {
+    e.preventDefault();
+    if ($('#event-name').val() == "") {
+        $('#er-msg').html('Event Name is Empty')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else if ($('#event-disc').val() == "") {
+        $('#er-msg').html('Event Discription is Empty')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else if ($('#event-mode').val() == "Offline" && $('#event-venue').val() == "") {
+        $('#er-msg').html('Event Venue is Empty')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else if ($('#event-mode').val() == "Online" && $('#event-gmeet').val() == "") {
+        $('#er-msg').html('Event Gmeet Link is Empty')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else if ($('#event-date').val() == "") {
+        $('#er-msg').html('Event Date is Empty')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else if ($('#event-time').val() == "") {
+        $('#er-msg').html('Event Time is Empty')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else if ($('#event-fees').val() == "") {
+        $('#er-msg').html('Registration Fees is Empty')
+        $('#er-msg').css({
+            'display' : 'block'
+        })
+        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    }else{
+        $('#button_clicked').val('true');
+        var formData = new FormData(this);
+        $.ajax({
+            url: '/collageCommunity/pages/back/new_event_back.php',
+            type: 'POST',
+            data: formData,
+            success: function (data) {
+                callEventsAjax(circleId, '.posts')
+                $('.floaters').html("");
+                $('.floaters').css({
+                    "display" : 'none'
+                });
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+    
+});

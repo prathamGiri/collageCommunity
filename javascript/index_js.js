@@ -30,9 +30,9 @@ $(document).ready(function () {
         $(this).addClass('current')
     })
 
-    $('#events').on('click', function() {
-        indexAjax('events')
-        $('.ind-tag').removeClass('current')
-        $(this).addClass('current')
-    })
+    // $('#events').on('click', function() {
+    //     indexAjax('events')
+    //     $('.ind-tag').removeClass('current')
+    //     $(this).addClass('current')
+    // })
 })

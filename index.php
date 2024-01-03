@@ -122,7 +122,7 @@ $_SESSION['page'] = $page;
                 <a class="ind-tag current" id="latest-posts">Latest</a>
                 <a class="ind-tag" id="announcements">Announcements</a>
                 <a class="ind-tag" id="achievements">Achievements</a>
-                <a class="ind-tag" id="events">Events</a>
+                <!-- <a class="ind-tag" id="events">Events</a> -->
             </div>
             <div class="posts" id="posts">
             </div>

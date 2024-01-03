@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2024 at 09:32 PM
+-- Generation Time: Jan 03, 2024 at 09:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -121,6 +121,55 @@ INSERT INTO `colleges` (`collegeId`, `collegeName`, `city`, `state`, `country`) 
 (28, 'Yeshwantrao Chavan College of Engineering', 'Nagpur', 'Maharashtra', 'India'),
 (29, 'Indian Institute Of Management, Ahmedabad', 'Ahmedabad', 'Gujarat', 'India'),
 (30, 'Indian Institute Of Technology, Bombay', 'Mumbai', 'Maharashtra', 'India');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eventregestration`
+--
+
+CREATE TABLE `eventregestration` (
+  `userId` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `eventregestration`
+--
+
+INSERT INTO `eventregestration` (`userId`, `eventId`) VALUES
+(19, 2),
+(19, 2),
+(19, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `eventId` int(11) NOT NULL,
+  `circleId` int(11) NOT NULL,
+  `eventName` varchar(256) NOT NULL,
+  `eventDisc` varchar(5000) NOT NULL,
+  `eventImg` varchar(256) NOT NULL DEFAULT '-1',
+  `mode` text NOT NULL,
+  `date` date NOT NULL,
+  `time` time(2) NOT NULL,
+  `regFees` int(11) NOT NULL,
+  `venue` varchar(256) NOT NULL DEFAULT '-1',
+  `gmeetLink` varchar(256) NOT NULL DEFAULT '-1',
+  `status` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`eventId`, `circleId`, `eventName`, `eventDisc`, `eventImg`, `mode`, `date`, `time`, `regFees`, `venue`, `gmeetLink`, `status`) VALUES
+(1, 10, 'Hacker Cup: Battle of the Anonymous', 'Teams compete to hack into a server and the first team to capture the flag wins.', 'Screenshot 2023-10-26 152505.png', 'offline', '2024-04-17', '12:29:53.00', 200, 'VNIT Auditorium', '-1', 'upcoming'),
+(2, 10, 'Code Jam', '12 Hours hacking event to discus and explore the world of hackers.', '-1', 'Offline', '2024-04-17', '12:29:53.00', 200, 'VNIT Audi', '-1', 'past');
 
 -- --------------------------------------------------------
 
@@ -408,7 +457,8 @@ INSERT INTO `merch_order` (`m_order_id`, `merchId`, `user_id`, `size`, `qty`, `s
 (3, 15, 19, 'm', 1, 0),
 (4, 15, 19, 'm', 1, 0),
 (5, 15, 19, 'l', 1, 0),
-(6, 15, 19, 'm', 1, 0);
+(6, 15, 19, 'm', 1, 0),
+(7, 15, 19, 'l', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -848,7 +898,7 @@ INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `pa
 (14, 'VGVqYXMgaGFubQ==', 0, 'dGVqYXNAZ21haWwuY29t', 'dc9ac98f0f841f379c0c3c1ecc85e56a', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
 (16, 'YWRpdHlhIGdhbHBoYWRl', 0, 'YWRpdHlhQGdtYWlsLmNvbQ==', 'e51b2620f7b65bed95919b66168f7573', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
 (18, 'dXRrYXJzaCBnYWlrd2Fk', 0, 'dXRrYXJzaEBnbWFpbC5jb20=', '53a2b5b7021853cdc6cbd684e3baf0e7', 'User_icon.png', '', 'i do comady', 27, 'ECE', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
-(19, 'Dhruv Gupta', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21, '2024-01-03 01:45:41.000000'),
+(19, 'Dhruv Gupta', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21, '2024-01-04 02:15:18.000000'),
 (20, 'QXl1c2ggVGFubmE=', 0, 'dGFubmFAZ21haWwuY29t', '385ad81edd3cb6023360cfef4b46a523', 'User_icon.png', '', 'qaesrdtfygu', 25, 'Computer Science', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
 (21, 'QXRoYXJ2IEJhbGtpc2g=', 0, 'YXRoYXJ2YUBnbWFpbC5jb20=', '0d02ba1bdc3bde610c8fcd27ae752467', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i am a virgin', 25, 'Chemical Engineering', 2027, 'don&#039;t ', 21, '0000-00-00 00:00:00.000000'),
 (22, 'cHJhdGhhbSBnaXJp', 0, 'cHJhdGhhbTAyQGdtYWlsLmNvbQ==', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'hehe', 27, 'Electrical Engineering', 2025, 'male', 21, '0000-00-00 00:00:00.000000'),
@@ -1135,6 +1185,12 @@ ALTER TABLE `colleges`
   ADD PRIMARY KEY (`collegeId`);
 
 --
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`eventId`);
+
+--
 -- Indexes for table `images`
 --
 ALTER TABLE `images`
@@ -1199,6 +1255,12 @@ ALTER TABLE `colleges`
   MODIFY `collegeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `eventId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
@@ -1214,7 +1276,7 @@ ALTER TABLE `merch`
 -- AUTO_INCREMENT for table `merch_order`
 --
 ALTER TABLE `merch_order`
-  MODIFY `m_order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `m_order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `posts`

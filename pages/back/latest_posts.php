@@ -33,17 +33,18 @@ if (isset($_POST['postType'])) {
         if (mysqli_num_rows($res2) > 0) {
             include "../post_templet.php";
         } 
-    }elseif ($postType == 'events') {
-        // $sql2 = "SELECT *
-        //             FROM posts 
-        //             WHERE postType = 2
-        //             ORDER BY post_id DESC
-        //             LIMIT 8";
-        // $res2 = mysqli_query($conn, $sql2);
-        // if (mysqli_num_rows($res2) > 0) {
-        //     include "../post_templet.php";
-        // } 
     }
+    // elseif ($postType == 'events') {
+    //     $sql2 = "SELECT *
+    //                 FROM events 
+    //                 WHERE status = 'upcoming'
+    //                 ORDER BY eventId DESC
+    //                 LIMIT 8";
+    //     $res2 = mysqli_query($conn, $sql2);
+    //     if (mysqli_num_rows($res2) > 0) {
+    //         include "../post_templet.php";
+    //     } 
+    // }
 }
 
 ?>
