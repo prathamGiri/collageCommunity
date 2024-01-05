@@ -4,6 +4,7 @@ include "functions.php";
 
 if (isset($_POST['button_clicked']) && $_POST['button_clicked'] == 'true') {
     $circleId = $_SESSION['commid'];
+    echo $circleId;
     $eventImg;
     if (isset($_FILES['event-img']['name']) && $_FILES['event-img']['size'] > 0) {
         $eventImg = test_input($_FILES['event-img']['name']);

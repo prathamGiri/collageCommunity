@@ -88,9 +88,10 @@ $_SESSION['page'] = $page;
                 <h3 class="head">Communities:</h3>
                 <ul>
                     <?php
-                    if (mysqli_num_rows($res) > 0) {
-                        while ($row = mysqli_fetch_assoc($res)) {
-                            $i = 0;
+                    $new_sql = "SELECT * FROM staticcircleinfo ORDER BY followerCount DESC LIMIT 4";
+                    $new_res = mysqli_query($conn, $new_sql);
+                    if (mysqli_num_rows($new_res) > 0) {
+                        while ($row = mysqli_fetch_assoc($new_res)) {
                     ?>
                             <li>
                                 <a href="pages/community_page.php?commid=<?php echo $row['circleId'] ?>">
@@ -99,10 +100,6 @@ $_SESSION['page'] = $page;
                                 </a>
                             </li>
                     <?php
-                        $i = $i + 1;
-                            if ($i > 4) {
-                                break;
-                            }
                         }
                     }
                     ?>

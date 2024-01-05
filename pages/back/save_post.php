@@ -5,6 +5,7 @@ include "database_connection.php";
     $user_id = $_COOKIE['user_id'];
     mysqli_query($conn, "UPDATE `staticcustomerinfo` SET last_activity_timestamp = NOW() WHERE user_id = $user_id");
     $post = mysqli_real_escape_string($conn, test_input( $_POST['freeform']));
+    $title = mysqli_real_escape_string($conn, test_input( $_POST['post-title']));
     $time = date("H:i:sa");
     $date = date("Y-m-d");
     $circleId = $_SESSION['commid'];
@@ -20,7 +21,7 @@ include "database_connection.php";
         $postTable = 'posts';
         $imgtable = 'image_rel';
         mysqli_query($conn, "INSERT INTO $postTable (`time`, `date`, `user_id`, `title`, `content`, `circleId`, `postType`)
-                                VALUES ('$time', '$date', $user_id, 'tentative title', '$post', $circleId, $postType)");
+                                VALUES ('$time', '$date', $user_id, '$title', '$post', $circleId, $postType)");
         $msg_res = mysqli_query($conn, "SELECT * FROM $postTable WHERE user_id = '$user_id' and `time` = '$time' and `date` = '$date'");
         if (mysqli_num_rows($msg_res) > 0) {
             $msg_row = mysqli_fetch_assoc($msg_res);
@@ -32,7 +33,7 @@ include "database_connection.php";
         $postTable = 'threads_posts';
         $imgtable = 'threads_img_rel';
         mysqli_query($conn, "INSERT INTO $postTable (`time`, `date`, `user_id`, `title`, `content`, `threadId`)
-                                VALUES ('$time', '$date', $user_id, 'tentative title', '$post', $threadId)");
+                                VALUES ('$time', '$date', $user_id, '$title', '$post', $threadId)");
         $msg_res = mysqli_query($conn, "SELECT * FROM $postTable WHERE user_id = '$user_id' and `time` = '$time' and `date` = '$date'");
         if (mysqli_num_rows($msg_res) > 0) {
             $msg_row = mysqli_fetch_assoc($msg_res);

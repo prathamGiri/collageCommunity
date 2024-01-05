@@ -82,7 +82,7 @@ a {
     font-family: 'Nunito Sans', sans-serif;
 }
 
-.navbar .current {
+.navbar .active {
     color: #018859;
 }
 

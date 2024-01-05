@@ -3,6 +3,7 @@ var threadId;
 var tag;
 
 var callAjax = function (circle_id, topic, dest) {
+    console.log(circle_id);
     circleId = circle_id;
     var postType;
     if (topic == 'generalPosts' || topic == 'about') {
@@ -15,6 +16,7 @@ var callAjax = function (circle_id, topic, dest) {
         topic = 'post';
         postType = 1;//for announcement
     }
+    console.log(postType);
     $.ajax({
         url: 'back/comm_content_fetch.php',
         method: 'POST',
@@ -40,7 +42,7 @@ var callAjax = function (circle_id, topic, dest) {
 
 var callEventsAjax = function (circle_id, dest) {
     $.ajax({
-        url: 'events_page.php',
+        url: 'back/events_page.php',
         method: 'POST',
         data: {
             circle_id : circle_id,
@@ -97,79 +99,92 @@ var callEventsAjax = function (circle_id, dest) {
                     'color' : 'white',
                     'font-family' : 'poppins',
                     'cursor' : 'pointer'
+                }) 
+        }
+    })
+}
+
+var callNewEventsBtn = function (circle_id, dest) {
+    $.ajax({
+        url: 'back/new_events_btn.php',
+        method: 'POST',
+        data: {
+            circle_id : circle_id,
+        },
+        success: function (data) {
+            if (data.status == 'yes-prev') {
+                $(dest).html('<div id="new-event-btn">New Event</div>')
+                $('#new-event-btn').css({
+                    'width' : '100%',
+                    'text-align' : 'center',
+                    'padding' : '11px 0px',
+                    'font-family': 'Poppins',
+                    'background-color' : '#04AA6D',
+                    'color' : 'white',
+                    'border-radius' : '5px',
+                    'cursor': 'pointer'
                 })
-            
-            $('.reg-btn').on('click', function(){
-                var type = $('.reg-btn').attr('data');
-                var self = $(this)
-                var eventId = self.attr('id');
-                if (type == 'register') {
-                    console.log(eventId);
-                    var ajaxType = 'register';
-                    $.ajax({
-                        url: 'back/event_register.php',
-                        method: 'POST',
-                        data: {
-                            eventId : eventId,
-                            ajaxType : ajaxType
-                        },
-                        success: function (data) {
-                            console.log(data);
-                            if (data.status == 'success') {
-                                console.log('success');
-                                self.attr('data', 'cancel')
-                                self.html("Cancel Registration")
-                                self.css({
-                                    'width' : 'fit-content',
-                                    'margin' : 'auto',
-                                    'padding' : '4px',
-                                    'border-radius' : '5px',
-                                    'background-color' : 'rgb(252, 186, 3)',
-                                    'color' : 'white',
-                                    'font-family' : 'poppins',
-                                    'cursor' : 'pointer'
-                                })
-                            }else if(data.status == 'error'){
-                                console.log('error in uploading')
-                            }
-                        }
-                    })
-                }else if (type == 'cancel') {
-                    var eventId = self.attr('id');
-                    console.log(eventId);
-                    var ajaxType = 'cancel';
-                    $.ajax({
-                        url: 'back/event_register.php',
-                        method: 'POST',
-                        data: {
-                            eventId : eventId,
-                            ajaxType : ajaxType
-                        },
-                        success: function (data) {
-                            console.log(data);
-                            if (data.status == 'success') {
-                                console.log('success');
-                                self.attr('data', 'register')
-                                self.html("Register")
-                                self.css({
-                                    'width' : 'fit-content',
-                                    'margin' : 'auto',
-                                    'padding' : '4px',
-                                    'border-radius' : '5px',
-                                    'background-color' : '#04AA6D',
-                                    'color' : 'white',
-                                    'font-family' : 'poppins',
-                                    'cursor' : 'pointer'
-                                })
-                            }else if(data.status == 'error'){
-                                console.log('error in uploading')
-                            }
-                        }
-                    })
-                }
-                
-            })
-            
+            }else{
+                $(dest).html('')
+            }
+        }
+    })
+
+}
+
+var callNewMerchBtn = function (circle_id, dest) {
+    $.ajax({
+        url: 'back/new_events_btn.php',
+        method: 'POST',
+        data: {
+            circle_id : circle_id,
+        },
+        success: function (data) {
+            if (data.status == 'yes-prev') {
+                $(dest).html('<div id="new-merch-btn">Add Merch</div>')
+                $('#new-merch-btn').css({
+                    'width' : '100%',
+                    'text-align' : 'center',
+                    'padding' : '11px 0px',
+                    'font-family': 'Poppins',
+                    'background-color' : '#04AA6D',
+                    'color' : 'white',
+                    'border-radius' : '5px',
+                    'cursor': 'pointer'
+                })
+            }else{
+                $(dest).html('')
+            }
+        }
+    })
+}
+
+var callNewMemBtn = function (circle_id, dest, tag) {
+    $.ajax({
+        url: 'back/new_events_btn.php',
+        method: 'POST',
+        data: {
+            circle_id : circle_id,
+        },
+        success: function (data) {
+            if (data.status == 'yes-prev') {
+                $(dest).html('<div id="new-mem-btn">Add Members</div>')
+                $('#new-mem-btn').css({
+                    'width' : '100%',
+                    'text-align' : 'center',
+                    'padding' : '11px 0px',
+                    'font-family': 'Poppins',
+                    'background-color' : '#04AA6D',
+                    'color' : 'white',
+                    'border-radius' : '5px',
+                    'cursor': 'pointer'
+                })
+                $('#new-mem-btn').on('click', function() {
+                    newMemberFloater(circleId, -1, tag);
+                })
+            }else{
+                $(dest).html('')
+            }
         }
     })
 }
@@ -246,16 +261,29 @@ var createThreadsAjax = function (circle_id, dest) {
                 "transform": "translate(-50%, -50%)",
                 "border" : "1px black solid"
             })
-
+            $('.main-wrapper').css({
+                'margin' : '10px'
+            })
+            $('#thread_name').css({
+                'margin' : '5px 0px'
+            })
+            $('#thread_name input').css({
+                'font-size' : '20px',
+                'padding' : '2px',
+                'background-color' : '#dbfff4'
+            })
             $('.rb').css({
                 "width":"auto",
                 "vertical-align": "middle"
             })
 
-            $('#closeblock').css({
+            $('#closediv').css({
+                'width' : 'fit-content',
                 "font-size": "2rem",
                 "cursor": "pointer",
-                "margin-left": "92%"
+                'position' : 'absolute',
+                "right": "0px",
+                'top' : '0px'
             })
         }
     })
@@ -286,6 +314,8 @@ var placeMerchOrder = function(selectedValue, qty, merchId) {
                 })
             }else if(data.status == 'error'){
                 console.log('error in uploading')
+            }else if (data.status == 'login-first') {
+                window.location.href = "/collageCommunity/pages/login-form.php?type=loginfirst"
             }
         }
     })
@@ -543,22 +573,13 @@ $(document).ready(function () {
     })
 
     $('#up_events').on('click', function () {
+        console.log('here4')
         if (circleId != "") {
             $('.tags').css({
                 'display' : 'none'
             })
             callEventsAjax(circleId, '.posts')
-            $('.member-bar').html('<div id="new-event-btn">New Event</div>')
-            $('#new-event-btn').css({
-                'width' : '100%',
-                'text-align' : 'center',
-                'padding' : '11px 0px',
-                'font-family': 'Poppins',
-                'background-color' : '#04AA6D',
-                'color' : 'white',
-                'border-radius' : '5px',
-                'cursor': 'pointer'
-            }) 
+            callNewEventsBtn(circleId, '.member-bar')
             tag = 'events'
         }
     })
@@ -597,17 +618,7 @@ $(document).ready(function () {
             callAjax(circleId, 'merch', '.posts')
             $('.active').removeClass('active')
             $('#merch-btn').addClass('active')
-            $('.member-bar').html('<div id="new-merch-btn">Add Merch</div>')
-            $('#new-merch-btn').css({
-                'width' : '100%',
-                'text-align' : 'center',
-                'padding' : '11px 0px',
-                'font-family': 'Poppins',
-                'background-color' : '#04AA6D',
-                'color' : 'white',
-                'border-radius' : '5px',
-                'cursor': 'pointer'
-            }) 
+            callNewMerchBtn(circleId, '.member-bar')
         }
     })
 
@@ -617,20 +628,7 @@ $(document).ready(function () {
             callAjax(circleId, 'about_page', '.posts')
             $('.active').removeClass('active')
             $('#about-us-btn').addClass('active')
-            $('.member-bar').html('<div id="new-mem-btn">Add Members</div>')
-            $('#new-mem-btn').css({
-                'width' : '100%',
-                'text-align' : 'center',
-                'padding' : '11px 0px',
-                'font-family': 'Poppins',
-                'background-color' : '#04AA6D',
-                'color' : 'white',
-                'border-radius' : '5px',
-                'cursor': 'pointer'
-            })
-            $('#new-mem-btn').on('click', function() {
-                newMemberFloater(circleId, -1, tag);
-            })
+            callNewMemBtn(circleId, '.member-bar', tag)
         }
     }) 
 })
@@ -659,7 +657,8 @@ $(document).on('submit', '#thread_form', function (e) {
         type: 'POST',
         data: formData,
         success: function (data) {
-            $('.thread-list').append(data);
+            callAjax(circleId, 'threads', '#options')
+            $('.floaters').html("")
             $('#thread_name').val("");
             $('.floaters').css({
                 "display" : "none"
@@ -825,31 +824,31 @@ $(document).on('click', '#new-merch-btn', function () {
 })
 
 $(document).on('submit', '#merch-form', function (e) {
-    if ($('#filec').val() == "") {
-        $('#er-msg').html('No Image Selected')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else if ($('#merch-name').val() == "") {
-        $('#er-msg').html('Merch Name is Empty')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else if ($('#merch-price').val() == "") {
-        $('#er-msg').html('Merch Price is Empty')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else if (isNaN($('#merch-price').val())) {
-        $('#er-msg').html('Merch Price must be a Number')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else{
+    // if ($('#filec').val() == "") {
+    //     $('#er-msg').html('No Image Selected')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else if ($('#merch-name').val() == "") {
+    //     $('#er-msg').html('Merch Name is Empty')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else if ($('#merch-price').val() == "") {
+    //     $('#er-msg').html('Merch Price is Empty')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else if (isNaN($('#merch-price').val())) {
+    //     $('#er-msg').html('Merch Price must be a Number')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else{
         e.preventDefault();    
         var formData = new FormData(this);
 
@@ -869,7 +868,7 @@ $(document).on('submit', '#merch-form', function (e) {
             contentType: false,
             processData: false
         });
-    }
+    // }
     
 });
 
@@ -978,6 +977,7 @@ $(document).on('click', '.merch-box', function () {
                 'display' : 'none'
             })
             $('.place-order-btn').on('click', function() {
+
                 if ($(this).attr('id') == 'place') {
                     if ($('input[name="size"]:checked').length > 0) {
                         var selectedValue = $('input[name="size"]:checked').val();
@@ -1011,6 +1011,80 @@ $(document).on('click', '.edit', function() {
     window.location.href = "edit_circle.php?comm_id="+circleId;
 })
 
+$(document).on('click', '.reg-btn', function(){
+    
+    var self = $(this)
+    var type = self.attr('data');
+    var eventId = self.attr('id');
+    console.log(type)
+    console.log(self)
+    console.log(eventId)
+    if (type == 'register') {
+        var ajaxType = 'register';
+        $.ajax({
+            url: 'back/event_register.php',
+            method: 'POST',
+            data: {
+                eventId : eventId,
+                ajaxType : ajaxType
+            },
+            success: function (data) {
+                console.log(data);
+                if (data.status == 'success') {
+                    console.log('success');
+                    self.attr('data', 'cancel')
+                    self.html("Cancel Registration")
+                    self.css({
+                        'width' : 'fit-content',
+                        'margin' : 'auto',
+                        'padding' : '4px',
+                        'border-radius' : '5px',
+                        'background-color' : 'rgb(252, 186, 3)',
+                        'color' : 'white',
+                        'font-family' : 'poppins',
+                        'cursor' : 'pointer'
+                    })
+                }else if(data.status == 'error'){
+                    console.log('error in uploading')
+                }
+            }
+        })
+    }else if (type == 'cancel') {
+        var ajaxType = 'cancel';
+        $.ajax({
+            url: 'back/event_register.php',
+            method: 'POST',
+            data: {
+                eventId : eventId,
+                ajaxType : ajaxType
+            },
+            success: function (data) {
+                console.log(data);
+                if (data.status == 'success') {
+                    console.log('success');
+                    self.attr('data', 'register')
+                    self.html("Register")
+                    self.css({
+                        'width' : 'fit-content',
+                        'margin' : 'auto',
+                        'padding' : '4px',
+                        'border-radius' : '5px',
+                        'background-color' : '#04AA6D',
+                        'color' : 'white',
+                        'font-family' : 'poppins',
+                        'cursor' : 'pointer'
+                    })
+                }else if(data.status == 'error'){
+                    console.log('error in uploading')
+                }
+            }
+        })
+    }else if (type == 'login-first') {
+        window.location.href = "/collageCommunity/pages/login-form.php?type=loginfirst"
+    }
+    
+})
+
 $(document).on('click', '#new-event-btn', function() {
     $.ajax({
         url: '/collageCommunity/pages/new_event.php',
@@ -1020,6 +1094,8 @@ $(document).on('click', '#new-event-btn', function() {
         },
         success: function (data) {
             $('.floaters').html(data)
+            $('.opti').hide()
+            $('#event-venue-wrapper').show()
             $('.floaters').css({
                 "width" : "35%",
                 "height" : "80%",
@@ -1067,7 +1143,6 @@ $(document).on('click', '#new-event-btn', function() {
                 'border' : '1px solid #e60909',
                 'display' : 'none'
             })
-            
         }
     })
 })
@@ -1077,76 +1152,72 @@ $(document).on('change', '#event-mode', function () {
     console.log(selectedValue)
     switch (selectedValue) {
         case 'Offline':
-          $('#event-venue-wrapper').css({
-            'display' : 'block'
-          });
-          $('#event-gmeet-wrapper').css({
-            'display' : 'none'
-          });
+            // $('.opti').html('')
+          $('#event-venue-wrapper').show()
+          $('#event-gmeet-wrapper').hide()
           break;
         case 'Online':
-            $('#event-venue-wrapper').css({
-                'display' : 'none'
-              });
-              $('#event-gmeet-wrapper').css({
-                'display' : 'block'
-              });
+            $('#event-venue-wrapper').hide()
+              $('#event-gmeet-wrapper').show()
           break;
       }
 })
 
 $(document).on('submit', '#event-form', function (e) {
-    e.preventDefault();
-    if ($('#event-name').val() == "") {
-        $('#er-msg').html('Event Name is Empty')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else if ($('#event-disc').val() == "") {
-        $('#er-msg').html('Event Discription is Empty')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else if ($('#event-mode').val() == "Offline" && $('#event-venue').val() == "") {
-        $('#er-msg').html('Event Venue is Empty')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else if ($('#event-mode').val() == "Online" && $('#event-gmeet').val() == "") {
-        $('#er-msg').html('Event Gmeet Link is Empty')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else if ($('#event-date').val() == "") {
-        $('#er-msg').html('Event Date is Empty')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else if ($('#event-time').val() == "") {
-        $('#er-msg').html('Event Time is Empty')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else if ($('#event-fees').val() == "") {
-        $('#er-msg').html('Registration Fees is Empty')
-        $('#er-msg').css({
-            'display' : 'block'
-        })
-        $('.main-wrapper').animate({ scrollTop: 0 }, 500);
-    }else{
+    // if ($('#event-name-wrapper input').val() == "") {
+    //     $('#er-msg').html('Event Name is Empty')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else if ($('#event-disc').val() == "") {
+    //     $('#er-msg').html('Event Discription is Empty')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else if ($('#event-mode').val() == "Offline" && $('#event-venue').val() == "") {
+    //     $('#er-msg').html('Event Venue is Empty')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else if ($('#event-mode').val() == "Online" && $('#event-gmeet').val() == "") {
+    //     $('#er-msg').html('Event Gmeet Link is Empty')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else if ($('#event-date').val() == "") {
+    //     $('#er-msg').html('Event Date is Empty')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else if ($('#event-time').val() == "") {
+    //     $('#er-msg').html('Event Time is Empty')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else if ($('#event-fees').val() == "") {
+    //     $('#er-msg').html('Registration Fees is Empty')
+    //     $('#er-msg').css({
+    //         'display' : 'block'
+    //     })
+    //     $('.main-wrapper').animate({ scrollTop: 0 }, 500);
+    // }else{
+        
         $('#button_clicked').val('true');
         var formData = new FormData(this);
+        e.preventDefault();
+        console.log('here1')
         $.ajax({
             url: '/collageCommunity/pages/back/new_event_back.php',
             type: 'POST',
             data: formData,
             success: function (data) {
+                console.log(data)
                 callEventsAjax(circleId, '.posts')
                 $('.floaters').html("");
                 $('.floaters').css({
@@ -1157,6 +1228,20 @@ $(document).on('submit', '#event-form', function (e) {
             contentType: false,
             processData: false
         });
-    }
+    // }
     
 });
+
+$(document).on('click', function(event) {
+    var threadFormWrapper = $('.floaters');
+
+    // Check if the clicked element is not inside the threadFormWrapper
+    if (!threadFormWrapper.is(event.target) && threadFormWrapper.has(event.target).length === 0) {
+      threadFormWrapper.hide();
+    }
+  });
+
+//   // Prevent clicks inside the form from hiding it
+  $('#thread_form').on('click', function(event) {
+    event.stopPropagation();
+  });

@@ -13,9 +13,9 @@ echo '<div class="event-main">
                     <li class="ind-list" id="event-name">'; echo $row['eventName']; echo '</li>
                     <li class="ind-list" id="event-disc">'; echo $row['eventDisc']; echo '</li>
                     <li class="ind-list" id="event-mode">Mode: '; echo $row['mode']; echo '</li>';
-                     if ($row['mode'] == 'offline') { 
+                     if ($row['mode'] == 'Offline') { 
                         echo '<li class="ind-list" id="event-venue">Venue: '; echo $row['venue']; echo '</li>';
-                     }elseif ($row['mode'] == 'online') { 
+                     }elseif ($row['mode'] == 'Online') { 
                         
                      } 
                     
@@ -28,6 +28,7 @@ echo '<div class="event-main">
             </div>';
             if ($row['status'] == 'upcoming') {
                 echo '<div class="reg-btn-wrapper">';
+                if ($logged_in) {
                     $eventId = $row['eventId'];
                     $check_res = mysqli_query($conn, "SELECT * FROM eventregestration
                                     WHERE userId = $userId AND eventId = $eventId");
@@ -36,6 +37,9 @@ echo '<div class="event-main">
                     }else{
                         echo '<div class="reg-btn" data="register" style="background-color: #04AA6D;" id="'; echo $eventId; echo '">Register</div>';
                     }
+                }else {
+                    echo '<div class="reg-btn" data="login-first" style="background-color: #04AA6D;" id="'; echo $eventId; echo '">Register</div>';
+                }
                 echo '</div>';
             }
             

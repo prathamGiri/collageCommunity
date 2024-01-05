@@ -49,7 +49,7 @@ if (isset($_POST['circle_id']) && isset($_POST['threadId']) && isset($_SESSION['
     $user_id = $_SESSION['user_id'];
     mysqli_query($conn, "UPDATE `staticcustomerinfo` SET last_activity_timestamp = NOW() WHERE user_id = $user_id");
     $unread_msg_display = 0;
-    $postSql = "SELECT tp.post_id, tp.threadId, tp.date, tp.time, tp.user_id, tp.title, tp.content, tp.replyTo, mt.is_read 
+    $postSql = "SELECT tp.post_id, tp.threadId, tp.date, tp.time, tp.user_id, tp.content, tp.replyTo, mt.is_read 
     FROM threads_posts AS tp
     JOIN msg_track AS mt
     ON tp.post_id = mt.post_id AND tp.threadId = mt.threadId

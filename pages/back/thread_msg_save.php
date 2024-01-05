@@ -26,8 +26,8 @@ include "database_connection.php";
             $replyPostId = -1;
         }
         
-        mysqli_query($conn, "INSERT INTO $postTable (`time`, `date`, `user_id`, `title`, `content`, `threadId`, `replyTo`)
-                                VALUES ('$time', '$date', $user_id, 'tentative title', '$post', $threadId, $replyPostId)");
+        mysqli_query($conn, "INSERT INTO $postTable (`time`, `date`, `user_id`, `content`, `threadId`, `replyTo`)
+                                VALUES ('$time', '$date', $user_id, '$post', $threadId, $replyPostId)");
         $msg_res = mysqli_query($conn, "SELECT * FROM $postTable WHERE user_id = '$user_id' and `time` = '$time' and `date` = '$date'");
         if (mysqli_num_rows($msg_res) > 0) {
             $msg_row = mysqli_fetch_assoc($msg_res);

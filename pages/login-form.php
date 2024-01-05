@@ -43,6 +43,12 @@ if (isset($_SESSION['indexType'])) {
           <p>Email or Password Is Wrong, Please Confirm While Entering.</p>
         </div>
         <?php
+      }elseif ($_GET['type'] == 'loginfirst') {
+        ?>
+        <div id="msg">
+          <p>Login or Registration Required</p>
+        </div>
+        <?php
       }
     }
     ?>

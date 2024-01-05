@@ -29,32 +29,31 @@ if (isset($_SESSION['indexType'])) {
 
     <div class="search-c mt-5">
         <div class="search_cover">
-            <div>
+            <div class="search-bar">
                 <input type="text" page="<?php echo $page ?>" class="form-control" name="live_search" id="live_search" autocomplete="off"
             placeholder="Search Your Club...">
             </div>
             <div id="search_result"></div>
         </div>
-            
     </div>
     
     <?php 
-        for ($i=0; $i <= 2; $i++) {
-            $spc_head;
-            switch ($i) {
-                case 0:
+        // for ($i=0; $i <= 2; $i++) {
+        //     $spc_head;
+        //     switch ($i) {
+        //         case 0:
                     $spc_res = $res4;
                     $spc_head = $institute;
-                    break;
-                case 1:
-                    $spc_res = $res5;
-                    $spc_head = $institute1;
-                    break;
-                case 2:
-                    $spc_res = $res6;
-                    $spc_head = $institute2;
-                    break;
-            }
+            //         break;
+            //     case 1:
+            //         $spc_res = $res5;
+            //         $spc_head = $institute1;
+            //         break;
+            //     case 2:
+            //         $spc_res = $res6;
+            //         $spc_head = $institute2;
+            //         break;
+            // }
     ?>
     <div class="circle">
         <div class="circle-group">
@@ -63,13 +62,13 @@ if (isset($_SESSION['indexType'])) {
         </div>
 
         <div class="card-container">
-            <button class="prev-btn" index="<?php echo $i; ?>">&#10094;</button>
+            <button class="prev-btn" index="0">&#10094;</button>
             <?php
                 if (mysqli_num_rows($spc_res) > 0) {
                     while ($spc_row = mysqli_fetch_assoc($spc_res)) {
             ?>
             
-            <div class="card" id="<?php echo $spc_row['circleId']; ?>" card-index="<?php echo $i; ?>">
+            <div class="card" id="<?php echo $spc_row['circleId']; ?>" card-index="0">
                 <img src="<?php echo "/collageCommunity/images/profile_img/".$spc_row['circleLogo']; ?>">
                 <div class="card-content">
                     <h2><?php echo $spc_row['circleName']; ?></h2>
@@ -99,12 +98,11 @@ if (isset($_SESSION['indexType'])) {
                 </div>
             </div>
             <?php } } ?>
-            <button class="next-btn" index="<?php echo $i; ?>">&#10095;</button>
+            <button class="next-btn" index="0">&#10095;</button>
             
         </div>
 
     </div>
-    <?php } ?>
     
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

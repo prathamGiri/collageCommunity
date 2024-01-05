@@ -21,6 +21,11 @@ $(document).ready(function (){
     })
 
     $('#closepostblock').on('click',function () {
+        $('#freeform').val("");
+        $('#image_file').val("");
+        $('#post-title').val("");
+        $('#video_file').val("");
+        $('#uploadPreview').attr("src","")
         $('#postblock').css({
             'display' : 'none'
         })

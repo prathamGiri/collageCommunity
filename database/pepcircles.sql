@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2024 at 09:46 PM
+-- Generation Time: Jan 05, 2024 at 09:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,11 +40,14 @@ INSERT INTO `circle_following` (`userId`, `circleId`) VALUES
 (19, 1),
 (19, 2),
 (19, 3),
-(19, 10),
 (19, 13),
 (19, 18),
 (19, 20),
-(24, 10);
+(24, 10),
+(25, 22),
+(25, 23),
+(19, 10),
+(19, 11);
 
 -- --------------------------------------------------------
 
@@ -168,8 +171,11 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`eventId`, `circleId`, `eventName`, `eventDisc`, `eventImg`, `mode`, `date`, `time`, `regFees`, `venue`, `gmeetLink`, `status`) VALUES
-(1, 10, 'Hacker Cup: Battle of the Anonymous', 'Teams compete to hack into a server and the first team to capture the flag wins.', 'Screenshot 2023-10-26 152505.png', 'offline', '2024-04-17', '12:29:53.00', 200, 'VNIT Auditorium', '-1', 'upcoming'),
-(2, 10, 'Code Jam', '12 Hours hacking event to discus and explore the world of hackers.', '-1', 'Offline', '2024-04-17', '12:29:53.00', 200, 'VNIT Audi', '-1', 'past');
+(1, 10, 'Hacker Cup: Battle of the Anonymous', 'Teams compete to hack into a server and the first team to capture the flag wins.', 'Screenshot 2023-10-26 152505.png', 'Offline', '2024-04-17', '12:29:53.00', 200, 'VNIT Auditorium', '-1', 'upcoming'),
+(2, 10, 'Code Jam', '12 Hours hacking event to discus and explore the world of hackers.', '-1', 'Offline', '2024-04-17', '12:29:53.00', 200, 'VNIT Audi', '-1', 'past'),
+(3, 10, 'Pratham Birthday', 'Celebrating the birthady of our fello buddy pratham blablab lbalb cake milenga sabko bas gpl mat lo. thank you', 'cededa86-63ce-4e5b-81e5-0cfcf1748631-PicsArt_05-06-06.58.58.jpg.jpg', 'Offline', '2024-02-07', '18:45:00.00', 100, 'Hb2 3rd floor', '-1', 'upcoming'),
+(4, 10, 'bilibibi', 'hrhawrhwrhwrhawhwrh', 'cededa86-63ce-4e5b-81e5-0cfcf1748631-PicsArt_05-06-06.58.58.jpg.jpg', 'Offline', '2024-02-09', '19:04:00.00', 100, 'Hb2 3rd floor', '-1', 'upcoming'),
+(5, 10, 'utkarsh event', 'Celebrating the birthady of our fello buddy pratham blablab lbalb cake milenga sabko bas gpl mat lo. thank you', '2cd8bf5c-eafb-409b-8a04-f62f94ccd58d-20604612_1755124687848245_1629621352894722960_9ULd6Hv.jpg', 'Offline', '2024-01-25', '23:25:00.00', 100, 'Hb2 3rd floor', '-1', 'upcoming');
 
 -- --------------------------------------------------------
 
@@ -315,7 +321,8 @@ INSERT INTO `images` (`imageId`, `imageName`, `time`, `date`, `user_id`) VALUES
 (123, 'Acads Council - Logo - Ajit Agrawal.png', '16:56:58.000000', '2024-01-02', 19),
 (124, 'enrg.png', '18:04:41.000000', '2024-01-02', 19),
 (125, 'image - Aishwarya A Pai.png', '18:05:05.000000', '2024-01-02', 19),
-(126, 'pexels-cesar-perez-733745.jpg', '21:00:32.000000', '2024-01-02', 19);
+(126, 'pexels-cesar-perez-733745.jpg', '21:00:32.000000', '2024-01-02', 19),
+(127, 'aerologo.png', '18:06:41.000000', '2024-01-04', 19);
 
 -- --------------------------------------------------------
 
@@ -394,7 +401,8 @@ INSERT INTO `image_rel` (`post_id`, `image_Id`) VALUES
 (99, 123),
 (100, 124),
 (101, 125),
-(102, 126);
+(102, 126),
+(103, 127);
 
 -- --------------------------------------------------------
 
@@ -430,7 +438,8 @@ INSERT INTO `merch` (`merchId`, `merchName`, `merchPrise`, `circleId`, `merchImg
 (12, 'Miles Moralys:Logo', 599, 2, '1694178110_9192329.jpg', 0),
 (13, 'Thinking Tom', 599, 10, '1687842433_3385347.jpg', 0),
 (14, 'Looney Tunes', 599, 10, '1694838120_6538684.jpg', 0),
-(15, 'Gryffindor', 599, 10, '1687421667_3304257.jpg', 0);
+(15, 'Gryffindor', 599, 10, '1687421667_3304257.jpg', 0),
+(16, 'Gryffindor', 599, 23, 'Logo_Eloquence - Eloquence- The Soft Skills Club of IIMA.png', 0);
 
 -- --------------------------------------------------------
 
@@ -757,7 +766,8 @@ INSERT INTO `msg_track` (`post_id`, `threadId`, `user_id`, `is_read`) VALUES
 (123, 17, 24, 0),
 (124, 17, 19, 1),
 (124, 17, 23, 0),
-(124, 17, 24, 0);
+(124, 17, 24, 0),
+(125, 21, 19, 1);
 
 -- --------------------------------------------------------
 
@@ -781,17 +791,18 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `time`, `date`, `user_id`, `circleId`, `title`, `content`, `postType`) VALUES
-(1, '12:06:14.000000', '2022-06-11', 'max11', 1, 'why is snow white?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0),
-(2, '12:06:14.000000', '2022-06-11', 'peter11', 2, 'why is moon round?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0),
-(3, '26:10:11.000000', '2022-06-10', 'tom23', 1, 'what are bards?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0),
-(4, '26:10:11.000000', '2022-06-10', 'john23', 2, 'what are showers?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0),
+(1, '12:06:14.000000', '2022-06-11', 'max11', 11, 'why is snow white?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0),
+(2, '12:06:14.000000', '2022-06-11', 'peter11', 11, 'why is moon round?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0),
+(3, '26:10:11.000000', '2022-06-10', 'tom23', 11, 'what are bards?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0),
+(4, '26:10:11.000000', '2022-06-10', 'john23', 11, 'what are showers?', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0),
 (96, '12:52:17.000000', '2024-01-02', '19', 10, 'tentative title', 'happy new yeatr', 0),
 (97, '16:50:28.000000', '2024-01-02', '19', 10, 'tentative title', 'happy new year guys', 0),
 (98, '16:56:32.000000', '2024-01-02', '19', 10, 'tentative title', 'yo dude', 0),
 (99, '16:56:58.000000', '2024-01-02', '19', 10, 'tentative title', 'qwqwqwq', 0),
 (100, '18:04:41.000000', '2024-01-02', '19', 10, 'tentative title', 'Achieved a Milestone', 2),
 (101, '18:05:05.000000', '2024-01-02', '19', 10, 'tentative title', 'new course added', 1),
-(102, '21:00:32.000000', '2024-01-02', '19', 10, 'tentative title', 'new machines hurrey', 2);
+(102, '21:00:32.000000', '2024-01-02', '19', 10, 'tentative title', 'new machines hurrey', 2),
+(103, '18:06:41.000000', '2024-01-04', '19', 10, 'New Title', 'test text for you guys', 2);
 
 -- --------------------------------------------------------
 
@@ -841,7 +852,7 @@ CREATE TABLE `staticcircleinfo` (
 
 INSERT INTO `staticcircleinfo` (`circleId`, `circleName`, `circleLogo`, `circleDiscription`, `circleBanner`, `circleStatus`, `collegeId`, `followerCount`) VALUES
 (10, 'S.H.E.L.L.', 'shell.png', 'S.H.E.L.L. is the Hacker Community of VNIT. This is a club where like-minded hacking enthusiasts can come together and share knowledge and mentor those looking to break into the field. If you&#039;re interested, let&#039;s get together and expand on our knowledge by cooperating in lectures, hands-on labs and group discussions about all things related to cybersecurity!', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
-(11, 'Halla Bol', 'hallabol.png', 'Wouldn&#039;t life be bland without drama? Halla Bol, the dramatics society of VNIT brings in your life, just the right amount of drama to spice up your life. The club has always aimed for the stars and has many conquests in its name. The club owes its success to the four pillars, namely Street, Stage, Mime and Film Making. Street brings with it the loudest voice of the society and the club as it tackles touchy and pressing issues with such fiery conviction, it leaves one pondering about the matter on hand. Stage; an act of finesse, brings forward the wide range of emotions, heart wrenching dilaogues and mesmerising set ups to the audience. And, where words fall short, actions speak out, through Mime, an art which screams talent and wonderment with each movement, be it a hand wave or a full blown somersault. When all the parameters mentioned above are recorded with camera to produce a motion picture, Film Making plays it&#039;s part. Film Making is nothing but giving an eye-friendly screen appearance to a story. Halla Bol tries the very best to give you a wholesome experience, and hopes to keep on doing so.', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
+(11, 'Halla Bol', 'hallabol.png', 'Wouldn&#039;t life be bland without drama? Halla Bol, the dramatics society of VNIT brings in your life, just the right amount of drama to spice up your life. The club has always aimed for the stars and has many conquests in its name. The club owes its success to the four pillars, namely Street, Stage, Mime and Film Making. Street brings with it the loudest voice of the society and the club as it tackles touchy and pressing issues with such fiery conviction, it leaves one pondering about the matter on hand. Stage; an act of finesse, brings forward the wide range of emotions, heart wrenching dilaogues and mesmerising set ups to the audience. And, where words fall short, actions speak out, through Mime, an art which screams talent and wonderment with each movement, be it a hand wave or a full blown somersault. When all the parameters mentioned above are recorded with camera to produce a motion picture, Film Making plays it&#039;s part. Film Making is nothing but giving an eye-friendly screen appearance to a story. Halla Bol tries the very best to give you a wholesome experience, and hopes to keep on doing so.', 'low_poly_banner_design_1711.jpg', 0, 25, 1),
 (12, 'Think India', 'thinkindia.png', 'We at Think India have felt the need to bind the students with an Indian nationalistic string to harness this part of national treasure in furthering our aim of national reconstruction.Students from IISc, IIMB, NIMHANS and NLSIU joined together to create a joint forum for the students from premier institutes of India in 2006. A formal forum took placed at the Art of Living Ashram , Bengaluru in 2007.', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
 (13, 'TESLA', 'tesla.png', 'Tesla Club of Innovation is a club of Visvesvaraya National Institute of Technology. We are a team of aspiring engineers. We make the best of what we have. Our club is inclined towards working on innovative and new projects.', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
 (14, 'IvLabs', 'ivlabs.png', 'We are a group of students, pursuing our engineering dreams. IvLabs serves as a platform for students from different engineering backgrounds to collaborate and work together with utmost team spirit and avidity to bring innovative ideas into reality. Being in such an environment, young minds approach real life problems and come up with astonishing ideas, which highlights the objectives of our lab.', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
@@ -898,11 +909,12 @@ INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `pa
 (14, 'VGVqYXMgaGFubQ==', 0, 'dGVqYXNAZ21haWwuY29t', 'dc9ac98f0f841f379c0c3c1ecc85e56a', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
 (16, 'YWRpdHlhIGdhbHBoYWRl', 0, 'YWRpdHlhQGdtYWlsLmNvbQ==', 'e51b2620f7b65bed95919b66168f7573', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
 (18, 'dXRrYXJzaCBnYWlrd2Fk', 0, 'dXRrYXJzaEBnbWFpbC5jb20=', '53a2b5b7021853cdc6cbd684e3baf0e7', 'User_icon.png', '', 'i do comady', 27, 'ECE', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
-(19, 'Dhruv Gupta', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21, '2024-01-04 02:15:18.000000'),
+(19, 'Dhruv Gupta', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21, '2024-01-05 23:43:12.000000'),
 (20, 'QXl1c2ggVGFubmE=', 0, 'dGFubmFAZ21haWwuY29t', '385ad81edd3cb6023360cfef4b46a523', 'User_icon.png', '', 'qaesrdtfygu', 25, 'Computer Science', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
 (21, 'QXRoYXJ2IEJhbGtpc2g=', 0, 'YXRoYXJ2YUBnbWFpbC5jb20=', '0d02ba1bdc3bde610c8fcd27ae752467', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i am a virgin', 25, 'Chemical Engineering', 2027, 'don&#039;t ', 21, '0000-00-00 00:00:00.000000'),
 (22, 'cHJhdGhhbSBnaXJp', 0, 'cHJhdGhhbTAyQGdtYWlsLmNvbQ==', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'hehe', 27, 'Electrical Engineering', 2025, 'male', 21, '0000-00-00 00:00:00.000000'),
-(24, 'pratham giru', 0, 'Z2lydUBnbWFpbC5jb20=', '2c4584fd665342be149c7fdc8a3f0b6f', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '2023-12-19 18:36:25.000000');
+(24, 'pratham giru', 0, 'Z2lydUBnbWFpbC5jb20=', '2c4584fd665342be149c7fdc8a3f0b6f', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '2023-12-19 18:36:25.000000'),
+(25, 'Tanishq gupta', 0, 'dGFuaXNocWd1cHRhNjY1MUBnbWFpbC5jb20=', '6cd11f73def6f59a073a71c60cd43e36', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i m a student doing brush using pepsodent', 27, 'Electrical Engineering', 2025, 'male', 21, '2024-01-05 00:09:14.000000');
 
 -- --------------------------------------------------------
 
@@ -938,7 +950,10 @@ INSERT INTO `threads` (`threadId`, `circleId`, `threadName`, `status`) VALUES
 (15, 1, 'chunin exam', 1),
 (16, 2, 'eren', 1),
 (17, 10, 'Hackit', 0),
-(18, 13, 'E-Car', 0);
+(18, 13, 'E-Car', 0),
+(19, 18, 'Consortium', 0),
+(20, 18, 'flagship', 0),
+(21, 10, 'Hacker Cup', 0);
 
 -- --------------------------------------------------------
 
@@ -1052,7 +1067,11 @@ INSERT INTO `threads_membership` (`userId`, `threadId`) VALUES
 (19, 18),
 (23, 17),
 (19, 17),
-(24, 17);
+(24, 17),
+(19, 19),
+(19, 20),
+(19, 21),
+(24, 21);
 
 -- --------------------------------------------------------
 
@@ -1066,7 +1085,6 @@ CREATE TABLE `threads_posts` (
   `date` date NOT NULL,
   `time` time NOT NULL,
   `user_id` int(11) NOT NULL,
-  `title` varchar(3000) NOT NULL,
   `content` varchar(3000) NOT NULL,
   `replyTo` int(11) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -1075,16 +1093,17 @@ CREATE TABLE `threads_posts` (
 -- Dumping data for table `threads_posts`
 --
 
-INSERT INTO `threads_posts` (`post_id`, `threadId`, `date`, `time`, `user_id`, `title`, `content`, `replyTo`) VALUES
-(116, 17, '2023-12-19', '15:13:10', 19, 'tentative title', 'Anyone Online', -1),
-(117, 17, '2023-12-19', '15:17:39', 19, 'tentative title', 'doesnt seem like it', -1),
-(118, 17, '2023-12-19', '18:46:08', 19, 'tentative title', 'wertyku', -1),
-(119, 17, '2023-12-19', '18:46:37', 19, 'tentative title', 'poiuyt', -1),
-(120, 17, '2023-12-19', '18:52:34', 19, 'tentative title', 'esrth', -1),
-(121, 17, '2023-12-19', '18:55:36', 19, 'tentative title', 'qwerty', -1),
-(122, 17, '2023-12-19', '18:55:48', 19, 'tentative title', 'poiuytr', -1),
-(123, 17, '2023-12-19', '18:56:28', 19, 'tentative title', 'tgbyhbtfv', 122),
-(124, 17, '2023-12-19', '19:06:59', 19, 'tentative title', 'popolili', 123);
+INSERT INTO `threads_posts` (`post_id`, `threadId`, `date`, `time`, `user_id`, `content`, `replyTo`) VALUES
+(116, 17, '2023-12-19', '15:13:10', 19, 'Anyone Online', -1),
+(117, 17, '2023-12-19', '15:17:39', 19, 'doesnt seem like it', -1),
+(118, 17, '2023-12-19', '18:46:08', 19, 'wertyku', -1),
+(119, 17, '2023-12-19', '18:46:37', 19, 'poiuyt', -1),
+(120, 17, '2023-12-19', '18:52:34', 19, 'esrth', -1),
+(121, 17, '2023-12-19', '18:55:36', 19, 'qwerty', -1),
+(122, 17, '2023-12-19', '18:55:48', 19, 'poiuytr', -1),
+(123, 17, '2023-12-19', '18:56:28', 19, 'tgbyhbtfv', 122),
+(124, 17, '2023-12-19', '19:06:59', 19, 'popolili', 123),
+(125, 21, '2024-01-04', '19:00:08', 19, 'hello', -1);
 
 -- --------------------------------------------------------
 
@@ -1124,7 +1143,10 @@ INSERT INTO `userpreferences` (`userId`, `preferenceId`) VALUES
 (22, 6),
 (23, 4),
 (23, 5),
-(23, 6);
+(23, 6),
+(25, 1),
+(25, 2),
+(25, 3);
 
 -- --------------------------------------------------------
 
@@ -1172,7 +1194,8 @@ INSERT INTO `variablecustomerinfo` (`user_id`, `community_id`, `post_id`) VALUES
 (21, 0, 0),
 (22, 0, 0),
 (23, 0, 0),
-(24, 0, 0);
+(24, 0, 0),
+(25, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -1258,19 +1281,19 @@ ALTER TABLE `colleges`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `eventId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `eventId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `imageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `merch`
 --
 ALTER TABLE `merch`
-  MODIFY `merchId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `merchId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `merch_order`
@@ -1282,7 +1305,7 @@ ALTER TABLE `merch_order`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `preferences`
@@ -1300,19 +1323,19 @@ ALTER TABLE `staticcircleinfo`
 -- AUTO_INCREMENT for table `staticcustomerinfo`
 --
 ALTER TABLE `staticcustomerinfo`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `threadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `threadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `threads_posts`
 --
 ALTER TABLE `threads_posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

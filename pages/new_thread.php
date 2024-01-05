@@ -1,7 +1,8 @@
-<div id="closediv">
-    <a id="closeblock"><i class="ri-close-line"></i></a>
-</div>
-<div>
+
+<div class="main-wrapper">
+    <div id="closediv">
+        <a id="closeblock"><i class="ri-close-line"></i></a>
+    </div>
     <form id="thread_form" method="post">
         
         
@@ -23,3 +24,6 @@
         </div>
     </form>
 </div>
+<?php
+return;
+?>

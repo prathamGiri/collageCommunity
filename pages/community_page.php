@@ -23,26 +23,66 @@ if (isset($_SESSION['indexType'])) {
 <body>
     <?php include 'navbar.php' ?>
     <?php 
-    $circleId;
-                        if (isset($_GET['commid'])) {
-                            $_SESSION['commid'] = $_GET['commid'];
-                            $_SESSION['postType'] = 0;
-                            $circleId = $_SESSION['commid'];
-                        } 
-                    ?>
+        $circleId;
+        $user_id;
+        if (isset($_GET['commid'])) {
+            $_SESSION['commid'] = $_GET['commid'];
+            $_SESSION['postType'] = 0;
+            $circleId = $_SESSION['commid'];
+        } 
+    ?>
     <div class="main-body">
-
         <div class="sidebar">
             <div class="pro_images">
-                <?php if (mysqli_num_rows($cp_result) > 0) {
-                        while ($cp_row = mysqli_fetch_assoc($cp_result)) {
+                <?php 
+                if (!isset($_SESSION['login_status'])) {
+                    $cp_query1 = "SELECT circleId, circleName, circleLogo
+                                FROM staticcircleinfo
+                                WHERE circleId = '$circleId'";
+                    $cp_result1 = mysqli_query($conn, $cp_query1);
+                    if (mysqli_num_rows($cp_result1) > 0) {
+                        $cp_row1 = mysqli_fetch_assoc($cp_result1);
+                        ?>
+                        <div class="p_img <?php if ($circleId == $cp_row1['circleId']) {
+                            echo 'active_circle';
+                        } ?>" id="<?php echo $cp_row1['circleId'] ?>">
+                        <div class="p_text"><?php echo $cp_row1['circleName'] ?></div>
+                        <img src="<?php echo '/collageCommunity/images/profile_img/'.$cp_row1['circleLogo'] ?>"></div>
+                        <?php }
+                }else if(isset($_SESSION['login_status']) && $_SESSION['login_status'] == 'logged_in'){
+                    $user_id = $_SESSION['user_id'];
+                    $cp_query1 = "SELECT cf.userId, cf.circleId, sci.circleName, sci.circleLogo
+                                FROM circle_following AS cf
+                                JOIN staticcircleinfo AS sci
+                                ON cf.circleId = sci.circleId
+                                WHERE cf.userId = '$user_id' AND cf.circleId = '$circleId'";
+                    $cp_result1 = mysqli_query($conn, $cp_query1);
+                    if (mysqli_num_rows($cp_result1) == 0) {
+                        $cp_query2 = "SELECT circleId, circleName, circleLogo
+                                FROM staticcircleinfo
+                                WHERE circleId = '$circleId'";
+                        $cp_result2 = mysqli_query($conn, $cp_query2);
+                        $cp_row2 = mysqli_fetch_assoc($cp_result2);
+                        ?>
+                        <div class="p_img <?php echo 'active_circle'; ?>" id="<?php echo $cp_row2['circleId'] ?>">
+                        <div class="p_text"><?php echo $cp_row2['circleName'] ?></div>
+                        <img src="<?php echo '/collageCommunity/images/profile_img/'.$cp_row2['circleLogo'] ?>"></div>
+                        <?php }
+                    $cp_query = "SELECT cf.userId, cf.circleId, sci.circleName, sci.circleLogo
+                                FROM circle_following AS cf
+                                JOIN staticcircleinfo AS sci
+                                ON cf.circleId = sci.circleId
+                                WHERE cf.userId = '$user_id'";
+                    $cp_result = mysqli_query($conn, $cp_query);
+                    if (mysqli_num_rows($cp_result) > 0) {
+                            while ($cp_row = mysqli_fetch_assoc($cp_result)) {
                 ?>
                 <div class="p_img <?php if ($circleId == $cp_row['circleId']) {
                     echo 'active_circle';
                 } ?>" id="<?php echo $cp_row['circleId'] ?>">
                 <div class="p_text"><?php echo $cp_row['circleName'] ?></div>
                 <img src="<?php echo '/collageCommunity/images/profile_img/'.$cp_row['circleLogo'] ?>"></div>
-                <?php } } ?>
+                <?php } } }?>
                 <div class="p_img"><a href="/collageCommunity/pages/circles.php"><i class="ri-compass-3-fill"></i></a></div>
             </div>
 
@@ -56,9 +96,16 @@ if (isset($_SESSION['indexType'])) {
                 <div id="options">
                     
                 </div>
+                <?php 
+                if(isset($_SESSION['login_status']) && $_SESSION['login_status'] == 'logged_in'){
+                    $check_prev = "SELECT * FROM circle_membership WHERE userId = '$user_id' AND circleId = '$circleId'";
+                    $check_prev_res = mysqli_query($conn, $check_prev);
+                    if (mysqli_num_rows($check_prev_res) > 0) {
+                ?>
                 <div id="new_thread">
                     <p><i class="ri-add-circle-line"></i>Create New Thread</p>
                 </div>
+                <?php } } ?>
             </div>
         </div>
 
@@ -204,8 +251,11 @@ if (isset($_SESSION['indexType'])) {
     
     <script src="/collageCommunity/javascript/community_page_js.js"></script>
     <script>
+        console.log('here1');
         callAjax(<?php echo $circleId; ?>, 'threads', '#options');
+        console.log('here2');
         callAjax(<?php echo $circleId; ?>, 'about', '.posts');
+        console.log('here3');
     </script>
     <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
 </body>

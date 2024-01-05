@@ -2,7 +2,6 @@
 include "connection.php";
 include "functions.php";
 
-
     $circleId = $_SESSION['commid'];
     $thread_name = $_POST['thread_name'];
     $status = $_POST['status'];
@@ -24,8 +23,5 @@ include "functions.php";
         $ins2 = "INSERT INTO `threads_membership` (`userId`, `threadId`)
                     VALUES ('$user_id', '$threadId')"; 
         mysqli_query($conn, $ins2);
-        echo '<li><div class="threadopt" id="'.$threadId.'">'.$row['threadName'].'</div></li>';
     }
-
-
 ?>

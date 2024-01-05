@@ -17,19 +17,6 @@ var followAjax = function (circle_id, type) {
     })
 }
 
-var unfollowAjax = function (circle_id) {
-    $.ajax({
-        url: '/collageCommunity/pages/back/unfollow_circle.php',
-        method: 'POST',
-        data: {
-            circle_id : circle_id
-        },
-        success: function (data) {
-            window.location.href = '/collageCommunity/pages/community_page.php?commid=' + circle_id
-        }
-    })
-}
-
 $(document).ready(function () {
 
     $('.follow').on('click', function () {

@@ -37,8 +37,11 @@
                 <!-- <input type="text" placeholder="What do you want to post"> -->
                 <!--  action="/collageCommunity/pages/back/save_post.php" "  -->
                 <form id="post_form" method="post" enctype="multipart/form-data">
-
-                    <textarea id="freeform" name="freeform" placeholder = "Enter Text Here..."></textarea>
+                    <div class="input-div">
+                        <input type="text" name="post-title" id="post-title" placeholder="Title">
+                        <textarea id="freeform" name="freeform" placeholder = "Enter Text Here..."></textarea>
+                    </div>
+                    
                     <div id = "file-preview-wrapper">
                         <div class = "file-preview" id="filepreview">
                             <img id="uploadPreview">

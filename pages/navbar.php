@@ -45,7 +45,7 @@
             ?>
             <script>
                 let active = document.getElementById('<?php echo $page; ?>');
-                active.classList.add('current');
+                active.classList.add('active');
             </script>
     <?php
         } }
