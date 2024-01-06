@@ -5,8 +5,7 @@ include 'functions.php';
 if (isset($_POST['submit'])) {
     $course = test_input($_POST['course']);
     $graduation_year = test_input($_POST['graduation_year']);
-    $collegeId = $_SESSION['collegeId'];
-    unset($_SESSION['collegeId']);
+    $collegeId = test_input($_POST['college']);
     $age = test_input($_POST['age']); 
     $gender = test_input($_POST['gender']);
     $bio = test_input($_POST['bio']);

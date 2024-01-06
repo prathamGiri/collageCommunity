@@ -38,16 +38,24 @@
                             <img id="image" src="/collageCommunity/images/profile_img/User_icon.png">
                         </div>
                         <input type="file" id="filec" name="img" onchange="load_img()" required>
-                        <input type="text" class="coname" placeholder="Community Name" name="community_name" required>
-                        <textarea name="discription" id="codisc" placeholder="Discription" required></textarea>
+                        <input type="text" class="coname" placeholder="Community Name" name="community_name" autocomplete="off" required>
+                        <textarea name="discription" id="codisc" placeholder="Discription" autocomplete="off" required></textarea>
+                        <!-- <input type="text" class="coname" placeholder="state" name="state"  required>
+                        <input type="text" class="coname" placeholder="city" name="city" required> -->
                         <div>
-                            <input type="text" class="coname" page="<?php echo $page ?>" id="live_search" placeholder="institute" name="institute" autocomplete="off" required>
-                            <div id="search_result"></div>
+                            <select name="college" id="college" class="coname">
+                                <option value="">Select College</option>
+                                <?php
+                                    $clg_res = mysqli_query($conn, "SELECT * FROM colleges");
+                                    if (mysqli_num_rows($clg_res) > 0) {
+                                        while ($clg_row = mysqli_fetch_assoc($clg_res)) {
+                                ?>
+                                <option value="<?php echo  $clg_row['collegeId']; ?>"><?php echo  $clg_row['collegeName']; ?></option>
+                                <?php
+                                        } }
+                                ?>
+                            </select>
                         </div>
-
-                        <input type="text" class="coname" placeholder="city" name="city" required>
-                        <input type="text" class="coname" placeholder="state" name="state"  required>
-                        <input type="text" class="coname" placeholder="country" name="country"  required>
                         <div class="radio_btn">
                             <input type="radio" id="anyone" name="status" value="0">
                             <label for="anyone">Anyone Can Join</label><br>

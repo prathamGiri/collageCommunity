@@ -18,9 +18,8 @@ var followAjax = function (circle_id, type) {
 }
 
 $(document).ready(function () {
-
     $('.follow').on('click', function () {
-        circleId = $(this).attr("id");
+        circleId = $(this).attr("id")
         if (circleId != "") {
             followAjax(circleId, 0);
         }
@@ -31,8 +30,13 @@ $(document).ready(function () {
             followAjax(circleId, 1);
         }
     })
-
     $('.register_first').on('click', function () {
         window.location.href = '/collageCommunity/pages/login-form.php';
+    })
+    $('.card-img').on('click', function() {
+        var circleId = $(this).closest('.card').attr('id');
+        if (circleId != "") {
+            window.location.href = '/collageCommunity/pages/community_page.php?commid=' + circleId;
+        }
     })
 })

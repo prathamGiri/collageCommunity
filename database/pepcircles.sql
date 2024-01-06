@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2024 at 09:00 PM
+-- Generation Time: Jan 06, 2024 at 09:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,14 +40,13 @@ INSERT INTO `circle_following` (`userId`, `circleId`) VALUES
 (19, 1),
 (19, 2),
 (19, 3),
-(19, 13),
 (19, 18),
 (19, 20),
 (24, 10),
 (25, 22),
 (25, 23),
 (19, 10),
-(19, 11);
+(26, 10);
 
 -- --------------------------------------------------------
 
@@ -767,7 +766,37 @@ INSERT INTO `msg_track` (`post_id`, `threadId`, `user_id`, `is_read`) VALUES
 (124, 17, 19, 1),
 (124, 17, 23, 0),
 (124, 17, 24, 0),
-(125, 21, 19, 1);
+(125, 21, 19, 1),
+(126, 21, 19, 1),
+(126, 21, 24, 0),
+(127, 17, 23, 0),
+(127, 17, 19, 1),
+(127, 17, 24, 0),
+(127, 17, 26, 1),
+(128, 17, 23, 0),
+(128, 17, 19, 1),
+(128, 17, 24, 0),
+(128, 17, 26, 1),
+(129, 17, 23, 0),
+(129, 17, 19, 1),
+(129, 17, 24, 0),
+(129, 17, 26, 1),
+(130, 17, 23, 0),
+(130, 17, 19, 1),
+(130, 17, 24, 0),
+(130, 17, 26, 1),
+(131, 17, 23, 0),
+(131, 17, 19, 1),
+(131, 17, 24, 0),
+(131, 17, 26, 1),
+(132, 17, 23, 0),
+(132, 17, 19, 1),
+(132, 17, 24, 0),
+(132, 17, 26, 1),
+(133, 17, 23, 0),
+(133, 17, 19, 1),
+(133, 17, 24, 0),
+(133, 17, 26, 1);
 
 -- --------------------------------------------------------
 
@@ -851,10 +880,10 @@ CREATE TABLE `staticcircleinfo` (
 --
 
 INSERT INTO `staticcircleinfo` (`circleId`, `circleName`, `circleLogo`, `circleDiscription`, `circleBanner`, `circleStatus`, `collegeId`, `followerCount`) VALUES
-(10, 'S.H.E.L.L.', 'shell.png', 'S.H.E.L.L. is the Hacker Community of VNIT. This is a club where like-minded hacking enthusiasts can come together and share knowledge and mentor those looking to break into the field. If you&#039;re interested, let&#039;s get together and expand on our knowledge by cooperating in lectures, hands-on labs and group discussions about all things related to cybersecurity!', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
-(11, 'Halla Bol', 'hallabol.png', 'Wouldn&#039;t life be bland without drama? Halla Bol, the dramatics society of VNIT brings in your life, just the right amount of drama to spice up your life. The club has always aimed for the stars and has many conquests in its name. The club owes its success to the four pillars, namely Street, Stage, Mime and Film Making. Street brings with it the loudest voice of the society and the club as it tackles touchy and pressing issues with such fiery conviction, it leaves one pondering about the matter on hand. Stage; an act of finesse, brings forward the wide range of emotions, heart wrenching dilaogues and mesmerising set ups to the audience. And, where words fall short, actions speak out, through Mime, an art which screams talent and wonderment with each movement, be it a hand wave or a full blown somersault. When all the parameters mentioned above are recorded with camera to produce a motion picture, Film Making plays it&#039;s part. Film Making is nothing but giving an eye-friendly screen appearance to a story. Halla Bol tries the very best to give you a wholesome experience, and hopes to keep on doing so.', 'low_poly_banner_design_1711.jpg', 0, 25, 1),
+(10, 'S.H.E.L.L.', 'shell.png', 'S.H.E.L.L. is the Hacker Community of VNIT. This is a club where like-minded hacking enthusiasts can come together and share knowledge and mentor those looking to break into the field. If you&#039;re interested, let&#039;s get together and expand on our knowledge by cooperating in lectures, hands-on labs and group discussions about all things related to cybersecurity!', 'low_poly_banner_design_1711.jpg', 0, 25, 1),
+(11, 'Halla Bol', 'hallabol.png', 'Wouldn&#039;t life be bland without drama? Halla Bol, the dramatics society of VNIT brings in your life, just the right amount of drama to spice up your life. The club has always aimed for the stars and has many conquests in its name. The club owes its success to the four pillars, namely Street, Stage, Mime and Film Making. Street brings with it the loudest voice of the society and the club as it tackles touchy and pressing issues with such fiery conviction, it leaves one pondering about the matter on hand. Stage; an act of finesse, brings forward the wide range of emotions, heart wrenching dilaogues and mesmerising set ups to the audience. And, where words fall short, actions speak out, through Mime, an art which screams talent and wonderment with each movement, be it a hand wave or a full blown somersault. When all the parameters mentioned above are recorded with camera to produce a motion picture, Film Making plays it&#039;s part. Film Making is nothing but giving an eye-friendly screen appearance to a story. Halla Bol tries the very best to give you a wholesome experience, and hopes to keep on doing so.', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
 (12, 'Think India', 'thinkindia.png', 'We at Think India have felt the need to bind the students with an Indian nationalistic string to harness this part of national treasure in furthering our aim of national reconstruction.Students from IISc, IIMB, NIMHANS and NLSIU joined together to create a joint forum for the students from premier institutes of India in 2006. A formal forum took placed at the Art of Living Ashram , Bengaluru in 2007.', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
-(13, 'TESLA', 'tesla.png', 'Tesla Club of Innovation is a club of Visvesvaraya National Institute of Technology. We are a team of aspiring engineers. We make the best of what we have. Our club is inclined towards working on innovative and new projects.', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
+(13, 'TESLA', 'tesla.png', 'Tesla Club of Innovation is a club of Visvesvaraya National Institute of Technology. We are a team of aspiring engineers. We make the best of what we have. Our club is inclined towards working on innovative and new projects.', 'low_poly_banner_design_1711.jpg', 0, 25, -1),
 (14, 'IvLabs', 'ivlabs.png', 'We are a group of students, pursuing our engineering dreams. IvLabs serves as a platform for students from different engineering backgrounds to collaborate and work together with utmost team spirit and avidity to bring innovative ideas into reality. Being in such an environment, young minds approach real life problems and come up with astonishing ideas, which highlights the objectives of our lab.', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
 (15, 'Ashlesha Astronomy Club', 'astro.png', 'We are the official Astronomy Club of VNIT Nagpur where we try to explore the horizons with the aid of our Engineering and Managing skills. From overnight stargazing to the screening of nerdy SciFis, we have hailed in every aspect to develop the interest of engineers in space and astronomy. From Studying About Astronomy , Cosmology and Astrophysics to working on Projects , It&#039;s You who will decide the limits of club. Wanna hone you amateur skills in Astronomy? Look no further you have reached your destination! Welcome to Astro Club VNIT', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
 (16, 'Prayas', 'prayaas.png', 'Prayaas is the social club of VNIT. We started with the motto of “ONE CAN’T HELP EVERYONE BUT EVERYONE CAN HELP SOMEONE”. We began with 10 in number in September 2006 and grew to hundreds who have come under one roof to serve the needy. Each and Every activity we do inculcates a sense of responsibility in contributing for a better society along with self development. We are engaged in activities like teaching, blood donation camps, Joy of Giving Week, NGO visits, Science Exhibition for the school students of Nagpur and many more which act as a driving force for our next move. If you think you need a platform to reach out to people and create impact, you fit in here.', 'low_poly_banner_design_1711.jpg', 0, 25, 0),
@@ -909,12 +938,13 @@ INSERT INTO `staticcustomerinfo` (`user_id`, `user_name`, `mobile`, `email`, `pa
 (14, 'VGVqYXMgaGFubQ==', 0, 'dGVqYXNAZ21haWwuY29t', 'dc9ac98f0f841f379c0c3c1ecc85e56a', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
 (16, 'YWRpdHlhIGdhbHBoYWRl', 0, 'YWRpdHlhQGdtYWlsLmNvbQ==', 'e51b2620f7b65bed95919b66168f7573', 'User_icon.png', '', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '0000-00-00 00:00:00.000000'),
 (18, 'dXRrYXJzaCBnYWlrd2Fk', 0, 'dXRrYXJzaEBnbWFpbC5jb20=', '53a2b5b7021853cdc6cbd684e3baf0e7', 'User_icon.png', '', 'i do comady', 27, 'ECE', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
-(19, 'Dhruv Gupta', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21, '2024-01-05 23:43:12.000000'),
+(19, 'Dhruv Gupta', 0, 'ZGhydXZAZ21haWwuY29t', 'fe30f57115a50f47746f8c12c3bbde2c', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'zsdxcfgvbhnj', 25, 'Electrical Engineering', 2024, 'male', 21, '2024-01-06 22:43:42.000000'),
 (20, 'QXl1c2ggVGFubmE=', 0, 'dGFubmFAZ21haWwuY29t', '385ad81edd3cb6023360cfef4b46a523', 'User_icon.png', '', 'qaesrdtfygu', 25, 'Computer Science', 2024, 'male', 21, '0000-00-00 00:00:00.000000'),
 (21, 'QXRoYXJ2IEJhbGtpc2g=', 0, 'YXRoYXJ2YUBnbWFpbC5jb20=', '0d02ba1bdc3bde610c8fcd27ae752467', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i am a virgin', 25, 'Chemical Engineering', 2027, 'don&#039;t ', 21, '0000-00-00 00:00:00.000000'),
 (22, 'cHJhdGhhbSBnaXJp', 0, 'cHJhdGhhbTAyQGdtYWlsLmNvbQ==', '164a48e142551453efaf0806a26a58ed', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'hehe', 27, 'Electrical Engineering', 2025, 'male', 21, '0000-00-00 00:00:00.000000'),
 (24, 'pratham giru', 0, 'Z2lydUBnbWFpbC5jb20=', '2c4584fd665342be149c7fdc8a3f0b6f', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'QWRkIGEgZGVzY3JpcHRpb24gdG8gdGVsbCB1cyBhYm91dCB5b3Vyc2VsZg==', 0, '', 0, '', 0, '2023-12-19 18:36:25.000000'),
-(25, 'Tanishq gupta', 0, 'dGFuaXNocWd1cHRhNjY1MUBnbWFpbC5jb20=', '6cd11f73def6f59a073a71c60cd43e36', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i m a student doing brush using pepsodent', 27, 'Electrical Engineering', 2025, 'male', 21, '2024-01-05 00:09:14.000000');
+(25, 'Tanishq gupta', 0, 'dGFuaXNocWd1cHRhNjY1MUBnbWFpbC5jb20=', '6cd11f73def6f59a073a71c60cd43e36', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'i m a student doing brush using pepsodent', 27, 'Electrical Engineering', 2025, 'male', 21, '2024-01-05 00:09:14.000000'),
+(26, 'Aditya Galphade', 0, 'YWRpdHlhZ2FscGhhZGVAZ21haWwuY29t', '47f797d6a33c389e35285244644d7886', 'User_icon.png', 'low_poly_banner_design_1711.jpg', 'hehe', 25, 'Electrical Engineering', 2025, 'male', 21, '2024-01-06 22:44:00.000000');
 
 -- --------------------------------------------------------
 
@@ -1071,7 +1101,9 @@ INSERT INTO `threads_membership` (`userId`, `threadId`) VALUES
 (19, 19),
 (19, 20),
 (19, 21),
-(24, 21);
+(24, 21),
+(26, 17),
+(26, 21);
 
 -- --------------------------------------------------------
 
@@ -1103,7 +1135,15 @@ INSERT INTO `threads_posts` (`post_id`, `threadId`, `date`, `time`, `user_id`, `
 (122, 17, '2023-12-19', '18:55:48', 19, 'poiuytr', -1),
 (123, 17, '2023-12-19', '18:56:28', 19, 'tgbyhbtfv', 122),
 (124, 17, '2023-12-19', '19:06:59', 19, 'popolili', 123),
-(125, 21, '2024-01-04', '19:00:08', 19, 'hello', -1);
+(125, 21, '2024-01-04', '19:00:08', 19, 'hello', -1),
+(126, 21, '2024-01-06', '15:03:55', 19, 'hey guys', -1),
+(127, 17, '2024-01-06', '15:11:45', 19, 'Hey Aditya welcome', -1),
+(128, 17, '2024-01-06', '15:12:26', 26, 'i am fine', -1),
+(129, 17, '2024-01-06', '15:28:19', 19, 'whats up', -1),
+(130, 17, '2024-01-06', '15:29:10', 26, 'nothing bro', -1),
+(131, 17, '2024-01-06', '15:32:14', 19, 'want to play chess', -1),
+(132, 17, '2024-01-06', '15:32:43', 19, 'i will send request', -1),
+(133, 17, '2024-01-06', '18:13:42', 19, 'blablabla', -1);
 
 -- --------------------------------------------------------
 
@@ -1146,7 +1186,10 @@ INSERT INTO `userpreferences` (`userId`, `preferenceId`) VALUES
 (23, 6),
 (25, 1),
 (25, 2),
-(25, 3);
+(25, 3),
+(26, 1),
+(26, 3),
+(26, 8);
 
 -- --------------------------------------------------------
 
@@ -1195,7 +1238,8 @@ INSERT INTO `variablecustomerinfo` (`user_id`, `community_id`, `post_id`) VALUES
 (22, 0, 0),
 (23, 0, 0),
 (24, 0, 0),
-(25, 0, 0);
+(25, 0, 0),
+(26, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -1323,7 +1367,7 @@ ALTER TABLE `staticcircleinfo`
 -- AUTO_INCREMENT for table `staticcustomerinfo`
 --
 ALTER TABLE `staticcustomerinfo`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `threads`
@@ -1335,7 +1379,7 @@ ALTER TABLE `threads`
 -- AUTO_INCREMENT for table `threads_posts`
 --
 ALTER TABLE `threads_posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

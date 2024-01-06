@@ -23,12 +23,12 @@ if (isset($_SESSION['indexType'])) {
 <body>
     <?php include 'navbar.php' ?>
     <?php 
-        $circleId;
+        $getcircleId;
         $user_id;
         if (isset($_GET['commid'])) {
             $_SESSION['commid'] = $_GET['commid'];
             $_SESSION['postType'] = 0;
-            $circleId = $_SESSION['commid'];
+            $getcircleId = $_SESSION['commid'];
         } 
     ?>
     <div class="main-body">
@@ -38,12 +38,12 @@ if (isset($_SESSION['indexType'])) {
                 if (!isset($_SESSION['login_status'])) {
                     $cp_query1 = "SELECT circleId, circleName, circleLogo
                                 FROM staticcircleinfo
-                                WHERE circleId = '$circleId'";
+                                WHERE circleId = '$getcircleId'";
                     $cp_result1 = mysqli_query($conn, $cp_query1);
                     if (mysqli_num_rows($cp_result1) > 0) {
                         $cp_row1 = mysqli_fetch_assoc($cp_result1);
                         ?>
-                        <div class="p_img <?php if ($circleId == $cp_row1['circleId']) {
+                        <div class="p_img <?php if ($getcircleId == $cp_row1['circleId']) {
                             echo 'active_circle';
                         } ?>" id="<?php echo $cp_row1['circleId'] ?>">
                         <div class="p_text"><?php echo $cp_row1['circleName'] ?></div>
@@ -55,12 +55,12 @@ if (isset($_SESSION['indexType'])) {
                                 FROM circle_following AS cf
                                 JOIN staticcircleinfo AS sci
                                 ON cf.circleId = sci.circleId
-                                WHERE cf.userId = '$user_id' AND cf.circleId = '$circleId'";
+                                WHERE cf.userId = '$user_id' AND cf.circleId = '$getcircleId'";
                     $cp_result1 = mysqli_query($conn, $cp_query1);
                     if (mysqli_num_rows($cp_result1) == 0) {
                         $cp_query2 = "SELECT circleId, circleName, circleLogo
                                 FROM staticcircleinfo
-                                WHERE circleId = '$circleId'";
+                                WHERE circleId = '$getcircleId'";
                         $cp_result2 = mysqli_query($conn, $cp_query2);
                         $cp_row2 = mysqli_fetch_assoc($cp_result2);
                         ?>
@@ -77,7 +77,7 @@ if (isset($_SESSION['indexType'])) {
                     if (mysqli_num_rows($cp_result) > 0) {
                             while ($cp_row = mysqli_fetch_assoc($cp_result)) {
                 ?>
-                <div class="p_img <?php if ($circleId == $cp_row['circleId']) {
+                <div class="p_img <?php if ($getcircleId == $cp_row['circleId']) {
                     echo 'active_circle';
                 } ?>" id="<?php echo $cp_row['circleId'] ?>">
                 <div class="p_text"><?php echo $cp_row['circleName'] ?></div>
@@ -87,6 +87,9 @@ if (isset($_SESSION['indexType'])) {
             </div>
 
             <div class="threads">
+                <div class="first-time-follow-btn">
+                    
+                </div>
                 <ul>
                     <li id="about"> About</li>
                     <li id="announcement"> Announcement</li>
@@ -96,16 +99,9 @@ if (isset($_SESSION['indexType'])) {
                 <div id="options">
                     
                 </div>
-                <?php 
-                if(isset($_SESSION['login_status']) && $_SESSION['login_status'] == 'logged_in'){
-                    $check_prev = "SELECT * FROM circle_membership WHERE userId = '$user_id' AND circleId = '$circleId'";
-                    $check_prev_res = mysqli_query($conn, $check_prev);
-                    if (mysqli_num_rows($check_prev_res) > 0) {
-                ?>
-                <div id="new_thread">
-                    <p><i class="ri-add-circle-line"></i>Create New Thread</p>
+                <div class="new-thread-wrapper">
+
                 </div>
-                <?php } } ?>
             </div>
         </div>
 
@@ -248,15 +244,15 @@ if (isset($_SESSION['indexType'])) {
     <div class="floaters">
         
     </div>
-    
+    <script src="/collageCommunity/javascript/follow.js"></script>
     <script src="/collageCommunity/javascript/community_page_js.js"></script>
     <script>
-        console.log('here1');
-        callAjax(<?php echo $circleId; ?>, 'threads', '#options');
-        console.log('here2');
-        callAjax(<?php echo $circleId; ?>, 'about', '.posts');
-        console.log('here3');
+        callAjax(<?php echo $getcircleId; ?>, 'threads', '#options');
+        callAjax(<?php echo $getcircleId; ?>, 'about', '.posts');
+        callCircleInfo(<?php echo $getcircleId; ?>, '.first-time-follow-btn')
+        callNewThreadBtn(<?php echo $getcircleId; ?>, '.new-thread-wrapper')
     </script>
     <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
+    
 </body>
 </html>

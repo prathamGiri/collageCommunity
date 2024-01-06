@@ -16,7 +16,6 @@ var callAjax = function (circle_id, topic, dest) {
         topic = 'post';
         postType = 1;//for announcement
     }
-    console.log(postType);
     $.ajax({
         url: 'back/comm_content_fetch.php',
         method: 'POST',
@@ -100,6 +99,122 @@ var callEventsAjax = function (circle_id, dest) {
                     'font-family' : 'poppins',
                     'cursor' : 'pointer'
                 }) 
+        }
+    })
+}
+
+var callCircleInfo = function (circle_id, dest) {
+    console.log('inside')
+    $.ajax({
+        url: 'back/circle_info.php',
+        method: 'POST',
+        data: {
+            circle_id : circle_id,
+        },
+        success: function (data) {
+            console.log('pp')
+            console.log(data)
+            if (data.status == 'already_follower') {
+                console.log('already_follower')
+                $(dest).html('')
+                // $(dest).html(data.html);
+                // $('#circle-name').css({
+                //     'font-family': 'math',
+                //     'font-size': 'x-large',
+                //     'text-align': 'center',
+                // })
+                // $('.unfollow').css({
+                //     'width': 'fit-content',
+                //     'padding': '2px',
+                //     'background-color': '#bcc1bf',
+                //     'color': 'white',
+                //     'font-family': 'Poppins',
+                //     'border-radius': '5px',
+                //     'cursor': 'pointer',
+                //     'margin': 'auto',
+                // }).on('click', function () {
+                //     var type = 1
+                //     $.ajax({
+                //         url: '/collageCommunity/pages/back/follow_circle.php',
+                //         method: 'POST',
+                //         data: {
+                //             circle_id : circle_id,
+                //             type : type
+                //         },
+                //         success: function () {
+                //             callCircleInfo(circleId, '.first-time-follow-btn')
+                //         }
+                //     })
+                // })
+            }else if (data.status == 'not_follower') {
+                console.log('not_follower')
+                $(dest).html(data.html);
+                $('#circle-name').css({
+                    'font-family': 'math',
+                    'font-size': 'x-large',
+                    'text-align': 'center',
+                })
+                $('.follow').css({
+                    'width': 'fit-content',
+                    'margin': 'auto',
+                    'padding': '3px 4px',
+                    'background-color': '#04AA6D',
+                    'color': 'white',
+                    'border-radius': '5px',
+                    'font-family': 'Poppins',
+                    'cursor': 'pointer',
+                }).on('click', function () {
+                    var type = 0
+                    $.ajax({
+                        url: '/collageCommunity/pages/back/follow_circle.php',
+                        method: 'POST',
+                        data: {
+                            circle_id : circle_id,
+                            type : type
+                        },
+                        success: function () {
+                            callCircleInfo(circleId, '.first-time-follow-btn')
+                        }
+                    })
+                })
+            }else if (data.status == 'not_logged') {
+                $(dest).html(data.html);
+                console.log('not_logged')
+                $('#circle-name').css({
+                    'font-family': 'math',
+                    'font-size': 'x-large',
+                    'text-align': 'center',
+                })
+                $('.register_first').css({
+                    'width': 'fit-content',
+                    'margin': 'auto',
+                    'padding': '0.5rem 1rem',
+                    'background-color': '#04AA6D',
+                    'color': 'white',
+                    'border-radius': '5px',
+                    'font-family': 'Poppins',
+                    'cursor': 'pointer',
+                }).on('click', function () {
+                    window.location.href = "/collageCommunity/pages/login-form.php?type=loginfirst"
+                })
+            }
+        }
+    })
+}
+
+var callNewThreadBtn = function (circle_id, dest) {
+    $.ajax({
+        url: 'back/new_events_btn.php',
+        method: 'POST',
+        data: {
+            circle_id : circle_id,
+        },
+        success: function (data) {
+            if (data.status == 'yes-prev') {
+                $(dest).html('<div id="new_thread"><p><i class="ri-add-circle-line"></i>Create New Thread</p></div>')
+            }else{
+                $(dest).html('')
+            }
         }
     })
 }
@@ -519,9 +634,13 @@ $(document).ready(function () {
         if (circleId != "") {
             callAjax(circleId, 'threads', '#options')
             callAjax(circleId, 'about', '.posts')
+            callCircleInfo(circleId, '.first-time-follow-btn')
+            callNewThreadBtn(circleId, '.new-thread-wrapper')
             $('.member-bar').html('')
             $('.p_img').removeClass("active_circle");
             $(this).addClass("active_circle");
+            $('.active').removeClass('active')
+            $('#posts-btn').addClass('active')
             tag = 'general'
         }
     })

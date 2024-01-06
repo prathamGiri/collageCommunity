@@ -99,7 +99,9 @@
 .next-btn {
     right: 10px;
 }
-
+.card-img{
+    cursor: pointer;
+}
 
 
 .card img {

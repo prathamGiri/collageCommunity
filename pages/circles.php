@@ -69,7 +69,10 @@ if (isset($_SESSION['indexType'])) {
             ?>
             
             <div class="card" id="<?php echo $spc_row['circleId']; ?>" card-index="0">
-                <img src="<?php echo "/collageCommunity/images/profile_img/".$spc_row['circleLogo']; ?>">
+                <div class="card-img">
+                    <img src="<?php echo "/collageCommunity/images/profile_img/".$spc_row['circleLogo']; ?>">
+                </div>
+                
                 <div class="card-content">
                     <h2><?php echo $spc_row['circleName']; ?></h2>
                     <?php

@@ -14,15 +14,15 @@ $(document).ready(function () {
                 },
                 success: function (data) {
                         $('#search_result').html(data);
-                        var inputWidth = $('#live_search').outerWidth();
-                        var inputPosition = $('#live_search').offset();
+                        // var inputWidth = $('#live_search').outerWidth();
+                        // var inputPosition = $('#live_search').offset();
                         $('#search_result').css({
                             'display': 'block',
-                            'text-align' : 'center',
-                            'margin':'2px 0',
-                            'width': inputWidth + 'px',
+                        //     'text-align' : 'center',
+                        //     'margin':'2px 0',
+                            'width': '100%',
                             'position': 'absolute',
-                            'left': inputPosition.left + 'px'
+                        //     'left': inputPosition.left + 'px'
                         });
                         $('#search_result ul').css({
                             'list-style-type':'none',
@@ -40,29 +40,8 @@ $(document).ready(function () {
                         })
 
                         $('.ind-list').on('click', function () {
-                            var collegeid = $(this).attr("collegeid");
-                            var institute = $(this).attr("institute");
-                            // var city = $(this).attr("city");
-                            // var state = $(this).attr("state");
-                            // var country = $(this).attr("country");
-                            console.log(collegeid);
-                            console.log("ok");
-                        
-                            $('#live_search').val(institute);
-                            $('#dummy').val(collegeid);
-                            // $('#live_search input[name=city]').val(city);
-                            // $('#live_search input[name=state]').val(state);
-                            // $('#live_search input[name=country]').val(country);
-                        });
-
-                        $("#live_search").focusout(function () {
-                            setTimeout(function () {
-                                $('#search_result').css('display', 'none');
-                            }, 200);
-                        });
-
-                        $("#live_search").focusin(function () {
-                            $('#search_result').css('display', 'block');
+                            var collegeid = $(this).attr("id");
+                            window.location.href = "/collageCommunity/pages/community_page.php?commid=" + collegeid;
                         });
                 }
             });
@@ -70,6 +49,17 @@ $(document).ready(function () {
         else {
             $('#search_result').css('display', 'none');
         }
+    });
+    // Handle hiding search_result when clicking outside of it
+    $(document).on("click", function (event) {
+        if (!$(event.target).closest('#search_result, #live_search').length) {
+            $('#search_result').css('display', 'none');
+        }
+    });
+
+    // Keep search_result visible when live_search is focused
+    $("#live_search").focusin(function () {
+        $('#search_result').css('display', 'block');
     });
 });
 

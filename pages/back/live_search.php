@@ -9,23 +9,7 @@
         if (mysqli_num_rows($result) > 0) {
           echo "<ul>";
           while ($res = mysqli_fetch_array($result)) {
-              echo "<li><a href='/collageCommunity/pages/community_page.php?commid=".$res['circleId']."'>". $res['circleName']. "</a></li>" ;
-          }
-          echo "</ul>";
-        }
-    }else if ($_POST['page'] == 'create_comm' || $_POST['page'] == 'user_info_form' || $_POST['page'] == 'edit_circle') {
-      $query = "SELECT * FROM colleges WHERE collegeName LIKE '{$_POST['query']}%' LIMIT 100";
-        $result = mysqli_query($conn, $query);
-        if (mysqli_num_rows($result) > 0) {
-          echo "<ul>";
-          while ($res = mysqli_fetch_array($result)) {
-            $institute = $res['collegeName'];
-            $city = $res['city'];
-            $collegeId = $res['collegeId'];
-            $_SESSION['collegeId'] = $collegeId;
-            $state = $res['state'];
-            $country = $res['country'];
-              echo "<li class='ind-list' collegeid='$collegeId' institute='$institute'>".$institute. "</li>" ;
+              echo "<li class='ind-list' id=".$res['circleId'].">". $res['circleName']. "</li>" ;
           }
           echo "</ul>";
         }

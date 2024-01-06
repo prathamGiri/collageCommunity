@@ -2,6 +2,9 @@
 require_once "database_connection.php";
 
 if (isset($_POST['circle_id']) && isset($_POST['topic'])) {
+    if (isset($_SESSION['threadId'])) {
+        unset($_SESSION['threadId']);
+    }
     $logged_in = FALSE;
     $user_id;
     if (isset($_SESSION['login_status']) && $_SESSION['login_status'] == 'logged_in') {

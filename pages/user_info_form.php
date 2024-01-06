@@ -22,13 +22,25 @@
     <div>
         <form action="back/user_info.php" method="post">
             <div class="clg">
-                <label for="College">College</label>
-                <div class="search_cover">
+                <label for="college">College</label>
+                <select name="college" id="college">
+                    <option value=""></option>
+                    <?php
+                        $clg_res = mysqli_query($conn, "SELECT * FROM colleges");
+                        if (mysqli_num_rows($clg_res) > 0) {
+                            while ($clg_row = mysqli_fetch_assoc($clg_res)) {
+                    ?>
+                    <option value="<?php echo  $clg_row['collegeId']; ?>"><?php echo  $clg_row['collegeName']; ?></option>
+                    <?php
+                            } }
+                    ?>
+                </select>
+                <!-- <div class="search_cover">
                     <div>
-                        <input type="text" class="coname" page="<?php echo $page ?>" id="live_search" name="institute" autocomplete="off" required>
+                        <input type="text" class="coname" page="" id="live_search" name="institute" autocomplete="off" required>
                     </div>
                     <div id="search_result"></div>
-                </div>
+                </div> -->
                 
             <!-- <input type="text" id="clg" name="college" required> -->
             </div>

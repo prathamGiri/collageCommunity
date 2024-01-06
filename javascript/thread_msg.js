@@ -57,7 +57,6 @@ $(document).ready(function (){
             success: function (data) {
                 var htmlContent = data.html;
                 var postId = data.post_id;
-                console.log(data);
                 $('.wrapper').append(htmlContent);
 
                 $('#freeform').val("");
