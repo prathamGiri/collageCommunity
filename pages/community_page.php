@@ -247,12 +247,13 @@ if (isset($_SESSION['indexType'])) {
     <script src="/collageCommunity/javascript/follow.js"></script>
     <script src="/collageCommunity/javascript/community_page_js.js"></script>
     <script>
-        callAjax(<?php echo $getcircleId; ?>, 'threads', '#options');
         callAjax(<?php echo $getcircleId; ?>, 'about', '.posts');
+        callThreadOptionsAjax(<?php echo $getcircleId; ?>, 'threads', '#options');
         callCircleInfo(<?php echo $getcircleId; ?>, '.first-time-follow-btn')
         callNewThreadBtn(<?php echo $getcircleId; ?>, '.new-thread-wrapper')
     </script>
     <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
+    
     
 </body>
 </html>

@@ -9,15 +9,6 @@ function PreviewImage() {
         document.getElementById("uploadPreview").src = oFREvent.target.result;
     };
 };
- 
-function sendPostIdToWebSocket(postId) {
-    // Assuming 'webSocket' is your established WebSocket connection
-    if (socket.readyState === WebSocket.OPEN) {
-        socket.send(JSON.stringify({ post_id: postId }));
-    } else {
-        console.error('WebSocket connection not open');
-    }
-}
 
 $(document).ready(function (){
     $('#createpost').on('click',function () {
@@ -43,6 +34,7 @@ $(document).ready(function (){
     })
 
     $("#post_form").submit(function(e) {
+        console.log('here2')
         e.preventDefault();    
         var formData = new FormData(this);
         if ($(".reply-box").attr("id")) {
@@ -57,6 +49,12 @@ $(document).ready(function (){
             success: function (data) {
                 var htmlContent = data.html;
                 var postId = data.post_id;
+                var threadId = data.thread_id;
+                var circleId = data.circle_id;
+                console.log(postId);
+                console.log(threadId);
+                console.log(circleId);
+                console.log('here1');
                 $('.wrapper').append(htmlContent);
 
                 $('#freeform').val("");
@@ -73,7 +71,7 @@ $(document).ready(function (){
                 $('#createpost').css({
                     'display': 'flex'
                 })
-                sendPostIdToWebSocket(postId);
+                sendPostIdToWebSocket(circleId, threadId, postId);
 
             },
             cache: false,

@@ -2,13 +2,15 @@
 include "connection.php";
 include "functions.php";
 
-if (isset($_POST['postId'])) {
+if (isset($_POST['post_id']) && isset($_POST['circle_id']) && isset($_POST['thread_id'])) {
     
-    $post_id = $_POST['postId'];
+    $post_id = $_POST['post_id'];
+    $circle_id = $_POST['circle_id'];
+    $thread_id = $_POST['thread_id'];
     $postSql = "SELECT * 
-    FROM threads_posts
-    WHERE post_id = $post_id";
-    $postRes = mysqli_query($conn, $postSql);
+        FROM threads_posts
+        WHERE post_id = $post_id";
+        $postRes = mysqli_query($conn, $postSql);
     if (mysqli_num_rows($postRes) > 0) {
         $postRow = mysqli_fetch_assoc($postRes);
             if (isset($_SESSION['threadId'])) {
@@ -87,7 +89,7 @@ if (isset($_POST['postId'])) {
                                     </div>
                                 </div>';
                                 header('Content-Type: application/json');
-                                echo json_encode(array('status' => 'current_thread', 'html' => $htmlContent, 'post_id' => $post_id));
+                                echo json_encode(array('status' => 'current_thread', 'html' => $htmlContent));
                 }else{
                     header('Content-Type: application/json');
                     echo json_encode(array('status' => 'different_thread'));

@@ -3,7 +3,6 @@ var threadId;
 var tag;
 
 var callAjax = function (circle_id, topic, dest) {
-    console.log(circle_id);
     circleId = circle_id;
     var postType;
     if (topic == 'generalPosts' || topic == 'about') {
@@ -25,6 +24,7 @@ var callAjax = function (circle_id, topic, dest) {
             postType : postType
         },
         success: function (data) {
+            joinRoom(circle_id)
             $(dest).html(data);
             if (postType == 1) {
                 $('.tags').css({
@@ -35,6 +35,20 @@ var callAjax = function (circle_id, topic, dest) {
                     'display' : 'flex'
                 })
             }
+        }
+    })
+}
+
+var callThreadOptionsAjax = function (circle_id, topic, dest) {
+    $.ajax({
+        url: 'back/comm_content_fetch.php',
+        method: 'POST',
+        data: {
+            circle_id : circle_id,
+            topic : topic
+        },
+        success: function (data) {
+            $(dest).html(data);
         }
     })
 }
@@ -104,7 +118,6 @@ var callEventsAjax = function (circle_id, dest) {
 }
 
 var callCircleInfo = function (circle_id, dest) {
-    console.log('inside')
     $.ajax({
         url: 'back/circle_info.php',
         method: 'POST',
@@ -112,10 +125,7 @@ var callCircleInfo = function (circle_id, dest) {
             circle_id : circle_id,
         },
         success: function (data) {
-            console.log('pp')
-            console.log(data)
             if (data.status == 'already_follower') {
-                console.log('already_follower')
                 $(dest).html('')
                 // $(dest).html(data.html);
                 // $('#circle-name').css({
@@ -147,7 +157,6 @@ var callCircleInfo = function (circle_id, dest) {
                 //     })
                 // })
             }else if (data.status == 'not_follower') {
-                console.log('not_follower')
                 $(dest).html(data.html);
                 $('#circle-name').css({
                     'font-family': 'math',
@@ -179,7 +188,6 @@ var callCircleInfo = function (circle_id, dest) {
                 })
             }else if (data.status == 'not_logged') {
                 $(dest).html(data.html);
-                console.log('not_logged')
                 $('#circle-name').css({
                     'font-family': 'math',
                     'font-size': 'x-large',
@@ -331,6 +339,7 @@ var callThreadsAjax = function (circle_id, threadId, dest) {
         },
         success: function (data) {
             $(dest).html(data);
+            joinRoom(circle_id, threadId)
             $('.tags').css({
                 'display' : 'none'
             })
@@ -632,7 +641,7 @@ $(document).ready(function () {
     $('.p_img').on('click', function () {
         circleId = $(this).attr("id");
         if (circleId != "") {
-            callAjax(circleId, 'threads', '#options')
+            callThreadOptionsAjax(circleId, 'threads', '#options')
             callAjax(circleId, 'about', '.posts')
             callCircleInfo(circleId, '.first-time-follow-btn')
             callNewThreadBtn(circleId, '.new-thread-wrapper')

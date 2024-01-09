@@ -158,7 +158,7 @@ include "database_connection.php";
                                 </div>
                             </div>';
                             header('Content-Type: application/json');
-                            echo json_encode(array('html' => $htmlContent, 'post_id' => $post_id));
+                            echo json_encode(array('html' => $htmlContent, 'post_id' => $post_id, 'circle_id' => $circleId, 'thread_id' => $threadId));
                             
                     }
                 }
