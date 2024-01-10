@@ -8,10 +8,25 @@ const slidesList = [slides0, slides1, slides2, slides3];
 const prevBtn = document.querySelectorAll(".prev-btn");
 const nextBtn = document.querySelectorAll(".next-btn");
 
+var textSlider = function () {
+    $('.text').each(function () {
+        var wrapper = $(this).closest('.text-wrapper');
+        var text = $(this);
+
+        console.log("Text width:", text.outerWidth());
+        console.log("Wrapper width:", wrapper.outerWidth());
+
+        if (text.outerWidth() > wrapper.outerWidth()) {
+            text.addClass('slide');
+        }
+    });
+}
+
 function showSlides(ind) {
     slidesList[ind].forEach((slide, index) => {
         if (index >= slideIndex[ind][1] && index < slideIndex[ind][1] + 4) {
             slide.style.display = "block";
+            textSlider()
         } else {
             slide.style.display = "none";
         }
@@ -51,3 +66,7 @@ showSlides(0);
 showSlides(1);
 showSlides(2);
 showSlides(3);
+
+$(document).ready(function () {
+    slider()
+});

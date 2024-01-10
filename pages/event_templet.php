@@ -31,7 +31,7 @@ echo '<div class="event-main">
                 if ($logged_in) {
                     $eventId = $row['eventId'];
                     $check_res = mysqli_query($conn, "SELECT * FROM eventregestration
-                                    WHERE userId = $userId AND eventId = $eventId");
+                                    WHERE userId = $user_id AND eventId = $eventId");
                     if (mysqli_num_rows($check_res) > 0) {
                         echo '<div class="reg-btn" data="cancel" style="background-color:rgb(252, 186, 3);" id="'; echo $eventId; echo '">Cancel Registration</div>';
                     }else{

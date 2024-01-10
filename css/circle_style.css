@@ -121,11 +121,31 @@
     justify-content: center;
 } */
 
-.card-content h2 {
+/* .card-content h2 {
     margin: 1rem;
     font-size: 1.5rem;
+} */
+.text-wrapper{
+    width: 100%; /* Set the width of the wrapping div */
+    white-space: nowrap; /* Prevent text from wrapping onto the next line */
+    overflow: hidden; /* Hide the overflow content */
 }
-
+.text {
+    width: fit-content;
+    font-size: 1.5rem;
+    display: inline-block; /* Display the text as an inline block */
+  }
+  .slide {
+    animation: slide 5s linear infinite; /* Use CSS animation for sliding effect */
+  }
+  @keyframes slide {
+    0% {
+      transform: translateX(100%); /* Start with no translation */
+    }
+    100% {
+      transform: translateX(-100%); /* Translate the text to the left by its width */
+    }
+  }
 .card-content p {
     margin: 8px 0;
 }

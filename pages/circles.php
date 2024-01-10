@@ -74,7 +74,11 @@ if (isset($_SESSION['indexType'])) {
                 </div>
                 
                 <div class="card-content">
-                    <h2><?php echo $spc_row['circleName']; ?></h2>
+                    <div class="text-wrapper">
+                        <div class="text">
+                            <?php echo $spc_row['circleName']; ?>
+                        </div>
+                    </div>
                     <?php
                     if (isset($_SESSION['user_id'])) {
                         $user_id = $_SESSION['user_id'];
