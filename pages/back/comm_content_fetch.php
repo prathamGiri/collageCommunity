@@ -15,7 +15,7 @@ if (isset($_POST['circle_id']) && isset($_POST['topic'])) {
     $circleId = $_POST['circle_id'];
     $_SESSION['commid'] = $circleId;
     $topic = $_POST['topic'];
-
+    $page = $_SESSION['page'];
     if ($topic == 'threads') {
         if ($logged_in) {
             $unread_count;

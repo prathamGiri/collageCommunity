@@ -9,9 +9,31 @@ while ($row2 = mysqli_fetch_assoc($res2)) {
                                                 WHERE circleId = $circle_id";
                                 $circle_res = mysqli_query($conn, $circle_sql);
                                 $circle_row = mysqli_fetch_assoc($circle_res);
-                        echo '<div class="head_post" id="'; echo $circle_row['circleId']; echo '">
+                        echo '<div class="head-wrapper"><div class="head_post" id="'; echo $circle_row['circleId']; echo '">
                                 <img src="/collageCommunity/images/profile_img/'; echo $circle_row['circleLogo']; echo '">
                                 <span>'; echo $circle_row['circleName']; echo '</span>
+                            </div>
+                            <div class="options-btn"><i class="ri-more-2-fill"></i></div>
+                            <div class="dropdown-options">';
+                                if ($page == 'home') {
+                                    
+                                }else if($page == 'community_page'){
+                                    $check_sql = "SELECT * FROM circle_membership WHERE circleId = '$circle_id' AND userId = '$user_id'";
+                                    $check_res = mysqli_query($conn, $check_sql);
+                                    if (mysqli_num_rows($check_res) > 0) {
+                                        echo '<div class="ind-opt-btn" id="delete">
+                                                Delete
+                                            </div>';
+                                    }
+                                    
+                                }
+                                echo '<div class="ind-opt-btn" id="share">
+                                    Share
+                                </div>
+                                <div class="ind-opt-btn" id="report">
+                                    Report
+                                </div>
+                            </div>
                             </div>
                             <hr>
                             <h3>'; echo $row2['title']; echo '</h3>
@@ -32,5 +54,5 @@ while ($row2 = mysqli_fetch_assoc($res2)) {
                                         </div>';
                                         }
                                     } echo '</div>';
-                            } ?>
+                            } return; ?>
 

@@ -2,6 +2,7 @@
 include "connection.php";
 include "functions.php";
 if (isset($_POST['postType'])) {
+    $page = $_SESSION['page'];
     $postType = $_POST['postType'];
     $_SESSION['indexType'] = $postType;
     if ($postType == 'latest') {

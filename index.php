@@ -209,6 +209,7 @@ $_SESSION['page'] = $page;
     <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
     <script src="javascript/index_js.js"></script>
     <script>indexAjax('latest')</script>
+    <script src="/collageCommunity/javascript/post_js.js"></script>
 </body>
 
 </html>

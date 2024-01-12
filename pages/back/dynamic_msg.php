@@ -33,9 +33,8 @@ if (isset($_POST['post_id']) && isset($_POST['circle_id']) && isset($_POST['thre
                             $htmlContent = '';
                             $htmlContent = $htmlContent.'<div class="ind-post" id="'. $post_id. '">
                                     <div class="msg-options">
-                                        <div id="reply"><i class="ri-reply-fill"></i></div>
-                                        <div id="react"><i class="ri-user-smile-fill"></i></div>
-                                        <div id="delete"><i class="ri-delete-bin-5-fill"></i></div>
+                                        <div class="reply"><i class="ri-reply-fill"></i></div>
+                                        <div class="react-thread-msg"><i class="ri-user-smile-fill"></i></div>
                                     </div>
                                     <div class="inside">
                                         <div class="info-img">

@@ -828,7 +828,7 @@ $(document).on({
     }
 }, '.ind-post');
 
-$(document).on('click', '#reply', function () {
+$(document).on('click', '.reply', function () {
     var postId = $(this).closest('.ind-post').attr('id');
     $.ajax({
         url: '/collageCommunity/pages/back/get_reply_info.php',
@@ -1373,3 +1373,23 @@ $(document).on('click', function(event) {
   $('#thread_form').on('click', function(event) {
     event.stopPropagation();
   });
+
+$(document).on('click', '.delete-thread-msg', function(){
+    var self = $(this).closest('.ind-post')
+    var postId = self.attr('id');
+    console.log(postId);
+    $.ajax({
+        url: '/collageCommunity/pages/back/delete_thread_post.php',
+        method: 'POST',
+        data: {
+            postId:postId,
+        },
+        success: function (data) {
+            if (data.status == 'success') {
+                self.html('Message Deleted Succesfully')
+            }else{
+                console.log('error:Cannot delete post')
+            }
+        }
+    })
+})

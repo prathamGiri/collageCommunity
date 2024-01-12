@@ -253,6 +253,7 @@ if (isset($_SESSION['indexType'])) {
         callNewThreadBtn(<?php echo $getcircleId; ?>, '.new-thread-wrapper')
     </script>
     <script src="/collageCommunity/javascript/infinite_scroll.js"></script>
+    <script src="/collageCommunity/javascript/post_js.js"></script>
     
     
 </body>

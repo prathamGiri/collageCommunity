@@ -406,7 +406,12 @@
   height: 1px;
   background-color: #04AA6D;
 }
-
+.head-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
 .head_post {
   display: flex;
   /* justify-content: center; */
@@ -416,14 +421,35 @@
 .head_post span {
   margin-left: 0.8rem;
   font-family: 'Poppins';
-
 }
 
 .head_post img {
   width: 40px;
   height: 40px;
 }
-
+.options-btn{
+  font-size: 20px;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+.dropdown-options{
+  display: none;
+  position: absolute;
+  background-color: white;
+  border-radius: 5px;
+  right: 0px;
+  top: 30px;
+  border: 1px #ccc solid;
+}
+.ind-opt-btn{
+  text-align: center;
+  padding: 5px;
+  width: 200px;
+  border-bottom: 1px solid grey;
+  cursor: pointer;
+  user-select: none;
+}
 .post-image img{
   width: 100%;
 }
@@ -498,4 +524,8 @@
 }
 .circle-name-wrapper{
   display: flex;
+}
+
+.msg-deleted{
+  color: rgb(237, 153, 153);
 }

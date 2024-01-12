@@ -35,8 +35,10 @@
             <img src= "/collageCommunity/images/logo.png" alt="" height="45px" width="45px">
             <div class="name">Pepcircles</div>
         </div>
-        <div class="des">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus expedita natus odit, pariatur consectetur autem enim non 
-            itaque magnam libero iusto voluptatibus, magni nam eum nemo officia. Repellat amet distinctio earum quia accusantium praesentium, ut, aliquam suscipit adipisci beatae culpa nulla. At laborum repellendus deserunt laudantium architecto accusantium molestiae error sint maxime ab, fugit omnis qui, harum id illo atque voluptatibus iste facilis sequi iure veritatis sed asperiores quod? Incidunt a placeat laborum suscipit, dignissimos expedita, corporis nisi voluptatibus rerum tempore harum distinctio velit dolores quae adipisci libero molestias repellendus. Neque aut et eius at libero a commodi repellat? Quos?
+        <div class="des">
+        Pepcircles is here to elevate your college experience by seamlessly connecting you 
+        with a vibrant community of clubs. It's designed to foster collaboration, 
+        engagement, and personal development beyond academic boundaries. <br> 
         </div>
     </div>
 
@@ -45,7 +47,8 @@
             <img src="/collageCommunity/images/profile_img/1662798865989.jpeg">
             <div class="card-content">
                 <h2>Pratham Giri</h2>
-                <p>Co-Founder, CEO</p>
+                <p>Email : pratham.giri02@gmail.com</p>
+                <p>Contact No : 7448074761</p>
             </div>
         </div>
     </div>
