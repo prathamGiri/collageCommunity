@@ -14,3 +14,9 @@ Platform has following main functions:
 
 ## Community Page:
 ![Screenshot 2024-08-08 221553](https://github.com/user-attachments/assets/c85e9860-901e-47c6-9af7-f32d3dede6c9)
+
+
+Features of the project:
+1. Asynchronous Processes using AJAX.
+2. Infinite Scrolling
+3. Live Chat using Websockets.
