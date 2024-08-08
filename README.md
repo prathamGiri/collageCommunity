@@ -1,6 +1,7 @@
 # collageCommunity
-A platform for college communities to come together for easier access of their information
-use database to show logo 
-platform has following main functions:
-1. Organizations can post publically(Social Media, Linkedin)
-2. Organizations can perform internal work(Discord, Zulip, Slack)
+A platform for college communities to come together, compete and grow.
+Platform has following main functions:
+1. Find the community you are interested in and connect.
+2. Communities can host events online and can attract passionate people.
+3. An Competitive Envirnoment for College Clubs to push and discover themselves.
+   
